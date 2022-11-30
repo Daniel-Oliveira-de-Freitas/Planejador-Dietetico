@@ -59,3 +59,243 @@ model MeasurePinheiro {
   AlimentoPinheiro   AlimentoPinheiro? @relation(fields: [alimentoPinheiroId], references: [id])
   alimentoPinheiroId Int?
 }
+
+model CategoriaTACO {
+  id           Int            @id @default(autoincrement())
+  label        String
+  AlimentoTACO AlimentoTACO[]
+}
+
+model AlimentoTACO {
+  id              Int               @id @default(autoincrement())
+  description     String
+  base_qty        Int
+  base_unit       String
+  category        CategoriaTACO     @relation(fields: [categoriaTACOId], references: [id])
+  categoriaTACOId Int
+  Humidity        Humidity[]
+  Protein         Protein[]
+  Lipid           Lipid[]
+  Cholesterol     Cholesterol[]
+  Carbohydrate    Carbohydrate[]
+  Fiber           Fiber[]
+  Ashes           Ashes[]
+  Calcium         Calcium[]
+  Magnesium       Magnesium[]
+  Phosphorus      Phosphorus[]
+  Iron            Iron[]
+  Sodium          Sodium[]
+  Potassium       Potassium[]
+  Copper          Copper[]
+  Zinc            Zinc[]
+  Retinol         Retinol[]
+  Thiamine        Thiamine[]
+  Riboflavin      Riboflavin[]
+  Pyridoxine      Pyridoxine[]
+  Niacin          Niacin[]
+  Manganese       Manganese[]
+  Energy          Energy[]
+  Saturated       Saturated[]
+  Monounsaturated Monounsaturated[]
+  Polyunsaturated Polyunsaturated[]
+}
+
+model Humidity {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Protein {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Lipid {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Cholesterol {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Carbohydrate {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Fiber {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Ashes {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Calcium {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Magnesium {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Phosphorus {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Iron {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Sodium {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Potassium {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Copper {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Zinc {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Retinol {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Thiamine {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Riboflavin {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Pyridoxine {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Niacin {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Manganese {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Energy {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  kcal           Float
+  kj             Float
+  alimentoTACOId Int
+}
+
+model Saturated {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Monounsaturated {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
+
+model Polyunsaturated {
+  id             Int          @id @default(autoincrement())
+  alimentoTACO   AlimentoTACO @relation(fields: [alimentoTACOId], references: [id])
+  qty            Float
+  unit           String
+  alimentoTACOId Int
+}
