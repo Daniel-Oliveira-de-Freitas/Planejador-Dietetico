@@ -11,6 +11,51 @@ datasource db {
 }
 
 model Paciente {
-  id   Int    @id @default(autoincrement())
-  name String
+  id                Int              @id @default(autoincrement())
+  nome              String
+  consumoHabitual   ConsumoHabitual? @relation(fields: [consumoHabitualId], references: [id])
+  consumoHabitualId Int?
+  HabitosDeVida     HabitosDeVida?   @relation(fields: [habitosDeVidaId], references: [id])
+  habitosDeVidaId   Int?
+}
+
+model ConsumoHabitual {
+  id              Int        @id @default(autoincrement())
+  acucar          Boolean?
+  adocante        Boolean?
+  frituras        Boolean?
+  carneComGordura Boolean?
+  coposDeAgua     Int?
+  latasDeOleo     Int?
+  numeroDePessoas Int?
+  localDoAlmoco   String?
+  localDaJanta    String?
+  quemPrepara     String?
+  Paciente        Paciente[]
+}
+
+model HabitosDeVida {
+  id                     Int        @id @default(autoincrement())
+  realizaAtividadeFisica Boolean?
+  nomeDaAtividade        String?
+  frequenciaDaAtividade  String?
+  pessoaFumante          Boolean?
+  frequenciaFumo         String? // mudar pra int?
+  consomeAlcool          Boolean?
+  frequenciaAlcool       String? // mudar pra int?
+  Paciente               Paciente[]
+}
+
+model AlimentoPinheiro {
+  id          Int               @id @default(autoincrement())
+  description String
+  measures    MeasurePinheiro[]
+}
+
+model MeasurePinheiro {
+  id                 Int               @id @default(autoincrement())
+  label              String
+  qty                Float
+  AlimentoPinheiro   AlimentoPinheiro? @relation(fields: [alimentoPinheiroId], references: [id])
+  alimentoPinheiroId Int?
 }
