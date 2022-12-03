@@ -1,0 +1,4095 @@
+[
+  {
+    "description": "ABACATE",
+    "measures": [
+      { "label": "UND P", "qty": 370 },
+      { "label": "IND M", "qty": 430 },
+      { "label": "UND G", "qty": 900 },
+      { "label": "PT R PICADO", "qty": 350 },
+      { "label": "PT F PICADO", "qty": 450 },
+      { "label": "COPO P CH PICADO", "qty": 130 },
+      { "label": "COPO D CH PICADO", "qty": 200 },
+      { "label": "COL S CH PICADO", "qty": 45 }
+    ]
+  },
+  {
+    "description": "ABACAXI",
+    "measures": [
+      { "label": "UND P", "qty": 480 },
+      { "label": "UND M", "qty": 750 },
+      { "label": "FT P", "qty": 50 },
+      { "label": "FT M", "qty": 75 },
+      { "label": "FT G", "qty": 190 }
+    ]
+  },
+  {
+    "description": "ABACAXI EM CALDA",
+    "measures": [
+      { "label": "FT P", "qty": 30 },
+      { "label": "FT M", "qty": 64 }
+    ]
+  },
+  {
+    "description": "ABÓBORA COZIDA",
+    "measures": [
+      { "label": "PED P", "qty": 30 },
+      { "label": "PED M", "qty": 50 },
+      { "label": "ESC M R PICADA", "qty": 70 },
+      { "label": "ESC M CH PICADA", "qty": 100 },
+      { "label": "COL S R PICADA", "qty": 16 },
+      { "label": "COL S CH PICADA", "qty": 36 }
+    ]
+  },
+  {
+    "description": "ABOBRINHA REFOGADA",
+    "measures": [
+      { "label": "ESC M R PICADA", "qty": 40 },
+      { "label": "ESC M CH PICADA", "qty": 90 },
+      { "label": "COL S R PICADA", "qty": 20 },
+      { "label": "COL S CH PICADA", "qty": 30 },
+      { "label": "COL A R PICADA", "qty": 35 },
+      { "label": "COL A CH PICADA", "qty": 70 }
+    ]
+  },
+  {
+    "description": "ACARAJÉ",
+    "measures": [{ "label": "UND M", "qty": 100 }]
+  },
+  {
+    "description": "ACELGA",
+    "measures": [
+      { "label": "PT R R PICADA", "qty": 60 },
+      { "label": "FOLHA P", "qty": 3 },
+      { "label": "FOLHA M", "qty": 10 },
+      { "label": "FOLHA G", "qty": 20 },
+      { "label": "COL S CH PICADA", "qty": 6 },
+      { "label": "COL A CH PICADA", "qty": 10 }
+    ]
+  },
+  { "description": "ACEROLA", "measures": [{ "label": "UND", "qty": 12 }] },
+  {
+    "description": "AÇÚCAR",
+    "measures": [
+      { "label": "X CHÁ CH", "qty": 170 },
+      { "label": "X CAFÉ CH", "qty": 53 },
+      { "label": "COPO P N", "qty": 160 },
+      { "label": "COPO D N", "qty": 219 },
+      { "label": "COL SOB R", "qty": 9 },
+      { "label": "COL SOB CH", "qty": 16 },
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 24 },
+      { "label": "COL PAU P R", "qty": 8 },
+      { "label": "COL PAU P CH", "qty": 15 },
+      { "label": "COL PAU M CH", "qty": 37 },
+      { "label": "COL CHÁ R", "qty": 3 },
+      { "label": "COL CHÁ CH", "qty": 5 },
+      { "label": "COL CAFÉ R", "qty": 1 },
+      { "label": "COL CAFÉ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "AÇÚCAR MASCAVO",
+    "measures": [
+      { "label": "X CHÁ CH", "qty": 170 },
+      { "label": "X CAFÉ CH", "qty": 56 },
+      { "label": "COL SOB R", "qty": 7 },
+      { "label": "COL SOB CH", "qty": 12.5 },
+      { "label": "COL S R", "qty": 11 },
+      { "label": "COL S CH", "qty": 19 },
+      { "label": "COL CHÁ R", "qty": 2.5 },
+      { "label": "COL CHÁ CH", "qty": 4 },
+      { "label": "COL CAFÉ R", "qty": 1 },
+      { "label": "COL CAFÉ CH", "qty": 2.3 }
+    ]
+  },
+  {
+    "description": "ADES ORIGINAL ®",
+    "measures": [
+      { "label": "COPO P CH PICADO", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "ADES SABORES ®",
+    "measures": [
+      { "label": "UND COMERCIAL", "qty": 250 },
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "AGRIÃO",
+    "measures": [
+      { "label": "RAMO M", "qty": 5 },
+      { "label": "PT SOB CH PICADO", "qty": 20 },
+      { "label": "PT R CH PICADO", "qty": 80 },
+      { "label": "PIRES CH PICADO", "qty": 10 },
+      { "label": "COL S CH PICADO", "qty": 7 }
+    ]
+  },
+  {
+    "description": "AGRIÃO REFOGADO",
+    "measures": [
+      { "label": "GARFADA", "qty": 30 },
+      { "label": "ESC M R", "qty": 50 },
+      { "label": "ESC M CH", "qty": 75 },
+      { "label": "COL S R", "qty": 17 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A R", "qty": 35 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "ÁGUA-DE-COCO",
+    "measures": [
+      { "label": "UND", "qty": 340 },
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "AGUARDENTE",
+    "measures": [{ "label": "DOSE", "qty": 50 }]
+  },
+  {
+    "description": "AIPIM COZIDO",
+    "measures": [
+      { "label": "PED P", "qty": 50 },
+      { "label": "PED M", "qty": 100 },
+      { "label": "PED G", "qty": 180 },
+      { "label": "COL S R PICADO", "qty": 20 },
+      { "label": "COL S CH PICADO", "qty": 30 },
+      { "label": "COL A CH PICADO", "qty": 60 }
+    ]
+  },
+  {
+    "description": "AIPIM FRITO",
+    "measures": [
+      { "label": "PED P", "qty": 35 },
+      { "label": "PED M", "qty": 80 },
+      { "label": "PED G", "qty": 155 },
+      { "label": "ESC M R PICADO", "qty": 65 },
+      { "label": "ESC M CH PICADO", "qty": 95 },
+      { "label": "COL S R PICADO", "qty": 20 },
+      { "label": "COL S CH PICADO", "qty": 35 },
+      { "label": "COL A R PICADO", "qty": 35 },
+      { "label": "COL A CH PICADO", "qty": 60 }
+    ]
+  },
+  {
+    "description": "ALFACE",
+    "measures": [
+      { "label": "UND P", "qty": 130 },
+      { "label": "UND M", "qty": 200 },
+      { "label": "UND G", "qty": 400 },
+      { "label": "PT SOB CH PICADA", "qty": 30 },
+      { "label": "PT R CH PICADA", "qty": 80 },
+      { "label": "PIRES CH PICADA", "qty": 20 },
+      { "label": "FOLHA P", "qty": 5 },
+      { "label": "FOLHA M", "qty": 10 },
+      { "label": "FOLHA G", "qty": 15 },
+      { "label": "COL S CH PICADA", "qty": 8 }
+    ]
+  },
+  {
+    "description": "ALL BRAN KELLOGG'S ®",
+    "measures": [
+      { "label": "COPO P CH", "qty": 63 },
+      { "label": "COPO D CH", "qty": 83 },
+      { "label": "COL S CH", "qty": 9 },
+      { "label": "CAIXA", "qty": 250 }
+    ]
+  },
+  {
+    "description": "ALMÔNDEGA",
+    "measures": [
+      { "label": "UND P", "qty": 30 },
+      { "label": "UND M", "qty": 50 }
+    ]
+  },
+  {
+    "description": "ALMÔNDEGA DE PERU LIGHT SADIA ®",
+    "measures": [
+      { "label": "UND", "qty": 25 },
+      { "label": "CAIXA COM 20 UND", "qty": 500 }
+    ]
+  },
+  {
+    "description": "AMEIXA PRETA FRESCA",
+    "measures": [
+      { "label": "UND P", "qty": 34 },
+      { "label": "UND M", "qty": 42 },
+      { "label": "UND G", "qty": 52 }
+    ]
+  },
+  {
+    "description": "AMEIXA SECA",
+    "measures": [{ "label": "UND M", "qty": 5 }]
+  },
+  {
+    "description": "AMEIXA VERMELHA",
+    "measures": [{ "label": "UND M", "qty": 16 }]
+  },
+  { "description": "AMÊNDOA", "measures": [{ "label": "UND", "qty": 1 }] },
+  {
+    "description": "AMENDOIM CARAMELIZADO",
+    "measures": [{ "label": "PACOTE P", "qty": 20 }]
+  },
+  {
+    "description": "AMENDOIM TORRADO COM SAL",
+    "measures": [
+      { "label": "UND", "qty": 0.8 },
+      { "label": "PUNHADO", "qty": 30 },
+      { "label": "PACOTE P", "qty": 50 },
+      { "label": "COL S", "qty": 17 },
+      { "label": "CANUDO", "qty": 35 }
+    ]
+  },
+  {
+    "description": "ANGU/ POLENTA",
+    "measures": [
+      { "label": "PT R", "qty": 300 },
+      { "label": "PT F", "qty": 500 },
+      { "label": "PED P", "qty": 100 },
+      { "label": "PED M", "qty": 150 },
+      { "label": "PED G", "qty": 200 },
+      { "label": "COL S CH", "qty": 35 },
+      { "label": "COL A CH", "qty": 60 },
+      { "label": "CO M CH", "qty": 150 },
+      { "label": "1/2 CO M", "qty": 70 }
+    ]
+  },
+  {
+    "description": "ARROZ À GREGA",
+    "measures": [
+      { "label": "ESC M R", "qty": 60 },
+      { "label": "ESC M CH", "qty": 85 },
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A R", "qty": 30 },
+      { "label": "COL A CH", "qty": 45 }
+    ]
+  },
+  {
+    "description": "ARROZ COZIDO",
+    "measures": [
+      { "label": "PT F R", "qty": 100 },
+      { "label": "PT F CH", "qty": 200 },
+      { "label": "ESC M R", "qty": 60 },
+      { "label": "ESC M CH", "qty": 85 },
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A R", "qty": 30 },
+      { "label": "COL A CH", "qty": 45 },
+      { "label": "CO M CH", "qty": 100 },
+      { "label": "1/2 CO M", "qty": 60 }
+    ]
+  },
+  {
+    "description": "ARROZ-DOCE",
+    "measures": [
+      { "label": "PT SOB", "qty": 280 },
+      { "label": "PT R", "qty": 400 },
+      { "label": "PIRES", "qty": 120 },
+      { "label": "COL SOB R", "qty": 15 },
+      { "label": "COL SOB CH", "qty": 30 },
+      { "label": "COL S R", "qty": 25 },
+      { "label": "COL S CH", "qty": 40 },
+      { "label": "COL A R", "qty": 50 },
+      { "label": "COL A CH", "qty": 90 },
+      { "label": "CO M CH", "qty": 140 }
+    ]
+  },
+  {
+    "description": "ARROZ INTEGRAL COZIDO",
+    "measures": [
+      { "label": "ESC M R", "qty": 31 },
+      { "label": "ESC M CH", "qty": 59 },
+      { "label": "COL S R", "qty": 12 },
+      { "label": "COL S CH", "qty": 20 },
+      { "label": "COL A R", "qty": 43 },
+      { "label": "COL A CH", "qty": 63 },
+      { "label": "CO M CH", "qty": 117 },
+      { "label": "1/2 CO M", "qty": 42 }
+    ]
+  },
+  {
+    "description": "ASPARGO EM CONSERVA",
+    "measures": [{ "label": "UND M", "qty": 7.5 }]
+  },
+  {
+    "description": "ATUM EM CONSERVA",
+    "measures": [
+      { "label": "LATA", "qty": 198 },
+      { "label": "COL SOB R", "qty": 6 },
+      { "label": "COL SOB CH", "qty": 10 },
+      { "label": "COL S R", "qty": 11 },
+      { "label": "COL S CH", "qty": 16 }
+    ]
+  },
+  {
+    "description": "AVEIA EM FLOCOS",
+    "measures": [
+      { "label": "COL SOB R", "qty": 5 },
+      { "label": "COL SOB CH", "qty": 7 },
+      { "label": "COL S R", "qty": 7 },
+      { "label": "COL S CH", "qty": 15 },
+      { "label": "COL CHÁ R", "qty": 1.5 },
+      { "label": "COL CHÁ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "AVEIA FARINHA",
+    "measures": [
+      { "label": "COL SOB R", "qty": 6 },
+      { "label": "COL SOB CH", "qty": 8 },
+      { "label": "COL S R", "qty": 8 },
+      { "label": "COL S CH", "qty": 18 },
+      { "label": "COL CHÁ R", "qty": 1.7 },
+      { "label": "COL CHÁ CH", "qty": 4 }
+    ]
+  },
+  {
+    "description": "AVELÃ",
+    "measures": [
+      { "label": "UND", "qty": 1 },
+      { "label": "PUNHADO", "qty": 25 }
+    ]
+  },
+  {
+    "description": "AZEITE-DE-DENDÊ",
+    "measures": [
+      { "label": "COL SOB", "qty": 5 },
+      { "label": "COL S", "qty": 8 },
+      { "label": "COL CHÁ", "qty": 2 },
+      { "label": "COL CAFÉ", "qty": 1 }
+    ]
+  },
+  {
+    "description": "AZEITONA",
+    "measures": [
+      { "label": "UND M VERDE", "qty": 4 },
+      { "label": "UND M PRETA", "qty": 3 }
+    ]
+  },
+  {
+    "description": "BABA- DE-MOÇA",
+    "measures": [
+      { "label": "PED P", "qty": 70 },
+      { "label": "PED M", "qty": 135 },
+      { "label": "PED G", "qty": 220 },
+      { "label": "ESC M R DESFIADO", "qty": 48 },
+      { "label": "ESC M CH DESFIADO", "qty": 60 },
+      { "label": "CO S R DESFIADO", "qty": 15 },
+      { "label": "COL S CH DESFIADO", "qty": 20 },
+      { "label": "COL A R DESFIADO", "qty": 40 },
+      { "label": "COL A CH DESFIADO", "qty": 55 },
+      { "label": "BACALHAU COZIDO", "qty": 55 },
+      { "label": "PORÇÃO", "qty": 90 },
+      { "label": "COL SOB CH", "qty": 22 },
+      { "label": "COL S CH", "qty": 30 },
+      { "label": "COL CHÁ CH", "qty": 12 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  { "description": "BACON", "measures": [{ "label": "FT M", "qty": 15 }] },
+  { "description": "BALA2", "measures": [{ "label": "UND", "qty": 5 }] },
+  {
+    "description": "BANANA Á MILANESA",
+    "measures": [
+      { "label": "UND P", "qty": 75 },
+      { "label": "UND M", "qty": 100 },
+      { "label": "UND G", "qty": 150 }
+    ]
+  },
+  {
+    "description": "BANANA-D'ÁGUA",
+    "measures": [
+      { "label": "UND P", "qty": 40 },
+      { "label": "UND M", "qty": 70 },
+      { "label": "UND G", "qty": 90 }
+    ]
+  },
+  {
+    "description": "BANANA-DA-TERRA",
+    "measures": [{ "label": "UND G", "qty": 100 }]
+  },
+  {
+    "description": "BANANA-DA-TERRA FRITA",
+    "measures": [
+      { "label": "FT P", "qty": 15 },
+      { "label": "FT M", "qty": 31 },
+      { "label": "FT G", "qty": 42 }
+    ]
+  },
+  {
+    "description": "BANANA-DA-TERRA FRITA C/AÇ",
+    "measures": [
+      { "label": "FT P", "qty": 17 },
+      { "label": "FT M", "qty": 35 },
+      { "label": "FT G", "qty": 48 }
+    ]
+  },
+  {
+    "description": "BANANA-MAÇÃ",
+    "measures": [{ "label": "UND M", "qty": 65 }]
+  },
+  {
+    "description": "BANANA-OURO",
+    "measures": [{ "label": "UND M", "qty": 40 }]
+  },
+  {
+    "description": "BANANA-PRATA",
+    "measures": [
+      { "label": "UND P", "qty": 30 },
+      { "label": "UND M", "qty": 40 },
+      { "label": "UND G", "qty": 55 }
+    ]
+  },
+  {
+    "description": "BANANADA",
+    "measures": [
+      { "label": "UND P", "qty": 15 },
+      { "label": "UND M", "qty": 40 },
+      { "label": "UND G", "qty": 50 }
+    ]
+  },
+  {
+    "description": "BARQUETE DE LEGUMES",
+    "measures": [{ "label": "UND M", "qty": 22 }]
+  },
+  {
+    "description": "BATATA-BAROA COZIDA",
+    "measures": [
+      { "label": "UND P", "qty": 45 },
+      { "label": "UND M", "qty": 80 },
+      { "label": "PED P", "qty": 20 },
+      { "label": "PED M", "qty": 50 },
+      { "label": "PED G", "qty": 75 },
+      { "label": "COL SOB R PICADA", "qty": 15 },
+      { "label": "COL SOB CH PICADA", "qty": 30 },
+      { "label": "COL S R PICADA", "qty": 25 },
+      { "label": "COL S CH PICADA", "qty": 35 },
+      { "label": "COL A R PICADA", "qty": 35 },
+      { "label": "COL A CH PICADA", "qty": 55 }
+    ]
+  },
+  {
+    "description": "BATATA-DOCE",
+    "measures": [
+      { "label": "UND M", "qty": 140 },
+      { "label": "UND GG", "qty": 580 }
+    ]
+  },
+  {
+    "description": "BATATA-DOCE COZIDA",
+    "measures": [
+      { "label": "UND M", "qty": 355 },
+      { "label": "UND GG", "qty": 560 },
+      { "label": "FT P", "qty": 40 },
+      { "label": "FT M", "qty": 70 },
+      { "label": "FT G", "qty": 90 },
+      { "label": "COL S R PICADA", "qty": 30 },
+      { "label": "COL S CH PICADA", "qty": 42 }
+    ]
+  },
+  {
+    "description": "BATATA-DOCE FRITA",
+    "measures": [
+      { "label": "FT P", "qty": 30 },
+      { "label": "FT M", "qty": 65 },
+      { "label": "FT G", "qty": 84 }
+    ]
+  },
+  {
+    "description": "BATATA FRITA RUFFLES",
+    "measures": [
+      { "label": "UND", "qty": 1.3 },
+      { "label": "PUNHADO", "qty": 12.8 },
+      { "label": "PACOTE P", "qty": 72 },
+      { "label": "PACOTE M", "qty": 135 }
+    ]
+  },
+  {
+    "description": "BATATA FRITA RUFFLES QUEIJO",
+    "measures": [
+      { "label": "UND", "qty": 1.3 },
+      { "label": "PUNHADO", "qty": 12.8 },
+      { "label": "PACOTE P", "qty": 72 },
+      { "label": "PACOTE M", "qty": 135 }
+    ]
+  },
+  {
+    "description": "BATATA-INGLESA CORADA",
+    "measures": [
+      { "label": "UND M", "qty": 80 },
+      { "label": "ESC M R PICADA", "qty": 70 },
+      { "label": "ESC M CH PICADA", "qty": 100 },
+      { "label": "COL S R PICADA", "qty": 30 },
+      { "label": "COL A R PICADA", "qty": 50 },
+      { "label": "COL A CH PICADA", "qty": 80 }
+    ]
+  },
+  {
+    "description": "BATATA-INGLESA COZIDA",
+    "measures": [
+      { "label": "UND P", "qty": 70 },
+      { "label": "UND M", "qty": 140 },
+      { "label": "UND G", "qty": 290 },
+      { "label": "ESC M R PICADA", "qty": 50 },
+      { "label": "ESC M CH PICADA", "qty": 80 },
+      { "label": "COL S CH PICADA", "qty": 30 },
+      { "label": "COL A R PICADA", "qty": 40 },
+      { "label": "COL A CH PICADA", "qty": 60 }
+    ]
+  },
+  {
+    "description": "BATATA-INGLESA FRITA",
+    "measures": [
+      { "label": "PORÇÃO P MCDONALD'S  ®", "qty": 68 },
+      { "label": "PORÇÃO P", "qty": 100 },
+      { "label": "PORÇÃO M", "qty": 200 },
+      { "label": "PORÇÃO G", "qty": 360 },
+      { "label": "ESC M CH", "qty": 65 },
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A R", "qty": 35 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "BATATA-INGLESA SAUTÉ",
+    "measures": [{ "label": "COL S CH", "qty": 25 }]
+  },
+  {
+    "description": "BEBIDA LÁCTEA DANONE ®",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "BEBIDA LÁCTEA GOOD FRUTTY ITAIMBÉ ®",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "BEIJU DE COCO",
+    "measures": [{ "label": "UND G", "qty": 125 }]
+  },
+  {
+    "description": "BERINJELA ENSOPADA",
+    "measures": [
+      { "label": "ESC M R", "qty": 75 },
+      { "label": "ESC M CH", "qty": 125 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A R", "qty": 60 },
+      { "label": "COL A CH", "qty": 75 }
+    ]
+  },
+  {
+    "description": "BERINJELA FRITA",
+    "measures": [
+      { "label": "RODELA P", "qty": 5 },
+      { "label": "RODELA M", "qty": 13 },
+      { "label": "RODELA G", "qty": 20 },
+      { "label": "FT P", "qty": 10 },
+      { "label": "FT M", "qty": 20 },
+      { "label": "FT G", "qty": 35 }
+    ]
+  },
+  {
+    "description": "BERTALHA REFOGADA",
+    "measures": [{ "label": "COL S CH", "qty": 25 }]
+  },
+  {
+    "description": "BETERRABA",
+    "measures": [
+      { "label": "UND P", "qty": 80 },
+      { "label": "UND M", "qty": 140 },
+      { "label": "UND G", "qty": 400 },
+      { "label": "COL S CH RALADA", "qty": 16 }
+    ]
+  },
+  {
+    "description": "BETERRABA COZIDA",
+    "measures": [
+      { "label": "UND P", "qty": 75 },
+      { "label": "UND M", "qty": 125 },
+      { "label": "UND G", "qty": 335 },
+      { "label": "FT P", "qty": 6 },
+      { "label": "FT M", "qty": 12 },
+      { "label": "FT G", "qty": 26 },
+      { "label": "ESC M R PICADA", "qty": 45 },
+      { "label": "COL S R PICADA", "qty": 14 },
+      { "label": "COL S CH PICADA", "qty": 20 },
+      { "label": "COL A CH PICADA", "qty": 38 }
+    ]
+  },
+  {
+    "description": "BIFE",
+    "measures": [
+      { "label": "UND P", "qty": 80 },
+      { "label": "UND M", "qty": 100 },
+      { "label": "UND G", "qty": 150 }
+    ]
+  },
+  {
+    "description": "BIFE Á MILANESA",
+    "measures": [
+      { "label": "UND P", "qty": 55 },
+      { "label": "UND M", "qty": 80 },
+      { "label": "UND G", "qty": 110 }
+    ]
+  },
+  {
+    "description": "BIFE Á PARMEGIANA",
+    "measures": [
+      { "label": "UND P", "qty": 90 },
+      { "label": "UND M", "qty": 150 },
+      { "label": "UND G", "qty": 180 }
+    ]
+  },
+  {
+    "description": "BIFE DE CORAÇÃO BOVINO",
+    "measures": [
+      { "label": "UND P", "qty": 65 },
+      { "label": "UND M", "qty": 75 },
+      { "label": "UND G", "qty": 100 }
+    ]
+  },
+  {
+    "description": "BIFE DE FÍGADO",
+    "measures": [
+      { "label": "UND P", "qty": 80 },
+      { "label": "UND M", "qty": 100 },
+      { "label": "UND G", "qty": 150 }
+    ]
+  },
+  {
+    "description": "BIFE ROLÊ",
+    "measures": [
+      { "label": "UND P", "qty": 80 },
+      { "label": "UND M", "qty": 100 },
+      { "label": "UND G", "qty": 150 }
+    ]
+  },
+  {
+    "description": "BIS",
+    "measures": [
+      { "label": "UND", "qty": 7.5 },
+      { "label": "CXA", "qty": 150 }
+    ]
+  },
+  {
+    "description": "BISCOITO ÁGUA E SAL  ®",
+    "measures": [
+      { "label": "UND", "qty": 8 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO AMANTEIGADO",
+    "measures": [
+      { "label": "UND", "qty": 4 },
+      { "label": "PACOTE", "qty": 90 }
+    ]
+  },
+  {
+    "description": "BISCOITO AVEIA E MEL SÃO LUIZ ®",
+    "measures": [
+      { "label": "UND", "qty": 6 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO BACONZITOS  ®",
+    "measures": [
+      { "label": "UND", "qty": 0.3 },
+      { "label": "PUNHADO", "qty": 9 },
+      { "label": "PACOTE M", "qty": 55 }
+    ]
+  },
+  {
+    "description": "BISCOITO CHEETOS  ®",
+    "measures": [
+      { "label": "UND", "qty": 0.5 },
+      { "label": "PUNHADO", "qty": 6 },
+      { "label": "PACOTE M", "qty": 80 },
+      { "label": "PACOTE G", "qty": 160 }
+    ]
+  },
+  {
+    "description": "BISCOITO CHEETOS ® BOLA",
+    "measures": [
+      { "label": "UND", "qty": 0.2 },
+      { "label": "PUNHADO", "qty": 6 },
+      { "label": "PACOTE M", "qty": 80 },
+      { "label": "PACOTE G", "qty": 160 }
+    ]
+  },
+  {
+    "description": "BISCOITO CHEETOS ® TUBO",
+    "measures": [
+      { "label": "UND", "qty": 0.6 },
+      { "label": "PUNHADO", "qty": 6 },
+      { "label": "PACOTE M", "qty": 80 },
+      { "label": "PACOTE G", "qty": 160 }
+    ]
+  },
+  {
+    "description": "BISCOITO CREAM CRACKER SÃO LUIZ ®",
+    "measures": [
+      { "label": "UND", "qty": 6 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO DORITOS® QUEIJO",
+    "measures": [
+      { "label": "UND", "qty": 1.6 },
+      { "label": "PUNHADO", "qty": 18 },
+      { "label": "PACOTE", "qty": 86 }
+    ]
+  },
+  {
+    "description": "BISCOITO DRINK PIRAQUÊ",
+    "measures": [
+      { "label": "PACOTE", "qty": 90 },
+      { "label": "UND", "qty": 3 }
+    ]
+  },
+  {
+    "description": "BISCOITO FANDANGOS® PRESUNTO",
+    "measures": [
+      { "label": "UND", "qty": 0.3 },
+      { "label": "PUNHADO", "qty": 8 },
+      { "label": "PACOTE M", "qty": 100 },
+      { "label": "PACOTE G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO FANDANGOS ® QUEIJO",
+    "measures": [
+      { "label": "UND", "qty": 0.3 },
+      { "label": "PUNHADO", "qty": 8 },
+      { "label": "PACOTE M", "qty": 100 },
+      { "label": "PACOTE G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO GRAN'DIA CHOCOLATE COM 5 CEREAIS DANONE",
+    "measures": [{ "label": "UND", "qty": 8.5 }]
+  },
+  {
+    "description": "BISCOITO LEITE SÃO LUIZ ®",
+    "measures": [{ "label": "UND", "qty": 5.7 }]
+  },
+  {
+    "description": "BISCOITO MAIZENA SÃO LUIZ ®",
+    "measures": [
+      { "label": "UND", "qty": 5 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO MARIA ®",
+    "measures": [
+      { "label": "UND", "qty": 6 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO MIRABEL",
+    "measures": [
+      { "label": "UND", "qty": 6.3 },
+      { "label": "PACOTE", "qty": 50 }
+    ]
+  },
+  {
+    "description": "BISCOITO PASSATEMPO COLORIDO ®",
+    "measures": [
+      { "label": "UND", "qty": 6.2 },
+      { "label": "PACOTE", "qty": 180 }
+    ]
+  },
+  {
+    "description": "BISCOITO PASSATEMPO RECHEADO SABOR ALPINO ®",
+    "measures": [
+      { "label": "UND", "qty": 155 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO POLVILHO",
+    "measures": [
+      { "label": "UND ROSCA", "qty": 3 },
+      { "label": "UND BOLINHA", "qty": 0.5 },
+      { "label": "PUNHADO BOLINHA", "qty": 7 },
+      { "label": "PACOTE ROSCA", "qty": 40 },
+      { "label": "PACOTE BOLINHA/PALITO", "qty": 100 }
+    ]
+  },
+  {
+    "description": "BISCOITO PRESUNTINHO PIRAQUÊ ®",
+    "measures": [
+      { "label": "UND", "qty": 0.3 },
+      { "label": "PUNHADO", "qty": 25 },
+      { "label": "PACOTE", "qty": 100 }
+    ]
+  },
+  {
+    "description": "BISCOITO QUEIJO PIRAQUÊ ®",
+    "measures": [
+      { "label": "UND", "qty": 0.3 },
+      { "label": "PUNHADO", "qty": 15 },
+      { "label": "PACOTE", "qty": 100 }
+    ]
+  },
+  {
+    "description": "BISCOITO RECHEADO CHOCOLATE",
+    "measures": [
+      { "label": "UND", "qty": 13 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO ROLADINHO GOIABA PIRAQUÊ®",
+    "measures": [
+      { "label": "UND", "qty": 10 },
+      { "label": "PACOTE", "qty": 80 }
+    ]
+  },
+  {
+    "description": "BISCOITO ROSQUINHA DE LEITE TOSTINES ®",
+    "measures": [
+      { "label": "UND", "qty": 7 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO SALCLIC TRADICIONAL SÃO LUIZ ®",
+    "measures": [
+      { "label": "UND", "qty": 5 },
+      { "label": "PACOTE", "qty": 200 }
+    ]
+  },
+  {
+    "description": "BISCOITO WAFER PARMALAT CHOCOLATE",
+    "measures": [
+      { "label": "UND", "qty": 7.5 },
+      { "label": "PACOTE G", "qty": 160 }
+    ]
+  },
+  {
+    "description": "BISCOITO WAFER PARMALAT MORANGO",
+    "measures": [
+      { "label": "UND", "qty": 7.5 },
+      { "label": "PACOTE G", "qty": 160 }
+    ]
+  },
+  {
+    "description": "BLISS MORANGO ®",
+    "measures": [{ "label": "UND", "qty": 200 }]
+  },
+  {
+    "description": "BOBÓ DE CAMARÃO",
+    "measures": [
+      { "label": "PT R", "qty": 225 },
+      { "label": "PT F", "qty": 320 },
+      { "label": "COL S CH", "qty": 28 },
+      { "label": "COL A CH", "qty": 110 },
+      { "label": "CO M CH", "qty": 190 }
+    ]
+  },
+  {
+    "description": "BOLINHA DE QUEIJO",
+    "measures": [{ "label": "UND P", "qty": 10 }]
+  },
+  {
+    "description": "BOLINHO DE AIPIM COM CARNE",
+    "measures": [{ "label": "UND M", "qty": 45 }]
+  },
+  {
+    "description": "BOLINHO DE ARROZ",
+    "measures": [
+      { "label": "UND M", "qty": 40 },
+      { "label": "UND G", "qty": 60 }
+    ]
+  },
+  {
+    "description": "BOLINHO DE BACALHAU",
+    "measures": [
+      { "label": "UND P", "qty": 7 },
+      { "label": "UND M", "qty": 15 },
+      { "label": "UND G", "qty": 60 }
+    ]
+  },
+  {
+    "description": "BOLINHO DE VAGEM",
+    "measures": [{ "label": "UND M", "qty": 20 }]
+  },
+  {
+    "description": "BOLO SIMPLES",
+    "measures": [
+      { "label": "FT P", "qty": 30 },
+      { "label": "FT M", "qty": 60 },
+      { "label": "FT G", "qty": 100 }
+    ]
+  },
+  {
+    "description": "BOLO COM GLACÊ E RECHEIO",
+    "measures": [
+      { "label": "FT P", "qty": 75 },
+      { "label": "FT M", "qty": 100 },
+      { "label": "FT G", "qty": 175 }
+    ]
+  },
+  {
+    "description": "BOLO DE AIPIM COM COCO",
+    "measures": [
+      { "label": "FT P", "qty": 45 },
+      { "label": "FT M", "qty": 80 },
+      { "label": "FT G", "qty": 170 }
+    ]
+  },
+  {
+    "description": "BOLO DE BANANA",
+    "measures": [
+      { "label": "FT P", "qty": 50 },
+      { "label": "FT M", "qty": 70 },
+      { "label": "FT G", "qty": 90 }
+    ]
+  },
+  {
+    "description": "BOLO DE CENOURA",
+    "measures": [
+      { "label": "FT P", "qty": 30 },
+      { "label": "FT M", "qty": 60 },
+      { "label": "FT G", "qty": 100 }
+    ]
+  },
+  {
+    "description": "BOLO DE CHOCOLATE COM RECHEIO E CALDA DE CHOCOLATE",
+    "measures": [
+      { "label": "FT P", "qty": 70 },
+      { "label": "FT M", "qty": 100 },
+      { "label": "FT G", "qty": 175 }
+    ]
+  },
+  {
+    "description": "BOMBA",
+    "measures": [
+      { "label": "UND P", "qty": 30 },
+      { "label": "UND COMERCIAL", "qty": 50 }
+    ]
+  },
+  {
+    "description": "BOMBOM OURO BRANCO ®",
+    "measures": [{ "label": "UND", "qty": 22 }]
+  },
+  {
+    "description": "BOMBOM SONHO DE VALSA",
+    "measures": [{ "label": "UND", "qty": 22 }]
+  },
+  {
+    "description": "BOMBOM SORTIDO",
+    "measures": [{ "label": "UND", "qty": 15 }]
+  },
+  {
+    "description": "BRIGADEIRO",
+    "measures": [
+      { "label": "UND P", "qty": 10 },
+      { "label": "UND M", "qty": 15 },
+      { "label": "UND G", "qty": 30 },
+      { "label": "COL SOB CH", "qty": 30 },
+      { "label": "COL S CH", "qty": 50 },
+      { "label": "COL CHÁ CH", "qty": 15 }
+    ]
+  },
+  {
+    "description": "BRÓCOLIS COZIDO",
+    "measures": [{ "label": "COL S CH PICADO", "qty": 10 }]
+  },
+  {
+    "description": "BRÓCOLIS REFOGADO",
+    "measures": [{ "label": "COL S CH PICADO", "qty": 10 }]
+  },
+  {
+    "description": "CACHORRO-QUENTE",
+    "measures": [{ "label": "UND", "qty": 125 }]
+  },
+  {
+    "description": "CAFÉ COM LEITE C/AÇ",
+    "measures": [{ "label": "X CHÁ CH", "qty": 200 }]
+  },
+  {
+    "description": "CAFÉ INFUSÃO C/AÇ",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO CAFEZINHO", "qty": 50 }
+    ]
+  },
+  {
+    "description": "CAJÁ-MANGA",
+    "measures": [
+      { "label": "UND P", "qty": 40 },
+      { "label": "UND M", "qty": 55 },
+      { "label": "UND G", "qty": 75 }
+    ]
+  },
+  {
+    "description": "CAJUZINHO",
+    "measures": [
+      { "label": "UND P", "qty": 12 },
+      { "label": "UND M", "qty": 25 },
+      { "label": "UND G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "CALDO-DE-CANA",
+    "measures": [
+      { "label": "TULIPA CH", "qty": 290 },
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "CALDO DE CARNE MAGGI ®",
+    "measures": [{ "label": "UND", "qty": 23 }]
+  },
+  {
+    "description": "CALDO VERDE",
+    "measures": [{ "label": "CO M CH", "qty": 130 }]
+  },
+  {
+    "description": "CAMARRÃO",
+    "measures": [{ "label": "UND G", "qty": 30 }]
+  },
+  {
+    "description": "CAMARRÃO FRITO",
+    "measures": [
+      { "label": "UND P", "qty": 5 },
+      { "label": "COL S CH", "qty": 20 },
+      { "label": "COL A CH", "qty": 35 }
+    ]
+  },
+  {
+    "description": "CANELONE DE FRANGO",
+    "measures": [
+      { "label": "UND P", "qty": 30 },
+      { "label": "UND M", "qty": 45 },
+      { "label": "UND G", "qty": 60 }
+    ]
+  },
+  {
+    "description": "CANELONE DE RICOTA",
+    "measures": [
+      { "label": "UND P", "qty": 20 },
+      { "label": "UND M", "qty": 30 },
+      { "label": "UND G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "CANJA",
+    "measures": [
+      { "label": "PT R", "qty": 325 },
+      { "label": "PT F", "qty": 520 },
+      { "label": "CO P CH", "qty": 60 },
+      { "label": "CO M CH", "qty": 130 }
+    ]
+  },
+  {
+    "description": "CANJICA",
+    "measures": [
+      { "label": "PT R", "qty": 300 },
+      { "label": "PT F", "qty": 460 },
+      { "label": "COPO P CH", "qty": 180 },
+      { "label": "COPO D CH", "qty": 240 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "CO M CH", "qty": 120 }
+    ]
+  },
+  {
+    "description": "CAQUI",
+    "measures": [
+      { "label": "UND P", "qty": 85 },
+      { "label": "UND M", "qty": 110 },
+      { "label": "UND G", "qty": 150 }
+    ]
+  },
+  {
+    "description": "CARNE ASSADA",
+    "measures": [
+      { "label": "FT P", "qty": 75 },
+      { "label": "FT M", "qty": 90 },
+      { "label": "FT G", "qty": 135 }
+    ]
+  },
+  {
+    "description": "CARNE ENSOPADA",
+    "measures": [
+      { "label": "PED P", "qty": 20 },
+      { "label": "PED M", "qty": 35 },
+      { "label": "PED G", "qty": 60 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 30 }
+    ]
+  },
+  {
+    "description": "CARNE ENSOPADA COM LEGUMES",
+    "measures": [
+      { "label": "COL S CH", "qty": 35 },
+      { "label": "COL A R", "qty": 45 },
+      { "label": "COL A CH", "qty": 7 }
+    ]
+  },
+  {
+    "description": "CARNE MOÍDA",
+    "measures": [
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A R", "qty": 40 },
+      { "label": "COL A CH", "qty": 60 }
+    ]
+  },
+  {
+    "description": "CARNE-SECA",
+    "measures": [
+      { "label": "PED P", "qty": 20 },
+      { "label": "PED M", "qty": 65 },
+      { "label": "PED G", "qty": 130 },
+      { "label": "COL S CH PICADA", "qty": 18 },
+      { "label": "COL A CH PICADA", "qty": 28 }
+    ]
+  },
+  {
+    "description": "CARRÉ",
+    "measures": [
+      { "label": "UND P", "qty": 60 },
+      { "label": "UND M", "qty": 90 },
+      { "label": "UND G", "qty": 120 }
+    ]
+  },
+  {
+    "description": "CASTANHA DE CAJU",
+    "measures": [
+      { "label": "UND M", "qty": 2.5 },
+      { "label": "PUNHADO", "qty": 40 }
+    ]
+  },
+  {
+    "description": "CASTANHA DO PARÁ",
+    "measures": [{ "label": "UND", "qty": 4 }]
+  },
+  {
+    "description": "CASTANHA EUROPÉIA COZIDA7",
+    "measures": [{ "label": "UND", "qty": 10 }]
+  },
+  {
+    "description": "CEBOLA",
+    "measures": [
+      { "label": "UND P", "qty": 30 },
+      { "label": "UND M", "qty": 70 },
+      { "label": "UND G", "qty": 150 },
+      { "label": "FT P", "qty": 4 },
+      { "label": "FT M", "qty": 6 },
+      { "label": "FT G", "qty": 10 },
+      { "label": "COL S CH PICADA", "qty": 10 }
+    ]
+  },
+  {
+    "description": "CENOURA",
+    "measures": [
+      { "label": "UND P", "qty": 55 },
+      { "label": "UND M", "qty": 120 },
+      { "label": "UND G", "qty": 160 },
+      { "label": "COL S CH RALADA", "qty": 12 }
+    ]
+  },
+  {
+    "description": "CENOURA COZIDA",
+    "measures": [
+      { "label": "UND P", "qty": 46 },
+      { "label": "UND M", "qty": 100 },
+      { "label": "UND G", "qty": 135 },
+      { "label": "ESC M R PICADA", "qty": 48 },
+      { "label": "COL S R PICADA", "qty": 15 },
+      { "label": "COL S CH PICADA", "qty": 25 },
+      { "label": "COL A CH PICADA", "qty": 40 }
+    ]
+  },
+  {
+    "description": "CENOURA REFOGADA",
+    "measures": [
+      { "label": "COL S R PICADA", "qty": 15 },
+      { "label": "COL S CH PICADA", "qty": 25 }
+    ]
+  },
+  {
+    "description": "CEREAL EM BARRA NESTON® COCO TOSTADO",
+    "measures": [{ "label": "UND", "qty": 25 }]
+  },
+  {
+    "description": "CEREAL EM BARRA NESTON® BANANA, AVEIA E MEL",
+    "measures": [{ "label": "UND", "qty": 25 }]
+  },
+  {
+    "description": "CEREAIS EM BARRA NESTON® BANANA NUTRY ®",
+    "measures": [{ "label": "UND", "qty": 25 }]
+  },
+  {
+    "description": "CEREAIS EM BARRA TRIO ® AVEIA, BANANA E MEL",
+    "measures": [{ "label": "UND", "qty": 25 }]
+  },
+  {
+    "description": "CEREAIS EM BARRA TRIO ® LIGHT FRUTAS",
+    "measures": [{ "label": "UND", "qty": 25 }]
+  },
+  {
+    "description": "CERVEJA",
+    "measures": [
+      { "label": "TULIPA", "qty": 290 },
+      { "label": "LATA", "qty": 350 },
+      { "label": "GARRAFA G", "qty": 600 },
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "CHEESEBURGUER",
+    "measures": [{ "label": "UND", "qty": 140 }]
+  },
+  {
+    "description": "CHICKEN MCNUGGETS®",
+    "measures": [
+      { "label": "UND", "qty": 18 },
+      { "label": "CXA", "qty": 110 }
+    ]
+  },
+  {
+    "description": "CHICÓRIA",
+    "measures": [
+      { "label": "FOLHA P", "qty": 7 },
+      { "label": "FOLHA M", "qty": 12 },
+      { "label": "FOLHA G", "qty": 17 }
+    ]
+  },
+  {
+    "description": "CHICÓRIA REFOGADA",
+    "measures": [
+      { "label": "ESC M R", "qty": 90 },
+      { "label": "ESC M CH", "qty": 136 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 45 },
+      { "label": "COL A R", "qty": 38 },
+      { "label": "COL A CH", "qty": 76 }
+    ]
+  },
+  {
+    "description": "CHOCO CROC SUPERBOM ®",
+    "measures": [
+      { "label": "PUNHADO", "qty": 13 },
+      { "label": "PORÇÃO (1X)", "qty": 30 },
+      { "label": "PACOTE G", "qty": 300 },
+      { "label": "COPO P CH", "qty": 36 },
+      { "label": "COPO D CH", "qty": 47 },
+      { "label": "COL S CH", "qty": 5.5 }
+    ]
+  },
+  {
+    "description": "CHOCOKRISPIS KELLOGG'S ®",
+    "measures": [
+      { "label": "PUNHADO", "qty": 6 },
+      { "label": "PT R CH", "qty": 35 },
+      { "label": "PORÇÃO (3/4 X)", "qty": 30 },
+      { "label": "PACOTE G", "qty": 320 },
+      { "label": "COPO P CH", "qty": 35 },
+      { "label": "COL S CH", "qty": 4 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE ALPINO ®",
+    "measures": [{ "label": "BOMBOM", "qty": 13 }]
+  },
+  {
+    "description": "CHOCOLATE MEIO AMARGO NESTLÉ",
+    "measures": [{ "label": "BARRA G", "qty": 200 }]
+  },
+  {
+    "description": "CHOCOLATE COM LEITE E CAJU NESTLÉ",
+    "measures": [{ "label": "BARRA G", "qty": 180 }]
+  },
+  {
+    "description": "CHOCOLATE CHARGE ®",
+    "measures": [{ "label": "BARRA P", "qty": 40 }]
+  },
+  {
+    "description": "CHOCOLATE CHOKITO®",
+    "measures": [{ "label": "UND", "qty": 32 }]
+  },
+  {
+    "description": "CHOCOLATE COM LEITE",
+    "measures": [{ "label": "BARRA P", "qty": 30 }]
+  },
+  {
+    "description": "CHOCOLATE CRUNCH",
+    "measures": [
+      { "label": "BOMBOM", "qty": 9.5 },
+      { "label": "BARRA G", "qty": 180 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE DIAMANTE NEGRO®",
+    "measures": [
+      { "label": "BARRA P", "qty": 30 },
+      { "label": "BARRA G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE EM PÓ",
+    "measures": [
+      { "label": "COL SOB R", "qty": 7 },
+      { "label": "COL SOB CH", "qty": 10 },
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 15 },
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 4 },
+      { "label": "COL CAFÉ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE EM PÓ LIGHT NEW CHOCO ®",
+    "measures": [
+      { "label": "POTE", "qty": 210 },
+      { "label": "COL CHÁ CH", "qty": 5 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE EM PÓ DIET SHAKE VEPÊ",
+    "measures": [
+      { "label": "POTE", "qty": 200 },
+      { "label": "COL CHÁ CH", "qty": 5 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE GALAK",
+    "measures": [
+      { "label": "BARRA P", "qty": 30 },
+      { "label": "BARRA G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE KROT ®",
+    "measures": [
+      { "label": "BARRA P", "qty": 30 },
+      { "label": "BARRA G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE LAKA ®",
+    "measures": [
+      { "label": "BARRA P", "qty": 30 },
+      { "label": "BARRA G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "CHOCOLATE LANCY ®",
+    "measures": [{ "label": "UND", "qty": 30 }]
+  },
+  {
+    "description": "CHOCOLATE MILKYBAR",
+    "measures": [{ "label": "UND", "qty": 28 }]
+  },
+  {
+    "description": "CHOCOLATE PRESTIGIO ®",
+    "measures": [{ "label": "UND", "qty": 33 }]
+  },
+  {
+    "description": "CHOKOS.COM.BR KELLOGG'S®",
+    "measures": [
+      { "label": "PORÇÃO (1X)", "qty": 30 },
+      { "label": "PACOTE P", "qty": 35 },
+      { "label": "PACOTE G", "qty": 350 },
+      { "label": "COPO P CH", "qty": 37 },
+      { "label": "COPO D CH", "qty": 51 },
+      { "label": "COL S CH", "qty": 5 }
+    ]
+  },
+  {
+    "description": "CHUCHU A MILANESA",
+    "measures": [
+      { "label": "FT P", "qty": 45 },
+      { "label": "FT M", "qty": 70 },
+      { "label": "FT G", "qty": 90 }
+    ]
+  },
+  {
+    "description": "CHUCHU AO MOLHO BRANCO",
+    "measures": [
+      { "label": "ESC M R", "qty": 50 },
+      { "label": "ESC M CH", "qty": 80 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 30 },
+      { "label": "COL A R", "qty": 50 },
+      { "label": "COL A CH", "qty": 65 }
+    ]
+  },
+  {
+    "description": "CHUCHU COZIDO",
+    "measures": [
+      { "label": "UND P", "qty": 145 },
+      { "label": "UND M", "qty": 230 },
+      { "label": "UND G", "qty": 310 },
+      { "label": "PED P", "qty": 15 },
+      { "label": "PED M", "qty": 30 },
+      { "label": "PED G", "qty": 50 },
+      { "label": "ESC M R PICADO", "qty": 60 },
+      { "label": "ESC M CH PICADO", "qty": 110 },
+      { "label": "COL S R PICADO", "qty": 15 },
+      { "label": "COL S CH PICADO", "qty": 20 },
+      { "label": "C A R PICADO", "qty": 28 },
+      { "label": "C A CH PICADO", "qty": 45 }
+    ]
+  },
+  {
+    "description": "CHUCHU REFOGADO",
+    "measures": [
+      { "label": "COL S R PICADO", "qty": 15 },
+      { "label": "COL S CH PICADO", "qty": 25 }
+    ]
+  },
+  {
+    "description": "CHURRASQUINHO DE PANELA",
+    "measures": [
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 }
+    ]
+  },
+  {
+    "description": "COCA-COLA®",
+    "measures": [
+      { "label": "LATA", "qty": 350 },
+      { "label": "GARRAFA M", "qty": 290 },
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "COCADA",
+    "measures": [{ "label": "UND M", "qty": 70 }]
+  },
+  {
+    "description": "COCO-DA-BAIA",
+    "measures": [
+      { "label": "UND M", "qty": 325 },
+      { "label": "PED P", "qty": 15 },
+      { "label": "PED M", "qty": 40 },
+      { "label": "PED G", "qty": 75 }
+    ]
+  },
+  {
+    "description": "COCO RALADO INDUSTR",
+    "measures": [
+      { "label": "PACOTE", "qty": 50 },
+      { "label": "COL SOB R", "qty": 3.5 },
+      { "label": "COL SOB CH", "qty": 5.5 },
+      { "label": "COL S R", "qty": 6 },
+      { "label": "COL S CH", "qty": 9 },
+      { "label": "COL CHÁ R", "qty": 1 },
+      { "label": "COL CHÁ CH", "qty": 1.5 }
+    ]
+  },
+  {
+    "description": "COGUMELO EM CONSERVA",
+    "measures": [
+      { "label": "UND P", "qty": 1 },
+      { "label": "UND M", "qty": 3 },
+      { "label": "UND G", "qty": 5 },
+      { "label": "ESC M", "qty": 75 },
+      { "label": "COL SOB CH", "qty": 15 },
+      { "label": "COL S R", "qty": 16 },
+      { "label": "COL S CH", "qty": 27 },
+      { "label": "COL A R", "qty": 33 },
+      { "label": "COL A CH", "qty": 40 }
+    ]
+  },
+  {
+    "description": "CORAÇÃO DE GALINHA COZIDO",
+    "measures": [
+      { "label": "UND P", "qty": 3 },
+      { "label": "UND M", "qty": 5 },
+      { "label": "UNG G", "qty": 8 }
+    ]
+  },
+  {
+    "description": "CORN FLAKES KELLOGG'S COM NUTRIFERRO®",
+    "measures": [
+      { "label": "PUNHADO", "qty": 9 },
+      { "label": "PORÇÃP (1X)", "qty": 30 },
+      { "label": "PACOTE P", "qty": 20 },
+      { "label": "PACOTE G", "qty": 200 },
+      { "label": "COPO P CH", "qty": 25 },
+      { "label": "COPO D CH", "qty": 30 },
+      { "label": "COL S CH", "qty": 4 }
+    ]
+  },
+  {
+    "description": "COEN FLAKES SUPERBOM®",
+    "measures": [
+      { "label": "PUNHADO", "qty": 9 },
+      { "label": "PORÇÃO (1X)", "qty": 30 },
+      { "label": "COPO P CH", "qty": 25 },
+      { "label": "COPO D CH", "qty": 30 },
+      { "label": "COL S CH", "qty": 4 }
+    ]
+  },
+  {
+    "description": "COSTELA DE BOI ASSADA",
+    "measures": [
+      { "label": "PED P", "qty": 30 },
+      { "label": "PED M", "qty": 40 },
+      { "label": "PED G", "qty": 60 }
+    ]
+  },
+  {
+    "description": "COSTELA DE PORCO COZIDA",
+    "measures": [
+      { "label": "UND P", "qty": 15 },
+      { "label": "UND M", "qty": 25 },
+      { "label": "UND G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "COUVE",
+    "measures": [{ "label": "FOLHA M", "qty": 20 }]
+  },
+  {
+    "description": "COUVE REFOGADA",
+    "measures": [
+      { "label": "FOLHA P", "qty": 17 },
+      { "label": "FOLHA M", "qty": 25 },
+      { "label": "FOLHA G", "qty": 35 },
+      { "label": "COL S R PICADA", "qty": 10 },
+      { "label": "COL S CH PICADA", "qty": 20 }
+    ]
+  },
+  {
+    "description": "COUVE-FLOR Á MILANESA",
+    "measures": [
+      { "label": "RAO P", "qty": 45 },
+      { "label": "RAMO M", "qty": 90 },
+      { "label": "RAMO G", "qty": 140 }
+    ]
+  },
+  {
+    "description": "COUVE -FLOR COZIDA",
+    "measures": [
+      { "label": "UND G", "qty": 800 },
+      { "label": "RAMO P", "qty": 30 },
+      { "label": "RAMO M", "qty": 60 },
+      { "label": "RAMO G", "qty": 100 },
+      { "label": "COL S R PICADA", "qty": 15 },
+      { "label": "COL S CH PICADA", "qty": 25 }
+    ]
+  },
+  {
+    "description": "COXINHA DE GALINHA",
+    "measures": [
+      { "label": "UND P", "qty": 25 },
+      { "label": "UND M", "qty": 50 },
+      { "label": "UND G", "qty": 110 }
+    ]
+  },
+  {
+    "description": "CREAM CHEESE DANÚBIO ®",
+    "measures": [
+      { "label": "PQ/PÃO FRANCES", "qty": 4 },
+      { "label": "PQ/PÃO DE FORMA", "qty": 4 },
+      { "label": "PQ/CREAM CRACKER", "qty": 1.5 },
+      { "label": "MQ/PÃO FRACES", "qty": 9 },
+      { "label": "MQ/PÃO DE FORMA", "qty": 9 },
+      { "label": "MQ/ CREAM CRACKER", "qty": 3.5 },
+      { "label": "GQ/ PÃO FRANCES", "qty": 15 },
+      { "label": "GQ/ PÃO DE FORMA", "qty": 15 },
+      { "label": "GQ/CREAM CRACKER", "qty": 7.5 }
+    ]
+  },
+  {
+    "description": "CREAM CHEESE LIGHT DANÚBIO®",
+    "measures": [
+      { "label": "PQ/PÃO FRANCES", "qty": 4 },
+      { "label": "PQ/PÃO DE FORMA", "qty": 4 },
+      { "label": "PQ/CREAM CRACKER", "qty": 1.5 },
+      { "label": "POTE", "qty": 200 },
+      { "label": "MQ/PÃO FRACES", "qty": 9 },
+      { "label": "MQ/PÃO DE FORMA", "qty": 9 },
+      { "label": "MQ/ CREAM CRACKER", "qty": 3.5 },
+      { "label": "GQ/ PÃO FRANCES", "qty": 15 },
+      { "label": "GQ/ PÃO DE FORMA", "qty": 15 },
+      { "label": "GQ/CREAM CRACKER", "qty": 7.5 }
+    ]
+  },
+  {
+    "description": "CREME CHANTILLY CASEIRO",
+    "measures": [
+      { "label": "COL SOB R", "qty": 10 },
+      { "label": "COL SOB CH", "qty": 20 },
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL CHÁ CH", "qty": 5 }
+    ]
+  },
+  {
+    "description": "CREME DE ABACATE",
+    "measures": [
+      { "label": "PT R", "qty": 500 },
+      { "label": "PT F", "qty": 750 },
+      { "label": "COPO SORVETE R", "qty": 70 },
+      { "label": "COPO SORVETE CH", "qty": 90 },
+      { "label": "COPO P CH", "qty": 180 },
+      { "label": "COPO D CH", "qty": 250 },
+      { "label": "COL S CH", "qty": 25 }
+    ]
+  },
+  {
+    "description": "CREME DE AMENDOIM",
+    "measures": [
+      { "label": "PQ/ PÃO FRANCES", "qty": 10 },
+      { "label": "PQ/ PÃO DE FORMA", "qty": 7 },
+      { "label": "PQ/ CREAM CRACKER", "qty": 2 },
+      { "label": "MQ/ PÃO FRANCES", "qty": 20 },
+      { "label": "MQ/ PÃO DE FORMA", "qty": 12 },
+      { "label": "MQ/ CREAM CRACKER", "qty": 4 },
+      { "label": "GQ/ PÃO FRANCES", "qty": 30 },
+      { "label": "GQ/ PÃO DE FORMA", "qty": 27 },
+      { "label": "GQ/ CREAM CRACKER", "qty": 7 },
+      { "label": "EMABALAGEM COMERCIAL", "qty": 250 },
+      { "label": "COL SOB R", "qty": 14 },
+      { "label": "COL SOB CH", "qty": 27 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 37 },
+      { "label": "COL CHÁ R", "qty": 4 },
+      { "label": "COLCHÁ CH", "qty": 8 },
+      { "label": "COL CAFÉ R", "qty": 2 },
+      { "label": "COL CAFÉ CH", "qty": 4 }
+    ]
+  },
+  {
+    "description": "CREME DE ESPINAFRE",
+    "measures": [
+      { "label": "ESC M CH", "qty": 114 },
+      { "label": "COL S R", "qty": 25 },
+      { "label": "COL S CH", "qty": 35 },
+      { "label": "COL A R", "qty": 60 },
+      { "label": "COL  A CH", "qty": 76 },
+      { "label": "CO M CH", "qty": 173 }
+    ]
+  },
+  {
+    "description": "CREME DE LEITE",
+    "measures": [
+      { "label": "LATA", "qty": 300 },
+      { "label": "COL S R", "qty": 15 }
+    ]
+  },
+  {
+    "description": "CREME DE MILHO",
+    "measures": [
+      { "label": "COL S CH", "qty": 33 },
+      { "label": "COL A CH", "qty": 67 },
+      { "label": "CO P", "qty": 112 }
+    ]
+  },
+  {
+    "description": "CREMOGEMA SABOR CHOCOLATE",
+    "measures": [
+      { "label": "COL SOB R", "qty": 7 },
+      { "label": "COL SOB CH", "qty": 13 },
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 20 },
+      { "label": "COL CHÁ R", "qty": 2.5 },
+      { "label": "COL CHÁ CH", "qty": 4 }
+    ]
+  },
+  {
+    "description": "CROISSANT",
+    "measures": [
+      { "label": "UND M", "qty": 40 },
+      { "label": "UND G", "qty": 67 }
+    ]
+  },
+  {
+    "description": "CROISSANT DE QUEIJO",
+    "measures": [{ "label": "UND G", "qty": 80 }]
+  },
+  {
+    "description": "CROQUETE DE CARNE",
+    "measures": [
+      { "label": "UND P", "qty": 10 },
+      { "label": "UND M", "qty": 25 },
+      { "label": "UND G", "qty": 55 }
+    ]
+  },
+  {
+    "description": "CROQUETE DE MILHO",
+    "measures": [
+      { "label": "UND P", "qty": 10 },
+      { "label": "UND M", "qty": 22 }
+    ]
+  },
+  {
+    "description": "CURRY",
+    "measures": [
+      { "label": "SOL SOB", "qty": 5 },
+      { "label": "COL S", "qty": 9 },
+      { "label": "COL CHÁ", "qty": 2 }
+    ]
+  },
+  {
+    "description": "CUSCUZ DE MILHO",
+    "measures": [
+      { "label": "PED P", "qty": 85 },
+      { "label": "PED M", "qty": 135 },
+      { "label": "PED G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "CUSCUZ DE MILHO COM LEITE",
+    "measures": [
+      { "label": "PED P", "qty": 115 },
+      { "label": "PED M", "qty": 180 },
+      { "label": "PED G", "qty": 270 }
+    ]
+  },
+  {
+    "description": "CUSCUZ DE TAPIOCA",
+    "measures": [
+      { "label": "FT P", "qty": 60 },
+      { "label": "FT M", "qty": 120 },
+      { "label": "FT G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "DAMASCO DESSECADO",
+    "measures": [{ "label": "UND", "qty": 7 }]
+  },
+  {
+    "description": "DANONINHO",
+    "measures": [
+      { "label": "POTINHO MAXI", "qty": 65 },
+      { "label": "POTINHO", "qty": 45 }
+    ]
+  },
+  {
+    "description": "DAN UP MORANGO",
+    "measures": [{ "label": "UND", "qty": 200 }]
+  },
+  {
+    "description": "DIET SHAKE CHOCOLATE",
+    "measures": [{ "label": "PORÇÃO", "qty": 30 }]
+  },
+  {
+    "description": "DOBRADINHA",
+    "measures": [
+      { "label": "COL S CH", "qty": 35 },
+      { "label": "COL A R", "qty": 45 },
+      { "label": "COL A CH", "qty": 70 }
+    ]
+  },
+  {
+    "description": "DOCE DE ABÓBORA COM COCO",
+    "measures": [
+      { "label": "TABLETE", "qty": 38 },
+      { "label": "PT SOB", "qty": 250 },
+      { "label": "PIRES", "qty": 150 },
+      { "label": "CORAÇÃO", "qty": 30 },
+      { "label": "COL SOB R", "qty": 10 },
+      { "label": "COL SOB CH", "qty": 20 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 40 },
+      { "label": "COL CHÁ CH", "qty": 12 },
+      { "label": "COL A R", "qty": 65 },
+      { "label": "COL A CH", "qty": 115 }
+    ]
+  },
+  {
+    "description": "DOCE DE BANANA EM CALDA",
+    "measures": [
+      { "label": "COPO P CH", "qty": 186 },
+      { "label": "COL S R", "qty": 35 },
+      { "label": "COL S CH", "qty": 48 }
+    ]
+  },
+  {
+    "description": "DOCE DE COCO",
+    "measures": [
+      { "label": "UND P", "qty": 10 },
+      { "label": "UND M", "qty": 15 },
+      { "label": "UND G", "qty": 30 },
+      { "label": "COL SOB CH", "qty": 30 },
+      { "label": "COL S CH", "qty": 50 },
+      { "label": "COL CHA CH", "qty": 15 }
+    ]
+  },
+  {
+    "description": "DOCE DE JACA EM CALDA",
+    "measures": [
+      { "label": "COPO P", "qty": 200 },
+      { "label": "COL S R", "qty": 40 },
+      { "label": "COL S CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "DOCE DE LARANJA EM CALDA",
+    "measures": [{ "label": "UND G", "qty": 270 }]
+  },
+  {
+    "description": "DOCE DE LEITE",
+    "measures": [
+      { "label": "PORÇÃO M", "qty": 50 },
+      { "label": "COPO P CH", "qty": 220 },
+      { "label": "COPO D CH", "qty": 270 },
+      { "label": "COL SOB R", "qty": 15 },
+      { "label": "COL SOB CH", "qty": 25 },
+      { "label": "COL S R", "qty": 25 },
+      { "label": "COL S CH", "qty": 40 },
+      { "label": "COL CHA R", "qty": 8 },
+      { "label": "COL CHA CH", "qty": 12 },
+      { "label": "COL CAFÉ CH", "qty": 8 },
+      { "label": "BARRA M", "qty": 35 }
+    ]
+  },
+  {
+    "description": "DOCE DE MAMO VERDE",
+    "measures": [
+      { "label": "PT SOB", "qty": 250 },
+      { "label": "PIRES", "qty": 150 },
+      { "label": "COL SOB CH", "qty": 20 },
+      { "label": "COL S CH", "qty": 40 },
+      { "label": "COL CHA CH", "qty": 12 }
+    ]
+  },
+  {
+    "description": "DOCE DE NOZES",
+    "measures": [
+      { "label": "UND P", "qty": 10 },
+      { "label": "UND M", "qty": 15 },
+      { "label": "UND G", "qty": 30 },
+      { "label": "COL SOB CH", "qty": 30 },
+      { "label": "COL S CH", "qty": 50 },
+      { "label": "COL CHA CH", "qty": 15 }
+    ]
+  },
+  {
+    "description": "EGGBURGUER",
+    "measures": [{ "label": "UND", "qty": 175 }]
+  },
+  {
+    "description": "EMPADA",
+    "measures": [
+      { "label": "UND G", "qty": 12 },
+      { "label": "UND M", "qty": 55 }
+    ]
+  },
+  {
+    "description": "EMPADÃO",
+    "measures": [{ "label": "FT M", "qty": 110 }]
+  },
+  {
+    "description": "ENROLADINHO DE SALSICHA",
+    "measures": [
+      { "label": "UND P", "qty": 18 },
+      { "label": "UND M", "qty": 27 }
+    ]
+  },
+  {
+    "description": "ENSOPADO DE CHUCHU COM CENOURA",
+    "measures": [
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 }
+    ]
+  },
+  {
+    "description": "ERVILHA ENLATADA",
+    "measures": [
+      { "label": "LATA", "qty": 200 },
+      { "label": "COL SOB R", "qty": 9 },
+      { "label": "COL SOB CH", "qty": 13 },
+      { "label": "COL S R", "qty": 16 },
+      { "label": "COL S CH", "qty": 27 },
+      { "label": "COL A R", "qty": 27 },
+      { "label": "COL A CH", "qty": 38 }
+    ]
+  },
+  {
+    "description": "ERVILHA VAGEM COZIDA",
+    "measures": [
+      { "label": "COL S CH", "qty": 30 },
+      { "label": "COL A CH", "qty": 60 }
+    ]
+  },
+  {
+    "description": "ERVILHA VAGEM REFOGADA",
+    "measures": [
+      { "label": "COL S CH", "qty": 30 },
+      { "label": "COL A CH", "qty": 60 }
+    ]
+  },
+  {
+    "description": "ESFIHA",
+    "measures": [{ "label": "UND M", "qty": 80 }]
+  },
+  {
+    "description": "ESPINAFRE COZIDO",
+    "measures": [{ "label": "COL S CH", "qty": 25 }]
+  },
+  {
+    "description": "ESPINAFRE REFOGADO",
+    "measures": [{ "label": "COL S CH", "qty": 25 }]
+  },
+  {
+    "description": "FANTA",
+    "measures": [
+      { "label": "LATA", "qty": 350 },
+      { "label": "GARRAFA M", "qty": 290 },
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "FARELO DE TRIGO",
+    "measures": [
+      { "label": "COL SOB R", "qty": 4 },
+      { "label": "COL SOB CH", "qty": 7 },
+      { "label": "COL S R", "qty": 6 },
+      { "label": "COL S CH", "qty": 9 },
+      { "label": "COL CHÁ R", "qty": 1 },
+      { "label": "COL CHÁ CH", "qty": 2 },
+      { "label": "COL CAFÉ CH", "qty": 1 }
+    ]
+  },
+  {
+    "description": "FARINHA DE ARROZ",
+    "measures": [
+      { "label": "COL SOB R", "qty": 7 },
+      { "label": "COL SOB CH", "qty": 12 },
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 17 },
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 4 }
+    ]
+  },
+  {
+    "description": "FARINHA DE MANDIOCA",
+    "measures": [
+      { "label": "COL S R", "qty": 8 },
+      { "label": "COL SOB CH", "qty": 10 },
+      { "label": "COL S R", "qty": 12 },
+      { "label": "COL S CH", "qty": 16 },
+      { "label": "CO CHÁ CH", "qty": 5 }
+    ]
+  },
+  {
+    "description": "FARINHA DE ROSCA",
+    "measures": [
+      { "label": "COL SOB R", "qty": 6 },
+      { "label": "COL SOB CH", "qty": 10 },
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 15 }
+    ]
+  },
+  {
+    "description": "FARINHA DE TRIGO",
+    "measures": [{ "label": "COL S CH", "qty": 20 }]
+  },
+  {
+    "description": "FARINHA LÁCTEA",
+    "measures": [
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 20 }
+    ]
+  },
+  {
+    "description": "FAROFA",
+    "measures": [
+      { "label": "ESC M R", "qty": 35 },
+      { "label": "ESC M CH", "qty": 58 },
+      { "label": "COL SOB R", "qty": 6 },
+      { "label": "COL SOB CH", "qty": 10 },
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 15 },
+      { "label": "COL CHÁ CH", "qty": 5 },
+      { "label": "COL A R", "qty": 22 },
+      { "label": "COL A CH", "qty": 35 }
+    ]
+  },
+  {
+    "description": "FAROFA COM AMEIXA",
+    "measures": [
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 15 }
+    ]
+  },
+  {
+    "description": "FAROFA COM LINGUIÇA",
+    "measures": [
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 15 }
+    ]
+  },
+  {
+    "description": "FEIJÃO-BRANCO E FEIJÃO- PRETO COZIDO",
+    "measures": [
+      { "label": "COL S CH", "qty": 17 },
+      { "label": "COL A CH", "qty": 35 },
+      { "label": "CO P R", "qty": 40 },
+      { "label": "CO P CH", "qty": 65 },
+      { "label": "CO M R", "qty": 80 },
+      { "label": "CO M CH", "qty": 140 },
+      { "label": "1/2 CO P", "qty": 25 },
+      { "label": "1/2 COM M", "qty": 50 }
+    ]
+  },
+  {
+    "description": "FEIJOADA CASEIRA",
+    "measures": [{ "label": "CO M CH", "qty": 225 }]
+  },
+  {
+    "description": "FERMENTO EM PÓ",
+    "measures": [
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL CHÁ CH", "qty": 3 }
+    ]
+  },
+  {
+    "description": "FLÃ CHOCOLATE",
+    "measures": [
+      { "label": "UND PAULISTA", "qty": 60 },
+      { "label": "UND DANONE", "qty": 110 },
+      { "label": "UND PARMALAT", "qty": 110 },
+      { "label": "COL S CH", "qty": 30 }
+    ]
+  },
+  {
+    "description": "FÍGADO DE GALINHA COZIDO",
+    "measures": [
+      { "label": "UND P", "qty": 25 },
+      { "label": "UND M", "qty": 30 },
+      { "label": "UND G", "qty": 45 }
+    ]
+  },
+  {
+    "description": "FIGO",
+    "measures": [
+      { "label": "UND M", "qty": 55 },
+      { "label": "UND G", "qty": 7 }
+    ]
+  },
+  {
+    "description": "FRANGO A MILANESA",
+    "measures": [
+      { "label": "FILÉ P", "qty": 100 },
+      { "label": "FILÉ M", "qty": 140 },
+      { "label": "FILÉ G", "qty": 190 }
+    ]
+  },
+  {
+    "description": "FRANGO AO MOLHO PARDO",
+    "measures": [
+      { "label": "SOBRECOXA P", "qty": 50 },
+      { "label": "SOBRECOXA M", "qty": 65 },
+      { "label": "SOBRECOXA G", "qty": 95 },
+      { "label": "PESCOÇO P", "qty": 8 },
+      { "label": "PESCOÇO M", "qty": 10 },
+      { "label": "PESCOÇO G", "qty": 15 },
+      { "label": "PEITO P", "qty": 14 },
+      { "label": "PEITO M", "qty": 180 },
+      { "label": "PEITO G", "qty": 270 },
+      { "label": "COXA P", "qty": 30 },
+      { "label": "COXA M", "qty": 40 },
+      { "label": "COXA G", "qty": 55 },
+      { "label": "COSTELA P", "qty": 50 },
+      { "label": "COSTELA M", "qty": 60 },
+      { "label": "COSTELA G", "qty": 90 },
+      { "label": "ASA P", "qty": 30 },
+      { "label": "ASA M", "qty": 40 },
+      { "label": "ASA G", "qty": 55 }
+    ]
+  },
+  {
+    "description": "FRANGO ASSADO/FRITO/ENSOPADO",
+    "measures": [
+      { "label": "UND M PASSARINHO", "qty": 16 },
+      { "label": "SOBRECOXA P", "qty": 50 },
+      { "label": "COBRECOXA M", "qty": 65 },
+      { "label": "SOBRECOXA G", "qty": 95 },
+      { "label": "PESCOÇO P", "qty": 8 },
+      { "label": "PESCOÇO M", "qty": 10 },
+      { "label": "PESCOÇO G", "qty": 15 },
+      { "label": "PEITO P", "qty": 140 },
+      { "label": "PEITO M", "qty": 180 },
+      { "label": "PEITO G", "qty": 270 },
+      { "label": "COXA P", "qty": 30 },
+      { "label": "COXA M", "qty": 40 },
+      { "label": "COXA G", "qty": 55 },
+      { "label": "COSTELA P", "qty": 50 },
+      { "label": "COSTELA M", "qty": 60 },
+      { "label": "COSTELA G", "qty": 90 },
+      { "label": "COL S R DESFIADO", "qty": 10 },
+      { "label": "COL S CH DESFIADO", "qty": 20 },
+      { "label": "ASA P", "qty": 30 },
+      { "label": "ASA M", "qty": 40 },
+      { "label": "ASA G", "qty": 55 }
+    ]
+  },
+  {
+    "description": "FROOT LOOPS KELLOGG'S",
+    "measures": [
+      { "label": "PUNHADO", "qty": 11 },
+      { "label": "PORÇÃO (1X)", "qty": 30 },
+      { "label": "PACOTE P", "qty": 25 },
+      { "label": "PACOTE G", "qty": 200 },
+      { "label": "COPO P CH", "qty": 23 },
+      { "label": "COPO D CH", "qty": 31 },
+      { "label": "COL S CH", "qty": 4 }
+    ]
+  },
+  {
+    "description": "FRUTA-DO-CONDE",
+    "measures": [
+      { "label": "UND M", "qty": 60 },
+      { "label": "UND G", "qty": 190 }
+    ]
+  },
+  { "description": "FUBÁ", "measures": [{ "label": "COL S CH", "qty": 20 }] },
+  {
+    "description": "GELATINA EM FOLHA",
+    "measures": [{ "label": "UND", "qty": 1.66 }]
+  },
+  {
+    "description": "GELATINA PREPARADA",
+    "measures": [
+      { "label": "UND COMERCIAL", "qty": 110 },
+      { "label": "COL S CH", "qty": 25 }
+    ]
+  },
+  {
+    "description": "GELÉIA DE DAMASCO DIET LINEA",
+    "measures": [
+      { "label": "PQ/ PÃO FRANCES", "qty": 5 },
+      { "label": "PQ/ PÃO DE FORMA", "qty": 7 },
+      { "label": "PQ/ CREAM CRACKER", "qty": 1 },
+      { "label": "MQ/ PÃO FRANCES", "qty": 13 },
+      { "label": "MQ/ PÃO DE FORMA", "qty": 11 },
+      { "label": "MQ/ CREAM CRACKER", "qty": 5 },
+      { "label": "GQ/ PÃO FRANCES", "qty": 22 },
+      { "label": "GQ/ PÃO DE FORMA", "qty": 18 },
+      { "label": "GQ/CREAM CRACKER", "qty": 8 },
+      { "label": "COL SOB R", "qty": 11 },
+      { "label": "COL SOB CH", "qty": 26 },
+      { "label": "COL S R", "qty": 22 },
+      { "label": "COL S CH", "qty": 34 },
+      { "label": "COL CHÁ R", "qty": 4 },
+      { "label": "COL CHÁ CH", "qty": 9.5 }
+    ]
+  },
+  {
+    "description": "GELÉIA DE FRUTA",
+    "measures": [
+      { "label": "POTINHO", "qty": 20 },
+      { "label": "PQ/ PÃO FRANCES", "qty": 5 },
+      { "label": "PQ/ PÃO DE FORMA", "qty": 7 },
+      { "label": "PQ/ CREAM CRACKER", "qty": 1 },
+      { "label": "MQ/ PÃO FRANCES", "qty": 13 },
+      { "label": "MQ/ PÃO DE FORMA", "qty": 11 },
+      { "label": "MQ/CREAM CRACKER", "qty": 5 },
+      { "label": "GQ/ PÃO FRANCES", "qty": 22 },
+      { "label": "GQ/ PÃO DE FORMA", "qty": 18 },
+      { "label": "GQ/CREAM CRACKER", "qty": 8 },
+      { "label": "COPO P CH", "qty": 230 },
+      { "label": "COPO D CH", "qty": 320 }
+    ]
+  },
+  {
+    "description": "GERME DE TRIGO",
+    "measures": [
+      { "label": "COL SOB R", "qty": 4 },
+      { "label": "COL SOB CH", "qty": 7 },
+      { "label": "COL S R", "qty": 6 },
+      { "label": "COL S CH", "qty": 10 },
+      { "label": "COL CHÁ R", "qty": 1 },
+      { "label": "COL CHÁ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "GELÉIA DE MOCOTÓ",
+    "measures": [
+      { "label": "COPO", "qty": 200 },
+      { "label": "COL S R", "qty": 25 },
+      { "label": "COL S CH", "qty": 40 }
+    ]
+  },
+  {
+    "description": "GOIABA",
+    "measures": [
+      { "label": "UND M", "qty": 170 },
+      { "label": "UND G", "qty": 225 }
+    ]
+  },
+  {
+    "description": "GOIABADA",
+    "measures": [
+      { "label": "FT P EM CORTE", "qty": 40 },
+      { "label": "FT M EM CORTE", "qty": 60 },
+      { "label": "FT G EM CORTE", "qty": 100 },
+      { "label": "COL SOB R EM PASTA", "qty": 20 },
+      { "label": "COL SOB CH EM PASTA", "qty": 35 },
+      { "label": "COL S R EM PASTA", "qty": 30 },
+      { "label": "COL S CH EM PASTA", "qty": 50 }
+    ]
+  },
+  {
+    "description": "GRANOLA TRADICIONAL KELLOGG'S",
+    "measures": [
+      { "label": "PUNHADO", "qty": 14 },
+      { "label": "PORÇÃO (1/2X)", "qty": 40 },
+      { "label": "PACOTE G", "qty": 300 },
+      { "label": "COPO P CH", "qty": 75 },
+      { "label": "COPO D CH", "qty": 108 },
+      { "label": "COL SOB CH", "qty": 7 },
+      { "label": "COL S CH", "qty": 11 },
+      { "label": "COL CHÁ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "GRÃO-DE-BICO COZIDO",
+    "measures": [
+      { "label": "COL S CH", "qty": 22 },
+      { "label": "COL A CH", "qty": 45 },
+      { "label": "CO M CH", "qty": 120 }
+    ]
+  },
+  {
+    "description": "GUARANÁ",
+    "measures": [
+      { "label": "LATA", "qty": 350 },
+      { "label": "GARRAFA M", "qty": 290 },
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "HAMBÚRGUER",
+    "measures": [{ "label": "UND M", "qty": 56 }]
+  },
+  {
+    "description": "INHAME COZIDO",
+    "measures": [
+      { "label": "UND P", "qty": 85 },
+      { "label": "UND M", "qty": 125 },
+      { "label": "PED P", "qty": 30 },
+      { "label": "PED M", "qty": 60 },
+      { "label": "PED G", "qty": 86 },
+      { "label": "ESC M R PICADO", "qty": 72 },
+      { "label": "ESC M CH PICADA", "qty": 110 },
+      { "label": "COL S R PICADO", "qty": 22 },
+      { "label": "COL S CH PICADO", "qty": 35 },
+      { "label": "COL A R PICADO", "qty": 35 },
+      { "label": "COL A CH PICADO", "qty": 62 }
+    ]
+  },
+  {
+    "description": "INHAME FRITO",
+    "measures": [
+      { "label": "COL S R PICADO", "qty": 12 },
+      { "label": "COL S CH PICADO", "qty": 17 }
+    ]
+  },
+  {
+    "description": "IOGURTE",
+    "measures": [
+      { "label": "UND P", "qty": 140 },
+      { "label": "UND M", "qty": 200 }
+    ]
+  },
+  {
+    "description": "IOGURTE NINHO SOLEIL MAÇÃ, BANANA E CEREAL",
+    "measures": [{ "label": "UND", "qty": 120 }]
+  },
+  {
+    "description": "ISCA DE CARNE DE PORCO",
+    "measures": [
+      { "label": "COL S R", "qty": 18 },
+      { "label": "COL S CH", "qty": 30 }
+    ]
+  },
+  {
+    "description": "ISCA DE FÍGADO",
+    "measures": [
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 22 }
+    ]
+  },
+  {
+    "description": "JABUTICABA",
+    "measures": [
+      { "label": "UND", "qty": 5 },
+      { "label": "COPO P CH", "qty": 120 },
+      { "label": "COPO D CH", "qty": 160 },
+      { "label": "1/2 COPO P", "qty": 6 },
+      { "label": "1/2 COPO D", "qty": 75 }
+    ]
+  },
+  {
+    "description": "JACA",
+    "measures": [
+      { "label": "PT R", "qty": 300 },
+      { "label": "PT FD", "qty": 450 },
+      { "label": "BAGO", "qty": 12 }
+    ]
+  },
+  {
+    "description": "JAMBO",
+    "measures": [
+      { "label": "UND P", "qty": 30 },
+      { "label": "UND M", "qty": 40 },
+      { "label": "UND G", "qty": 60 }
+    ]
+  },
+  {
+    "description": "JILÓ COZIDO",
+    "measures": [
+      { "label": "ESC M RASA", "qty": 80 },
+      { "label": "ESC M CH PICADA", "qty": 110 },
+      { "label": "COL S R", "qty": 30 },
+      { "label": "COL S CH", "qty": 60 },
+      { "label": "COL A R PICADO", "qty": 60 },
+      { "label": "COL A CH", "qty": 95 }
+    ]
+  },
+  {
+    "description": "JILÓ FRITO",
+    "measures": [{ "label": "UND", "qty": 30 }]
+  },
+  {
+    "description": "JILÓ REFOGADO",
+    "measures": [
+      { "label": "UND P", "qty": 18 },
+      { "label": "UND M", "qty": 26 },
+      { "label": "UND G", "qty": 45 },
+      { "label": "ESC M R", "qty": 80 },
+      { "label": "ESC M CH", "qty": 110 },
+      { "label": "COL S R", "qty": 30 },
+      { "label": "COL S CH", "qty": 60 },
+      { "label": "COL A R", "qty": 60 },
+      { "label": "COL A CH", "qty": 95 }
+    ]
+  },
+  {
+    "description": "KARO",
+    "measures": [
+      { "label": "COL SOB", "qty": 9 },
+      { "label": "COL S", "qty": 15 },
+      { "label": "COL CHÁ", "qty": 3 },
+      { "label": "COL CAFÉ", "qty": 2 }
+    ]
+  },
+  {
+    "description": "KETCHUP",
+    "measures": [
+      { "label": "COL SOB R", "qty": 9 },
+      { "label": "COL SOB CH", "qty": 15 },
+      { "label": "COL S R", "qty": 11 },
+      { "label": "COL S CH", "qty": 20 }
+    ]
+  },
+  { "description": "KIWI", "measures": [{ "label": "UND M", "qty": 76 }] },
+  {
+    "description": "LARANJA",
+    "measures": [
+      { "label": "UND P", "qty": 90 },
+      { "label": "UND M", "qty": 180 },
+      { "label": "UND G", "qty": 290 }
+    ]
+  },
+  {
+    "description": "LASANHA À BOLONHESA",
+    "measures": [
+      { "label": "PORÇÃO", "qty": 500 },
+      { "label": "PED P", "qty": 120 },
+      { "label": "PED M", "qty": 190 },
+      { "label": "PED G", "qty": 250 },
+      { "label": "ESC M CH", "qty": 170 },
+      { "label": "COL S CH", "qty": 50 },
+      { "label": "COL A CH", "qty": 100 }
+    ]
+  },
+  {
+    "description": "LEITE COM NESCAU",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "LEITE CONDENSADO",
+    "measures": [
+      { "label": "LATA", "qty": 395 },
+      { "label": "COL SOB", "qty": 10 },
+      { "label": "COL S", "qty": 15 },
+      { "label": "COL CHÁ", "qty": 2 },
+      { "label": "COL CAFÉ", "qty": 1 },
+      { "label": "COL A", "qty": 20 }
+    ]
+  },
+  {
+    "description": "LEITE DE CABRA EM PÓ FRIALP",
+    "measures": [
+      { "label": "COL SOB R", "qty": 5 },
+      { "label": "COL SOB CH", "qty": 8 },
+      { "label": "COL S R", "qty": 7 },
+      { "label": "COL S CH", "qty": 14 }
+    ]
+  },
+  {
+    "description": "LEITE DE CABRA INTEGRAL",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "LEITE DE COCO INDUSTRIALIZADO",
+    "measures": [{ "label": "GARRAFA P", "qty": 200 }]
+  },
+  {
+    "description": "LEITE DE VACA DESNATADO",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "LEITE DE VACA EM PÓ DESENGORDURADO",
+    "measures": [
+      { "label": "COL SOB R", "qty": 5 },
+      { "label": "COL SOB CH", "qty": 7 },
+      { "label": "COL S R", "qty": 8 },
+      { "label": "COL S CH", "qty": 10 }
+    ]
+  },
+  {
+    "description": "LEITE DE VACA EM PÓ INTEGRAL",
+    "measures": [
+      { "label": "COL SOB R", "qty": 5 },
+      { "label": "COL SOB CH", "qty": 9 },
+      { "label": "COL S R", "qty": 8 },
+      { "label": "COL S CH", "qty": 16 }
+    ]
+  },
+  {
+    "description": "LEITE DE VACA PASTEURIZADO",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "LEITE ENRIQUECIDO GERAL",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "LEITE NINHO CRESCIMENTO PÓ",
+    "measures": [
+      { "label": "COL SOB R", "qty": 5 },
+      { "label": "COL SOB CH", "qty": 9 },
+      { "label": "COL S R", "qty": 8 },
+      { "label": "COL S CH", "qty": 16 }
+    ]
+  },
+  {
+    "description": "LEITE NINHO CRESCIMENTO RECONSTUTUIDO",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "LENTILHA COZIDA",
+    "measures": [
+      { "label": "COL S", "qty": 18 },
+      { "label": "COL A", "qty": 32 },
+      { "label": "CO M R", "qty": 100 },
+      { "label": "CO M CH", "qty": 160 },
+      { "label": "1/2 CO M", "qty": 78 }
+    ]
+  },
+  {
+    "description": "LEVEDO DE CERVEJA",
+    "measures": [
+      { "label": "COL SOB R", "qty": 8 },
+      { "label": "COL SOB CH", "qty": 17 },
+      { "label": "COL S R", "qty": 18 },
+      { "label": "COL S CH", "qty": 27 },
+      { "label": "COL CHÁ R", "qty": 3 },
+      { "label": "COL CHÁ CH", "qty": 6 }
+    ]
+  },
+  {
+    "description": "LICOR",
+    "measures": [{ "label": "CÁLICE", "qty": 40 }]
+  },
+  {
+    "description": "LIMONADA",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "LINGUIÇA BOVINA ENSOPADA",
+    "measures": [{ "label": "FT M", "qty": 30 }]
+  },
+  {
+    "description": "LINGUIÇA BOVINA ENSOPADA",
+    "measures": [
+      { "label": "GUANABARA FT", "qty": 5 },
+      { "label": "GUANABARA (20CM)", "qty": 100 },
+      { "label": "GOMO/FT M", "qty": 10 },
+      { "label": "GOMO", "qty": 60 },
+      { "label": "ESC M R PICADA", "qty": 80 },
+      { "label": "COL SOB CH PICADA", "qty": 15 },
+      { "label": "COL S CH PICADA", "qty": 22 },
+      { "label": "COL A CH PICADA", "qty": 36 },
+      { "label": "CALABRESA/UND", "qty": 40 }
+    ]
+  },
+  {
+    "description": "MAÇÃ",
+    "measures": [
+      { "label": "UND P", "qty": 80 },
+      { "label": "UND M", "qty": 130 },
+      { "label": "UND G", "qty": 200 }
+    ]
+  },
+  {
+    "description": "MACARRÃO A BOLONHESA",
+    "measures": [
+      { "label": "PT R R", "qty": 200 },
+      { "label": "PT R CH", "qty": 320 },
+      { "label": "PT F R", "qty": 280 },
+      { "label": "PT F CH", "qty": 400 },
+      { "label": "PEGADOR", "qty": 110 },
+      { "label": "GARFADA", "qty": 30 },
+      { "label": "ESC M R", "qty": 75 },
+      { "label": "ESC M CH", "qty": 110 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "MACARRÕ AO ALHO E OLEO",
+    "measures": [
+      { "label": "PT R R", "qty": 200 },
+      { "label": "PT R CH", "qty": 320 },
+      { "label": "PT F R", "qty": 280 },
+      { "label": "PT F CH", "qty": 400 },
+      { "label": "PEGADOR", "qty": 110 },
+      { "label": "GARFADA", "qty": 30 },
+      { "label": "ESC M R", "qty": 75 },
+      { "label": "ESC M CH", "qty": 110 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "MACARRÃO AO SUGO",
+    "measures": [
+      { "label": "PT R R", "qty": 200 },
+      { "label": "PT R CH", "qty": 320 },
+      { "label": "PT F R", "qty": 280 },
+      { "label": "PT F CH", "qty": 400 },
+      { "label": "PEGADOR", "qty": 110 },
+      { "label": "GARFADA", "qty": 30 },
+      { "label": "ESC M R", "qty": 75 },
+      { "label": "ESC M CH", "qty": 110 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "MACARRÃO COZIDO",
+    "measures": [
+      { "label": "PT R R", "qty": 200 },
+      { "label": "PT R CH", "qty": 320 },
+      { "label": "PT F R", "qty": 280 },
+      { "label": "PT F CH", "qty": 400 },
+      { "label": "PEGADOR", "qty": 110 },
+      { "label": "GARFADA", "qty": 30 },
+      { "label": "ESC M R", "qty": 75 },
+      { "label": "ESC M CH", "qty": 110 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "MAIONESE CASEIRA",
+    "measures": [
+      { "label": "PQ/PÃO FRANCÊS", "qty": 10 },
+      { "label": "PQ/CREAM CRACKER", "qty": 1 },
+      { "label": "PQ/PAO DE FORMA", "qty": 4 },
+      { "label": "MQ/PÃO FRANCÊS", "qty": 14 },
+      { "label": "MQ/CREAM CRACKER", "qty": 2 },
+      { "label": "MQ/PAO DE FORMA", "qty": 8 },
+      { "label": "GQ/PÃO FRANCÊS", "qty": 24 },
+      { "label": "GQ/PAO DE FORMA", "qty": 12 },
+      { "label": "GQ/PCREAM CRACKER", "qty": 3 },
+      { "label": "COL SOB R", "qty": 12 },
+      { "label": "COL SOB CH", "qty": 17 },
+      { "label": "COL S R", "qty": 17 },
+      { "label": "COL S CH", "qty": 27 },
+      { "label": "COL CHÁ R", "qty": 3 },
+      { "label": "COL CHÁ CH", "qty": 6 },
+      { "label": "COL A R", "qty": 35 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "MAIONESE INDUSTRIALIZADA",
+    "measures": [
+      { "label": "PQ/PÃO FRANCÊS", "qty": 10 },
+      { "label": "PQ/PCREAM CRACKER", "qty": 1 },
+      { "label": "PQ/PAO DE FORMA", "qty": 4 },
+      { "label": "MQ/PÃO FRANCÊS", "qty": 14 },
+      { "label": "MQ/PCREAM CRACKER", "qty": 2 },
+      { "label": "MQ/PAO DE FORMA", "qty": 8 },
+      { "label": "GQ/PÃO FRANCÊS", "qty": 24 },
+      { "label": "GQ/PCREAM CRACKER", "qty": 3 },
+      { "label": "GQ/PAO DE FORMA", "qty": 12 },
+      { "label": "COL SOB R", "qty": 12 },
+      { "label": "COLSOB CH", "qty": 17 },
+      { "label": "COL S R", "qty": 17 },
+      { "label": "COL S CH", "qty": 27 },
+      { "label": "COL CHÁ R", "qty": 3 },
+      { "label": "COL CHÁ CH", "qty": 6 },
+      { "label": "COL A R", "qty": 35 },
+      { "label": "COL A CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "MAIZENA",
+    "measures": [
+      { "label": "COL SOB R", "qty": 6 },
+      { "label": "COL SOB CH", "qty": 10 },
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 20 },
+      { "label": "COL CHÁ R", "qty": 4 },
+      { "label": "COL CHÁ CH", "qty": 7 }
+    ]
+  },
+  {
+    "description": "MAMÃO",
+    "measures": [
+      { "label": "FT P", "qty": 100 },
+      { "label": "FT M", "qty": 170 },
+      { "label": "FT G", "qty": 290 }
+    ]
+  },
+  {
+    "description": "MAMÃO PAPAYA",
+    "measures": [
+      { "label": "UND P", "qty": 270 },
+      { "label": "UND M", "qty": 310 },
+      { "label": "UND G", "qty": 530 },
+      { "label": "COPO P PICADO", "qty": 165 },
+      { "label": "COL S CH PICADO", "qty": 40 },
+      { "label": "COL A CH PICADO", "qty": 70 }
+    ]
+  },
+  {
+    "description": "MANGA",
+    "measures": [
+      { "label": "ESPADA P", "qty": 60 },
+      { "label": "ESPADA M", "qty": 140 },
+      { "label": "ESPADA G", "qty": 220 },
+      { "label": "CORAÇÃO-DE-BOI G", "qty": 410 }
+    ]
+  },
+  {
+    "description": "MANTEIGA C/SAL",
+    "measures": [
+      { "label": "PQ/PÃO FRANCÊS", "qty": 6 },
+      { "label": "PQ/PCREAM CRACKER", "qty": 1 },
+      { "label": "PQ/PAO DE FORMA", "qty": 5 },
+      { "label": "MQ/PÃO FRANCÊS", "qty": 10 },
+      { "label": "MQ/PCREAM CRACKER", "qty": 2 },
+      { "label": "MQ/PAO DE FORMA", "qty": 6 },
+      { "label": "GQ/PÃO FRANCÊS", "qty": 22 },
+      { "label": "GQ/PCREAM CRACKER", "qty": 4 },
+      { "label": "GQ/PAO DE FORMA", "qty": 10 },
+      { "label": "COL SOB R", "qty": 13 },
+      { "label": "COL SOB N", "qty": 4 },
+      { "label": "COL SOB CH", "qty": 23 },
+      { "label": "COL S R", "qty": 19 },
+      { "label": "COL S N", "qty": 7 },
+      { "label": "COL S CH", "qty": 32 },
+      { "label": "COL CHÁ R", "qty": 4 },
+      { "label": "COL CHÁ N", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 8 }
+    ]
+  },
+  {
+    "description": "MARACUJÁ",
+    "measures": [
+      { "label": "PQ/PÃO FRANCÊS", "qty": 6 },
+      { "label": "PQ/PÃO DE FORMA", "qty": 5 },
+      { "label": "PQ/CREAM CRACKER", "qty": 1 },
+      { "label": "MQ/PÃO FRANCÊS", "qty": 10 },
+      { "label": "MQ/PÃO DE FORMA", "qty": 6 },
+      { "label": "MQ/CREAM CRACKER", "qty": 2 },
+      { "label": "GQ/PÃO FRANCÊS", "qty": 22 },
+      { "label": "GQ/PÃO DE FORMA", "qty": 10 },
+      { "label": "GQ/CREAM CRACKER", "qty": 4 },
+      { "label": "COL SOB R", "qty": 13 },
+      { "label": "COL SOB N", "qty": 4 },
+      { "label": "COL SOB CH", "qty": 23 },
+      { "label": "COL S R", "qty": 19 },
+      { "label": "COL S N", "qty": 7 },
+      { "label": "COL S CH", "qty": 32 },
+      { "label": "COL CHÁ R", "qty": 4 },
+      { "label": "COL CHÁ N", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 8 },
+      { "label": "MARGARINA COM SAL", "qty": 100 },
+      { "label": "UND P", "qty": 10 },
+      { "label": "UND M", "qty": 45 },
+      { "label": "UND G", "qty": 100 }
+    ]
+  },
+  {
+    "description": "MARROM-GLACÊ",
+    "measures": [
+      { "label": "FT P", "qty": 40 },
+      { "label": "FT M", "qty": 60 },
+      { "label": "FT G", "qty": 100 }
+    ]
+  },
+  {
+    "description": "MASSA DE PASTEL FRITA",
+    "measures": [{ "label": "UND", "qty": 17 }]
+  },
+  {
+    "description": "MAXIXE COZIDO/REFOGADO",
+    "measures": [
+      { "label": "ESC M R", "qty": 80 },
+      { "label": "ESC M CH", "qty": 130 },
+      { "label": "CO S R", "qty": 25 },
+      { "label": "COL S CH", "qty": 40 },
+      { "label": "COL A R", "qty": 55 },
+      { "label": "COL A CH", "qty": 75 }
+    ]
+  },
+  {
+    "description": "MEL DE ABELHA",
+    "measures": [
+      { "label": "COL SOB", "qty": 9 },
+      { "label": "COL S", "qty": 15 },
+      { "label": "COL CHÁ", "qty": 3 },
+      { "label": "COL CAFÉ", "qty": 2 }
+    ]
+  },
+  {
+    "description": "MELADO",
+    "measures": [
+      { "label": "COL SOB", "qty": 10 },
+      { "label": "COL S", "qty": 16 },
+      { "label": "COL CHÁ", "qty": 3 },
+      { "label": "COL CAFÉ", "qty": 2 }
+    ]
+  },
+  {
+    "description": "MELANCIA",
+    "measures": [
+      { "label": "FT P", "qty": 100 },
+      { "label": "FT M", "qty": 200 },
+      { "label": "FT G", "qty": 370 }
+    ]
+  },
+  {
+    "description": "MELÃO",
+    "measures": [
+      { "label": "UND M", "qty": 660 },
+      { "label": "FT P", "qty": 70 },
+      { "label": "FT M", "qty": 90 },
+      { "label": "FT G", "qty": 115 }
+    ]
+  },
+  {
+    "description": "MILHO-VERDE",
+    "measures": [{ "label": "ESPIGA G", "qty": 100 }]
+  },
+  {
+    "description": "MILHO-VERDE ENLATADO",
+    "measures": [
+      { "label": "LATA", "qty": 200 },
+      { "label": "COL SOB R", "qty": 11 },
+      { "label": "COL SOB CH", "qty": 17 },
+      { "label": "COL S R", "qty": 14 },
+      { "label": "COL S CH", "qty": 24 }
+    ]
+  },
+  {
+    "description": "MILK-SHAKE DE CHOCOLATE",
+    "measures": [{ "label": "COPO MILK-SHAKE", "qty": 290 }]
+  },
+  {
+    "description": "MINGAU",
+    "measures": [
+      { "label": "PT SOB", "qty": 105 },
+      { "label": "PT R", "qty": 195 },
+      { "label": "PT F R", "qty": 200 },
+      { "label": "PT F CH", "qty": 375 },
+      { "label": "COPO D CH", "qty": 230 },
+      { "label": "COL SOB", "qty": 27 },
+      { "label": "COL S", "qty": 37 },
+      { "label": "COL A", "qty": 55 }
+    ]
+  },
+  {
+    "description": "MISTO QUENTE",
+    "measures": [{ "label": "UND", "qty": 85 }]
+  },
+  {
+    "description": "MIÍDOS DE GALINHA",
+    "measures": [
+      { "label": "MOELA P", "qty": 14 },
+      { "label": "MOELA M", "qty": 18 },
+      { "label": "MOELA G", "qty": 27 }
+    ]
+  },
+  {
+    "description": "MOLHO À BOLONHESA",
+    "measures": [
+      { "label": "COL SOB", "qty": 14 },
+      { "label": "COL S", "qty": 22 },
+      { "label": "COL A", "qty": 35 },
+      { "label": "CO P CH", "qty": 63 }
+    ]
+  },
+  {
+    "description": "MOLHO BRANCO",
+    "measures": [
+      { "label": "COL SOB", "qty": 25 },
+      { "label": "COL S", "qty": 35 },
+      { "label": "COL A", "qty": 55 }
+    ]
+  },
+  {
+    "description": "MOLHO DE TOMATE",
+    "measures": [
+      { "label": "COL SOB", "qty": 17 },
+      { "label": "COL S", "qty": 20 },
+      { "label": "COL A", "qty": 45 }
+    ]
+  },
+  {
+    "description": "MOLHO INGLÊS",
+    "measures": [
+      { "label": "COL SOB", "qty": 3 },
+      { "label": "COL S", "qty": 6 },
+      { "label": "COL CHÁ", "qty": 1 }
+    ]
+  },
+  {
+    "description": "MOLHO ROQUEFORT",
+    "measures": [
+      { "label": "COL S", "qty": 15 },
+      { "label": "COL CHÁ", "qty": 5 }
+    ]
+  },
+  {
+    "description": "MORANGO",
+    "measures": [
+      { "label": "UND P", "qty": 7 },
+      { "label": "UND M", "qty": 12 },
+      { "label": "UND G", "qty": 20 }
+    ]
+  },
+  {
+    "description": "MORTADELA",
+    "measures": [
+      { "label": "FT M", "qty": 15 },
+      { "label": "FT G", "qty": 25 }
+    ]
+  },
+  {
+    "description": "MOSTARDA CONDIMENTOS",
+    "measures": [
+      { "label": "COL SOB R", "qty": 9 },
+      { "label": "COL SOB CH", "qty": 15 },
+      { "label": "COL S R", "qty": 11 },
+      { "label": "COL S CH", "qty": 20 }
+    ]
+  },
+  {
+    "description": "MOSTADA FOLHA COZIDA",
+    "measures": [
+      { "label": "COL SOB CH", "qty": 20 },
+      { "label": "COL S CH", "qty": 45 },
+      { "label": "COL A CH", "qty": 75 }
+    ]
+  },
+  {
+    "description": "MUSSE DE CHOCOLATE",
+    "measures": [
+      { "label": "PORÇÃO", "qty": 70 },
+      { "label": "COL  SOB CH", "qty": 18 },
+      { "label": "COL S CH", "qty": 25 }
+    ]
+  },
+  {
+    "description": "MUSSE DE  MARACUJÁ",
+    "measures": [
+      { "label": "PORÇÃO", "qty": 100 },
+      { "label": "COPO P CH", "qty": 140 },
+      { "label": "COL SOB CH", "qty": 25 },
+      { "label": "COL S CH", "qty": 35 },
+      { "label": "COL A CH", "qty": 75 }
+    ]
+  },
+  {
+    "description": "MUCILON",
+    "measures": [
+      { "label": "COL SOB R", "qty": 3 },
+      { "label": "COL SOB CH", "qty": 5 },
+      { "label": "COL S R", "qty": 5 },
+      { "label": "COL S CH", "qty": 9 },
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 3 }
+    ]
+  },
+  {
+    "description": "NAN 1 PÓ",
+    "measures": [{ "label": "MEDIDA", "qty": 4.4 }]
+  },
+  {
+    "description": "NESCAU",
+    "measures": [
+      { "label": "COL SOB R", "qty": 7 },
+      { "label": "COL SOB CH", "qty": 11 },
+      { "label": "COL S R", "qty": 11 },
+      { "label": "COL S CH", "qty": 16 },
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 4 },
+      { "label": "COL CAFÉ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "NESCAU BEBIDA LÁCTEA",
+    "measures": [{ "label": "UND", "qty": 200 }]
+  },
+  {
+    "description": "NESQUIK CHOCOLATE ALPINO",
+    "measures": [
+      { "label": "COL SOB R", "qty": 7 },
+      { "label": "COL SOB CH", "qty": 11 },
+      { "label": "COL S R", "qty": 11 },
+      { "label": "COL S CH", "qty": 16 },
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 4 },
+      { "label": "COL CAFÉ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "NESQUIK CHOCOLATE ALPINO BEBIDA LÁCTEA",
+    "measures": [{ "label": "UND", "qty": 200 }]
+  },
+  {
+    "description": "NESQUIK MORANGO",
+    "measures": [
+      { "label": "COL SOB R", "qty": 7 },
+      { "label": "COL SOB CH", "qty": 11 },
+      { "label": "COL S R", "qty": 11 },
+      { "label": "COL S CH", "qty": 16 },
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 4 },
+      { "label": "COL CAFÉ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "NÊSPERA",
+    "measures": [
+      { "label": "UND M", "qty": 27 },
+      { "label": "UND G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "NESTOGENO 1 PÓ",
+    "measures": [{ "label": "MEDIDA", "qty": 4.8 }]
+  },
+  {
+    "description": "NESTON",
+    "measures": [
+      { "label": "COL SOB R", "qty": 3 },
+      { "label": "COL SOB CH", "qty": 5 },
+      { "label": "COL S R", "qty": 6 },
+      { "label": "COL S CH", "qty": 8 },
+      { "label": "COL CHÁ R", "qty": 1 },
+      { "label": "COL CHÁ CH", "qty": 2 }
+    ]
+  },
+  {
+    "description": "NHOQUE",
+    "measures": [
+      { "label": "ESC M R", "qty": 60 },
+      { "label": "ESC M CH", "qty": 100 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 30 },
+      { "label": "COL A CH", "qty": 70 }
+    ]
+  },
+  {
+    "description": "NINHO SOLIIL MORANGO BEBIDA LÁCTEA",
+    "measures": [{ "label": "UND", "qty": 200 }]
+  },
+  {
+    "description": "NOVOMILKE BANANA PÓ",
+    "measures": [
+      { "label": "COL SOB R", "qty": 6 },
+      { "label": "COL SOB CH", "qty": 12 },
+      { "label": "COL S R", "qty": 9 },
+      { "label": "COL S CH", "qty": 15 },
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 3 }
+    ]
+  },
+  {
+    "description": "NOZ",
+    "measures": [
+      { "label": "UND", "qty": 5 },
+      { "label": "PUNHADO", "qty": 30 }
+    ]
+  },
+  {
+    "description": "ÓLEO VEGETAL",
+    "measures": [
+      { "label": "COL SOB", "qty": 5 },
+      { "label": "COL S", "qty": 8 },
+      { "label": "COL CHÁ", "qty": 2 },
+      { "label": "COL CAFÉ", "qty": 1 }
+    ]
+  },
+  {
+    "description": "OMELETE",
+    "measures": [{ "label": "UND P (COM 1 OVO)", "qty": 65 }]
+  },
+  {
+    "description": "OVO DE CODORNA",
+    "measures": [{ "label": "UND", "qty": 10 }]
+  },
+  {
+    "description": "OVO DE GALINHA CLARA COZIDA",
+    "measures": [{ "label": "UND", "qty": 30 }]
+  },
+  {
+    "description": "OVO DE GALINHA COZIDO",
+    "measures": [
+      { "label": "UND M", "qty": 45 },
+      { "label": "FT M", "qty": 10 }
+    ]
+  },
+  {
+    "description": "OVO DE GALINHA FRITO",
+    "measures": [{ "label": "UND M", "qty": 50 }]
+  },
+  {
+    "description": "OVO DE GALINHA GEMA COZIDA",
+    "measures": [{ "label": "UND M", "qty": 15 }]
+  },
+  {
+    "description": "OVO DE GALINHA MEXIDO",
+    "measures": [
+      { "label": "ESC M R", "qty": 45 },
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 15 },
+      { "label": "COL A R", "qty": 25 },
+      { "label": "COL A CH", "qty": 45 }
+    ]
+  },
+  {
+    "description": "OVOMALTINE SUÍÇO",
+    "measures": [
+      { "label": "COL SOB R", "qty": 6 },
+      { "label": "COL SOB CH", "qty": 9 },
+      { "label": "COL S R", "qty": 9 },
+      { "label": "COL S CH", "qty": 14 },
+      { "label": "COL CAFÉ CH", "qty": 1 }
+    ]
+  },
+  { "description": "PAÇOCA", "measures": [{ "label": "UND", "qty": 30 }] },
+  { "description": "PAIO", "measures": [{ "label": "UND", "qty": 160 }] },
+  {
+    "description": "PALMITO EM CONSERVA",
+    "measures": [
+      { "label": "UND M", "qty": 100 },
+      { "label": "COL S R PICADO", "qty": 15 }
+    ]
+  },
+  {
+    "description": "PAMONHA",
+    "measures": [{ "label": "UND", "qty": 160 }]
+  },
+  {
+    "description": "PANETONE",
+    "measures": [
+      { "label": "FT P", "qty": 25 },
+      { "label": "FT M", "qty": 45 },
+      { "label": "FT G", "qty": 60 }
+    ]
+  },
+  {
+    "description": "PANQUECA DE CARNE",
+    "measures": [{ "label": "UND M", "qty": 80 }]
+  },
+  {
+    "description": "PÃO ÁRABE",
+    "measures": [{ "label": "UND G", "qty": 80 }]
+  },
+  {
+    "description": "PÃO COM OVO",
+    "measures": [{ "label": "UND", "qty": 100 }]
+  },
+  {
+    "description": "PÃO DE BATATA",
+    "measures": [{ "label": "UND M", "qty": 50 }]
+  },
+  {
+    "description": "PÃO DE FORMA",
+    "measures": [{ "label": "FT", "qty": 25 }]
+  },
+  {
+    "description": "PÃO DE HAMBURGUER",
+    "measures": [{ "label": "UND", "qty": 70 }]
+  },
+  {
+    "description": "PÃO DE MILHO",
+    "measures": [{ "label": "UND M", "qty": 70 }]
+  },
+  {
+    "description": "PÃO DE QUEIJO",
+    "measures": [
+      { "label": "UND P", "qty": 10 },
+      { "label": "UND M", "qty": 20 },
+      { "label": "UND G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "PÃO DOCE",
+    "measures": [
+      { "label": "UND", "qty": 50 },
+      { "label": "COIÓ", "qty": 38 }
+    ]
+  },
+  {
+    "description": "PÃO DE SAL",
+    "measures": [
+      { "label": "PÃO FRANCÊS S/MIOLO", "qty": 30 },
+      { "label": "PÃO FRACÊS", "qty": 50 },
+      { "label": "BISNAGA", "qty": 200 }
+    ]
+  },
+  {
+    "description": "PÃO INTEGRAL",
+    "measures": [{ "label": "FT", "qty": 25 }]
+  },
+  {
+    "description": "PAPINHA DE BANANA COM AVEIA NESTLÉ BABY",
+    "measures": [{ "label": "POTE", "qty": 155 }]
+  },
+  {
+    "description": "PASTA DE ATUM",
+    "measures": [
+      { "label": "PQ/PÃO FRANCÊS", "qty": 26 },
+      { "label": "PQ/PÃO DE FORMA", "qty": 15 },
+      { "label": "PQ/CREAM CRACKER", "qty": 4 },
+      { "label": "MQ/PÃO FRANCÊS", "qty": 40 },
+      { "label": "MQ/PÃO DE FORMA", "qty": 30 },
+      { "label": "MQ/CREAM CRACKER", "qty": 8 },
+      { "label": "GQ/PÃO FRANCêS", "qty": 66 },
+      { "label": "GQ/PÃO DE FORMA", "qty": 58 },
+      { "label": "GQ/CREAM CRACKER", "qty": 13 },
+      { "label": "COL SOB CH", "qty": 23 },
+      { "label": "COL S CH", "qty": 35 },
+      { "label": "COL CHA CH", "qty": 9 }
+    ]
+  },
+  {
+    "description": "PASTA DE TOFU",
+    "measures": [
+      { "label": "COL SOB R", "qty": 9 },
+      { "label": "COL SOB CH", "qty": 14 },
+      { "label": "COL S R", "qty": 13 },
+      { "label": "COL S CH", "qty": 26 },
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 5 }
+    ]
+  },
+  {
+    "description": "PASTEL DE CARNE",
+    "measures": [
+      { "label": "UND P", "qty": 8 },
+      { "label": "UND M", "qty": 32 }
+    ]
+  },
+  {
+    "description": "PASTEL DE FORNO",
+    "measures": [
+      { "label": "UND P", "qty": 10 },
+      { "label": "UND M", "qty": 25 },
+      { "label": "UND G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "PATÊ",
+    "measures": [
+      { "label": "PQ/PÃO FRANCÊS", "qty": 8 },
+      { "label": "PQ/PÃO DE FORMA", "qty": 5 },
+      { "label": "PQ/CREAM CRACKER", "qty": 1 },
+      { "label": "MQ/PÃO FRANCÊS", "qty": 15 },
+      { "label": "MQ/PÃO DE FORMA", "qty": 10 },
+      { "label": "MQ/CREAM CRACKER", "qty": 3 },
+      { "label": "GQ/PÃO FRANCêS", "qty": 35 },
+      { "label": "GQ/PÃO DE FORMA", "qty": 20 },
+      { "label": "GQ/CREAM CRACKER", "qty": 7 },
+      { "label": "COL SOB R", "qty": 11 },
+      { "label": "COL SOB CH", "qty": 21 },
+      { "label": "COL S R", "qty": 17 },
+      { "label": "COL S CH", "qty": 22 },
+      { "label": "COL CHÁ R", "qty": 3 },
+      { "label": "COL CHÁ CH", "qty": 8 },
+      { "label": "COL CAFÉ R", "qty": 2 },
+      { "label": "COL CAFÉ CH", "qty": 3.5 }
+    ]
+  },
+  {
+    "description": "PAVÊ DE AMENDOIM",
+    "measures": [
+      { "label": "PED P", "qty": 60 },
+      { "label": "PED M", "qty": 110 },
+      { "label": "PED G", "qty": 180 },
+      { "label": "COL SOB CH", "qty": 22 },
+      { "label": "COL S CH", "qty": 37 }
+    ]
+  },
+  {
+    "description": "PAVÊ DE CHOCOLATE",
+    "measures": [
+      { "label": "PED P", "qty": 60 },
+      { "label": "PED M", "qty": 85 },
+      { "label": "PED G", "qty": 170 },
+      { "label": "COL SOB CH", "qty": 20 },
+      { "label": "COL S CH", "qty": 35 }
+    ]
+  },
+  {
+    "description": "PAVÊ DE FRUTAS",
+    "measures": [
+      { "label": "PED P", "qty": 50 },
+      { "label": "PED M", "qty": 80 },
+      { "label": "PED G", "qty": 130 },
+      { "label": "COL SOB CH", "qty": 15 },
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 }
+    ]
+  },
+  {
+    "description": "PÉ-DE-MOLEQUE",
+    "measures": [{ "label": "UND", "qty": 20 }]
+  },
+  {
+    "description": "PEIXE Á ESCABECHE",
+    "measures": [
+      { "label": "POSTA P", "qty": 150 },
+      { "label": "POSTA M", "qty": 200 },
+      { "label": "POSTA G", "qty": 250 },
+      { "label": "FILÉ P", "qty": 100 },
+      { "label": "FILÉ M", "qty": 120 },
+      { "label": "FILÉ G", "qty": 155 }
+    ]
+  },
+  {
+    "description": "PEIXE Á MILANESA",
+    "measures": [
+      { "label": "FILÉ P", "qty": 90 },
+      { "label": "FILÉ M", "qty": 115 },
+      { "label": "FILÉ G", "qty": 150 }
+    ]
+  },
+  {
+    "description": "PEIXE COZIDO/ENSOPADO/FRITO",
+    "measures": [
+      { "label": "POSTA P", "qty": 150 },
+      { "label": "POSTA M", "qty": 200 },
+      { "label": "POSTA G", "qty": 250 },
+      { "label": "FILÉ P", "qty": 100 },
+      { "label": "FILÉ M", "qty": 120 },
+      { "label": "FILÉ G", "qty": 155 },
+      { "label": "COL S R PICADO", "qty": 10 },
+      { "label": "COL S CH PICADO", "qty": 20 }
+    ]
+  },
+  {
+    "description": "PEPINO",
+    "measures": [
+      { "label": "UND M", "qty": 100 },
+      { "label": "FT P", "qty": 3 },
+      { "label": "COL S CH PICADO", "qty": 18 }
+    ]
+  },
+  {
+    "description": "PÊRA",
+    "measures": [
+      { "label": "UND M", "qty": 110 },
+      { "label": "UND G", "qty": 190 }
+    ]
+  },
+  {
+    "description": "PERU",
+    "measures": [
+      { "label": "FT P", "qty": 20 },
+      { "label": "FT M", "qty": 32 },
+      { "label": "FT G", "qty": 48 },
+      { "label": "COXA M", "qty": 80 }
+    ]
+  },
+  {
+    "description": "PÊSSEGO",
+    "measures": [
+      { "label": "UND P", "qty": 32 },
+      { "label": "UND M", "qty": 60 },
+      { "label": "UND G", "qty": 110 }
+    ]
+  },
+  {
+    "description": "PÊSSEGO EM CALDA INDUSTR",
+    "measures": [{ "label": "1/2 UND M", "qty": 30 }]
+  },
+  {
+    "description": "PICOLÉ ABACAXI KIBON",
+    "measures": [{ "label": "UND", "qty": 59 }]
+  },
+  {
+    "description": "PICOLÉ CHAMBINHO MORANGO",
+    "measures": [{ "label": "UND", "qty": 42 }]
+  },
+  {
+    "description": "PICOLÉ CHICABON",
+    "measures": [{ "label": "UND", "qty": 63 }]
+  },
+  {
+    "description": "PICOLÉ CHOKITO",
+    "measures": [{ "label": "UND", "qty": 50 }]
+  },
+  {
+    "description": "PICOLÉ COCO KIBON",
+    "measures": [{ "label": "UND", "qty": 63 }]
+  },
+  {
+    "description": "PICOLÉ COMICS DONALD",
+    "measures": [{ "label": "UND", "qty": 51 }]
+  },
+  {
+    "description": "PICOLÉ CRUNCH",
+    "measures": [{ "label": "UND", "qty": 58 }]
+  },
+  {
+    "description": "PICOLÉ DIAMENTE NEGRO",
+    "measures": [{ "label": "UND", "qty": 55 }]
+  },
+  {
+    "description": "PICOLÉ FRUTTARE KIPOLPA MANGA",
+    "measures": [{ "label": "UND", "qty": 61 }]
+  },
+  {
+    "description": "PIMENTÃO",
+    "measures": [
+      { "label": "UND P", "qty": 38 },
+      { "label": "UND M", "qty": 55 },
+      { "label": "UND G", "qty": 87 },
+      { "label": "FT P", "qty": 4 },
+      { "label": "FT M", "qty": 6 },
+      { "label": "FT G", "qty": 8 },
+      { "label": "COL S R PICADO", "qty": 8 },
+      { "label": "COL S CH PICADO", "qty": 13 }
+    ]
+  },
+  {
+    "description": "PIPOCA COM SAL",
+    "measures": [
+      { "label": "SACO P", "qty": 15 },
+      { "label": "SACO M", "qty": 20 },
+      { "label": "SACO G", "qty": 25 },
+      { "label": "COL S CH", "qty": 2 }
+    ]
+  },
+  { "description": "PIRÃO", "measures": [] },
+  { "description": "CO M CH", "measures": [] },
+  { "description": "CO M R", "measures": [] },
+  { "description": "COL A CH", "measures": [] },
+  { "description": "COL A R", "measures": [] },
+  { "description": "COL S CH", "measures": [] },
+  { "description": "PT F", "measures": [] },
+  { "description": "PT R", "measures": [] },
+  {
+    "description": "PIZZA CALABREZA",
+    "measures": [
+      { "label": "FT P", "qty": 45 },
+      { "label": "FT M", "qty": 90 },
+      { "label": "FT G", "qty": 120 }
+    ]
+  },
+  {
+    "description": "PIZZA MUZZARELA",
+    "measures": [
+      { "label": "FT P", "qty": 50 },
+      { "label": "FT M", "qty": 100 },
+      { "label": "FT G", "qty": 130 }
+    ]
+  },
+  {
+    "description": "PIZZA PRESUNTO",
+    "measures": [
+      { "label": "FT P", "qty": 60 },
+      { "label": "FT M", "qty": 110 },
+      { "label": "FT G", "qty": 145 }
+    ]
+  },
+  {
+    "description": "PIZZA PORTUGUESA",
+    "measures": [
+      { "label": "FT P", "qty": 65 },
+      { "label": "FT M", "qty": 125 },
+      { "label": "FT G", "qty": 160 }
+    ]
+  },
+  {
+    "description": "POLVO REFOGADO",
+    "measures": [
+      { "label": "ESC M CH", "qty": 60 },
+      { "label": "COL S CH", "qty": 22 },
+      { "label": "COL A CH", "qty": 40 }
+    ]
+  },
+  {
+    "description": "PRESUNTADA",
+    "measures": [{ "label": "FT M", "qty": 15 }]
+  },
+  {
+    "description": "PRESUNTO",
+    "measures": [{ "label": "FT M", "qty": 15 }]
+  },
+  {
+    "description": "PUDIM DE LEITE",
+    "measures": [
+      { "label": "FT P", "qty": 90 },
+      { "label": "FT M", "qty": 130 },
+      { "label": "FT G", "qty": 260 },
+      { "label": "COL SOB CH", "qty": 40 },
+      { "label": "COL S CH", "qty": 50 }
+    ]
+  },
+  {
+    "description": "PURÊ DE BATATA",
+    "measures": [
+      { "label": "COL S R", "qty": 25 },
+      { "label": "COL S CH", "qty": 45 },
+      { "label": "COL A CH", "qty": 80 },
+      { "label": "CO  M R", "qty": 140 }
+    ]
+  },
+  {
+    "description": "PURÊ DE INHAME",
+    "measures": [
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 40 },
+      { "label": "COL A CH", "qty": 65 }
+    ]
+  },
+  {
+    "description": "QUEIJADINHA",
+    "measures": [
+      { "label": "UND P", "qty": 20 },
+      { "label": "UND M", "qty": 35 },
+      { "label": "UND G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "QUEIJO DE SOJA TOFU",
+    "measures": [
+      { "label": "FT P", "qty": 14 },
+      { "label": "FT M", "qty": 28 },
+      { "label": "FT G", "qty": 38 }
+    ]
+  },
+  {
+    "description": "QUEIJO GORGONZOLA",
+    "measures": [
+      { "label": "PEÇA TRIANGULAR", "qty": 235 },
+      { "label": "FT P", "qty": 15 },
+      { "label": "FT M", "qty": 38 },
+      { "label": "FT G", "qty": 55 }
+    ]
+  },
+  {
+    "description": "QUEIJO-DE-MINAS DANÚBIO",
+    "measures": [
+      { "label": "FT P", "qty": 20 },
+      { "label": "FT M", "qty": 30 },
+      { "label": "FT G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "QUEIJO-DE-MINAS FRESCO",
+    "measures": [
+      { "label": "FT P", "qty": 20 },
+      { "label": "FT M", "qty": 30 },
+      { "label": "FT G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "QUEIJO MUZZARELA",
+    "measures": [{ "label": "FT M", "qty": 20 }]
+  },
+  {
+    "description": "QUEIJO PARMESÃO",
+    "measures": [
+      { "label": "COL CHÁ R", "qty": 2 },
+      { "label": "COL CHÁ CH", "qty": 4 },
+      { "label": "COL SOB R", "qty": 4 },
+      { "label": "COL SOB CH", "qty": 8 },
+      { "label": "COL S R", "qty": 7 },
+      { "label": "COL S CH", "qty": 15 }
+    ]
+  },
+  {
+    "description": "QUEIJO POLENGUINHO",
+    "measures": [{ "label": "UND", "qty": 20 }]
+  },
+  {
+    "description": "QUEIJO PRATO",
+    "measures": [
+      { "label": "FT P", "qty": 10 },
+      { "label": "FT M", "qty": 15 },
+      { "label": "FT G", "qty": 20 }
+    ]
+  },
+  {
+    "description": "QUEIJO PROVOLONE",
+    "measures": [{ "label": "FT M", "qty": 15 }]
+  },
+  {
+    "description": "QUEIJO QUENTE SANDUICHE",
+    "measures": [{ "label": "UND", "qty": 85 }]
+  },
+  {
+    "description": "QUIABO REFOGADO",
+    "measures": [
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 40 }
+    ]
+  },
+  {
+    "description": "QUIBE FRITO",
+    "measures": [
+      { "label": "UND P", "qty": 12 },
+      { "label": "UND M", "qty": 50 },
+      { "label": "UND G", "qty": 85 }
+    ]
+  },
+  {
+    "description": "QUIBEBE",
+    "measures": [
+      { "label": "ESC M R", "qty": 75 },
+      { "label": "ESC M CH", "qty": 100 },
+      { "label": "COL SOB R", "qty": 15 },
+      { "label": "COL SOB CH", "qty": 24 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 35 }
+    ]
+  },
+  {
+    "description": "QUINDIM",
+    "measures": [
+      { "label": "UND P", "qty": 20 },
+      { "label": "UND M", "qty": 35 }
+    ]
+  },
+  {
+    "description": "RABADA",
+    "measures": [
+      { "label": "PED P", "qty": 15 },
+      { "label": "PED M", "qty": 40 },
+      { "label": "PED G", "qty": 90 }
+    ]
+  },
+  {
+    "description": "RABANADA",
+    "measures": [
+      { "label": "UND P", "qty": 30 },
+      { "label": "UND M", "qty": 60 },
+      { "label": "UND G", "qty": 100 }
+    ]
+  },
+  {
+    "description": "RAPADURA",
+    "measures": [
+      { "label": "PED P", "qty": 30 },
+      { "label": "PED M", "qty": 55 },
+      { "label": "PED G", "qty": 100 }
+    ]
+  },
+  {
+    "description": "REFRESCOS EM GERAL",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "REPOLHO",
+    "measures": [
+      { "label": "FOLHA P", "qty": 20 },
+      { "label": "FOLHA M", "qty": 30 },
+      { "label": "FOLHA G", "qty": 40 },
+      { "label": "ESC M R PICADO", "qty": 15 },
+      { "label": "ESC M CH PICADO", "qty": 25 },
+      { "label": "COL S R PICADO", "qty": 5 },
+      { "label": "COL S CH PICADO", "qty": 10 },
+      { "label": "COL A R PICADO", "qty": 20 },
+      { "label": "COL A CH PICADO", "qty": 25 }
+    ]
+  },
+  {
+    "description": "REPOLHO COZIDO",
+    "measures": [
+      { "label": "FOLHA P", "qty": 18 },
+      { "label": "FOLHA M", "qty": 26 },
+      { "label": "FOLHA G", "qty": 34 },
+      { "label": "ESC M CH PICADO", "qty": 45 },
+      { "label": "COL S R PICADO", "qty": 12 },
+      { "label": "COL S CH PICADO", "qty": 20 },
+      { "label": "COL A R PICADO", "qty": 35 },
+      { "label": "COL A CH PICADO", "qty": 45 }
+    ]
+  },
+  {
+    "description": "REPOLHO REFOGADO",
+    "measures": [
+      { "label": "FOLHA P", "qty": 18 },
+      { "label": "FOLHA M", "qty": 26 },
+      { "label": "FOLHA G", "qty": 34 },
+      { "label": "ESC M CH PICADO", "qty": 45 },
+      { "label": "COL S R PICADO", "qty": 12 },
+      { "label": "COL S CH PICADO", "qty": 18 },
+      { "label": "COL A R PICADO", "qty": 35 },
+      { "label": "COL A CH PICADO", "qty": 45 }
+    ]
+  },
+  {
+    "description": "REQUEIJÃO",
+    "measures": [
+      { "label": "PQ/TORRADA COMERCIAL", "qty": 5 },
+      { "label": "PQ/PÃO FRANCÊS", "qty": 14 },
+      { "label": "PQ/PÃO DE FORMA", "qty": 5 },
+      { "label": "PQ/CREAM CRACKER", "qty": 3 },
+      { "label": "MQ/TORRADA COMERCIAL", "qty": 8 },
+      { "label": "MQ/PÃO FRANCÊS", "qty": 22 },
+      { "label": "MQ/PÃO DE FORMA", "qty": 8 },
+      { "label": "MQ/CREAM CRACKER", "qty": 7 },
+      { "label": "GQ/TORRADA COMERCIAL", "qty": 13 },
+      { "label": "GQ/PÃO FRANCÊS", "qty": 35 },
+      { "label": "GQ/PÃO DE FORMA", "qty": 13 },
+      { "label": "GQ/CREAM CRACKER", "qty": 12 },
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 30 }
+    ]
+  },
+  {
+    "description": "RICOTA",
+    "measures": [
+      { "label": "FT M", "qty": 35 },
+      { "label": "FT G", "qty": 50 }
+    ]
+  },
+  {
+    "description": "RISOLE",
+    "measures": [
+      { "label": "UND P", "qty": 12 },
+      { "label": "UND M", "qty": 35 },
+      { "label": "UND G", "qty": 70 }
+    ]
+  },
+  {
+    "description": "RISOTO DE FRANGO",
+    "measures": [
+      { "label": "ESC M CH", "qty": 85 },
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 25 }
+    ]
+  },
+  {
+    "description": "SALADA DE BATATA C/MAIONESE",
+    "measures": [{ "label": "COL S CH", "qty": 38 }]
+  },
+  {
+    "description": "SALADA DE FEIJÃO-FRADINHO",
+    "measures": [
+      { "label": "ESC M R", "qty": 50 },
+      { "label": "ESC M CH", "qty": 90 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 32 },
+      { "label": "COL A R", "qty": 30 },
+      { "label": "COL A CH", "qty": 57 }
+    ]
+  },
+  {
+    "description": "SALADA DE FRUTAS",
+    "measures": [
+      { "label": "COPO P CH", "qty": 150 },
+      { "label": "COPO D CH", "qty": 210 },
+      { "label": "COL S CH", "qty": 38 }
+    ]
+  },
+  {
+    "description": "SALADA DE LEGUMES",
+    "measures": [
+      { "label": "ESC M R", "qty": 60 },
+      { "label": "ESC M CH", "qty": 90 },
+      { "label": "COL S CH", "qty": 30 },
+      { "label": "COL A R", "qty": 40 },
+      { "label": "COL A CH", "qty": 55 }
+    ]
+  },
+  {
+    "description": "SALADA DE LEGUMES COM MAIONESE",
+    "measures": [
+      { "label": "ESC M R", "qty": 65 },
+      { "label": "ESC M CH", "qty": 90 },
+      { "label": "COL S CH", "qty": 38 },
+      { "label": "COL A R", "qty": 45 },
+      { "label": "COL A CH", "qty": 70 }
+    ]
+  },
+  { "description": "SALAME", "measures": [{ "label": "FT M", "qty": 20 }] },
+  {
+    "description": "SALAMINHO",
+    "measures": [{ "label": "FT M", "qty": 5 }]
+  },
+  {
+    "description": "SALPICÃO DE FRANGO",
+    "measures": [
+      { "label": "PT SOB", "qty": 140 },
+      { "label": "ESC M R", "qty": 30 },
+      { "label": "ESC M CH", "qty": 50 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A R", "qty": 25 },
+      { "label": "COL A CH", "qty": 40 }
+    ]
+  },
+  {
+    "description": "SALSICHA EM LATA",
+    "measures": [
+      { "label": "UND M HOT-DOG", "qty": 50 },
+      { "label": "UND M", "qty": 35 }
+    ]
+  },
+  {
+    "description": "SALSICHÃO",
+    "measures": [{ "label": "UND M", "qty": 100 }]
+  },
+  {
+    "description": "SANDUÍCHE DE ATUM",
+    "measures": [{ "label": "UND M", "qty": 120 }]
+  },
+  {
+    "description": "SANDUICHE DE FRANGO",
+    "measures": [{ "label": "UND M", "qty": 120 }]
+  },
+  {
+    "description": "SARDINHA EM CONSERVA",
+    "measures": [
+      { "label": "UND M", "qty": 33 },
+      { "label": "LATA P", "qty": 100 }
+    ]
+  },
+  {
+    "description": "SARDINHA FRITA",
+    "measures": [
+      { "label": "UND P", "qty": 13 },
+      { "label": "UND M", "qty": 25 },
+      { "label": "UND G", "qty": 40 }
+    ]
+  },
+  {
+    "description": "SIRI",
+    "measures": [
+      { "label": "UND P", "qty": 16 },
+      { "label": "POÃ P", "qty": 3 }
+    ]
+  },
+  {
+    "description": "SOPAS (NESTLÉ BABY)",
+    "measures": [{ "label": "POTE", "qty": 150 }]
+  },
+  {
+    "description": "SOPA DE ERVILHA",
+    "measures": [
+      { "label": "PT R", "qty": 325 },
+      { "label": "PT F", "qty": 250 },
+      { "label": "CO P CH", "qty": 60 },
+      { "label": "CO M CH", "qty": 130 }
+    ]
+  },
+  {
+    "description": "SOPA DE ERVILHA COM BACON",
+    "measures": [
+      { "label": "PT R", "qty": 325 },
+      { "label": "PT F", "qty": 520 },
+      { "label": "CO P CH", "qty": 60 },
+      { "label": "CO M CH", "qty": 130 }
+    ]
+  },
+  {
+    "description": "SOPA DE FEIJÃO COM MACARRÃO",
+    "measures": [
+      { "label": "COL S CH", "qty": 20 },
+      { "label": "CO M CH", "qty": 160 }
+    ]
+  },
+  {
+    "description": "SOPA DE LEGUMES",
+    "measures": [
+      { "label": "PT R", "qty": 325 },
+      { "label": "PT F", "qty": 520 },
+      { "label": "CO P CH", "qty": 60 },
+      { "label": "CO M CH", "qty": 130 }
+    ]
+  },
+  {
+    "description": "SORVETE YOPA",
+    "measures": [
+      { "label": "X CHÁ CH", "qty": 100 },
+      { "label": "COL S CH", "qty": 50 },
+      { "label": "BOLA M", "qty": 80 },
+      { "label": "BOLA G", "qty": 100 }
+    ]
+  },
+  {
+    "description": "SORVETE ESKIBON",
+    "measures": [{ "label": "UND", "qty": 48 }]
+  },
+  {
+    "description": "SORVETE SEM PARAR CHOCOLATE",
+    "measures": [{ "label": "UND", "qty": 115 }]
+  },
+  {
+    "description": "SORVETE SEM PARAR MORANGO",
+    "measures": [{ "label": "UND", "qty": 104 }]
+  },
+  {
+    "description": "SORVETE TROPPO",
+    "measures": [{ "label": "UND", "qty": 71 }]
+  },
+  {
+    "description": "SOYMILKE PÓ",
+    "measures": [
+      { "label": "COL SOB R", "qty": 4 },
+      { "label": "COL SOB CH", "qty": 7 },
+      { "label": "COL S R", "qty": 7 },
+      { "label": "COL S CH", "qty": 12 }
+    ]
+  },
+  {
+    "description": "SOYMILKE RECONSTITUÍDO",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "STROGONOFF DE CARNE/FRANGO",
+    "measures": [
+      { "label": "COL S CH", "qty": 25 },
+      { "label": "COL A CH", "qty": 40 },
+      { "label": "CO M CH", "qty": 170 },
+      { "label": "1/2 CO M", "qty": 60 }
+    ]
+  },
+  {
+    "description": "SUCOS",
+    "measures": [
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  {
+    "description": "SUCRILHOS KELLOGG'S",
+    "measures": [
+      { "label": "PUNHADO", "qty": 13 },
+      { "label": "PT R", "qty": 80 },
+      { "label": "PT F", "qty": 100 },
+      { "label": "COPO P CH", "qty": 38 },
+      { "label": "COPO D CH", "qty": 47 },
+      { "label": "COL S CH", "qty": 5 }
+    ]
+  },
+  {
+    "description": "SUFLÊ DE LEGUMES",
+    "measures": [
+      { "label": "PED P", "qty": 70 },
+      { "label": "PED M", "qty": 90 },
+      { "label": "PED G", "qty": 120 },
+      { "label": "ESC M CH", "qty": 100 },
+      { "label": "COL S CH", "qty": 55 },
+      { "label": "COL A CH", "qty": 85 }
+    ]
+  },
+  {
+    "description": "SUNDAE",
+    "measures": [
+      { "label": "UND MCDONALD'S", "qty": 164 },
+      { "label": "UND KIBON", "qty": 145 }
+    ]
+  },
+  {
+    "description": "SUSPIRO",
+    "measures": [
+      { "label": "UND P", "qty": 6 },
+      { "label": "UND M", "qty": 10 },
+      { "label": "UND G", "qty": 60 }
+    ]
+  },
+  {
+    "description": "SUSTAGEN",
+    "measures": [
+      { "label": "COL SOB R", "qty": 7 },
+      { "label": "COL SOB CH", "qty": 15 },
+      { "label": "COL S R", "qty": 9 },
+      { "label": "COL S CH", "qty": 18 },
+      { "label": "COL CHÁ R", "qty": 3 },
+      { "label": "COL CHÁ CH", "qty": 7 }
+    ]
+  },
+  {
+    "description": "TANGERINA",
+    "measures": [
+      { "label": "UND P", "qty": 100 },
+      { "label": "UND M", "qty": 135 },
+      { "label": "UND G", "qty": 270 },
+      { "label": "GOMO M", "qty": 10 }
+    ]
+  },
+  {
+    "description": "TODDYNHO",
+    "measures": [{ "label": "UND", "qty": 200 }]
+  },
+  {
+    "description": "TOMATE",
+    "measures": [
+      { "label": "UND P", "qty": 50 },
+      { "label": "UND M", "qty": 100 },
+      { "label": "UND G", "qty": 150 },
+      { "label": "FT P", "qty": 10 },
+      { "label": "FT M", "qty": 15 },
+      { "label": "FT G", "qty": 30 },
+      { "label": "COL S R TIRAS", "qty": 20 },
+      { "label": "COL S CH TIRAS", "qty": 30 },
+      { "label": "COL S CH CUBOS", "qty": 15 }
+    ]
+  },
+  {
+    "description": "TORRADA",
+    "measures": [{ "label": "UND COMERCIAL", "qty": 8 }]
+  },
+  {
+    "description": "TORTA DE LIMÃO",
+    "measures": [
+      { "label": "FT P", "qty": 60 },
+      { "label": "FT M", "qty": 85 },
+      { "label": "FT G", "qty": 120 }
+    ]
+  },
+  {
+    "description": "TORTA DE MAÇÃ MCDONALD'S",
+    "measures": [{ "label": "UND", "qty": 85 }]
+  },
+  {
+    "description": "TUTU",
+    "measures": [
+      { "label": "PT R", "qty": 280 },
+      { "label": "ESC M CH", "qty": 140 },
+      { "label": "COL S R", "qty": 20 },
+      { "label": "COL S CH", "qty": 35 },
+      { "label": "COL A R", "qty": 50 },
+      { "label": "COL A CH", "qty": 85 },
+      { "label": "CO M CH", "qty": 190 }
+    ]
+  },
+  { "description": "UÍSQUE", "measures": [{ "label": "DOSE", "qty": 50 }] },
+  {
+    "description": "UVA",
+    "measures": [
+      { "label": "UND P", "qty": 4 },
+      { "label": "UND M", "qty": 8 },
+      { "label": "UND G", "qty": 12 },
+      { "label": "CACHO P", "qty": 170 },
+      { "label": "CACHO M", "qty": 350 },
+      { "label": "CACHO G", "qty": 950 },
+      { "label": "CACHO G", "qty": 560 }
+    ]
+  },
+  {
+    "description": "UVA PASSA",
+    "measures": [
+      { "label": "UND", "qty": 0.3 },
+      { "label": "PUNHADO", "qty": 24 },
+      { "label": "COPO P CH", "qty": 125 },
+      { "label": "COL S R", "qty": 10 },
+      { "label": "COL S CH", "qty": 18 },
+      { "label": "1/2 COPO P", "qty": 60 }
+    ]
+  },
+  {
+    "description": "VAGEM COZIDA",
+    "measures": [
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 20 }
+    ]
+  },
+  {
+    "description": "VAGEM REFOGADA",
+    "measures": [
+      { "label": "COL S R", "qty": 15 },
+      { "label": "COL S CH", "qty": 35 },
+      { "label": "COL A R", "qty": 45 },
+      { "label": "COL A CH", "qty": 73 }
+    ]
+  },
+  {
+    "description": "VINHO",
+    "measures": [
+      { "label": "TAÇA", "qty": 150 },
+      { "label": "CANECA", "qty": 300 },
+      { "label": "COPO P CH", "qty": 165 },
+      { "label": "COPO D CH", "qty": 240 }
+    ]
+  },
+  { "description": "YAKULT", "measures": [{ "label": "UND", "qty": 80 }] }
+]

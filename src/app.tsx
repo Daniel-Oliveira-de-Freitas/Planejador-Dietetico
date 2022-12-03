@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
-import Home from './routes/home';
-import AvaliacaoDietetica from './routes/avaliacaodietetica';
+import Home from './routes/Home';
+import ConsumoAlimentar24h from './routes/ConsumoAlimentar24h';
+import ConsumoAlimentarHabitual from './routes/ConsumoAlimentarHabitual';
 
 const router = createHashRouter([
   {
@@ -10,8 +11,12 @@ const router = createHashRouter([
     element: <Home />,
   },
   {
-    path: '/avaliacaodietetica',
-    element: <AvaliacaoDietetica />,
+    path: '/consumo24h',
+    element: <ConsumoAlimentar24h />,
+  },
+  {
+    path: '/consumohabitual',
+    element: <ConsumoAlimentarHabitual />,
   },
 ]);
 

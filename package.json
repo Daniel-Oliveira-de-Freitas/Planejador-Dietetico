@@ -3,6 +3,9 @@
   "productName": "electron-forge-typescript",
   "version": "1.0.0",
   "description": "My Electron application description",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
