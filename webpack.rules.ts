@@ -17,6 +17,7 @@ export const rules: Required<ModuleOptions>['rules'] = [
         outputAssetBase: 'native_modules',
       },
     },
+    exclude: /\.prisma/,
   },
   {
     test: /\.tsx?$/,
