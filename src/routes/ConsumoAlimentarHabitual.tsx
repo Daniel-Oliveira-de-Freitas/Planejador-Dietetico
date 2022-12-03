@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { addConsumoHabitual } from '../utils/addConsumoHabitual';
 
 const ConsumoAlimentarHabitual = () => {
   const [consumoHabitual, setConsumoHabitual] = useState({
     acucar: false,
     adocante: false,
-    fritura: false,
+    frituras: false,
     carneComGordura: false,
-    coposDeAgua: '',
-    latasDeOleo: '',
+    coposDeAgua: 0,
+    latasDeOleo: 0,
     numeroDePessoas: 1,
     localDoAlmoco: '',
     localDaJanta: '',
@@ -29,10 +31,13 @@ const ConsumoAlimentarHabitual = () => {
     });
   };
 
-  // TODO: colocar react-toastify
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(consumoHabitual);
+    toast.promise(addConsumoHabitual(1, consumoHabitual), {
+      error: 'Não foi possível salvar',
+      pending: 'Salvando...',
+      success: 'Dados salvos com sucesso!',
+    });
   };
 
   return (
@@ -44,7 +49,10 @@ const ConsumoAlimentarHabitual = () => {
       >
         Voltar para o início
       </Link>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        id='consumoHabitualForm'
+      >
         <div className='flex flex-col gap-1'>
           <CheckBox
             id='acucar'
@@ -59,8 +67,8 @@ const ConsumoAlimentarHabitual = () => {
             onChange={handleChange}
           />
           <CheckBox
-            id='fritura'
-            name='fritura'
+            id='frituras'
+            name='frituras'
             text='Frituras'
             onChange={handleChange}
           />
@@ -88,10 +96,33 @@ const ConsumoAlimentarHabitual = () => {
             value={consumoHabitual.numeroDePessoas}
             onChange={handleChange}
           />
-          <button type='submit'>Salvar</button>
         </div>
+        <Button
+          type='submit'
+          form='consumoHabitualForm'
+        >
+          Salvar
+        </Button>
       </form>
     </>
+  );
+};
+
+interface ButtonProps {
+  children: React.ReactNode;
+  type: 'button' | 'submit' | 'reset';
+  form: string;
+}
+
+const Button = (props: ButtonProps) => {
+  return (
+    <button
+      className='bg-neutral-200'
+      type={props.type}
+      form={props.form}
+    >
+      {props.children}
+    </button>
   );
 };
 
