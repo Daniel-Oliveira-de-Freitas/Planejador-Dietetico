@@ -1,19 +1,51 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Layout from '../components/Layout';
+import { addConsumoHabitual } from '../utils/addConsumoHabitual';
 
 const ConsumoAlimentarHabitual = () => {
+  const [paciente, setPaciente] = useState({});
   const [consumoHabitual, setConsumoHabitual] = useState({
     acucar: false,
+    acucarFreq: 0,
     adocante: false,
-    fritura: false,
+    adocanteFreq: 0,
+    frituras: false,
+    friturasFreq: 0,
     carneComGordura: false,
-    coposDeAgua: '',
-    latasDeOleo: '',
+    carneComGorduraFreq: 0,
+    frangoComPele: false,
+    frangoComPeleFreq: 0,
+    coposDeAgua: 0,
+    latasDeOleo: 0,
     numeroDePessoas: 1,
     localDoAlmoco: '',
     localDaJanta: '',
     quemPrepara: '', // achar um nome melhor
   });
+
+  const tabelaConsumo = [
+    {
+      label: 'açúcar/doces',
+      inputName: 'acucar',
+    },
+    {
+      label: 'adoçante',
+      inputName: 'adocante',
+    },
+    {
+      label: 'frituras',
+      inputName: 'frituras',
+    },
+    {
+      label: 'carne com gordura aparente',
+      inputName: 'carneComGordura',
+    },
+    {
+      label: 'frango com pele',
+      inputName: 'frangoComPele',
+    },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConsumoHabitual(prev => {
@@ -29,113 +61,75 @@ const ConsumoAlimentarHabitual = () => {
     });
   };
 
-  // TODO: colocar react-toastify
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(consumoHabitual);
+    toast.promise(addConsumoHabitual(1, consumoHabitual), {
+      error: 'Não foi possível salvar',
+      pending: 'Salvando...',
+      success: 'Dados salvos com sucesso!',
+    });
   };
 
   return (
-    <>
-      <h2 className='text-2xl'>Consumo Alimentar Habitual</h2>
-      <Link
-        to='/'
-        className='text-blue-600 hover:underline'
+    <Layout>
+      <form
+        onSubmit={handleSubmit}
+        className='w-full'
       >
-        Voltar para o início
-      </Link>
-      <form onSubmit={handleSubmit}>
-        <div className='flex flex-col gap-1'>
-          <CheckBox
-            id='acucar'
-            name='acucar'
-            text='Açúcar/doces'
-            onChange={handleChange}
-          />
-          <CheckBox
-            id='adocante'
-            name='adocante'
-            text='Adoçante'
-            onChange={handleChange}
-          />
-          <CheckBox
-            id='fritura'
-            name='fritura'
-            text='Frituras'
-            onChange={handleChange}
-          />
-          <CheckBox
-            id='carneComGordura'
-            name='carneComGordura'
-            text='Carne com gordura aparente'
-            onChange={handleChange}
-          />
-          <NumberInput
-            name='coposDeAgua'
-            text='copos de água por dia'
-            value={consumoHabitual.coposDeAgua}
-            onChange={handleChange}
-          />
-          <NumberInput
-            name='latasDeOleo'
-            text='latas de óleo por mês'
-            value={consumoHabitual.latasDeOleo}
-            onChange={handleChange}
-          />
-          <NumberInput
-            name='numeroDePessoas'
-            text='número de pessoas'
-            value={consumoHabitual.numeroDePessoas}
-            onChange={handleChange}
-          />
-          <button type='submit'>Salvar</button>
-        </div>
+        <table className='mt-4 divide-y divide-neutral-200 w-full'>
+          <thead>
+            <tr>
+              <th className='uppercase text-sm font-thin tracking-wider'>+</th>
+              <th className='uppercase text-sm font-thin px-4 text-left tracking-wider'>
+                tipo de consumo
+              </th>
+              <th className='uppercase text-sm font-thin tracking-wider text-right px-4'>
+                frequência semanal
+              </th>
+            </tr>
+          </thead>
+          <tbody className='divide-y divide-neutral-200'>
+            {tabelaConsumo.map(item => (
+              <tr
+                className='hover:bg-neutral-200'
+                key={item.inputName}
+              >
+                <td className='py-2 pl-1'>
+                  <input
+                    type='checkbox'
+                    name={item.inputName}
+                    id={item.inputName}
+                    onChange={handleChange}
+                    className='hover:cursor-pointer'
+                  />
+                </td>
+                <td className='px-4'>
+                  <label
+                    className='hover:cursor-pointer'
+                    htmlFor={item.inputName}
+                  >
+                    {item.label}
+                  </label>
+                </td>
+                <td className='px-4'>
+                  <input
+                    type='number'
+                    name={item.inputName + 'Freq'}
+                    className='border rounded-md float-right p-1 text-center'
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button
+          type='submit'
+          className='bg-neutral-500 py-1 px-2 rounded-md hover:bg-neutral-400 text-white text-lg font-semibold mt-2 mr-4 float-right'
+        >
+          Salvar
+        </button>
       </form>
-    </>
-  );
-};
-
-interface CheckBoxProps {
-  text: string;
-  id: string;
-  name: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-}
-
-const CheckBox = (props: CheckBoxProps) => {
-  return (
-    <div>
-      <input
-        type='checkbox'
-        className='mr-1'
-        id={props.id}
-        name={props.name}
-        onChange={props.onChange}
-      />
-      <label htmlFor={props.id}>{props.text}</label>
-    </div>
-  );
-};
-
-interface NumberInputProps {
-  text: string;
-  name: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  value: number | string;
-}
-
-const NumberInput = (props: NumberInputProps) => {
-  return (
-    <div>
-      <input
-        type='number'
-        className='border-2 mr-1 appearance-none'
-        name={props.name}
-        onChange={props.onChange}
-        value={props.value}
-      />
-      <label>{props.text}</label>
-    </div>
+    </Layout>
   );
 };
 

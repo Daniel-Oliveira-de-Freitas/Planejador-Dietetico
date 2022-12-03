@@ -1,15 +1,10 @@
 import { Link } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 const ConsumoAlimentar24h = () => {
   return (
-    <>
+    <Layout>
       <h2 className='text-2xl'>Consumo Alimentar em 24h</h2>
-      <Link
-        to='/'
-        className='text-blue-600 hover:underline'
-      >
-        Voltar para o início
-      </Link>
       <div>
         <details>
           <summary>Desjejum</summary>
@@ -37,7 +32,7 @@ const ConsumoAlimentar24h = () => {
           </table>
         </details>
       </div>
-    </>
+    </Layout>
   );
 };
 

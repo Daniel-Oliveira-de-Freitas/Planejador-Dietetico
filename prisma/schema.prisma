@@ -20,18 +20,24 @@ model Paciente {
 }
 
 model ConsumoHabitual {
-  id              Int        @id @default(autoincrement())
-  acucar          Boolean?
-  adocante        Boolean?
-  frituras        Boolean?
-  carneComGordura Boolean?
-  coposDeAgua     Int?
-  latasDeOleo     Int?
-  numeroDePessoas Int?
-  localDoAlmoco   String?
-  localDaJanta    String?
-  quemPrepara     String?
-  Paciente        Paciente[]
+  id                  Int        @id @default(autoincrement())
+  acucar              Boolean?
+  acucarFreq          Int?
+  adocante            Boolean?
+  adocanteFreq        Int?
+  frituras            Boolean?
+  friturasFreq        Int?
+  carneComGordura     Boolean?
+  carneComGorduraFreq Int?
+  frangoComPele       Boolean?
+  frangoComPeleFreq   Int?
+  coposDeAgua         Int?
+  latasDeOleo         Int?
+  numeroDePessoas     Int?
+  localDoAlmoco       String?
+  localDaJanta        String?
+  quemPrepara         String?
+  Paciente            Paciente[]
 }
 
 model HabitosDeVida {
