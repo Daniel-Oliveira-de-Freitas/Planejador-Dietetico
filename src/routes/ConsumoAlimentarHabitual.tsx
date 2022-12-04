@@ -130,6 +130,150 @@ const ConsumoAlimentarHabitual = () => {
             ))}
           </tbody>
         </table>
+        <div className='mt-4 grid max-w-lg grid-cols-2 gap-4'>
+          <div className='flex flex-col'>
+            <span className='text-sm font-semibold uppercase tracking-wider'>
+              latas de óleo por mês
+            </span>
+            <input
+              type='number'
+              name='latasDeOleo'
+              onChange={handleChange}
+              className='max-w-sm rounded-md border p-1'
+            />
+          </div>
+          <div className='flex flex-col'>
+            <span className='text-sm font-semibold uppercase tracking-wider'>
+              copos de água por dia
+            </span>
+            <input
+              type='number'
+              name='coposDeAgua'
+              onChange={handleChange}
+              className='max-w-sm rounded-md border p-1'
+            />
+          </div>
+          <div className='flex flex-col'>
+            <span className='text-sm font-semibold uppercase tracking-wider'>
+              quem prepara as refeições
+            </span>
+            <input
+              type='text'
+              name='quemPrepara'
+              onChange={handleChange}
+              className='max-w-sm rounded-md border p-1'
+            />
+          </div>
+          <div className='flex flex-col'>
+            <span className='text-sm font-semibold uppercase tracking-wider'>
+              nº de pessoas em casa
+            </span>
+            <input
+              type='number'
+              name='numeroDePessoas'
+              onChange={handleChange}
+              className='max-w-sm rounded-md border p-1 text-center'
+            />
+          </div>
+          <div className='flex flex-col'>
+            <span className='text-sm font-semibold uppercase tracking-wider'>
+              local do almoço
+            </span>
+            <div>
+              <input
+                type='radio'
+                name='localDoAlmoco'
+                className='mr-1 hover:cursor-pointer'
+                id='almocoCasa'
+                onChange={handleChange}
+                value='casa'
+              />
+              <label
+                htmlFor='almocoCasa'
+                className='hover:cursor-pointer'
+              >
+                Casa
+              </label>
+              <input
+                type='radio'
+                name='localDoAlmoco'
+                className='mx-1 hover:cursor-pointer'
+                id='almocoRestaurante'
+                onChange={handleChange}
+                value='restaurante'
+              />
+              <label
+                htmlFor='almocoRestaurante'
+                className='hover:cursor-pointer'
+              >
+                Restaurante
+              </label>
+              <input
+                type='radio'
+                name='localDoAlmoco'
+                className='mx-1 hover:cursor-pointer'
+                id='almocoOutro'
+                onChange={handleChange}
+                value='outro'
+              />
+              <label
+                htmlFor='almocoOutro'
+                className='hover:cursor-pointer'
+              >
+                Outro
+              </label>
+            </div>
+          </div>
+          <div className='flex flex-col'>
+            <span className='text-sm font-semibold uppercase tracking-wider'>
+              local da janta
+            </span>
+            <div>
+              <input
+                type='radio'
+                name='localDaJanta'
+                className='mr-1 hover:cursor-pointer'
+                id='jantaCasa'
+                onChange={handleChange}
+                value='casa'
+              />
+              <label
+                htmlFor='jantaCasa'
+                className='hover:cursor-pointer'
+              >
+                Casa
+              </label>
+              <input
+                type='radio'
+                name='localDaJanta'
+                className='mx-1 hover:cursor-pointer'
+                id='jantaRestaurante'
+                onChange={handleChange}
+                value='restaurante'
+              />
+              <label
+                htmlFor='jantaRestaurante'
+                className='hover:cursor-pointer'
+              >
+                Restaurante
+              </label>
+              <input
+                type='radio'
+                name='localDaJanta'
+                className='mx-1 hover:cursor-pointer'
+                id='jantaOutro'
+                onChange={handleChange}
+                value='outro'
+              />
+              <label
+                htmlFor='jantaOutro'
+                className='hover:cursor-pointer'
+              >
+                Outro
+              </label>
+            </div>
+          </div>
+        </div>
         <button
           type='submit'
           className='float-right mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
