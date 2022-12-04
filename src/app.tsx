@@ -4,6 +4,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import Home from './routes/Home';
 import ConsumoAlimentar24h from './routes/ConsumoAlimentar24h';
 import ConsumoAlimentarHabitual from './routes/ConsumoAlimentarHabitual';
+import DietaPaciente from './routes/DietaPaciente';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,6 +35,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route
           path='/consumohabitual'
           element={<ConsumoAlimentarHabitual />}
+        />
+        <Route
+          path='/dietaPaciente'
+          element={<DietaPaciente />}
         />
       </Routes>
     </MemoryRouter>

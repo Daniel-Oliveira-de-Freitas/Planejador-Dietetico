@@ -22,6 +22,10 @@ const Layout = (props: NavbarProps) => {
       label: 'Consumo 24h',
       href: '/consumo24h',
     },
+    {
+      label: 'Dieta Paciente',
+      href: '/dietaPaciente',
+    },
   ];
 
   return (
