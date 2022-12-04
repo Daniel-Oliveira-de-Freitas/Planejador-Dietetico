@@ -139,7 +139,7 @@ const ConsumoAlimentarHabitual = () => {
               type='number'
               name='latasDeOleo'
               onChange={handleChange}
-              className='max-w-sm rounded-md border p-1'
+              className='max-w-sm rounded-md border p-1 text-center'
             />
           </div>
           <div className='flex flex-col'>
@@ -150,7 +150,7 @@ const ConsumoAlimentarHabitual = () => {
               type='number'
               name='coposDeAgua'
               onChange={handleChange}
-              className='max-w-sm rounded-md border p-1'
+              className='max-w-sm rounded-md border p-1 text-center'
             />
           </div>
           <div className='flex flex-col'>
@@ -161,7 +161,7 @@ const ConsumoAlimentarHabitual = () => {
               type='text'
               name='quemPrepara'
               onChange={handleChange}
-              className='max-w-sm rounded-md border p-1'
+              className='max-w-sm rounded-md border p-1 text-center'
             />
           </div>
           <div className='flex flex-col'>
