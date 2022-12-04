@@ -90,3 +90,6 @@ out/
 
 # Env
 .env
+
+# VS Code
+.vscode/
