@@ -76,14 +76,14 @@ const ConsumoAlimentarHabitual = () => {
         onSubmit={handleSubmit}
         className='w-full'
       >
-        <table className='mt-4 divide-y divide-neutral-200 w-full'>
+        <table className='mt-4 w-full divide-y divide-neutral-200'>
           <thead>
             <tr>
-              <th className='uppercase text-sm font-thin tracking-wider'>+</th>
-              <th className='uppercase text-sm font-thin px-4 text-left tracking-wider'>
+              <th className='text-sm font-thin uppercase tracking-wider'>+</th>
+              <th className='px-4 text-left text-sm font-thin uppercase tracking-wider'>
                 tipo de consumo
               </th>
-              <th className='uppercase text-sm font-thin tracking-wider text-right px-4'>
+              <th className='px-4 text-right text-sm font-thin uppercase tracking-wider'>
                 frequência semanal
               </th>
             </tr>
@@ -115,7 +115,7 @@ const ConsumoAlimentarHabitual = () => {
                   <input
                     type='number'
                     name={item.inputName + 'Freq'}
-                    className='border rounded-md float-right p-1 text-center'
+                    className='float-right rounded-md border p-1 text-center'
                   />
                 </td>
               </tr>
@@ -124,7 +124,7 @@ const ConsumoAlimentarHabitual = () => {
         </table>
         <button
           type='submit'
-          className='bg-neutral-500 py-1 px-2 rounded-md hover:bg-neutral-400 text-white text-lg font-semibold mt-2 mr-4 float-right'
+          className='float-right mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
         >
           Salvar
         </button>
