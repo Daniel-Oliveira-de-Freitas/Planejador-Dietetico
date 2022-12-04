@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { getPaciente } from '../utils/getPaciente';
 import Layout from '../components/Layout';
 import { addConsumoHabitual } from '../utils/addConsumoHabitual';
+import { Paciente } from '@prisma/client';
 
 const ConsumoAlimentarHabitual = () => {
-  const [paciente, setPaciente] = useState({});
+  const [paciente, setPaciente] = useState<Paciente>();
+
+  useEffect(() => {
+    getPaciente(1).then(setPaciente); // TODO: mudar para id do paciente selecionado
+  }, []);
+
   const [consumoHabitual, setConsumoHabitual] = useState({
     acucar: false,
     acucarFreq: 0,
@@ -114,7 +121,8 @@ const ConsumoAlimentarHabitual = () => {
                 <td className='px-4'>
                   <input
                     type='number'
-                    name={item.inputName + 'Freq'}
+                    name={`${item.inputName}Freq`}
+                    onChange={handleChange}
                     className='float-right rounded-md border p-1 text-center'
                   />
                 </td>
