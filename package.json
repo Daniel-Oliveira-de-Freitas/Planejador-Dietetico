@@ -30,6 +30,7 @@
     "@types/node": "^18.11.10",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@types/react-modal": "^3.13.1",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "@vercel/webpack-asset-relocator-loader": "^1.7.3",
@@ -55,6 +56,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.4.3",
     "react-toastify": "^9.1.1"
   }
