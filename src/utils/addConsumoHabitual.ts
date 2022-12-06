@@ -1,8 +1,14 @@
 interface ConsumoHabitual {
   acucar: boolean;
+  acucarFreq: number;
   adocante: boolean;
+  adocanteFreq: number;
   frituras: boolean;
+  friturasFreq: number;
   carneComGordura: boolean;
+  carneComGorduraFreq: number;
+  frangoComPele: boolean;
+  frangoComPeleFreq: number;
   coposDeAgua: number;
   latasDeOleo: number;
   numeroDePessoas: number;

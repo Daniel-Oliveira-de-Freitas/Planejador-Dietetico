@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import Modal from '../components/Modal';
 import Layout from '../components/Layout';
 
 const ConsumoAlimentar24h = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <Layout>
       <h2 className='text-2xl'>Consumo Alimentar em 24h</h2>
@@ -11,12 +13,24 @@ const ConsumoAlimentar24h = () => {
           <table>
             <thead>
               <tr>
-                <th>nome</th>
-                <th>quantidade</th>
-                <th>kcal</th>
-                <th>carboidratos</th>
-                <th>proteínas</th>
-                <th>gorduras</th>
+                <th className='text-left text-sm font-thin uppercase tracking-wider'>
+                  nome
+                </th>
+                <th className='text-left text-sm font-thin uppercase tracking-wider'>
+                  qtd
+                </th>
+                <th className='text-sm font-thin uppercase tracking-wider'>
+                  kcal
+                </th>
+                <th className='text-sm font-thin uppercase tracking-wider'>
+                  carb.
+                </th>
+                <th className='text-sm font-thin uppercase tracking-wider'>
+                  prot.
+                </th>
+                <th className='text-sm font-thin uppercase tracking-wider'>
+                  gord.
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -31,6 +45,18 @@ const ConsumoAlimentar24h = () => {
             </tbody>
           </table>
         </details>
+        <Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        >
+          salve
+        </Modal>
+        <button
+          onClick={() => setIsOpen(true)}
+          className='float-right mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
+        >
+          Adicionar
+        </button>
       </div>
     </Layout>
   );
