@@ -99,6 +99,11 @@ const ConsumoAlimentar24h = () => {
                 <Combobox.Option
                   key={food.id}
                   value={food.description}
+                  className={({ active }) =>
+                    `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                      active ? 'bg-gray-600 text-white' : 'text-gray-900'
+                    }`
+                  }
                 >
                   {food.description}
                 </Combobox.Option>
@@ -119,6 +124,11 @@ const ConsumoAlimentar24h = () => {
                 <Combobox.Option
                   key={food.id}
                   value={food.description}
+                  className={({ active }) =>
+                    `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                      active ? 'bg-gray-600 text-white' : 'text-gray-900'
+                    }`
+                  }
                 >
                   {food.description}
                 </Combobox.Option>
