@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Combobox } from '@headlessui/react';
 import Modal from '../components/Modal';
 import Layout from '../components/Layout';
-import { getAllFoods } from '../utils/taco/getAllFoods';
+import { getAllTacoFoods } from '../utils/taco/getAllTacoFoods';
 import { AlimentoTACO } from '@prisma/client';
 
 const ConsumoAlimentar24h = () => {
@@ -13,7 +13,7 @@ const ConsumoAlimentar24h = () => {
   const [selectedFood, setSelectedFood] = useState(tacoFoods[0]);
 
   useEffect(() => {
-    getAllFoods().then(setTacoFoods);
+    getAllTacoFoods().then(setTacoFoods);
   });
 
   const filteredFoods =
