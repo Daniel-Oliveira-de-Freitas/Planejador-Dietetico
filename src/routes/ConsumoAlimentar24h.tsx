@@ -1,9 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Combobox } from '@headlessui/react';
 import Modal from '../components/Modal';
 import Layout from '../components/Layout';
+import { getAllFoods } from '../utils/taco/getAllFoods';
+import { AlimentoTACO } from '@prisma/client';
 
 const ConsumoAlimentar24h = () => {
+  const MAX_RESULTS = 5;
   const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [tacoFoods, setTacoFoods] = useState<AlimentoTACO[]>([]);
+  const [selectedFood, setSelectedFood] = useState(tacoFoods[0]);
+
+  useEffect(() => {
+    getAllFoods().then(setTacoFoods);
+  });
+
+  const filteredFoods =
+    query === ''
+      ? tacoFoods.slice(0, MAX_RESULTS)
+      : tacoFoods
+          .filter(food => {
+            return food.description.toLowerCase().includes(query.toLowerCase());
+          })
+          .slice(0, MAX_RESULTS);
+
   return (
     <Layout>
       <h2 className='text-2xl'>Consumo Alimentar em 24h</h2>
@@ -49,7 +70,26 @@ const ConsumoAlimentar24h = () => {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
         >
-          salve
+          <Combobox
+            value={selectedFood}
+            onChange={setSelectedFood}
+          >
+            <Combobox.Input
+              onChange={event => setQuery(event.target.value)}
+              className='rounded-md border p-1'
+              placeholder='Alimento TACO'
+            />
+            <Combobox.Options>
+              {filteredFoods.map(food => (
+                <Combobox.Option
+                  key={food.id}
+                  value={food.description}
+                >
+                  {food.description}
+                </Combobox.Option>
+              ))}
+            </Combobox.Options>
+          </Combobox>
         </Modal>
         <button
           onClick={() => setIsOpen(true)}
