@@ -10,13 +10,13 @@ const ConsumoAlimentar24h = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACO[]>([]);
-  const [selectedFood, setSelectedFood] = useState(tacoFoods[0]);
+  const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
 
   useEffect(() => {
     getAllTacoFoods().then(setTacoFoods);
   });
 
-  const filteredFoods =
+  const filteredTacoFoods =
     query === ''
       ? tacoFoods.slice(0, MAX_RESULTS)
       : tacoFoods
@@ -71,8 +71,8 @@ const ConsumoAlimentar24h = () => {
           setIsOpen={setIsOpen}
         >
           <Combobox
-            value={selectedFood}
-            onChange={setSelectedFood}
+            value={selectedTacoFood}
+            onChange={setSelectedTacoFood}
           >
             <Combobox.Input
               onChange={event => setQuery(event.target.value)}
@@ -80,7 +80,7 @@ const ConsumoAlimentar24h = () => {
               placeholder='Alimento TACO'
             />
             <Combobox.Options>
-              {filteredFoods.map(food => (
+              {filteredTacoFoods.map(food => (
                 <Combobox.Option
                   key={food.id}
                   value={food.description}
