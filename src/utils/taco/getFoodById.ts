@@ -1,7 +1,9 @@
-import foodList from '../../data/taco/foodList.json';
+export const getFoodById = async (id: number) => {
+  const food = await window.prisma.alimentoTACO.findUnique({
+    where: {
+      id,
+    },
+  });
 
-const getFoodById = (foodId: number) => {
-  return foodList.filter(food => food.id.toString() === foodId.toString());
+  return food;
 };
-
-export default getFoodById;

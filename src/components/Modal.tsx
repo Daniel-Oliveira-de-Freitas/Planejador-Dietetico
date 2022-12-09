@@ -4,6 +4,7 @@ interface ModalProps {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   children: React.ReactNode;
+  description?: string;
 }
 
 const Modal = (props: ModalProps) => {
@@ -21,7 +22,9 @@ const Modal = (props: ModalProps) => {
       <div className='fixed inset-0 flex items-center justify-center'>
         <Dialog.Panel className='mx-auto max-w-md rounded bg-white p-4'>
           <Dialog.Title className='text-2xl'>Adicionar alimento</Dialog.Title>
-          <Dialog.Description>descrição</Dialog.Description>
+          {props.description ?? (
+            <Dialog.Description>{props.description}</Dialog.Description>
+          )}
           {props.children}
         </Dialog.Panel>
       </div>
