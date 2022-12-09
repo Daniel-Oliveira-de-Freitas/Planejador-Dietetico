@@ -29,9 +29,9 @@ const Layout = (props: NavbarProps) => {
   ];
 
   return (
-    <div className='flex h-screen'>
+    <div className='sticky flex h-screen'>
       <aside className='w-48 border-r-2 bg-neutral-100'>
-        <h2 className='text-lg font-bold pl-2 my-2'>{APP_NAME}</h2>
+        <h2 className='my-2 pl-2 text-lg font-bold'>{APP_NAME}</h2>
         <ul>
           {NAV_ITEMS.map(item => (
             <NavItem
@@ -43,7 +43,7 @@ const Layout = (props: NavbarProps) => {
           ))}
         </ul>
       </aside>
-      <main className='p-4 w-full'>{props.children}</main>
+      <main className='w-full p-4'>{props.children}</main>
     </div>
   );
 };
@@ -56,7 +56,7 @@ interface NavItemProps {
 const NavItem = (props: NavItemProps) => {
   return (
     <Link to={props.href}>
-      <li className='py-1 hover:bg-neutral-200 pl-2'>{props.children}</li>
+      <li className='py-1 pl-2 hover:bg-neutral-200'>{props.children}</li>
     </Link>
   );
 };
