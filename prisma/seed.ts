@@ -14,6 +14,7 @@ async function main() {
       },
     });
   }
+
   for (let i = 0; i < pinheiro.length; i++) {
     for (let k = 0; k < pinheiro[i].measures.length; k++) {
       await prisma.alimentoPinheiro.update({
@@ -195,6 +196,23 @@ async function main() {
             kj: food.energy?.kj,
           },
         },
+      },
+    });
+  }
+
+  const tiposDeRefeicao = [
+    'Desjejum',
+    'Colação',
+    'Almoço',
+    'Lanche',
+    'Jantar',
+    'Ceia',
+  ];
+
+  for (let nome of tiposDeRefeicao) {
+    await prisma.tipoDeRefeicao.create({
+      data: {
+        nome,
       },
     });
   }
