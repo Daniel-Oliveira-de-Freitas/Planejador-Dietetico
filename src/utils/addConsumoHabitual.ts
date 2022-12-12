@@ -21,7 +21,6 @@ export const addConsumoHabitual = async (
   pacienteId: number,
   data: ConsumoHabitual
 ) => {
-  // await window.electronAPI.prisma.consumoHabitual.create({
   await window.prisma.consumoHabitual.create({
     data,
     select: {
