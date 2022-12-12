@@ -1,10 +1,25 @@
 import Layout from '../components/Layout';
 import Modal from 'react-modal';
-import { useState } from 'react';
-import { PieChart, Pie } from 'recharts';
+import { useEffect, useState } from 'react';
+import { AlimentoPinheiro, AlimentoTACO, Paciente } from '.prisma/client';
+import { getPaciente } from '../utils/getPaciente';
+import { addDietaPaciente } from '../utils/addDietaPaciente';
+import { toast } from 'react-toastify';
+import { Combobox } from '@headlessui/react';
+import { getAllTacoFoods } from '../utils/taco/getAllTacoFoods';
+import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
 Modal.setAppElement('#root');
 
 const DietaPaciente = () => {
+  const MAX_RESULTS = 5;
+  const [query, setQuery] = useState('');
+  const [tacoFoods, setTacoFoods] = useState<AlimentoTACO[]>([]);
+  const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
+  const [pinheiroFoods, setPinheiroFoods] = useState<AlimentoPinheiro[]>([]);
+  const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(
+    pinheiroFoods[0]
+  );
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function handleOpenModal() {
@@ -15,13 +30,66 @@ const DietaPaciente = () => {
     setIsOpen(false);
   }
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      rigth: 'auto',
-    },
+  const [paciente, setPaciente] = useState<Paciente>();
+
+  useEffect(() => {
+    getPaciente(1).then(setPaciente); // TODO: mudar para id do paciente selecionado
+  }, []);
+
+  const [dieta, setDieta] = useState({
+    alimentoTacoId: 1,
+    alimentoPinheiroId: 1,
+    tipoRefeicao: 'dd',
+    horario: 'dd',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDieta(prev => {
+      if (e.target.type === 'checkbox') {
+        return { ...prev, [e.target.name]: e.target.checked };
+      }
+
+      if (e.target.type === 'number') {
+        return { ...prev, [e.target.name]: parseInt(e.target.value) };
+      }
+
+      return { ...prev, [e.target.name]: e.target.value };
+    });
   };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast.promise(addDietaPaciente(1, dieta), {
+      error: 'Não foi possível salvar',
+      pending: 'Salvando...',
+      success: 'Dados salvos com sucesso!',
+    });
+  };
+
+  useEffect(() => {
+    getAllTacoFoods().then(setTacoFoods);
+    getAllPinheiroFoods().then(setPinheiroFoods);
+  }, []);
+
+  const filteredTacoFoods =
+    query === ''
+      ? tacoFoods.slice(0, MAX_RESULTS)
+      : tacoFoods
+          .filter(food => {
+            return food.description.toLowerCase().includes(query.toLowerCase());
+          })
+          .slice(0, MAX_RESULTS);
+
+  const filteredPinheiroFoods =
+    query === ''
+      ? pinheiroFoods.slice(0, MAX_RESULTS)
+      : pinheiroFoods
+          .filter(food => {
+            return food.description.toLowerCase().includes(query.toLowerCase());
+          })
+          .slice(0, MAX_RESULTS);
+
+  // const test = tacoFoods.filter(food => food.description == selectedTacoFood);
 
   return (
     <Layout>
@@ -35,7 +103,9 @@ const DietaPaciente = () => {
         </button>
       </div>
       <h1 className='text-2xl'>Dieta do paciente</h1>
-      <h2>Nome do paciente: </h2>
+      <h2>
+        Nome do paciente: {typeof paciente != 'undefined' ? paciente.nome : ''}
+      </h2>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
@@ -46,6 +116,7 @@ const DietaPaciente = () => {
             Prescrição dietética
           </h2>
           <form
+            onSubmit={handleSubmit}
             className='space-y-4'
             action='#'
           >
@@ -60,12 +131,25 @@ const DietaPaciente = () => {
                   className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 >
                   <option value='desjejum'>Desjejum</option>
-                  <option value='cotacao'>Cotacao</option>
+                  <option value='colacao'>Colacao</option>
                   <option value='almoco'>Almoço</option>
                   <option value='lanche'>Lanche</option>
                   <option value='jantar'>Jantar</option>
                   <option value='ceia'>Ceia</option>
                 </select>
+              </div>
+              <div className='float-right '>
+                <label className='mb-2 block text-sm font-medium text-gray-900 '>
+                  Horário da Refeição
+                </label>
+                <input
+                  type='horaAlimento'
+                  name='horaAlimento'
+                  id='horaAlimento'
+                  placeholder='Arroz doce'
+                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                  onChange={handleChange}
+                />
               </div>
             </div>
             <div className='flow-root'>
@@ -73,25 +157,61 @@ const DietaPaciente = () => {
                 <label className='mb-2 block text-sm font-medium text-gray-900'>
                   Nome do Alimento
                 </label>
-                <input
-                  type='text'
-                  name='nomeAlimento'
-                  id='nomeAlimento'
-                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                  placeholder='Arroz'
-                />
+                <Combobox
+                  value={selectedTacoFood}
+                  onChange={setSelectedTacoFood}
+                >
+                  <Combobox.Input
+                    onChange={event => setQuery(event.target.value)}
+                    className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                    placeholder='Alimento TACO'
+                  />
+                  <Combobox.Options>
+                    {filteredTacoFoods.map(food => (
+                      <Combobox.Option
+                        key={food.id}
+                        value={food.description}
+                        className={({ active }) =>
+                          `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                            active ? 'bg-gray-600 text-white' : 'text-gray-900'
+                          }`
+                        }
+                      >
+                        {food.description}
+                      </Combobox.Option>
+                    ))}
+                  </Combobox.Options>
+                </Combobox>
               </div>
               <div className='float-right '>
                 <label className='mb-2 block text-sm font-medium text-gray-900 '>
                   Descrição do Alimento
                 </label>
-                <input
-                  type='descricaoAlimento'
-                  name='descricaoAlimento'
-                  id='descricaoAlimento'
-                  placeholder='Arroz doce'
-                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                />
+                <Combobox
+                  value={selectedPinheiroFood}
+                  onChange={setSelectedPinheiroFood}
+                >
+                  <Combobox.Input
+                    onChange={event => setQuery(event.target.value)}
+                    className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                    placeholder='Alimento Pinheiro'
+                  />
+                  <Combobox.Options>
+                    {filteredPinheiroFoods.map(food => (
+                      <Combobox.Option
+                        key={food.id}
+                        value={food.description}
+                        className={({ active }) =>
+                          `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                            active ? 'bg-gray-600 text-white' : 'text-gray-900'
+                          }`
+                        }
+                      >
+                        {food.description}
+                      </Combobox.Option>
+                    ))}
+                  </Combobox.Options>
+                </Combobox>
               </div>
             </div>
             <div className='flow-root'>
@@ -100,11 +220,12 @@ const DietaPaciente = () => {
                   Quantidade em Gramas
                 </label>
                 <input
-                  type=''
+                  type='text'
                   name='quantidadeGramas'
                   id='quantidadeGramas'
                   placeholder='250'
                   className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                  onChange={handleChange}
                 />
               </div>
 
@@ -118,13 +239,14 @@ const DietaPaciente = () => {
                   id='quantidadeCaseiras'
                   placeholder='5 colheres'
                   className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                  onChange={handleChange}
                 />
               </div>
             </div>
             <hr />
             <div className='text-end'>
               <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                Calorias: 125 calorias
+                Calorias: calorias
               </label>
               <label className=' mb-2 block text-sm font-medium text-gray-900'>
                 Carboidratos: 28 g
@@ -147,7 +269,7 @@ const DietaPaciente = () => {
                 </button>
                 <button
                   data-modal-toggle='defaultModal'
-                  type='button'
+                  type='submit'
                   className='rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
                 >
                   Adicionar
@@ -218,7 +340,7 @@ const DietaPaciente = () => {
       </details>
       <hr />
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
-        <summary>Cotação</summary>
+        <summary>Colação</summary>
         <table className='w-full text-left text-sm text-gray-500'>
           <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>

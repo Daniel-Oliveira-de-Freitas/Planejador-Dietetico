@@ -17,14 +17,34 @@ model Paciente {
   consumoHabitualId Int?
   HabitosDeVida     HabitosDeVida?   @relation(fields: [habitosDeVidaId], references: [id])
   habitosDeVidaId   Int?
-  consumo24h        Consumo24h       @relation(fields: [consumo24hId], references: [id])
-  consumo24hId      Int
+  consumo24h        Consumo24h?       @relation(fields: [consumo24hId], references: [id])
+  consumo24hId      Int?
+  dieta             Dieta?            @relation(fields: [dietaId], references: [id])
+  dietaId             Int?
 }
 
 model Consumo24h {
   id        Int                  @id @default(autoincrement())
   refeicoes RefeicaoConsumo24h[]
   Paciente  Paciente[]
+}
+
+model Dieta {
+  id        Int                  @id @default(autoincrement())
+  tipoRefeicao String
+  refeicoes RefeicaoDieta[]
+  Paciente  Paciente[]
+}
+
+model RefeicaoDieta {
+  id                 Int              @id @default(autoincrement())
+  alimentoTACO       AlimentoTACO     @relation(fields: [alimentoTACOId], references: [id])
+  alimentoPinheiro   AlimentoPinheiro @relation(fields: [alimentoPinheiroId], references: [id])
+  dieta              Dieta?      @relation(fields: [dietaId], references: [id])
+  dietaId            Int?
+  alimentoTACOId     Int
+  alimentoPinheiroId Int
+  horario            DateTime
 }
 
 model TipoDeRefeicao {
@@ -84,6 +104,8 @@ model AlimentoPinheiro {
   description        String
   measures           MeasurePinheiro[]
   RefeicaoConsumo24h RefeicaoConsumo24h[]
+  RefeicaoDieta RefeicaoDieta[]
+
 }
 
 model MeasurePinheiro {
@@ -133,6 +155,7 @@ model AlimentoTACO {
   monounsaturated    Monounsaturated[]
   polyunsaturated    Polyunsaturated[]
   RefeicaoConsumo24h RefeicaoConsumo24h[]
+  RefeicaoDieta      RefeicaoDieta[]
 }
 
 model Humidity {
