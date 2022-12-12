@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import Modal from 'react-modal';
 import { useState } from 'react';
-import { PieChart, Pie} from 'recharts';
+import { PieChart, Pie } from 'recharts';
 Modal.setAppElement('#root');
 
 const DietaPaciente = () => {
@@ -23,14 +23,12 @@ const DietaPaciente = () => {
     },
   };
 
-  
-
   return (
     <Layout>
       <div className='float-right'>
         <button
           type='button'
-          className=' bg-blue-500 text-white font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-blue-300'
+          className=' mr-2 mb-2 rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium focus:outline-none focus:ring-4 focus:ring-blue-300'
           onClick={handleOpenModal}
         >
           + Adicionar Refeição
@@ -41,10 +39,10 @@ const DietaPaciente = () => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
-        className='mt-6 mr-12 ml-12  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-6 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+        className='mt-6 mr-12 ml-12  block rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
       >
         <div className='px-6 py-6 lg:px-8'>
-          <h2 className='mb-4 text-xl text-center font-medium text-gray-900 dark:text-white'>
+          <h2 className='mb-4 text-center text-xl font-medium text-gray-900'>
             Prescrição dietética
           </h2>
           <form
@@ -53,13 +51,13 @@ const DietaPaciente = () => {
           >
             <div className='flow-root'>
               <div className='float-left '>
-                <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                <label className='mb-2 block text-sm font-medium text-gray-900'>
                   Refeição:
                 </label>
                 <select
                   name='refeicao'
                   id='refeicao'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 >
                   <option value='desjejum'>Desjejum</option>
                   <option value='cotacao'>Cotacao</option>
@@ -72,19 +70,19 @@ const DietaPaciente = () => {
             </div>
             <div className='flow-root'>
               <div className='float-left '>
-                <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                <label className='mb-2 block text-sm font-medium text-gray-900'>
                   Nome do Alimento
                 </label>
                 <input
                   type='text'
                   name='nomeAlimento'
                   id='nomeAlimento'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                   placeholder='Arroz'
                 />
               </div>
               <div className='float-right '>
-                <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                <label className='mb-2 block text-sm font-medium text-gray-900 '>
                   Descrição do Alimento
                 </label>
                 <input
@@ -92,13 +90,13 @@ const DietaPaciente = () => {
                   name='descricaoAlimento'
                   id='descricaoAlimento'
                   placeholder='Arroz doce'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 />
               </div>
             </div>
             <div className='flow-root'>
               <div className='float-left '>
-                <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                <label className='mb-2 block text-sm font-medium text-gray-900 '>
                   Quantidade em Gramas
                 </label>
                 <input
@@ -106,12 +104,12 @@ const DietaPaciente = () => {
                   name='quantidadeGramas'
                   id='quantidadeGramas'
                   placeholder='250'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 />
               </div>
 
               <div className='float-right '>
-                <label className=' block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                <label className=' mb-2 block text-sm font-medium text-gray-900 '>
                   Quantidade em Medidas Caseiras
                 </label>
                 <input
@@ -119,38 +117,38 @@ const DietaPaciente = () => {
                   name='quantidadeCaseiras'
                   id='quantidadeCaseiras'
                   placeholder='5 colheres'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 />
               </div>
             </div>
             <hr />
-            <div className='text-end' >
-            <label className=' block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
-              Calorias: 125 calorias
-            </label>
-            <label className=' block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
-              Carboidratos: 28 g
-            </label>
-            <label className=' block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
-              Proteínas: 2,5 g
-            </label>
-            <label className=' block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
-              Gorduras: 0,2 g
-            </label>
+            <div className='text-end'>
+              <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                Calorias: 125 calorias
+              </label>
+              <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                Carboidratos: 28 g
+              </label>
+              <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                Proteínas: 2,5 g
+              </label>
+              <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                Gorduras: 0,2 g
+              </label>
             </div>
             <div className=''>
-              <div className='mr-2 p-5 space-x-4 border-separate border-gray-200 rounded-b dark:border-gray-600'>
+              <div className='mr-2 border-separate space-x-4 rounded-b border-gray-200 p-5 dark:border-gray-600'>
                 <button
                   data-modal-toggle='defaultModal'
                   type='button'
-                  className='text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600'
+                  className='rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 '
                 >
                   Cancelar
                 </button>
                 <button
                   data-modal-toggle='defaultModal'
                   type='button'
-                  className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  className='rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
                 >
                   Adicionar
                 </button>
@@ -160,10 +158,10 @@ const DietaPaciente = () => {
         </div>
       </Modal>
 
-      <details className='flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100'>
+      <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Desjejum</summary>
-        <table className='w-full text-sm text-left text-gray-500'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
+        <table className='w-full text-left text-sm text-gray-500'>
+          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>
               <th
                 scope='col'
@@ -204,10 +202,10 @@ const DietaPaciente = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white border-b'>
+            <tr className='border-b bg-white'>
               <th
                 scope='row'
-                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap'
+                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
               ></th>
               <td className='py-4 px-6'></td>
               <td className='py-4 px-6'></td>
@@ -219,10 +217,10 @@ const DietaPaciente = () => {
         </table>
       </details>
       <hr />
-      <details className='flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100'>
+      <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Cotação</summary>
-        <table className='w-full text-sm text-left text-gray-500'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
+        <table className='w-full text-left text-sm text-gray-500'>
+          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>
               <th
                 scope='col'
@@ -263,10 +261,10 @@ const DietaPaciente = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white border-b'>
+            <tr className='border-b bg-white'>
               <th
                 scope='row'
-                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap'
+                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
               ></th>
               <td className='py-4 px-6'></td>
               <td className='py-4 px-6'></td>
@@ -278,10 +276,10 @@ const DietaPaciente = () => {
         </table>
       </details>
       <hr />
-      <details className='flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100'>
+      <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Almoço</summary>
-        <table className='w-full text-sm text-left text-gray-500'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
+        <table className='w-full text-left text-sm text-gray-500'>
+          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>
               <th
                 scope='col'
@@ -322,10 +320,10 @@ const DietaPaciente = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white border-b'>
+            <tr className='border-b bg-white'>
               <th
                 scope='row'
-                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap'
+                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
               ></th>
               <td className='py-4 px-6'></td>
               <td className='py-4 px-6'></td>
@@ -337,10 +335,10 @@ const DietaPaciente = () => {
         </table>
       </details>
       <hr />
-      <details className='flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100'>
+      <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Lanche</summary>
-        <table className='w-full text-sm text-left text-gray-500'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
+        <table className='w-full text-left text-sm text-gray-500'>
+          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>
               <th
                 scope='col'
@@ -381,10 +379,10 @@ const DietaPaciente = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white border-b'>
+            <tr className='border-b bg-white'>
               <th
                 scope='row'
-                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap'
+                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
               ></th>
               <td className='py-4 px-6'></td>
               <td className='py-4 px-6'></td>
@@ -396,10 +394,10 @@ const DietaPaciente = () => {
         </table>
       </details>
       <hr />
-      <details className='flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100'>
+      <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Jantar</summary>
-        <table className='w-full text-sm text-left text-gray-500'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
+        <table className='w-full text-left text-sm text-gray-500'>
+          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>
               <th
                 scope='col'
@@ -440,10 +438,10 @@ const DietaPaciente = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white border-b'>
+            <tr className='border-b bg-white'>
               <th
                 scope='row'
-                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap'
+                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
               ></th>
               <td className='py-4 px-6'></td>
               <td className='py-4 px-6'></td>
@@ -455,10 +453,10 @@ const DietaPaciente = () => {
         </table>
       </details>
       <hr />
-      <details className='flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100'>
+      <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Ceia</summary>
-        <table className='w-full text-sm text-left text-gray-500'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
+        <table className='w-full text-left text-sm text-gray-500'>
+          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>
               <th
                 scope='col'
@@ -499,10 +497,10 @@ const DietaPaciente = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white border-b'>
+            <tr className='border-b bg-white'>
               <th
                 scope='row'
-                className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap'
+                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
               ></th>
               <td className='py-4 px-6'></td>
               <td className='py-4 px-6'></td>
