@@ -17,10 +17,8 @@ model Paciente {
   consumoHabitualId Int?
   HabitosDeVida     HabitosDeVida?   @relation(fields: [habitosDeVidaId], references: [id])
   habitosDeVidaId   Int?
-  consumo24h        Consumo24h?       @relation(fields: [consumo24hId], references: [id])
+  consumo24h        Consumo24h?      @relation(fields: [consumo24hId], references: [id])
   consumo24hId      Int?
-  dieta             Dieta?            @relation(fields: [dietaId], references: [id])
-  dietaId             Int?
 }
 
 model Consumo24h {
