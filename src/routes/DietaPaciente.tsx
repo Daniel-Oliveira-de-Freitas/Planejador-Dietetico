@@ -1,21 +1,68 @@
 import Layout from '../components/Layout';
 import Modal from 'react-modal';
 import { useEffect, useState } from 'react';
-import { AlimentoPinheiro, AlimentoTACO, Paciente } from '.prisma/client';
+import { Paciente } from '.prisma/client';
 import { getPaciente } from '../utils/getPaciente';
 import { addDietaPaciente } from '../utils/addDietaPaciente';
 import { toast } from 'react-toastify';
 import { Combobox } from '@headlessui/react';
 import { getAllTacoFoods } from '../utils/taco/getAllTacoFoods';
+import {
+  AlimentoPinheiro,
+  AlimentoTACO,
+  Carbohydrate,
+  Energy,
+  Lipid,
+  MeasurePinheiro,
+  Protein,
+  RefeicaoConsumo24h,
+} from '@prisma/client';
 import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
+
 Modal.setAppElement('#root');
+
+interface AlimentoTACOComMacros extends AlimentoTACO {
+  energy: Energy[];
+  carbohydrate: Carbohydrate[];
+  protein: Protein[];
+  lipid: Lipid[];
+}
+
+interface AlimentoPinheiroComMedidas extends AlimentoPinheiro {
+  measures: MeasurePinheiro[];
+}
+
+interface Refeicao {
+  alimentoTACO: AlimentoTACOComMacros;
+  alimentoPinheiro: AlimentoPinheiroComMedidas;
+  horario: Date;
+  tipoDeRefeicaoId: number;
+}
 
 const DietaPaciente = () => {
   const MAX_RESULTS = 5;
   const [query, setQuery] = useState('');
-  const [tacoFoods, setTacoFoods] = useState<AlimentoTACO[]>([]);
+  const [horario, setHorario] = useState<Date>();
+  const [consumo24h, setConsumo24h] = useState({
+    periodoSelecionado: 'Colação' as
+      | 'Colação'
+      | 'Desjejum'
+      | 'Almoço'
+      | 'Lanche'
+      | 'Jantar'
+      | 'Ceia',
+    colacao: [] as Refeicao[],
+    desjejum: [],
+    almoco: [],
+    lanche: [],
+    jantar: [],
+    ceia: [],
+  });
+  const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
-  const [pinheiroFoods, setPinheiroFoods] = useState<AlimentoPinheiro[]>([]);
+  const [pinheiroFoods, setPinheiroFoods] = useState<
+    AlimentoPinheiroComMedidas[]
+  >([]);
   const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(
     pinheiroFoods[0]
   );
@@ -33,6 +80,8 @@ const DietaPaciente = () => {
   const [paciente, setPaciente] = useState<Paciente>();
 
   useEffect(() => {
+    getAllTacoFoods().then(setTacoFoods);
+    getAllPinheiroFoods().then(setPinheiroFoods);
     getPaciente(1).then(setPaciente); // TODO: mudar para id do paciente selecionado
   }, []);
 
@@ -43,20 +92,6 @@ const DietaPaciente = () => {
     horario: 'dd',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDieta(prev => {
-      if (e.target.type === 'checkbox') {
-        return { ...prev, [e.target.name]: e.target.checked };
-      }
-
-      if (e.target.type === 'number') {
-        return { ...prev, [e.target.name]: parseInt(e.target.value) };
-      }
-
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast.promise(addDietaPaciente(1, dieta), {
@@ -65,11 +100,6 @@ const DietaPaciente = () => {
       success: 'Dados salvos com sucesso!',
     });
   };
-
-  useEffect(() => {
-    getAllTacoFoods().then(setTacoFoods);
-    getAllPinheiroFoods().then(setPinheiroFoods);
-  }, []);
 
   const filteredTacoFoods =
     query === ''
@@ -89,7 +119,20 @@ const DietaPaciente = () => {
           })
           .slice(0, MAX_RESULTS);
 
-  // const test = tacoFoods.filter(food => food.description == selectedTacoFood);
+  const handleHorario = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // const today = new Date();
+    // const hours = Number(e.target.value.split(':')[0]);
+    // const minutes = Number(e.target.value.split(':')[1]);
+    // const date = new Date(
+    //   today.getFullYear(),
+    //   today.getMonth(),
+    //   today.getDate(),
+    //   hours ?? 0o0,
+    //   minutes ?? 0o0
+    // );
+    // return setHorario(date);
+    return setHorario(e.target.valueAsDate);
+  };
 
   return (
     <Layout>
@@ -143,12 +186,10 @@ const DietaPaciente = () => {
                   Horário da Refeição
                 </label>
                 <input
-                  type='horaAlimento'
-                  name='horaAlimento'
-                  id='horaAlimento'
-                  placeholder='Arroz doce'
+                  type='time'
+                  defaultValue={'00:00'}
                   className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                  onChange={handleChange}
+                  onChange={handleHorario}
                 />
               </div>
             </div>
@@ -158,19 +199,23 @@ const DietaPaciente = () => {
                   Nome do Alimento
                 </label>
                 <Combobox
-                  value={selectedTacoFood}
+                  defaultValue={selectedTacoFood}
                   onChange={setSelectedTacoFood}
                 >
                   <Combobox.Input
                     onChange={event => setQuery(event.target.value)}
                     className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                     placeholder='Alimento TACO'
+                    displayValue={food =>
+                      (food as unknown as AlimentoTACOComMacros)?.description ??
+                      ''
+                    }
                   />
                   <Combobox.Options>
                     {filteredTacoFoods.map(food => (
                       <Combobox.Option
                         key={food.id}
-                        value={food.description}
+                        value={food}
                         className={({ active }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active ? 'bg-gray-600 text-white' : 'text-gray-900'
@@ -188,19 +233,23 @@ const DietaPaciente = () => {
                   Descrição do Alimento
                 </label>
                 <Combobox
-                  value={selectedPinheiroFood}
+                  defaultValue={selectedPinheiroFood}
                   onChange={setSelectedPinheiroFood}
                 >
                   <Combobox.Input
                     onChange={event => setQuery(event.target.value)}
                     className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                     placeholder='Alimento Pinheiro'
+                    displayValue={food =>
+                      (food as unknown as AlimentoPinheiroComMedidas)
+                        ?.description ?? ''
+                    }
                   />
                   <Combobox.Options>
                     {filteredPinheiroFoods.map(food => (
                       <Combobox.Option
                         key={food.id}
-                        value={food.description}
+                        value={food}
                         className={({ active }) =>
                           `relative cursor-default select-none py-2 pl-10 pr-4 ${
                             active ? 'bg-gray-600 text-white' : 'text-gray-900'
@@ -216,46 +265,79 @@ const DietaPaciente = () => {
             </div>
             <div className='flow-root'>
               <div className='float-left '>
-                <label className='mb-2 block text-sm font-medium text-gray-900 '>
-                  Quantidade em Gramas
-                </label>
-                <input
-                  type='text'
-                  name='quantidadeGramas'
-                  id='quantidadeGramas'
-                  placeholder='250'
-                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className='float-right '>
                 <label className=' mb-2 block text-sm font-medium text-gray-900 '>
-                  Quantidade em Medidas Caseiras
+                  Quantidade em Gramas
                 </label>
                 <input
                   type=''
                   name='quantidadeCaseiras'
                   id='quantidadeCaseiras'
-                  placeholder='5 colheres'
+                  placeholder='Ex: 250 gramas'
                   className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                  onChange={handleChange}
                 />
               </div>
+
+              {selectedPinheiroFood && (
+                <div>
+                  <div className='float-right '>
+                    <label className=' mb-2 block text-sm font-medium text-gray-900 '>
+                      Quantidade em Medidas Caseiras
+                    </label>
+                    <input
+                      type=''
+                      name='quantidadeCaseiras'
+                      id='quantidadeCaseiras'
+                      readOnly
+                      placeholder='5 colheres'
+                      className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                    />
+                  </div>
+                  <div className='float-right'>
+                    <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                      Unidade em mediadas caseiras
+                    </label>
+                    <select className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'>
+                      {selectedPinheiroFood?.measures.map(measure => (
+                        <option
+                          key={measure.id}
+                          value={measure.qty}
+                        >
+                          {measure.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              )}
             </div>
             <hr />
             <div className='text-end'>
               <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                Calorias: calorias
+                Calorias:{' '}
+                {selectedTacoFood?.id
+                  ? Math.ceil(selectedTacoFood?.energy[0].kcal)
+                  : ''}
               </label>
               <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                Carboidratos: 28 g
+                Proteínas:{' '}
+                {selectedTacoFood?.id
+                  ? Math.ceil(selectedTacoFood?.protein[0].qty) +
+                    selectedTacoFood?.protein[0].unit
+                  : ''}
               </label>
               <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                Proteínas: 2,5 g
+                Carboidratos:{' '}
+                {selectedTacoFood?.id
+                  ? Math.ceil(selectedTacoFood?.carbohydrate[0].qty) +
+                    selectedTacoFood?.carbohydrate[0].unit
+                  : ''}
               </label>
               <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                Gorduras: 0,2 g
+                Gorduras:{' '}
+                {selectedTacoFood?.id
+                  ? Math.ceil(selectedTacoFood?.lipid[0].qty) +
+                    selectedTacoFood?.lipid[0].unit
+                  : ''}
               </label>
             </div>
             <div className=''>
