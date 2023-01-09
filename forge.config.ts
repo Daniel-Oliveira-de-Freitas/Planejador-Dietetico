@@ -9,7 +9,9 @@ import { mainConfig } from './webpack.main.config';
 import { rendererConfig } from './webpack.renderer.config';
 
 const config: ForgeConfig = {
-  packagerConfig: {},
+  packagerConfig: {
+    extraResource: ['./node_modules/.prisma', './prisma/dev.db'],
+  },
   rebuildConfig: {},
   makers: [
     new MakerSquirrel({}),
@@ -22,6 +24,7 @@ const config: ForgeConfig = {
       mainConfig,
       renderer: {
         config: rendererConfig,
+        nodeIntegration: true, // remover se não funcionar
         entryPoints: [
           {
             html: './src/index.html',

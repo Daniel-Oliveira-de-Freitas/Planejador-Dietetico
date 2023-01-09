@@ -3,6 +3,9 @@
   "productName": "electron-forge-typescript",
   "version": "1.0.0",
   "description": "My Electron application description",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -24,8 +27,10 @@
     "@electron-forge/maker-squirrel": "^6.0.3",
     "@electron-forge/maker-zip": "^6.0.3",
     "@electron-forge/plugin-webpack": "^6.0.3",
+    "@types/node": "^18.11.10",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@types/react-modal": "^3.13.1",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "@vercel/webpack-asset-relocator-loader": "^1.7.3",
@@ -38,7 +43,8 @@
     "node-loader": "^2.0.0",
     "postcss": "^8.4.19",
     "postcss-loader": "^7.0.1",
-    "prettier": "2.8.0",
+    "prettier": "^2.8.0",
+    "prettier-plugin-tailwindcss": "^0.2.0",
     "prisma": "^4.7.0",
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.2.4",
@@ -47,10 +53,13 @@
     "typescript": "~4.5.4"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "@prisma/client": "^4.7.0",
     "electron-squirrel-startup": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3"
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.4.3",
+    "react-toastify": "^9.1.1"
   }
 }

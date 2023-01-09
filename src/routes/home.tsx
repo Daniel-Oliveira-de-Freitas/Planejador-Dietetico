@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 const Home = () => {
   return (
-    <>
-      <h1>Hello</h1>
-      <Link to='/avaliacaodietetica'>Ir para outra página</Link>
-    </>
+    <Layout>
+      <h1 className='text-3xl uppercase'>Planejador dietético</h1>
+      <hr />
+    </Layout>
   );
 };
 
