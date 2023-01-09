@@ -43,7 +43,7 @@ const DietaPaciente = () => {
   const MAX_RESULTS = 5;
   const [query, setQuery] = useState('');
   const [horario, setHorario] = useState<Date>();
-  const [consumo24h, setConsumo24h] = useState({
+  const [dietaPaciente, setdietaPaciente] = useState({
     periodoSelecionado: 'Colação' as
       | 'Colação'
       | 'Desjejum'
@@ -52,11 +52,11 @@ const DietaPaciente = () => {
       | 'Jantar'
       | 'Ceia',
     colacao: [] as Refeicao[],
-    desjejum: [],
-    almoco: [],
-    lanche: [],
-    jantar: [],
-    ceia: [],
+    desjejum: [] as Refeicao[],
+    almoco: [] as Refeicao[],
+    lanche: [] as Refeicao[],
+    jantar: [] as Refeicao[],
+    ceia: [] as Refeicao[],
   });
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
@@ -88,7 +88,7 @@ const DietaPaciente = () => {
   const [dieta, setDieta] = useState({
     alimentoTacoId: 1,
     alimentoPinheiroId: 1,
-    tipoRefeicao: 'dd',
+    tipoRefeicao: '',
     horario: 'dd',
   });
 
@@ -120,18 +120,41 @@ const DietaPaciente = () => {
           .slice(0, MAX_RESULTS);
 
   const handleHorario = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const today = new Date();
-    // const hours = Number(e.target.value.split(':')[0]);
-    // const minutes = Number(e.target.value.split(':')[1]);
-    // const date = new Date(
-    //   today.getFullYear(),
-    //   today.getMonth(),
-    //   today.getDate(),
-    //   hours ?? 0o0,
-    //   minutes ?? 0o0
-    // );
-    // return setHorario(date);
     return setHorario(e.target.valueAsDate);
+  };
+
+  const setTipoDeRefeicao = (
+    periodo: 'Colação' | 'Desjejum' | 'Almoço' | 'Lanche' | 'Jantar' | 'Ceia'
+  ) => {
+    setdietaPaciente(prev => {
+      return { ...prev, periodoSelecionado: periodo };
+    });
+  };
+
+  const addRefeicao = (
+    periodo: 'Colação' | 'Desjejum' | 'Almoço' | 'Lanche' | 'Jantar' | 'Ceia',
+    refeicao: Refeicao
+  ) => {
+    switch (periodo) {
+      case 'Colação':
+        dietaPaciente.colacao.push(refeicao);
+        break;
+      case 'Desjejum':
+        dietaPaciente.desjejum.push(refeicao);
+        break;
+      case 'Almoço':
+        dietaPaciente.almoco.push(refeicao);
+        break;
+      case 'Lanche':
+        dietaPaciente.lanche.push(refeicao);
+        break;
+      case 'Jantar':
+        dietaPaciente.jantar.push(refeicao);
+        break;
+      case 'Ceia':
+        dietaPaciente.ceia.push(refeicao);
+        break;
+    }
   };
 
   return (
@@ -172,13 +195,14 @@ const DietaPaciente = () => {
                   name='refeicao'
                   id='refeicao'
                   className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                  onChange={choice => setTipoDeRefeicao('Jantar')}
                 >
-                  <option value='desjejum'>Desjejum</option>
-                  <option value='colacao'>Colacao</option>
-                  <option value='almoco'>Almoço</option>
-                  <option value='lanche'>Lanche</option>
-                  <option value='jantar'>Jantar</option>
-                  <option value='ceia'>Ceia</option>
+                  <option value='Desjejum'>Desjejum</option>
+                  <option value='Colacao'>Colacao</option>
+                  <option value='Almoco'>Almoço</option>
+                  <option value='Lanche'>Lanche</option>
+                  <option value='Jantar'>Jantar</option>
+                  <option value='Ceia'>Ceia</option>
                 </select>
               </div>
               <div className='float-right '>
@@ -353,6 +377,17 @@ const DietaPaciente = () => {
                   data-modal-toggle='defaultModal'
                   type='submit'
                   className='rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
+                  onClick={() => {
+                    addRefeicao(dietaPaciente.periodoSelecionado, {
+                      alimentoTACO: selectedTacoFood,
+                      alimentoPinheiro: selectedPinheiroFood,
+                      tipoDeRefeicaoId: 3,
+                      horario: horario,
+                    });
+                    setIsOpen(false);
+
+                    console.log(dietaPaciente);
+                  }}
                 >
                   Adicionar
                 </button>
@@ -365,58 +400,79 @@ const DietaPaciente = () => {
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Desjejum</summary>
         <table className='w-full text-left text-sm text-gray-500'>
-          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
-            <tr>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Nome
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Quantidade
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                kcal
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Carboidratos
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Proteinas
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Gorduras
-              </th>
-            </tr>
-          </thead>
+          {dietaPaciente.desjejum.length > 0 && (
+            <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
+              <tr>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Nome
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Quantidade
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  kcal
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Carboidratos
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Proteinas
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Gorduras
+                </th>
+              </tr>
+            </thead>
+          )}
           <tbody>
-            <tr className='border-b bg-white'>
-              <th
-                scope='row'
-                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
-              ></th>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-            </tr>
+            {dietaPaciente.desjejum.map(alimento => (
+              <tr
+                key={alimento.alimentoPinheiro.id}
+                className='border-b bg-white'
+              >
+                <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                  {alimento.alimentoTACO.description}
+                </td>
+                <td className='py-4 px-6'>
+                  {alimento.alimentoPinheiro.measures[0].label}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
+                    alimento.alimentoTACO.carbohydrate[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.protein[0].qty) +
+                    alimento.alimentoTACO.protein[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.lipid[0].qty) +
+                    alimento.alimentoTACO.lipid[0].unit}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </details>
@@ -424,58 +480,79 @@ const DietaPaciente = () => {
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Colação</summary>
         <table className='w-full text-left text-sm text-gray-500'>
-          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
-            <tr>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Nome
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Quantidade
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                kcal
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Carboidratos
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Proteinas
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Gorduras
-              </th>
-            </tr>
-          </thead>
+          {dietaPaciente.colacao.length > 0 && (
+            <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
+              <tr>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Nome
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Quantidade
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  kcal
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Carboidratos
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Proteinas
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Gorduras
+                </th>
+              </tr>
+            </thead>
+          )}
           <tbody>
-            <tr className='border-b bg-white'>
-              <th
-                scope='row'
-                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
-              ></th>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-            </tr>
+            {dietaPaciente.colacao.map(alimento => (
+              <tr
+                key={alimento.alimentoPinheiro.id}
+                className='border-b bg-white'
+              >
+                <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                  {alimento.alimentoTACO.description}
+                </td>
+                <td className='py-4 px-6'>
+                  {alimento.alimentoPinheiro.measures[0].label}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
+                    alimento.alimentoTACO.carbohydrate[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.protein[0].qty) +
+                    alimento.alimentoTACO.protein[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.lipid[0].qty) +
+                    alimento.alimentoTACO.lipid[0].unit}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </details>
@@ -483,58 +560,79 @@ const DietaPaciente = () => {
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Almoço</summary>
         <table className='w-full text-left text-sm text-gray-500'>
-          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
-            <tr>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Nome
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Quantidade
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                kcal
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Carboidratos
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Proteinas
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Gorduras
-              </th>
-            </tr>
-          </thead>
+          {dietaPaciente.almoco.length > 0 && (
+            <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
+              <tr>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Nome
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Quantidade
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  kcal
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Carboidratos
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Proteinas
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Gorduras
+                </th>
+              </tr>
+            </thead>
+          )}
           <tbody>
-            <tr className='border-b bg-white'>
-              <th
-                scope='row'
-                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
-              ></th>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-            </tr>
+            {dietaPaciente.almoco.map(alimento => (
+              <tr
+                key={alimento.alimentoPinheiro.id}
+                className='border-b bg-white'
+              >
+                <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                  {alimento.alimentoTACO.description}
+                </td>
+                <td className='py-4 px-6'>
+                  {alimento.alimentoPinheiro.measures[0].label}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
+                    alimento.alimentoTACO.carbohydrate[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.protein[0].qty) +
+                    alimento.alimentoTACO.protein[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.lipid[0].qty) +
+                    alimento.alimentoTACO.lipid[0].unit}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </details>
@@ -542,58 +640,79 @@ const DietaPaciente = () => {
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Lanche</summary>
         <table className='w-full text-left text-sm text-gray-500'>
-          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
-            <tr>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Nome
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Quantidade
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                kcal
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Carboidratos
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Proteinas
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Gorduras
-              </th>
-            </tr>
-          </thead>
+          {dietaPaciente.lanche.length > 0 && (
+            <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
+              <tr>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Nome
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Quantidade
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  kcal
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Carboidratos
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Proteinas
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Gorduras
+                </th>
+              </tr>
+            </thead>
+          )}
           <tbody>
-            <tr className='border-b bg-white'>
-              <th
-                scope='row'
-                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
-              ></th>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-            </tr>
+            {dietaPaciente.lanche.map(alimento => (
+              <tr
+                key={alimento.alimentoPinheiro.id}
+                className='border-b bg-white'
+              >
+                <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                  {alimento.alimentoTACO.description}
+                </td>
+                <td className='py-4 px-6'>
+                  {alimento.alimentoPinheiro.measures[0].label}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
+                    alimento.alimentoTACO.carbohydrate[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.protein[0].qty) +
+                    alimento.alimentoTACO.protein[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.lipid[0].qty) +
+                    alimento.alimentoTACO.lipid[0].unit}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </details>
@@ -601,58 +720,95 @@ const DietaPaciente = () => {
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Jantar</summary>
         <table className='w-full text-left text-sm text-gray-500'>
-          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
-            <tr>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Nome
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Quantidade
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                kcal
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Carboidratos
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Proteinas
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Gorduras
-              </th>
-            </tr>
-          </thead>
+          {dietaPaciente.jantar.length > 0 && (
+            <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
+              <tr>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Nome
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Quantidade
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Medidas Caseiras
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  kcal
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Carboidratos
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Proteinas
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Gorduras
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Horario
+                </th>
+              </tr>
+            </thead>
+          )}
           <tbody>
-            <tr className='border-b bg-white'>
-              <th
-                scope='row'
-                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
-              ></th>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-            </tr>
+            {dietaPaciente.jantar.map(alimento => (
+              <tr
+                key={alimento.alimentoPinheiro.id}
+                className='border-b bg-white'
+              >
+                <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                  {alimento.alimentoTACO.description}
+                </td>
+                <td className='py-4 px-6'>
+                  {alimento.alimentoPinheiro.measures[0].label}
+                </td>
+                <td className='py-4 px-6'>
+                  {alimento.alimentoPinheiro.measures[0].label}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
+                    alimento.alimentoTACO.carbohydrate[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.protein[0].qty) +
+                    alimento.alimentoTACO.protein[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.lipid[0].qty) +
+                    alimento.alimentoTACO.lipid[0].unit}
+                </td>
+                <td className='py-4 px-6'></td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </details>
@@ -660,58 +816,79 @@ const DietaPaciente = () => {
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary>Ceia</summary>
         <table className='w-full text-left text-sm text-gray-500'>
-          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
-            <tr>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Nome
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Quantidade
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                kcal
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Carboidratos
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Proteinas
-              </th>
-              <th
-                scope='col'
-                className='py-3 px-6'
-              >
-                Gorduras
-              </th>
-            </tr>
-          </thead>
+          {dietaPaciente.ceia.length > 0 && (
+            <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
+              <tr>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Nome
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Quantidade
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  kcal
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Carboidratos
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Proteinas
+                </th>
+                <th
+                  scope='col'
+                  className='py-3 px-6'
+                >
+                  Gorduras
+                </th>
+              </tr>
+            </thead>
+          )}
           <tbody>
-            <tr className='border-b bg-white'>
-              <th
-                scope='row'
-                className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'
-              ></th>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'></td>
-            </tr>
+            {dietaPaciente.ceia.map(alimento => (
+              <tr
+                key={alimento.alimentoPinheiro.id}
+                className='border-b bg-white'
+              >
+                <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                  {alimento.alimentoTACO.description}
+                </td>
+                <td className='py-4 px-6'>
+                  {alimento.alimentoPinheiro.measures[0].label}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
+                    alimento.alimentoTACO.carbohydrate[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {' '}
+                  {Math.ceil(alimento.alimentoTACO.protein[0].qty) +
+                    alimento.alimentoTACO.protein[0].unit}
+                </td>
+                <td className='py-4 px-6'>
+                  {Math.ceil(alimento.alimentoTACO.lipid[0].qty) +
+                    alimento.alimentoTACO.lipid[0].unit}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </details>
