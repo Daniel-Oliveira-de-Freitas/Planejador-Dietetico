@@ -370,6 +370,7 @@ const DietaPaciente = () => {
                   data-modal-toggle='defaultModal'
                   type='button'
                   className='rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-blue-300 '
+                  onClick={handleCloseModal}
                 >
                   Cancelar
                 </button>
