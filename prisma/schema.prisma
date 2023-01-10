@@ -19,6 +19,8 @@ model Paciente {
   habitosDeVidaId   Int?
   consumo24h        Consumo24h?      @relation(fields: [consumo24hId], references: [id])
   consumo24hId      Int?
+  Dieta             Dieta?           @relation(fields: [dietaId], references: [id])
+  dietaId           Int?
 }
 
 model Consumo24h {
@@ -28,17 +30,17 @@ model Consumo24h {
 }
 
 model Dieta {
-  id        Int                  @id @default(autoincrement())
+  id           Int             @id @default(autoincrement())
   tipoRefeicao String
-  refeicoes RefeicaoDieta[]
-  Paciente  Paciente[]
+  refeicoes    RefeicaoDieta[]
+  Paciente     Paciente[]
 }
 
 model RefeicaoDieta {
   id                 Int              @id @default(autoincrement())
   alimentoTACO       AlimentoTACO     @relation(fields: [alimentoTACOId], references: [id])
   alimentoPinheiro   AlimentoPinheiro @relation(fields: [alimentoPinheiroId], references: [id])
-  dieta              Dieta?      @relation(fields: [dietaId], references: [id])
+  dieta              Dieta?           @relation(fields: [dietaId], references: [id])
   dietaId            Int?
   alimentoTACOId     Int
   alimentoPinheiroId Int
@@ -102,8 +104,7 @@ model AlimentoPinheiro {
   description        String
   measures           MeasurePinheiro[]
   RefeicaoConsumo24h RefeicaoConsumo24h[]
-  RefeicaoDieta RefeicaoDieta[]
-
+  RefeicaoDieta      RefeicaoDieta[]
 }
 
 model MeasurePinheiro {
