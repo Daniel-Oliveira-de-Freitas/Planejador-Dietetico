@@ -44,6 +44,8 @@ model RefeicaoConsumo24h {
   tipoDeRefeicao     TipoDeRefeicao   @relation(fields: [tipoDeRefeicaoId], references: [id])
   tipoDeRefeicaoId   Int
   horario            DateTime
+  medida             String
+  quantidade         Int
 }
 
 model ConsumoHabitual {
