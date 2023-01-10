@@ -61,6 +61,8 @@ const ConsumoAlimentar24h = () => {
   const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(
     pinheiroFoods[0]
   );
+  const [pinheiroMeasure, setPinheiroMeasure] = useState(0); // TODO: colocar valor padrão
+  const [pinheiroQty, setPinheiroQty] = useState(1);
 
   useEffect(() => {
     getAllTacoFoods().then(setTacoFoods);
@@ -105,18 +107,47 @@ const ConsumoAlimentar24h = () => {
   };
 
   const handleHorario = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const today = new Date();
-    // const hours = Number(e.target.value.split(':')[0]);
-    // const minutes = Number(e.target.value.split(':')[1]);
-    // const date = new Date(
-    //   today.getFullYear(),
-    //   today.getMonth(),
-    //   today.getDate(),
-    //   hours ?? 0o0,
-    //   minutes ?? 0o0
-    // );
-    // return setHorario(date);
     return setHorario(e.target.valueAsDate);
+  };
+
+  const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    return setPinheiroMeasure(Number(e.target.value));
+  };
+
+  const handleQty = (e: React.ChangeEvent<HTMLInputElement>) => {
+    return setPinheiroQty(e.target.valueAsNumber);
+  };
+
+  const convertKcal = (tacoFood: AlimentoTACOComMacros) => {
+    const calcKcal =
+      (pinheiroMeasure * pinheiroQty * tacoFood.energy[0].kcal) /
+      tacoFood.base_qty;
+    // const calcCarb =
+    //   (pinheiroMeasure * pinheiroQty * tacoFood.carbohydrate[0].qty) /
+    //   tacoFood.base_qty;
+    // const calcProtein =
+    //   (pinheiroMeasure * pinheiroQty * tacoFood.protein[0].qty) /
+    //   tacoFood.base_qty;
+    // const calcLipid =
+    //   (pinheiroMeasure * pinheiroQty * tacoFood.lipid[0].qty) /
+    //   tacoFood.base_qty;
+
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcKcal);
+    }
+
+    return 0;
+  };
+
+  const convertCarb = (tacoFood: AlimentoTACOComMacros) => {
+    const calcCarb =
+      (pinheiroMeasure * pinheiroQty * tacoFood.carbohydrate[0].qty) /
+      tacoFood.base_qty;
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcCarb);
+    }
+
+    return 0;
   };
 
   return (
@@ -279,16 +310,32 @@ const ConsumoAlimentar24h = () => {
               : ''}
           </div>
           {selectedPinheiroFood && (
-            <select className='rounded-md border p-1'>
-              {selectedPinheiroFood?.measures.map(measure => (
-                <option
-                  key={measure.id}
-                  value={measure.qty}
-                >
-                  {measure.label}
-                </option>
-              ))}
-            </select>
+            <>
+              <select
+                className='rounded-md border p-1'
+                onChange={handleMeasure}
+              >
+                {selectedPinheiroFood?.measures.map(measure => (
+                  <option
+                    key={measure.id}
+                    value={measure.qty}
+                  >
+                    {measure.label}
+                  </option>
+                ))}
+              </select>
+              <input
+                type='number'
+                className='rounded-md border p-1'
+                onChange={handleQty}
+              />
+            </>
+          )}
+          {selectedPinheiroFood && selectedTacoFood && pinheiroMeasure && (
+            <div>
+              valor convertido:
+              {convertKcal(selectedTacoFood)} kcal
+            </div>
           )}
           <button
             onClick={() => {
@@ -296,13 +343,13 @@ const ConsumoAlimentar24h = () => {
                 alimentoTACO: selectedTacoFood,
                 alimentoPinheiro: selectedPinheiroFood,
                 horario: horario,
-                tipoDeRefeicaoId: 1,
+                tipoDeRefeicaoId: 1, // TODO: setar id de acordo com período selecionado
               });
               setIsOpen(false);
 
               console.log(consumo24h);
             }}
-            className='hover:bg-neurtal-400 mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white'
+            className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
           >
             Adicionar
           </button>
