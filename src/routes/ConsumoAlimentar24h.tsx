@@ -47,11 +47,11 @@ const ConsumoAlimentar24h = () => {
       | 'Jantar'
       | 'Ceia',
     colacao: [] as Refeicao[],
-    desjejum: [],
-    almoco: [],
-    lanche: [],
-    jantar: [],
-    ceia: [],
+    desjejum: [] as Refeicao[],
+    almoco: [] as Refeicao[],
+    lanche: [] as Refeicao[],
+    jantar: [] as Refeicao[],
+    ceia: [] as Refeicao[],
   });
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
