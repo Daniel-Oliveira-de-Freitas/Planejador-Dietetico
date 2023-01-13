@@ -1,37 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Combobox } from '@headlessui/react';
-import Modal from '../components/Modal';
-import Layout from '../components/Layout';
-import { getAllTacoFoods } from '../utils/taco/getAllTacoFoods';
-import {
-  AlimentoPinheiro,
-  AlimentoTACO,
-  Carbohydrate,
-  Energy,
-  Lipid,
-  MeasurePinheiro,
-  Protein,
-  RefeicaoConsumo24h,
-} from '@prisma/client';
-import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
-
-interface AlimentoTACOComMacros extends AlimentoTACO {
-  energy: Energy[];
-  carbohydrate: Carbohydrate[];
-  protein: Protein[];
-  lipid: Lipid[];
-}
-
-interface AlimentoPinheiroComMedidas extends AlimentoPinheiro {
-  measures: MeasurePinheiro[];
-}
-
-interface Refeicao {
-  alimentoTACO: AlimentoTACOComMacros;
-  alimentoPinheiro: AlimentoPinheiroComMedidas;
-  horario: Date;
-  tipoDeRefeicaoId: number;
-}
+import Modal from '../../components/Modal';
+import Layout from '../../components/Layout';
+import { getAllTacoFoods } from '../../utils/taco/getAllTacoFoods';
+import { getAllPinheiroFoods } from '../../utils/pinheiro/getAllPinheiroFoods';
+import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from './types';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
@@ -55,12 +28,8 @@ const ConsumoAlimentar24h = () => {
   });
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
-  const [pinheiroFoods, setPinheiroFoods] = useState<
-    AlimentoPinheiroComMedidas[]
-  >([]);
-  const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(
-    pinheiroFoods[0]
-  );
+  const [pinheiroFoods, setPinheiroFoods] = useState<AlimentoPinheiroComMedidas[]>([]);
+  const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(pinheiroFoods[0]);
   const [pinheiroMeasure, setPinheiroMeasure] = useState(0); // TODO: colocar valor padrão
   const [pinheiroQty, setPinheiroQty] = useState(1);
 
@@ -119,18 +88,7 @@ const ConsumoAlimentar24h = () => {
   };
 
   const convertKcal = (tacoFood: AlimentoTACOComMacros) => {
-    const calcKcal =
-      (pinheiroMeasure * pinheiroQty * tacoFood.energy[0].kcal) /
-      tacoFood.base_qty;
-    // const calcCarb =
-    //   (pinheiroMeasure * pinheiroQty * tacoFood.carbohydrate[0].qty) /
-    //   tacoFood.base_qty;
-    // const calcProtein =
-    //   (pinheiroMeasure * pinheiroQty * tacoFood.protein[0].qty) /
-    //   tacoFood.base_qty;
-    // const calcLipid =
-    //   (pinheiroMeasure * pinheiroQty * tacoFood.lipid[0].qty) /
-    //   tacoFood.base_qty;
+    const calcKcal = (pinheiroMeasure * pinheiroQty * tacoFood.energy[0].kcal) / tacoFood.base_qty;
 
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcKcal);
@@ -141,10 +99,29 @@ const ConsumoAlimentar24h = () => {
 
   const convertCarb = (tacoFood: AlimentoTACOComMacros) => {
     const calcCarb =
-      (pinheiroMeasure * pinheiroQty * tacoFood.carbohydrate[0].qty) /
-      tacoFood.base_qty;
+      (pinheiroMeasure * pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcCarb);
+    }
+
+    return 0;
+  };
+
+  const convertProtein = (tacoFood: AlimentoTACOComMacros) => {
+    const calcProtein =
+      (pinheiroMeasure * pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
+
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcProtein);
+    }
+
+    return 0;
+  };
+
+  const convertLipid = (tacoFood: AlimentoTACOComMacros) => {
+    const calcLipid = (pinheiroMeasure * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcLipid);
     }
 
     return 0;
@@ -177,24 +154,12 @@ const ConsumoAlimentar24h = () => {
             {consumo24h.colacao.length > 0 && (
               <thead>
                 <tr>
-                  <th className='text-left text-sm font-thin uppercase tracking-wider'>
-                    nome
-                  </th>
-                  <th className='text-left text-sm font-thin uppercase tracking-wider'>
-                    qtd
-                  </th>
-                  <th className='text-sm font-thin uppercase tracking-wider'>
-                    kcal
-                  </th>
-                  <th className='text-sm font-thin uppercase tracking-wider'>
-                    carb.
-                  </th>
-                  <th className='text-sm font-thin uppercase tracking-wider'>
-                    prot.
-                  </th>
-                  <th className='text-sm font-thin uppercase tracking-wider'>
-                    gord.
-                  </th>
+                  <th className='text-left text-sm font-thin uppercase tracking-wider'>nome</th>
+                  <th className='text-left text-sm font-thin uppercase tracking-wider'>qtd</th>
+                  <th className='text-sm font-thin uppercase tracking-wider'>kcal</th>
+                  <th className='text-sm font-thin uppercase tracking-wider'>carb.</th>
+                  <th className='text-sm font-thin uppercase tracking-wider'>prot.</th>
+                  <th className='text-sm font-thin uppercase tracking-wider'>gord.</th>
                 </tr>
               </thead>
             )}
@@ -231,11 +196,9 @@ const ConsumoAlimentar24h = () => {
           >
             <Combobox.Input
               onChange={event => setQuery(event.target.value)}
-              className='rounded-md border p-1'
+              className='mt-4 rounded-md border p-1'
               placeholder='Alimento TACO'
-              displayValue={food =>
-                (food as unknown as AlimentoTACOComMacros)?.description ?? ''
-              }
+              displayValue={food => (food as unknown as AlimentoTACOComMacros)?.description ?? ''}
             />
             <Combobox.Options>
               {filteredTacoFoods.map(food => (
@@ -259,11 +222,10 @@ const ConsumoAlimentar24h = () => {
           >
             <Combobox.Input
               onChange={event => setQuery(event.target.value)}
-              className='rounded-md border p-1'
+              className='mt-4 rounded-md border p-1'
               placeholder='Alimento Pinheiro'
               displayValue={food =>
-                (food as unknown as AlimentoPinheiroComMedidas)?.description ??
-                ''
+                (food as unknown as AlimentoPinheiroComMedidas)?.description ?? ''
               }
             />
             <Combobox.Options>
@@ -282,33 +244,6 @@ const ConsumoAlimentar24h = () => {
               ))}
             </Combobox.Options>
           </Combobox>
-          <div>
-            Calorias:{' '}
-            {selectedTacoFood?.id
-              ? Math.ceil(selectedTacoFood?.energy[0].kcal)
-              : ''}
-          </div>
-          <div>
-            Proteínas:{' '}
-            {selectedTacoFood?.id
-              ? Math.ceil(selectedTacoFood?.protein[0].qty) +
-                selectedTacoFood?.protein[0].unit
-              : ''}
-          </div>
-          <div>
-            Carboidratos:{' '}
-            {selectedTacoFood?.id
-              ? Math.ceil(selectedTacoFood?.carbohydrate[0].qty) +
-                selectedTacoFood?.carbohydrate[0].unit
-              : ''}
-          </div>
-          <div>
-            Gorduras:{' '}
-            {selectedTacoFood?.id
-              ? Math.ceil(selectedTacoFood?.lipid[0].qty) +
-                selectedTacoFood?.lipid[0].unit
-              : ''}
-          </div>
           {selectedPinheiroFood && (
             <>
               <select
@@ -328,13 +263,33 @@ const ConsumoAlimentar24h = () => {
                 type='number'
                 className='rounded-md border p-1'
                 onChange={handleQty}
+                value={pinheiroQty}
               />
             </>
           )}
           {selectedPinheiroFood && selectedTacoFood && pinheiroMeasure && (
             <div>
-              valor convertido:
-              {convertKcal(selectedTacoFood)} kcal
+              <div>
+                Calorias: {selectedTacoFood?.id ? convertKcal(selectedTacoFood) + ' kcal' : ''}
+              </div>
+              <div>
+                Proteínas:{' '}
+                {selectedTacoFood?.id
+                  ? convertProtein(selectedTacoFood) + selectedTacoFood?.protein[0].unit
+                  : ''}
+              </div>
+              <div>
+                Carboidratos:{' '}
+                {selectedTacoFood?.id
+                  ? convertCarb(selectedTacoFood) + selectedTacoFood?.carbohydrate[0].unit
+                  : ''}
+              </div>
+              <div>
+                Gorduras:{' '}
+                {selectedTacoFood?.id
+                  ? convertLipid(selectedTacoFood) + selectedTacoFood?.lipid[0].unit
+                  : ''}
+              </div>
             </div>
           )}
           <button
@@ -346,7 +301,6 @@ const ConsumoAlimentar24h = () => {
                 tipoDeRefeicaoId: 1, // TODO: setar id de acordo com período selecionado
               });
               setIsOpen(false);
-
               console.log(consumo24h);
             }}
             className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
