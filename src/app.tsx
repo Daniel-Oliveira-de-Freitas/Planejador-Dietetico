@@ -5,6 +5,7 @@ import Home from './routes/Home';
 import ConsumoAlimentar24h from './routes/ConsumoAlimentar24h';
 import ConsumoAlimentarHabitual from './routes/ConsumoAlimentarHabitual';
 import DietaPaciente from './routes/DietaPaciente';
+import Pacientes  from './routes/Pacientes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -27,6 +28,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route
           path='/'
           element={<Home />}
+        />
+        <Route
+          path='/pacientes'
+          element={<Pacientes />}
         />
         <Route
           path='/consumo24h'

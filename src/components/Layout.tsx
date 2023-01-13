@@ -12,7 +12,7 @@ const Layout = (props: NavbarProps) => {
     },
     {
       label: 'Pacientes',
-      href: '#',
+      href: '/pacientes',
     },
     {
       label: 'Consumo habitual',
