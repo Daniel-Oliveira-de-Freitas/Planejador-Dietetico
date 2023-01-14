@@ -11,7 +11,6 @@ import {
   Lipid,
   MeasurePinheiro,
   Protein,
-  RefeicaoConsumo24h,
 } from '@prisma/client';
 import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
 

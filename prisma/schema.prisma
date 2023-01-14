@@ -12,7 +12,11 @@ datasource db {
 
 model Paciente {
   id                Int              @id @default(autoincrement())
-  nome              String
+  nome              String? 
+  idade             Int?
+  sexo              String?
+  peso              Float?
+  altura            Float?
   consumoHabitual   ConsumoHabitual? @relation(fields: [consumoHabitualId], references: [id])
   consumoHabitualId Int?
   HabitosDeVida     HabitosDeVida?   @relation(fields: [habitosDeVidaId], references: [id])
