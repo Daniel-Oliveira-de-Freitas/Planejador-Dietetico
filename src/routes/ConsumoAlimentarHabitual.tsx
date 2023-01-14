@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { getPaciente } from '../utils/getPaciente';
+import { getPaciente } from '../utils/paciente/getPaciente';
 import Layout from '../components/Layout';
 import { addConsumoHabitual } from '../utils/addConsumoHabitual';
 import { Paciente } from '@prisma/client';

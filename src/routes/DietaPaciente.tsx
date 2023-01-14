@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import Modal from 'react-modal';
 import { useEffect, useState } from 'react';
 import { Paciente } from '.prisma/client';
-import { getPaciente } from '../utils/getPaciente';
+import { getPaciente } from '../utils/paciente/getPaciente';
 import { addDietaPaciente } from '../utils/addDietaPaciente';
 import { toast } from 'react-toastify';
 import { Combobox } from '@headlessui/react';
@@ -158,31 +158,32 @@ const DietaPaciente = () => {
 
   return (
     <Layout>
-          <h2 className='text-2xl'>
-            Nome do paciente:{' '}
-            {typeof paciente != 'undefined' ? paciente.nome : ''}
-          </h2>
-          <br />
+      <h2 className='text-2xl'>
+        Nome do paciente: {typeof paciente != 'undefined' ? paciente.nome : ''}
+      </h2>
+      <br />
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Plano Dietético</summary>
         <div className='flow-root'>
-            <div className='float-right'>
-              <button
-                type='button'
-                className=' mr-2 mb-2 rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium focus:outline-none focus:ring-4 focus:ring-blue-300 text-white'
-                onClick={handleOpenModal}
-                >
-                + Adicionar Refeição
-              </button>
-             </div>
-         </div>
+          <div className='float-right'>
+            <button
+              type='button'
+              className=' mr-2 mb-2 rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300'
+              onClick={handleOpenModal}
+            >
+              + Adicionar Refeição
+            </button>
+          </div>
+        </div>
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={handleCloseModal}
           className='mt-6 mr-12 ml-12  block rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
         >
           <div className='px-6 py-6 lg:px-8'>
-            <h1 className='text-3xl uppercase text-center'>Cadastrar Plano Dietético</h1>
+            <h1 className='text-center text-3xl uppercase'>
+              Cadastrar Plano Dietético
+            </h1>
             <hr />
             <br />
             <form
@@ -907,7 +908,7 @@ const DietaPaciente = () => {
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo 24H</summary>
-      </details>  
+      </details>
     </Layout>
   );
 };
