@@ -51,7 +51,10 @@ const Pacientes = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPaciente(prev => {
       if (e.target.type === 'number') {
-        return { ...prev, [e.target.name]: parseInt(e.target.value) };
+        if (e.target.name == 'idade') {
+          return { ...prev, [e.target.name]: parseInt(e.target.value) };
+        }
+        return { ...prev, [e.target.name]: parseFloat(e.target.value) };
       }
 
       return { ...prev, [e.target.name]: e.target.value };
@@ -77,7 +80,10 @@ const Pacientes = () => {
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditarPaciente(prev => {
       if (e.target.type === 'number') {
-        return { ...prev, [e.target.name]: parseInt(e.target.value) };
+        if (e.target.name == 'idade') {
+          return { ...prev, [e.target.name]: parseInt(e.target.value) };
+        }
+        return { ...prev, [e.target.name]: parseFloat(e.target.value) };
       }
 
       return { ...prev, [e.target.name]: e.target.value };
@@ -109,7 +115,6 @@ const Pacientes = () => {
     } else {
       mensagem = 'Você cancelou a operação';
     }
-    swal(mensagem);
   };
 
   const searchPacientes = pacientes.filter(paciente => {
@@ -221,6 +226,7 @@ const Pacientes = () => {
               <input
                 type='number'
                 name='peso'
+                step='0.01'
                 onChange={handleChange}
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
               />
@@ -232,6 +238,7 @@ const Pacientes = () => {
               <input
                 type='number'
                 name='altura'
+                step='0.01'
                 onChange={handleChange}
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
               />
@@ -319,6 +326,7 @@ const Pacientes = () => {
               <input
                 type='number'
                 name='peso'
+                step='0.01'
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 value={editarPaciente ? editarPaciente.peso : ''}
                 onChange={handleEditChange}
@@ -331,6 +339,7 @@ const Pacientes = () => {
               <input
                 type='number'
                 name='altura'
+                step='0.01'
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 value={editarPaciente ? editarPaciente.altura : ''}
                 onChange={handleEditChange}
@@ -415,7 +424,6 @@ const Pacientes = () => {
               <td className='py-4 px-6'>{paciente.altura}</td>
               <td className='px-6t-medium py-4'>
                 <a
-                  href='#'
                   type='button'
                   className='rounded-full rounded border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-100'
                 >

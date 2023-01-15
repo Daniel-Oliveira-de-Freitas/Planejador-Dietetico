@@ -159,7 +159,7 @@ const DietaPaciente = () => {
   return (
     <Layout>
       <h2 className='text-2xl'>
-        Nome do paciente: {typeof paciente != 'undefined' ? paciente.nome : ''}
+        {/* Nome do paciente: {typeof paciente != 'undefined' ? paciente.nome : ''} */}
       </h2>
       <br />
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
