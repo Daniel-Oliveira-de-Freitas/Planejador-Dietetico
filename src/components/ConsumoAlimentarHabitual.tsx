@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { getPaciente } from '../../utils/paciente/getPaciente';
-import Layout from '../../components/Layout';
-import { addConsumoHabitual } from '../../utils/addConsumoHabitual';
+import { getPaciente } from '../utils/paciente/getPaciente';
+import Layout from './Layout';
+import { addConsumoHabitual } from '../utils/addConsumoHabitual';
 import { Paciente } from '@prisma/client';
 
 const ConsumoAlimentarHabitual = () => {
@@ -78,7 +78,6 @@ const ConsumoAlimentarHabitual = () => {
   };
 
   return (
-    <Layout>
       <form
         onSubmit={handleSubmit}
         className='w-full'
@@ -277,7 +276,6 @@ const ConsumoAlimentarHabitual = () => {
           Salvar
         </button>
       </form>
-    </Layout>
   );
 };
 

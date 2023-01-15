@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DietaPaciente from './routes/DietaPaciente';
-import Pacientes  from './routes/Pacientes';
-import Home from './routes/Home/home';
+import Pacientes from './routes/Pacientes';
+import Home from './routes/Home/Home';
 import ConsumoAlimentar24h from './routes/ConsumoAlimentar24h/ConsumoAlimentar24h';
-import ConsumoAlimentarHabitual from './routes/ConsumoAlimentarHabitual/ConsumoAlimentarHabitual';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -36,10 +35,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route
           path='/consumo24h'
           element={<ConsumoAlimentar24h />}
-        />
-        <Route
-          path='/consumohabitual'
-          element={<ConsumoAlimentarHabitual />}
         />
         <Route
           path='/dietaPaciente'

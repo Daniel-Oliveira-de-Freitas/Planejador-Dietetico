@@ -8,6 +8,7 @@ import { Paciente } from '@prisma/client';
 import { deletePaciente } from '../utils/paciente/deletePaciente';
 import { editPaciente } from '../utils/paciente/editPaciente';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 
@@ -110,13 +111,13 @@ const Pacientes = () => {
   const deletarPaciente = (pacienteId: number) => {
     Swal.fire({
       title: 'Você está suguro?',
-      text: "Você não tera mais como reverter!",
+      text: 'Você não tera mais como reverter!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Deletar!',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire('Deletado!', 'Operação realizada com sucesso.', 'success');
@@ -183,16 +184,12 @@ const Pacientes = () => {
         className='block rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 sm:mr-auto sm:ml-auto lg:mt-16 lg:mr-60 lg:ml-60'
       >
         <form onSubmit={handleSubmit}>
-          <h1 className='text-center text-3xl uppercase'>
-            Cadastro de Pacientes
-          </h1>
+          <h1 className='text-center text-3xl uppercase'>Cadastro de Pacientes</h1>
           <hr />
           <br />
           <div className='grid-row-2 grid content-center items-center justify-items-center'>
             <div className='content-center'>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Nome
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Nome</label>
               <input
                 type='text'
                 name='nome'
@@ -201,9 +198,7 @@ const Pacientes = () => {
               />
             </div>
             <div className=''>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Idade
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Idade</label>
               <input
                 type='number'
                 name='idade'
@@ -213,9 +208,7 @@ const Pacientes = () => {
             </div>
 
             <div className='content-center'>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Sexo
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Sexo</label>
               <select
                 name='sexo'
                 onChange={handleSelected}
@@ -228,9 +221,7 @@ const Pacientes = () => {
               </select>
             </div>
             <div className='content-center'>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Peso
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Peso</label>
               <input
                 type='number'
                 name='peso'
@@ -240,9 +231,7 @@ const Pacientes = () => {
               />
             </div>
             <div>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Altura
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Altura</label>
               <input
                 type='number'
                 name='altura'
@@ -287,9 +276,7 @@ const Pacientes = () => {
           <br />
           <div className='grid-row-2 grid content-center items-center justify-items-center'>
             <div className='content-center'>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Nome
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Nome</label>
               <input
                 type='text'
                 name='nome'
@@ -299,9 +286,7 @@ const Pacientes = () => {
               />
             </div>
             <div className=''>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Idade
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Idade</label>
               <input
                 type='number'
                 name='idade'
@@ -312,9 +297,7 @@ const Pacientes = () => {
             </div>
 
             <div className='content-center'>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Sexo
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Sexo</label>
               <select
                 name='sexo'
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
@@ -328,9 +311,7 @@ const Pacientes = () => {
               </select>
             </div>
             <div className='content-center'>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Peso
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Peso</label>
               <input
                 type='number'
                 name='peso'
@@ -341,9 +322,7 @@ const Pacientes = () => {
               />
             </div>
             <div>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>
-                Altura
-              </label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Altura</label>
               <input
                 type='number'
                 name='alturaEdit'
@@ -431,25 +410,29 @@ const Pacientes = () => {
               <td className='py-4 px-6'>{paciente.peso}</td>
               <td className='py-4 px-6'>{paciente.altura}</td>
               <td className='px-6t-medium py-4'>
-                <a
-                  type='button'
-                  className='rounded-full rounded border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-100'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='16'
-                    height='16'
-                    fill='currentColor'
-                    className='bi bi-eye'
-                    viewBox='0 0 16 16'
+              <Link to="/dietaPaciente" state={{ idPaciente: paciente.id }}>
+                  <a
+                    title='Vizualizar Plano Dietético'
+                    type='button'
+                    className='rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-100'
                   >
-                    <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z' />
-                    <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z' />
-                  </svg>
-                </a>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      fill='currentColor'
+                      className='bi bi-eye'
+                      viewBox='0 0 16 16'
+                    >
+                      <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z' />
+                      <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z' />
+                    </svg>
+                  </a>
+                </Link>
                 <a
                   type='button'
-                  className='ml-1 rounded-full rounded border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-yellow-200'
+                  title='Editar Paciente'
+                  className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-yellow-200'
                   onClick={() => handleOpenEditModal(paciente)}
                 >
                   <svg
@@ -470,7 +453,8 @@ const Pacientes = () => {
                 <a
                   onClick={() => deletarPaciente(paciente.id)}
                   type='button'
-                  className='ml-1 rounded-full rounded border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-red-400'
+                  title='Deletar Paciente'
+                  className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-red-400'
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'

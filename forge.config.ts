@@ -10,15 +10,10 @@ import { rendererConfig } from './webpack.renderer.config';
 
 const config: ForgeConfig = {
   packagerConfig: {
-    extraResource: ['./node_modules/.prisma', './prisma/dev.db'],
+    extraResource: ['./node_modules/.prisma', './prisma/dev.db', './src/public/logo_nutri.jpg'],
   },
   rebuildConfig: {},
-  makers: [
-    new MakerSquirrel({}),
-    new MakerZIP({}, ['darwin']),
-    new MakerRpm({}),
-    new MakerDeb({}),
-  ],
+  makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({})],
   plugins: [
     new WebpackPlugin({
       mainConfig,

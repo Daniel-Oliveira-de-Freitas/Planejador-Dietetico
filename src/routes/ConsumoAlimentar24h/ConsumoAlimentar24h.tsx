@@ -317,10 +317,10 @@ const ConsumoAlimentar24h = () => {
               alimentoPinheiroId: selectedPinheiroFood.id,
               alimentoPinheiro: selectedPinheiroFood,
               alimentoTACO: selectedTacoFood,
-              // horario: horario,
               medida: pinheiroMeasureLabel,
               quantidade: pinheiroQty,
-              tipoDeRefeicaoId: 1, // TODO: setar id de acordo com período selecionado
+              tipoDeRefeicaoId: 1,
+              horario: undefined,
             });
             // addConsumo24h(consumo24h.colacao, 1);
             setIsOpen(false);

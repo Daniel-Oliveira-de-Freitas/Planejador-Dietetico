@@ -15,17 +15,9 @@ const Layout = (props: NavbarProps) => {
       href: '/pacientes',
     },
     {
-      label: 'Consumo habitual',
-      href: '/consumohabitual',
-    },
-    {
       label: 'Consumo 24h',
       href: '/consumo24h',
-    },
-    {
-      label: 'Dieta Paciente',
-      href: '/dietaPaciente',
-    },
+    }
   ];
 
   return (

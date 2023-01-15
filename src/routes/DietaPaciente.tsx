@@ -17,6 +17,8 @@ import {
   Protein,
 } from '@prisma/client';
 import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
+import ConsumoAlimentarHabitual from '../components/ConsumoAlimentarHabitual';
+import { useLocation } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 
@@ -39,6 +41,8 @@ interface Refeicao {
 }
 
 const DietaPaciente = () => {
+  const location = useLocation();
+  const { idPaciente } = location.state;
   const MAX_RESULTS = 5;
   const [query, setQuery] = useState('');
   const [horario, setHorario] = useState<Date>();
@@ -57,15 +61,14 @@ const DietaPaciente = () => {
     jantar: [] as Refeicao[],
     ceia: [] as Refeicao[],
   });
+
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
-  const [pinheiroFoods, setPinheiroFoods] = useState<
-    AlimentoPinheiroComMedidas[]
-  >([]);
-  const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(
-    pinheiroFoods[0]
-  );
-
+  const [pinheiroFoods, setPinheiroFoods] = useState<AlimentoPinheiroComMedidas[]>([]);
+  const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(pinheiroFoods[0]);
+  const [pinheiroMeasureValue, setPinheiroMeasureValue] = useState(0); // TODO: colocar valor padrão
+  const [pinheiroMeasureLabel, setPinheiroMeasureLabel] = useState('');
+  const [pinheiroQty, setPinheiroQty] = useState(1);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function handleOpenModal() {
@@ -81,7 +84,8 @@ const DietaPaciente = () => {
   useEffect(() => {
     getAllTacoFoods().then(setTacoFoods);
     getAllPinheiroFoods().then(setPinheiroFoods);
-    getPaciente(1).then(setPaciente); // TODO: mudar para id do paciente selecionado
+    getPaciente(idPaciente)
+      .then(setPaciente)
   }, []);
 
   const [dieta, setDieta] = useState({
@@ -156,10 +160,70 @@ const DietaPaciente = () => {
     }
   };
 
+  const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    return setPinheiroMeasureValue(Number(e.target.value));
+  };
+
+  const handleQty = (e: React.ChangeEvent<HTMLInputElement>) => {
+    return setPinheiroQty(e.target.valueAsNumber);
+  };
+
+  const convertMedida = (tacoFood: AlimentoTACOComMacros) => {
+    const calcMedida = (pinheiroMeasureValue * pinheiroQty) / tacoFood.base_qty;
+
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcMedida);
+    }
+
+    return 0;
+  };
+
+  const convertKcal = (tacoFood: AlimentoTACOComMacros) => {
+    const calcKcal =
+      ((pinheiroQty + pinheiroMeasureValue) * tacoFood.energy[0].kcal) / tacoFood.base_qty;
+
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcKcal);
+    }
+
+    return 0;
+  };
+
+  const convertCarb = (tacoFood: AlimentoTACOComMacros) => {
+    const calcCarb =
+      (pinheiroMeasureValue * pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcCarb);
+    }
+
+    return 0;
+  };
+
+  const convertProtein = (tacoFood: AlimentoTACOComMacros) => {
+    const calcProtein =
+      (pinheiroMeasureValue * pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
+
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcProtein);
+    }
+
+    return 0;
+  };
+
+  const convertLipid = (tacoFood: AlimentoTACOComMacros) => {
+    const calcLipid =
+      (pinheiroMeasureValue * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
+    if (pinheiroQty > 0 && tacoFood) {
+      return Math.ceil(calcLipid);
+    }
+
+    return 0;
+  };
+
   return (
     <Layout>
       <h2 className='text-2xl'>
-        {/* Nome do paciente: {typeof paciente != 'undefined' ? paciente.nome : ''} */}
+        Nome do paciente: {typeof paciente != 'undefined' ? paciente.nome : ''}
       </h2>
       <br />
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
@@ -181,9 +245,7 @@ const DietaPaciente = () => {
           className='mt-6 mr-12 ml-12  block rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
         >
           <div className='px-6 py-6 lg:px-8'>
-            <h1 className='text-center text-3xl uppercase'>
-              Cadastrar Plano Dietético
-            </h1>
+            <h1 className='text-center text-3xl uppercase'>Cadastrar Plano Dietético</h1>
             <hr />
             <br />
             <form
@@ -193,9 +255,7 @@ const DietaPaciente = () => {
             >
               <div className='flow-root'>
                 <div className='float-left '>
-                  <label className='mb-2 block text-sm font-medium text-gray-900'>
-                    Refeição:
-                  </label>
+                  <label className='mb-2 block text-sm font-medium text-gray-900'>Refeição:</label>
                   <select
                     name='refeicao'
                     id='refeicao'
@@ -236,8 +296,7 @@ const DietaPaciente = () => {
                       className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                       placeholder='Alimento TACO'
                       displayValue={food =>
-                        (food as unknown as AlimentoTACOComMacros)
-                          ?.description ?? ''
+                        (food as unknown as AlimentoTACOComMacros)?.description ?? ''
                       }
                     />
                     <Combobox.Options>
@@ -247,9 +306,7 @@ const DietaPaciente = () => {
                           value={food}
                           className={({ active }) =>
                             `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                              active
-                                ? 'bg-gray-600 text-white'
-                                : 'text-gray-900'
+                              active ? 'bg-gray-600 text-white' : 'text-gray-900'
                             }`
                           }
                         >
@@ -272,8 +329,7 @@ const DietaPaciente = () => {
                       className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                       placeholder='Alimento Pinheiro'
                       displayValue={food =>
-                        (food as unknown as AlimentoPinheiroComMedidas)
-                          ?.description ?? ''
+                        (food as unknown as AlimentoPinheiroComMedidas)?.description ?? ''
                       }
                     />
                     <Combobox.Options>
@@ -283,9 +339,7 @@ const DietaPaciente = () => {
                           value={food}
                           className={({ active }) =>
                             `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                              active
-                                ? 'bg-gray-600 text-white'
-                                : 'text-gray-900'
+                              active ? 'bg-gray-600 text-white' : 'text-gray-900'
                             }`
                           }
                         >
@@ -302,21 +356,25 @@ const DietaPaciente = () => {
                     Quantidade em Gramas
                   </label>
                   <input
-                    type=''
+                    type='number'
                     name='quantidadeCaseiras'
                     id='quantidadeCaseiras'
                     placeholder='Ex: 250 gramas'
                     className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                    onChange={handleQty}
                   />
                 </div>
 
-                {selectedPinheiroFood && (
+                {selectedPinheiroFood && selectedTacoFood && (
                   <div>
                     <div className='float-right'>
                       <label className=' mb-2 block text-sm font-medium text-gray-900'>
                         Unidade em mediadas caseiras
                       </label>
-                      <select className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'>
+                      <select
+                        className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                        onChange={handleMeasure}
+                      >
                         {selectedPinheiroFood?.measures.map(measure => (
                           <option
                             key={measure.id}
@@ -332,47 +390,44 @@ const DietaPaciente = () => {
                         Quantidade em Medidas Caseiras
                       </label>
                       <input
-                        type=''
+                        type='number'
                         name='quantidadeCaseiras'
                         id='quantidadeCaseiras'
                         readOnly
                         placeholder='5 colheres'
                         className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                        value={selectedTacoFood?.id ? convertMedida(selectedTacoFood) : ''}
                       />
                     </div>
                   </div>
                 )}
               </div>
               <hr />
-              <div className='text-end'>
-                <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                  Calorias:{' '}
-                  {selectedTacoFood?.id
-                    ? Math.ceil(selectedTacoFood?.energy[0].kcal)
-                    : ''}
-                </label>
-                <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                  Proteínas:{' '}
-                  {selectedTacoFood?.id
-                    ? Math.ceil(selectedTacoFood?.protein[0].qty) +
-                      selectedTacoFood?.protein[0].unit
-                    : ''}
-                </label>
-                <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                  Carboidratos:{' '}
-                  {selectedTacoFood?.id
-                    ? Math.ceil(selectedTacoFood?.carbohydrate[0].qty) +
-                      selectedTacoFood?.carbohydrate[0].unit
-                    : ''}
-                </label>
-                <label className=' mb-2 block text-sm font-medium text-gray-900'>
-                  Gorduras:{' '}
-                  {selectedTacoFood?.id
-                    ? Math.ceil(selectedTacoFood?.lipid[0].qty) +
-                      selectedTacoFood?.lipid[0].unit
-                    : ''}
-                </label>
-              </div>
+              {selectedPinheiroFood && selectedTacoFood && pinheiroMeasureValue && (
+                <div className='text-end'>
+                  <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                    Calorias: {selectedTacoFood?.id ? convertKcal(selectedTacoFood) + ' kcal' : ''}
+                  </label>
+                  <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                    Proteínas:{' '}
+                    {selectedTacoFood?.id
+                      ? convertProtein(selectedTacoFood) + selectedTacoFood?.protein[0].unit
+                      : ''}
+                  </label>
+                  <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                    Carboidratos:{' '}
+                    {selectedTacoFood?.id
+                      ? convertCarb(selectedTacoFood) + selectedTacoFood?.carbohydrate[0].unit
+                      : ''}
+                  </label>
+                  <label className=' mb-2 block text-sm font-medium text-gray-900'>
+                    Gorduras:{' '}
+                    {selectedTacoFood?.id
+                      ? convertLipid(selectedTacoFood) + selectedTacoFood?.lipid[0].unit
+                      : ''}
+                  </label>
+                </div>
+              )}
               <div className=''>
                 <div className='mr-2 border-separate space-x-4 rounded-b border-gray-200 p-5 dark:border-gray-600'>
                   <button
@@ -461,12 +516,8 @@ const DietaPaciente = () => {
                   <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                     {alimento.alimentoTACO.description}
                   </td>
-                  <td className='py-4 px-6'>
-                    {alimento.alimentoPinheiro.measures[0].label}
-                  </td>
-                  <td className='py-4 px-6'>
-                    {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
-                  </td>
+                  <td className='py-4 px-6'>{alimento.alimentoPinheiro.measures[0].label}</td>
+                  <td className='py-4 px-6'>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
                   <td className='py-4 px-6'>
                     {' '}
                     {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
@@ -541,12 +592,8 @@ const DietaPaciente = () => {
                   <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                     {alimento.alimentoTACO.description}
                   </td>
-                  <td className='py-4 px-6'>
-                    {alimento.alimentoPinheiro.measures[0].label}
-                  </td>
-                  <td className='py-4 px-6'>
-                    {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
-                  </td>
+                  <td className='py-4 px-6'>{alimento.alimentoPinheiro.measures[0].label}</td>
+                  <td className='py-4 px-6'>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
                   <td className='py-4 px-6'>
                     {' '}
                     {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
@@ -621,12 +668,8 @@ const DietaPaciente = () => {
                   <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                     {alimento.alimentoTACO.description}
                   </td>
-                  <td className='py-4 px-6'>
-                    {alimento.alimentoPinheiro.measures[0].label}
-                  </td>
-                  <td className='py-4 px-6'>
-                    {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
-                  </td>
+                  <td className='py-4 px-6'>{alimento.alimentoPinheiro.measures[0].label}</td>
+                  <td className='py-4 px-6'>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
                   <td className='py-4 px-6'>
                     {' '}
                     {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
@@ -701,12 +744,8 @@ const DietaPaciente = () => {
                   <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                     {alimento.alimentoTACO.description}
                   </td>
-                  <td className='py-4 px-6'>
-                    {alimento.alimentoPinheiro.measures[0].label}
-                  </td>
-                  <td className='py-4 px-6'>
-                    {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
-                  </td>
+                  <td className='py-4 px-6'>{alimento.alimentoPinheiro.measures[0].label}</td>
+                  <td className='py-4 px-6'>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
                   <td className='py-4 px-6'>
                     {' '}
                     {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
@@ -793,15 +832,9 @@ const DietaPaciente = () => {
                   <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                     {alimento.alimentoTACO.description}
                   </td>
-                  <td className='py-4 px-6'>
-                    {alimento.alimentoPinheiro.measures[0].label}
-                  </td>
-                  <td className='py-4 px-6'>
-                    {alimento.alimentoPinheiro.measures[0].label}
-                  </td>
-                  <td className='py-4 px-6'>
-                    {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
-                  </td>
+                  <td className='py-4 px-6'>{alimento.alimentoPinheiro.measures[0].label}</td>
+                  <td className='py-4 px-6'>{alimento.alimentoPinheiro.measures[0].label}</td>
+                  <td className='py-4 px-6'>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
                   <td className='py-4 px-6'>
                     {' '}
                     {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
@@ -877,12 +910,8 @@ const DietaPaciente = () => {
                   <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                     {alimento.alimentoTACO.description}
                   </td>
-                  <td className='py-4 px-6'>
-                    {alimento.alimentoPinheiro.measures[0].label}
-                  </td>
-                  <td className='py-4 px-6'>
-                    {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
-                  </td>
+                  <td className='py-4 px-6'>{alimento.alimentoPinheiro.measures[0].label}</td>
+                  <td className='py-4 px-6'>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
                   <td className='py-4 px-6'>
                     {' '}
                     {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
@@ -905,6 +934,7 @@ const DietaPaciente = () => {
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo Habitual</summary>
+        <ConsumoAlimentarHabitual />
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo 24H</summary>
