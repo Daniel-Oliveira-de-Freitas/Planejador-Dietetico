@@ -4,7 +4,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DietaPaciente from './routes/DietaPaciente';
 import Pacientes from './routes/Pacientes';
 import Home from './routes/Home/Home';
-import ConsumoAlimentar24h from './routes/ConsumoAlimentar24h/ConsumoAlimentar24h';
+import ConsumoAlimentar24h from './components/ConsumoAlimentar24h';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

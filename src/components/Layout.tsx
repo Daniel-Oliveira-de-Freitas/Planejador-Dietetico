@@ -13,10 +13,6 @@ const Layout = (props: NavbarProps) => {
     {
       label: 'Pacientes',
       href: '/pacientes',
-    },
-    {
-      label: 'Consumo 24h',
-      href: '/consumo24h',
     }
   ];
 

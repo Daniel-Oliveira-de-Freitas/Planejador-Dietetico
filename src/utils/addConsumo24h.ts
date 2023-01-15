@@ -1,5 +1,5 @@
 import { Paciente } from '@prisma/client';
-import { Refeicao } from '../routes/ConsumoAlimentar24h/types';
+import { Refeicao } from '../types/types';
 
 export const addConsumo24h = async (refeicoes: Refeicao[], paciente: Paciente) => {
   const refeicoesDTO = refeicoes.map(({ alimentoTACO, alimentoPinheiro, ...rest }) => rest);

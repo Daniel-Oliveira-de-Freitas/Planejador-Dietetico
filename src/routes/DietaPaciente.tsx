@@ -18,6 +18,8 @@ import {
 } from '@prisma/client';
 import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
 import ConsumoAlimentarHabitual from '../components/ConsumoAlimentarHabitual';
+import ConsumoAlimentar24h from '../components/ConsumoAlimentar24h';
+import { Refeicao } from '../types/types';
 import { useLocation } from 'react-router-dom';
 
 Modal.setAppElement('#root');
@@ -31,13 +33,6 @@ interface AlimentoTACOComMacros extends AlimentoTACO {
 
 interface AlimentoPinheiroComMedidas extends AlimentoPinheiro {
   measures: MeasurePinheiro[];
-}
-
-interface Refeicao {
-  alimentoTACO: AlimentoTACOComMacros;
-  alimentoPinheiro: AlimentoPinheiroComMedidas;
-  horario: Date;
-  tipoDeRefeicaoId: number;
 }
 
 const DietaPaciente = () => {
@@ -84,8 +79,7 @@ const DietaPaciente = () => {
   useEffect(() => {
     getAllTacoFoods().then(setTacoFoods);
     getAllPinheiroFoods().then(setPinheiroFoods);
-    getPaciente(idPaciente)
-      .then(setPaciente)
+    getPaciente(idPaciente).then(setPaciente);
   }, []);
 
   const [dieta, setDieta] = useState({
@@ -95,14 +89,10 @@ const DietaPaciente = () => {
     horario: 'dd',
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    toast.promise(addDietaPaciente(1, dieta), {
-      error: 'Não foi possível salvar',
-      pending: 'Salvando...',
-      success: 'Dados salvos com sucesso!',
-    });
-  };
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  // };
 
   const filteredTacoFoods =
     query === ''
@@ -159,6 +149,15 @@ const DietaPaciente = () => {
         break;
     }
   };
+
+  type ITipoDeRefeicao = "Colação" | "Desjejum" | "Almoço" | "Lanche" | "Jantar" | "Ceia";
+
+  const handleSelected = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTipoDeRefeicao(prev => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
 
   const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
     return setPinheiroMeasureValue(Number(e.target.value));
@@ -223,7 +222,7 @@ const DietaPaciente = () => {
   return (
     <Layout>
       <h2 className='text-2xl'>
-        Nome do paciente: {typeof paciente != 'undefined' ? paciente.nome : ''}
+        Nome do paciente: {typeof paciente !== 'undefined' ? paciente.nome : ''}
       </h2>
       <br />
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
@@ -249,7 +248,6 @@ const DietaPaciente = () => {
             <hr />
             <br />
             <form
-              onSubmit={handleSubmit}
               className='space-y-4'
               action='#'
             >
@@ -260,7 +258,7 @@ const DietaPaciente = () => {
                     name='refeicao'
                     id='refeicao'
                     className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                    onChange={choice => setTipoDeRefeicao('Jantar')}
+                    onChange={handleSelected}
                   >
                     <option value='Desjejum'>Desjejum</option>
                     <option value='Colacao'>Colacao</option>
@@ -444,10 +442,13 @@ const DietaPaciente = () => {
                     className='rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
                     onClick={() => {
                       addRefeicao(dietaPaciente.periodoSelecionado, {
+                        alimentoTACOId: selectedTacoFood.id,
+                        alimentoPinheiroId: selectedPinheiroFood.id,
                         alimentoTACO: selectedTacoFood,
                         alimentoPinheiro: selectedPinheiroFood,
-                        tipoDeRefeicaoId: 3,
-                        horario: horario,
+                        medida: pinheiroMeasureLabel,
+                        quantidade: pinheiroQty,
+                        tipoDeRefeicaoId: 1,
                       });
                       setIsOpen(false);
 
@@ -931,6 +932,18 @@ const DietaPaciente = () => {
             </tbody>
           </table>
         </details>
+        <button
+          className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
+          onClick={() => {
+            toast.promise(addDietaPaciente(dietaPaciente.colacao, paciente), {
+              error: 'Não foi possível salvar',
+              pending: 'Salvando...',
+              success: 'Dados salvos com sucesso!',
+            });
+          }}
+        >
+          Salvar Plano Dietético
+        </button>
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo Habitual</summary>
@@ -938,6 +951,7 @@ const DietaPaciente = () => {
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo 24H</summary>
+        <ConsumoAlimentar24h />
       </details>
     </Layout>
   );

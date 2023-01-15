@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Combobox } from '@headlessui/react';
-import Modal from '../../components/Modal';
-import Layout from '../../components/Layout';
-import { getAllTacoFoods } from '../../utils/taco/getAllTacoFoods';
-import { getAllPinheiroFoods } from '../../utils/pinheiro/getAllPinheiroFoods';
-import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from './types';
-import FoodDropdown from '../../components/FoodDropdown';
-import { addConsumo24h } from '../../utils/addConsumo24h';
+import Modal from './Modal';
+import Layout from './Layout';
+import { getAllTacoFoods } from '../utils/taco/getAllTacoFoods';
+import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
+import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from '../types/types';
+import FoodDropdown from './FoodDropdown';
+import { addConsumo24h } from '../utils/addConsumo24h';
 import { Paciente } from '@prisma/client';
-import { getPaciente } from '../../utils/getPaciente';
+import { getPaciente } from '../utils/paciente/getPaciente';
+import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { getConsumo24h } from '../utils/getConsumo24h';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
+  const location = useLocation();
+  const { idPaciente } = location.state;
   const [paciente, setPaciente] = useState<Paciente>();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -50,7 +55,7 @@ const ConsumoAlimentar24h = () => {
   }, [selectedPinheiroFood]);
 
   useEffect(() => {
-    getPaciente(1).then(setPaciente); // TODO: mudar para id do paciente selecionado
+    getPaciente(idPaciente).then(setPaciente); // TODO: mudar para id do paciente selecionado
   }, []);
 
   const filteredTacoFoods =
@@ -160,8 +165,7 @@ const ConsumoAlimentar24h = () => {
   };
 
   return (
-    <Layout>
-      <h2 className='text-2xl'>Consumo Alimentar em 24h</h2>
+    <>
       <FoodDropdown
         foodArray={consumo24h.desjejum}
         setIsOpen={setIsOpen}
@@ -327,7 +331,6 @@ const ConsumoAlimentar24h = () => {
               medida: pinheiroMeasureLabel,
               quantidade: pinheiroQty,
               tipoDeRefeicaoId: 1,
-              horario: undefined,
             });
             setIsOpen(false);
           }}
@@ -339,12 +342,16 @@ const ConsumoAlimentar24h = () => {
       <button
         className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
         onClick={() => {
-          addConsumo24h(consumo24h.colacao, paciente);
+          toast.promise(addConsumo24h(consumo24h.colacao, paciente), {
+            error: 'Não foi possível salvar',
+            pending: 'Salvando...',
+            success: 'Adicionado com sucesso!',
+          });
         }}
       >
         Salvar consumo 24h
       </button>
-    </Layout>
+    </>
   );
 };
 

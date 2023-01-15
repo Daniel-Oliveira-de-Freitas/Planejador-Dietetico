@@ -1,4 +1,4 @@
-import { Refeicao } from '../routes/ConsumoAlimentar24h/types';
+import { Refeicao } from '../types/types';
 
 interface FoodDropdownProps {
   setTipoDeRefeicao: (
@@ -14,27 +14,21 @@ interface FoodDropdownProps {
 const FoodDropdown = (props: FoodDropdownProps) => {
   return (
     <details>
-      <summary className='flex items-center gap-2 bg-neutral-100 hover:cursor-pointer'>
+      <summary className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
+        <div>{props.title}</div>
         <button
           onClick={() => {
             props.setTipoDeRefeicao(props.tipoDeRefeicao);
             props.setIsOpen(true);
           }}
-          className='self-center bg-neutral-500 p-2 text-lg font-semibold text-white hover:bg-neutral-400'
+          className='flex-end mr-2 mb-2 rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300'
         >
           +
         </button>
-        <input
-          type='time'
-          className='rounded-md border p-1 text-center'
-          defaultValue={'00:00'}
-          onChange={props.timeOnChange}
-        />
-        <div>{props.title}</div>
       </summary>
-      <table>
+      <table className='w-full text-left text-sm text-gray-500'>
         {props.foodArray.length > 0 && (
-          <thead>
+          <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>
               <th className='text-left text-sm font-thin uppercase tracking-wider'>nome</th>
               <th className='text-left text-sm font-thin uppercase tracking-wider'>qtd</th>
@@ -47,21 +41,21 @@ const FoodDropdown = (props: FoodDropdownProps) => {
         )}
         <tbody>
           {props.foodArray.map(alimento => (
-            <tr key={alimento.alimentoPinheiro.id}>
-              <td>{alimento.alimentoTACO.description}</td>
-              <td>
+            <tr key={alimento.alimentoPinheiro.id} className='border-b bg-white'>
+              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>{alimento.alimentoTACO.description}</td>
+              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                 {alimento.quantidade} {alimento.alimentoPinheiro.measures[0].label}
               </td>
-              <td>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
-              <td>
+              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
+              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                 {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
                   alimento.alimentoTACO.carbohydrate[0].unit}
               </td>
-              <td>
+              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                 {Math.ceil(alimento.alimentoTACO.protein[0].qty) +
                   alimento.alimentoTACO.protein[0].unit}
               </td>
-              <td>
+              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                 {Math.ceil(alimento.alimentoTACO.lipid[0].qty) +
                   alimento.alimentoTACO.lipid[0].unit}
               </td>
