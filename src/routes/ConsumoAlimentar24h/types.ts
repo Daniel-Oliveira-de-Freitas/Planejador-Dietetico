@@ -22,6 +22,9 @@ export interface AlimentoPinheiroComMedidas extends AlimentoPinheiro {
 export interface Refeicao {
   alimentoTACO: AlimentoTACOComMacros;
   alimentoPinheiro: AlimentoPinheiroComMedidas;
-  horario: Date;
+  alimentoTACOId: number;
+  alimentoPinheiroId: number;
   tipoDeRefeicaoId: number;
+  medida: string;
+  quantidade: number;
 }
