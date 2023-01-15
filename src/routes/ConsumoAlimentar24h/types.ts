@@ -24,8 +24,7 @@ export interface Refeicao {
   alimentoPinheiro: AlimentoPinheiroComMedidas;
   alimentoTACOId: number;
   alimentoPinheiroId: number;
+  tipoDeRefeicaoId: number;
   medida: string;
   quantidade: number;
-  horario: Date;
-  tipoDeRefeicaoId: number;
 }

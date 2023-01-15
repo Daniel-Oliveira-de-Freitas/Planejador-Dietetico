@@ -7,9 +7,12 @@ import { getAllPinheiroFoods } from '../../utils/pinheiro/getAllPinheiroFoods';
 import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from './types';
 import FoodDropdown from '../../components/FoodDropdown';
 import { addConsumo24h } from '../../utils/addConsumo24h';
+import { Paciente } from '@prisma/client';
+import { getPaciente } from '../../utils/getPaciente';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
+  const [paciente, setPaciente] = useState<Paciente>();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [horario, setHorario] = useState<Date>();
@@ -45,6 +48,10 @@ const ConsumoAlimentar24h = () => {
     setPinheiroMeasureValue(selectedPinheiroFood?.measures[0].qty);
     setPinheiroMeasureLabel(selectedPinheiroFood?.measures[0].label);
   }, [selectedPinheiroFood]);
+
+  useEffect(() => {
+    getPaciente(1).then(setPaciente); // TODO: mudar para id do paciente selecionado
+  }, []);
 
   const filteredTacoFoods =
     query === ''
@@ -315,21 +322,28 @@ const ConsumoAlimentar24h = () => {
             addRefeicao(consumo24h.periodoSelecionado, {
               alimentoTACOId: selectedTacoFood.id,
               alimentoPinheiroId: selectedPinheiroFood.id,
-              alimentoPinheiro: selectedPinheiroFood,
               alimentoTACO: selectedTacoFood,
+              alimentoPinheiro: selectedPinheiroFood,
               medida: pinheiroMeasureLabel,
               quantidade: pinheiroQty,
               tipoDeRefeicaoId: 1,
               horario: undefined,
             });
-            // addConsumo24h(consumo24h.colacao, 1);
             setIsOpen(false);
           }}
           className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
         >
-          Adicionar
+          Adicionar refeição
         </button>
       </Modal>
+      <button
+        className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
+        onClick={() => {
+          addConsumo24h(consumo24h.colacao, paciente);
+        }}
+      >
+        Salvar consumo 24h
+      </button>
     </Layout>
   );
 };
