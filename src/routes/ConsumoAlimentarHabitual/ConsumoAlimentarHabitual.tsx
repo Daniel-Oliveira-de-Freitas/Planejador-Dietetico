@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { getPaciente } from '../utils/paciente/getPaciente';
-import Layout from '../components/Layout';
-import { addConsumoHabitual } from '../utils/addConsumoHabitual';
+import { getPaciente } from '../../utils/getPaciente';
+import Layout from '../../components/Layout';
+import { addConsumoHabitual } from '../../utils/addConsumoHabitual';
 import { Paciente } from '@prisma/client';
 
 const ConsumoAlimentarHabitual = () => {
@@ -176,9 +176,7 @@ const ConsumoAlimentarHabitual = () => {
             />
           </div>
           <div className='flex flex-col'>
-            <span className='text-sm font-semibold uppercase tracking-wider'>
-              local do almoço
-            </span>
+            <span className='text-sm font-semibold uppercase tracking-wider'>local do almoço</span>
             <div>
               <input
                 type='radio'
@@ -225,9 +223,7 @@ const ConsumoAlimentarHabitual = () => {
             </div>
           </div>
           <div className='flex flex-col'>
-            <span className='text-sm font-semibold uppercase tracking-wider'>
-              local da janta
-            </span>
+            <span className='text-sm font-semibold uppercase tracking-wider'>local da janta</span>
             <div>
               <input
                 type='radio'

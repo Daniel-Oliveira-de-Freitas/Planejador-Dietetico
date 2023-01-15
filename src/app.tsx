@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import Home from './routes/Home';
-import ConsumoAlimentar24h from './routes/ConsumoAlimentar24h';
-import ConsumoAlimentarHabitual from './routes/ConsumoAlimentarHabitual';
 import DietaPaciente from './routes/DietaPaciente';
 import Pacientes  from './routes/Pacientes';
+import Home from './routes/Home/home';
+import ConsumoAlimentar24h from './routes/ConsumoAlimentar24h/ConsumoAlimentar24h';
+import ConsumoAlimentarHabitual from './routes/ConsumoAlimentarHabitual/ConsumoAlimentarHabitual';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
