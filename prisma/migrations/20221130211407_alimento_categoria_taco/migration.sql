@@ -1,0 +1,240 @@
+-- CreateTable
+CREATE TABLE "CategoriaTACO" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "label" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "AlimentoTACO" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "description" TEXT NOT NULL,
+    "base_qty" INTEGER NOT NULL,
+    "base_unit" TEXT NOT NULL,
+    "categoriaTACOId" INTEGER NOT NULL,
+    CONSTRAINT "AlimentoTACO_categoriaTACOId_fkey" FOREIGN KEY ("categoriaTACOId") REFERENCES "CategoriaTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Humidity" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Humidity_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Protein" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Protein_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Lipid" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Lipid_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Cholesterol" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Cholesterol_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Carbohydrate" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Carbohydrate_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Fiber" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Fiber_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Ashes" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Ashes_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Calcium" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Calcium_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Magnesium" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Magnesium_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Phosphorus" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Phosphorus_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Iron" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Iron_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Sodium" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Sodium_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Potassium" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Potassium_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Copper" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Copper_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Zinc" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Zinc_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Retinol" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Retinol_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Thiamine" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Thiamine_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Riboflavin" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Riboflavin_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Pyridoxine" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Pyridoxine_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Niacin" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Niacin_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Manganese" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Manganese_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Energy" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "kcal" REAL NOT NULL,
+    "kj" REAL NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Energy_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Saturated" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Saturated_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Monounsaturated" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Monounsaturated_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Polyunsaturated" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "qty" REAL NOT NULL,
+    "unit" TEXT NOT NULL,
+    "alimentoTACOId" INTEGER NOT NULL,
+    CONSTRAINT "Polyunsaturated_alimentoTACOId_fkey" FOREIGN KEY ("alimentoTACOId") REFERENCES "AlimentoTACO" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
