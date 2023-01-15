@@ -7,7 +7,8 @@ import { getAllPacientes } from '../utils/paciente/getAllPacientes';
 import { Paciente } from '@prisma/client';
 import { deletePaciente } from '../utils/paciente/deletePaciente';
 import { editPaciente } from '../utils/paciente/editPaciente';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
+
 Modal.setAppElement('#root');
 
 const Pacientes = () => {
@@ -107,14 +108,21 @@ const Pacientes = () => {
   };
 
   const deletarPaciente = (pacienteId: number) => {
-    let mensagem;
-    let resposta = confirm('Deseja remover esse registro?');
-    if (resposta == true) {
-      deletePaciente(pacienteId);
-      mensagem = 'Exclusão Realizada com Sucesso!!';
-    } else {
-      mensagem = 'Você cancelou a operação';
-    }
+    Swal.fire({
+      title: 'Você está suguro?',
+      text: "Você não tera mais como reverter!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Deletar!',
+      cancelButtonText: 'Cancelar'
+    }).then(result => {
+      if (result.isConfirmed) {
+        Swal.fire('Deletado!', 'Operação realizada com sucesso.', 'success');
+        deletePaciente(pacienteId);
+      }
+    });
   };
 
   const searchPacientes = pacientes.filter(paciente => {
@@ -338,7 +346,7 @@ const Pacientes = () => {
               </label>
               <input
                 type='number'
-                name='altura'
+                name='alturaEdit'
                 step='0.01'
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 value={editarPaciente ? editarPaciente.altura : ''}

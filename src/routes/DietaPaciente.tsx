@@ -312,19 +312,6 @@ const DietaPaciente = () => {
 
                 {selectedPinheiroFood && (
                   <div>
-                    <div className='float-right '>
-                      <label className=' mb-2 block text-sm font-medium text-gray-900 '>
-                        Quantidade em Medidas Caseiras
-                      </label>
-                      <input
-                        type=''
-                        name='quantidadeCaseiras'
-                        id='quantidadeCaseiras'
-                        readOnly
-                        placeholder='5 colheres'
-                        className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                      />
-                    </div>
                     <div className='float-right'>
                       <label className=' mb-2 block text-sm font-medium text-gray-900'>
                         Unidade em mediadas caseiras
@@ -339,6 +326,19 @@ const DietaPaciente = () => {
                           </option>
                         ))}
                       </select>
+                    </div>
+                    <div className='float-right '>
+                      <label className=' mb-2 block text-sm font-medium text-gray-900 '>
+                        Quantidade em Medidas Caseiras
+                      </label>
+                      <input
+                        type=''
+                        name='quantidadeCaseiras'
+                        id='quantidadeCaseiras'
+                        readOnly
+                        placeholder='5 colheres'
+                        className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                      />
                     </div>
                   </div>
                 )}
