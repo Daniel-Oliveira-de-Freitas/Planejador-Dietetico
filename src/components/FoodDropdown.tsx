@@ -49,7 +49,9 @@ const FoodDropdown = (props: FoodDropdownProps) => {
           {props.foodArray.map(alimento => (
             <tr key={alimento.alimentoPinheiro.id}>
               <td>{alimento.alimentoTACO.description}</td>
-              <td>{alimento.alimentoPinheiro.measures[0].label}</td>
+              <td>
+                {alimento.quantidade} {alimento.alimentoPinheiro.measures[0].label}
+              </td>
               <td>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
               <td>
                 {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
