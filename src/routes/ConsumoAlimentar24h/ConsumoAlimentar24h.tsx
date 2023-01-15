@@ -6,6 +6,7 @@ import { getAllTacoFoods } from '../../utils/taco/getAllTacoFoods';
 import { getAllPinheiroFoods } from '../../utils/pinheiro/getAllPinheiroFoods';
 import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from './types';
 import FoodDropdown from '../../components/FoodDropdown';
+import { addConsumo24h } from '../../utils/addConsumo24h';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
@@ -31,7 +32,8 @@ const ConsumoAlimentar24h = () => {
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
   const [pinheiroFoods, setPinheiroFoods] = useState<AlimentoPinheiroComMedidas[]>([]);
   const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(pinheiroFoods[0]);
-  const [pinheiroMeasure, setPinheiroMeasure] = useState(0); // TODO: colocar valor padrão
+  const [pinheiroMeasureValue, setPinheiroMeasureValue] = useState(0); // TODO: colocar valor padrão
+  const [pinheiroMeasureLabel, setPinheiroMeasureLabel] = useState('');
   const [pinheiroQty, setPinheiroQty] = useState(1);
 
   useEffect(() => {
@@ -40,7 +42,8 @@ const ConsumoAlimentar24h = () => {
   }, []);
 
   useEffect(() => {
-    setPinheiroMeasure(selectedPinheiroFood?.measures[0].qty);
+    setPinheiroMeasureValue(selectedPinheiroFood?.measures[0].qty);
+    setPinheiroMeasureLabel(selectedPinheiroFood?.measures[0].label);
   }, [selectedPinheiroFood]);
 
   const filteredTacoFoods =
@@ -100,7 +103,7 @@ const ConsumoAlimentar24h = () => {
   };
 
   const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    return setPinheiroMeasure(Number(e.target.value));
+    return setPinheiroMeasureValue(Number(e.target.value));
   };
 
   const handleQty = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -108,7 +111,8 @@ const ConsumoAlimentar24h = () => {
   };
 
   const convertKcal = (tacoFood: AlimentoTACOComMacros) => {
-    const calcKcal = (pinheiroMeasure * pinheiroQty * tacoFood.energy[0].kcal) / tacoFood.base_qty;
+    const calcKcal =
+      (pinheiroMeasureValue * pinheiroQty * tacoFood.energy[0].kcal) / tacoFood.base_qty;
 
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcKcal);
@@ -119,7 +123,7 @@ const ConsumoAlimentar24h = () => {
 
   const convertCarb = (tacoFood: AlimentoTACOComMacros) => {
     const calcCarb =
-      (pinheiroMeasure * pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
+      (pinheiroMeasureValue * pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcCarb);
     }
@@ -129,7 +133,7 @@ const ConsumoAlimentar24h = () => {
 
   const convertProtein = (tacoFood: AlimentoTACOComMacros) => {
     const calcProtein =
-      (pinheiroMeasure * pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
+      (pinheiroMeasureValue * pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
 
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcProtein);
@@ -139,7 +143,8 @@ const ConsumoAlimentar24h = () => {
   };
 
   const convertLipid = (tacoFood: AlimentoTACOComMacros) => {
-    const calcLipid = (pinheiroMeasure * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
+    const calcLipid =
+      (pinheiroMeasureValue * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcLipid);
     }
@@ -280,7 +285,7 @@ const ConsumoAlimentar24h = () => {
             />
           </>
         )}
-        {selectedPinheiroFood && selectedTacoFood && pinheiroMeasure && (
+        {selectedPinheiroFood && selectedTacoFood && pinheiroMeasureValue && (
           <div>
             <div>
               Calorias: {selectedTacoFood?.id ? convertKcal(selectedTacoFood) + ' kcal' : ''}
@@ -308,11 +313,16 @@ const ConsumoAlimentar24h = () => {
         <button
           onClick={() => {
             addRefeicao(consumo24h.periodoSelecionado, {
-              alimentoTACO: selectedTacoFood,
+              alimentoTACOId: selectedTacoFood.id,
+              alimentoPinheiroId: selectedPinheiroFood.id,
               alimentoPinheiro: selectedPinheiroFood,
-              horario: horario,
+              alimentoTACO: selectedTacoFood,
+              // horario: horario,
+              medida: pinheiroMeasureLabel,
+              quantidade: pinheiroQty,
               tipoDeRefeicaoId: 1, // TODO: setar id de acordo com período selecionado
             });
+            // addConsumo24h(consumo24h.colacao, 1);
             setIsOpen(false);
           }}
           className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
