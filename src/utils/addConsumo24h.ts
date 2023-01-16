@@ -2,8 +2,6 @@ import { Paciente } from '@prisma/client';
 import { Refeicao } from '../types/types';
 
 export const addConsumo24h = async (refeicoes: Refeicao[], paciente: Paciente) => {
-  const refeicoesDTO = refeicoes.map(({ alimentoTACO, alimentoPinheiro, ...rest }) => rest);
-
   const refeicoesIds: any[] = [];
 
   for (let i = 0; i < refeicoes.length; i++) {
@@ -28,11 +26,7 @@ export const addConsumo24h = async (refeicoes: Refeicao[], paciente: Paciente) =
         },
       },
     });
-
     refeicoesIds.push(createRefeicao.id);
-
-    console.log('refeicoesIds', refeicoesIds);
-    console.log('createRefeicao', createRefeicao);
   }
 
   const createConsumo = await window.prisma.consumo24h.create({
