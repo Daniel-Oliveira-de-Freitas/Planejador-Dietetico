@@ -19,7 +19,7 @@ const Pacientes = () => {
 
   useEffect(() => {
     getAllPacientes().then(setPacientes);
-  }, [pacientes]);
+  }, []);
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
