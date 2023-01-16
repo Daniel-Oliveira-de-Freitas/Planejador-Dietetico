@@ -231,7 +231,7 @@ const DietaPaciente = () => {
           <div className='float-right'>
             <button
               type='button'
-              className=' mr-2 mb-2 rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300'
+              className=' mr-2 mb-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-600'
               onClick={handleOpenModal}
             >
               + Adicionar Refeição
@@ -439,7 +439,7 @@ const DietaPaciente = () => {
                   <button
                     data-modal-toggle='defaultModal'
                     type='submit'
-                    className='rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
+                    className='rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
                     onClick={() => {
                       addRefeicao(dietaPaciente.periodoSelecionado, {
                         alimentoTACOId: selectedTacoFood.id,
@@ -932,6 +932,8 @@ const DietaPaciente = () => {
             </tbody>
           </table>
         </details>
+        <br />
+        <div className='mt-4 flex w-full justify-end'>
         <Button
           onClick={() => {
             toast.promise(addDietaPaciente(dietaPaciente.colacao, paciente), {
@@ -943,6 +945,7 @@ const DietaPaciente = () => {
         >
           Salvar Plano Dietético
         </Button>
+        </div>
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo Habitual</summary>

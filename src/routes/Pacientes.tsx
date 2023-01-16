@@ -170,7 +170,7 @@ const Pacientes = () => {
         <div className='float-right'>
           <button
             type='button'
-            className=' mr-2 mb-2 rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300'
+            className=' mr-2 mb-2 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300'
             onClick={handleOpenModal}
           >
             + Adicionar Paciente
@@ -414,7 +414,7 @@ const Pacientes = () => {
                   state={{ idPaciente: paciente.id }}
                   title='Visualizar plano dietético'
                   type='button'
-                  className='rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-100'
+                  className='rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-sky-600 hover:text-white'
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -431,7 +431,7 @@ const Pacientes = () => {
                 <a
                   type='button'
                   title='Editar paciente'
-                  className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:cursor-pointer hover:bg-gray-100'
+                  className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:cursor-pointer hover:bg-sky-600 hover:text-white'
                   onClick={() => handleOpenEditModal(paciente)}
                 >
                   <svg
@@ -453,7 +453,7 @@ const Pacientes = () => {
                   onClick={() => deletarPaciente(paciente.id)}
                   type='button'
                   title='Deletar paciente'
-                  className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:cursor-pointer hover:bg-red-500 hover:text-white'
+                  className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:cursor-pointer hover:bg-red-600 hover:text-white'
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
