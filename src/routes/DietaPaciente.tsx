@@ -229,15 +229,16 @@ const DietaPaciente = () => {
         <summary className='text-2xl uppercase'>Plano Dietético</summary>
         <div className='flow-root'>
           <div className='float-right'>
-            <button
+            <Button
               type='button'
-              className=' mr-2 mb-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-600'
+              //className=' mr-2 mb-2 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-600'
               onClick={handleOpenModal}
             >
               + Adicionar Refeição
-            </button>
+            </Button>
           </div>
         </div>
+        <br />
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={handleCloseModal}
@@ -439,7 +440,7 @@ const DietaPaciente = () => {
                   <button
                     data-modal-toggle='defaultModal'
                     type='submit'
-                    className='rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
+                    className='rounded-lg bg-sky-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
                     onClick={() => {
                       addRefeicao(dietaPaciente.periodoSelecionado, {
                         alimentoTACOId: selectedTacoFood.id,
