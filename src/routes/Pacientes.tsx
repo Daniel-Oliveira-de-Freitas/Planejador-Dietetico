@@ -110,13 +110,13 @@ const Pacientes = () => {
 
   const deletarPaciente = (pacienteId: number) => {
     Swal.fire({
-      title: 'Você está suguro?',
-      text: 'Você não tera mais como reverter!',
+      title: 'Você está seguro?',
+      text: 'Essa ação é irreversível!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Deletar!',
+      confirmButtonText: 'Deletar',
       cancelButtonText: 'Cancelar',
     }).then(result => {
       if (result.isConfirmed) {
