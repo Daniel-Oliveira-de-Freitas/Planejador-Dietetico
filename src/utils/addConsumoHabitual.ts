@@ -17,15 +17,12 @@ interface ConsumoHabitual {
   quemPrepara: string;
 }
 
-export const addConsumoHabitual = async (
-  pacienteId: number,
-  data: ConsumoHabitual
-) => {
+export const addConsumoHabitual = async (pacienteId: number, data: ConsumoHabitual) => {
   await window.prisma.consumoHabitual.create({
-    data,
-    select: {
+    data: {
+      ...data,
       Paciente: {
-        where: {
+        connect: {
           id: pacienteId,
         },
       },
