@@ -8,20 +8,13 @@ const Home = () => {
       <hr />
       <br />
       <div>
-        <h2 className='text-xl text-center'>
-        “A nutrição é o único remédio que pode trazer a recuperação total e pode ser usada com
+        <h2 className='text-center text-xl'>
+          “A nutrição é o único remédio que pode trazer a recuperação total e pode ser usada com
           qualquer tratamento.
         </h2>
-        <h2 className='text-xl text-center'>
-         Lembre-se, a comida é o nosso melhor remédio! “ – Bernard Jensen
+        <h2 className='text-center text-xl'>
+          Lembre-se, a comida é o nosso melhor remédio! “ – Bernard Jensen
         </h2>
-
-        
-      </div>
-
-      <div>
-        
-        <img src="src\routes\Home\img\logo_nutri.jpg" alt="" />
       </div>
     </Layout>
   );
