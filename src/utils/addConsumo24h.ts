@@ -1,33 +1,35 @@
 import { Paciente } from '@prisma/client';
-import { Refeicao } from '../types/types';
+import { Consumo } from '../types/types';
 
-export const addConsumo24h = async (refeicoes: Refeicao[], paciente: Paciente) => {
+export const addConsumo24h = async (consumos: Consumo[], paciente: Paciente) => {
   const refeicoesIds: any[] = [];
 
-  for (let i = 0; i < refeicoes.length; i++) {
-    const createRefeicao = await window.prisma.refeicaoConsumo24h.create({
-      data: {
-        medida: refeicoes[i].medida,
-        quantidade: refeicoes[i].quantidade,
-        alimentoPinheiro: {
-          connect: {
-            id: refeicoes[i].alimentoPinheiro.id,
+  consumos.map(consumo => {
+    consumo.refeicoes.forEach(async refeicao => {
+      const createRefeicao = await window.prisma.refeicaoConsumo24h.create({
+        data: {
+          medida: refeicao.medida,
+          quantidade: refeicao.quantidade,
+          alimentoPinheiro: {
+            connect: {
+              id: refeicao.alimentoPinheiro.id,
+            },
+          },
+          alimentoTACO: {
+            connect: {
+              id: refeicao.alimentoTACO.id,
+            },
+          },
+          tipoDeRefeicao: {
+            connect: {
+              id: refeicao.tipoDeRefeicaoId,
+            },
           },
         },
-        alimentoTACO: {
-          connect: {
-            id: refeicoes[i].alimentoTACO.id,
-          },
-        },
-        tipoDeRefeicao: {
-          connect: {
-            id: refeicoes[i].tipoDeRefeicaoId,
-          },
-        },
-      },
+      });
+      refeicoesIds.push(createRefeicao.id);
     });
-    refeicoesIds.push(createRefeicao.id);
-  }
+  });
 
   const createConsumo = await window.prisma.consumo24h.create({
     data: {
