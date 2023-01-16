@@ -9,6 +9,8 @@ interface ModalProps {
 }
 
 const Modal = (props: ModalProps) => {
+  const defaultStyle = 'mx-auto min-h-[50vh] max-w-md rounded bg-white p-4';
+
   return (
     <Dialog
       open={props.isOpen}
@@ -21,8 +23,10 @@ const Modal = (props: ModalProps) => {
       />
 
       <div className='fixed inset-0 flex items-center justify-center'>
-        <Dialog.Panel className='mx-auto max-w-md rounded bg-white p-4'>
-          {props.title && <Dialog.Title className='text-2xl'>{props.title}</Dialog.Title>}
+        <Dialog.Panel className={defaultStyle}>
+          {props.title && (
+            <Dialog.Title className='text-2xl font-semibold'>{props.title}</Dialog.Title>
+          )}
           {props.description ?? <Dialog.Description>{props.description}</Dialog.Description>}
           {props.children}
         </Dialog.Panel>
