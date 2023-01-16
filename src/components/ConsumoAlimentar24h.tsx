@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Combobox } from '@headlessui/react';
 import Modal from './Modal';
-import Layout from './Layout';
 import { getAllTacoFoods } from '../utils/taco/getAllTacoFoods';
 import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
-import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from '../types/types';
+import {
+  AlimentoPinheiroComMedidas,
+  AlimentoTACOComMacros,
+  Consumo,
+  Periodo,
+  Refeicao,
+} from '../types/types';
 import FoodDropdown from './FoodDropdown';
 import { addConsumo24h } from '../utils/addConsumo24h';
 import { Paciente } from '@prisma/client';
@@ -21,21 +26,15 @@ const ConsumoAlimentar24h = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [horario, setHorario] = useState<Date>();
-  const [consumo24h, setConsumo24h] = useState({
-    periodoSelecionado: 'Colação' as
-      | 'Colação'
-      | 'Desjejum'
-      | 'Almoço'
-      | 'Lanche'
-      | 'Jantar'
-      | 'Ceia',
-    colacao: [] as Refeicao[],
-    desjejum: [] as Refeicao[],
-    almoco: [] as Refeicao[],
-    lanche: [] as Refeicao[],
-    jantar: [] as Refeicao[],
-    ceia: [] as Refeicao[],
-  });
+  const [periodo, setPeriodo] = useState<Periodo>('Colação');
+  const [consumo, setConsumo] = useState<Consumo[]>([
+    { periodo: 'Colação' as Periodo, refeicoes: [] as Refeicao[] },
+    { periodo: 'Desjejum' as Periodo, refeicoes: [] as Refeicao[] },
+    { periodo: 'Almoço' as Periodo, refeicoes: [] as Refeicao[] },
+    { periodo: 'Lanche' as Periodo, refeicoes: [] as Refeicao[] },
+    { periodo: 'Jantar' as Periodo, refeicoes: [] as Refeicao[] },
+    { periodo: 'Ceia' as Periodo, refeicoes: [] as Refeicao[] },
+  ]);
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
   const [pinheiroFoods, setPinheiroFoods] = useState<AlimentoPinheiroComMedidas[]>([]);
@@ -47,16 +46,13 @@ const ConsumoAlimentar24h = () => {
   useEffect(() => {
     getAllTacoFoods().then(setTacoFoods);
     getAllPinheiroFoods().then(setPinheiroFoods);
+    getPaciente(idPaciente).then(setPaciente);
   }, []);
 
   useEffect(() => {
     setPinheiroMeasureValue(selectedPinheiroFood?.measures[0].qty);
     setPinheiroMeasureLabel(selectedPinheiroFood?.measures[0].label);
   }, [selectedPinheiroFood]);
-
-  useEffect(() => {
-    getPaciente(idPaciente).then(setPaciente); // TODO: mudar para id do paciente selecionado
-  }, []);
 
   const filteredTacoFoods =
     query === ''
@@ -79,9 +75,10 @@ const ConsumoAlimentar24h = () => {
   const setTipoDeRefeicao = (
     periodo: 'Colação' | 'Desjejum' | 'Almoço' | 'Lanche' | 'Jantar' | 'Ceia'
   ) => {
-    setConsumo24h(prev => {
-      return { ...prev, periodoSelecionado: periodo };
-    });
+    // setConsumo24h(prev => {
+    //   return { ...prev, periodoSelecionado: periodo };
+    // });
+    return setPeriodo(periodo);
   };
 
   const addRefeicao = (
@@ -90,22 +87,22 @@ const ConsumoAlimentar24h = () => {
   ) => {
     switch (periodo) {
       case 'Colação':
-        consumo24h.colacao.push(refeicao);
+        consumo[0].refeicoes.push(refeicao);
         break;
       case 'Desjejum':
-        consumo24h.desjejum.push(refeicao);
+        consumo[1].refeicoes.push(refeicao);
         break;
       case 'Almoço':
-        consumo24h.almoco.push(refeicao);
+        consumo[2].refeicoes.push(refeicao);
         break;
       case 'Lanche':
-        consumo24h.lanche.push(refeicao);
+        consumo[3].refeicoes.push(refeicao);
         break;
       case 'Jantar':
-        consumo24h.jantar.push(refeicao);
+        consumo[4].refeicoes.push(refeicao);
         break;
       case 'Ceia':
-        consumo24h.ceia.push(refeicao);
+        consumo[5].refeicoes.push(refeicao);
         break;
     }
   };
@@ -166,175 +163,146 @@ const ConsumoAlimentar24h = () => {
 
   return (
     <>
-      <FoodDropdown
-        foodArray={consumo24h.desjejum}
-        setIsOpen={setIsOpen}
-        timeOnChange={handleHorario}
-        setTipoDeRefeicao={setTipoDeRefeicao}
-        tipoDeRefeicao={'Desjejum'}
-        title='Desjejum'
-      />
-      <FoodDropdown
-        foodArray={consumo24h.colacao}
-        setIsOpen={setIsOpen}
-        timeOnChange={handleHorario}
-        setTipoDeRefeicao={setTipoDeRefeicao}
-        tipoDeRefeicao={'Colação'}
-        title='Colação'
-      />
-      <FoodDropdown
-        foodArray={consumo24h.almoco}
-        setIsOpen={setIsOpen}
-        timeOnChange={handleHorario}
-        setTipoDeRefeicao={setTipoDeRefeicao}
-        tipoDeRefeicao={'Almoço'}
-        title='Almoço'
-      />
-      <FoodDropdown
-        foodArray={consumo24h.lanche}
-        setIsOpen={setIsOpen}
-        timeOnChange={handleHorario}
-        setTipoDeRefeicao={setTipoDeRefeicao}
-        tipoDeRefeicao={'Lanche'}
-        title='Lanche'
-      />
-      <FoodDropdown
-        foodArray={consumo24h.jantar}
-        setIsOpen={setIsOpen}
-        timeOnChange={handleHorario}
-        setTipoDeRefeicao={setTipoDeRefeicao}
-        tipoDeRefeicao={'Jantar'}
-        title='Jantar'
-      />
-      <FoodDropdown
-        foodArray={consumo24h.ceia}
-        setIsOpen={setIsOpen}
-        timeOnChange={handleHorario}
-        setTipoDeRefeicao={setTipoDeRefeicao}
-        tipoDeRefeicao={'Ceia'}
-        title='Ceia'
-      />
+      {consumo.map(c => (
+        <FoodDropdown
+          key={c.periodo}
+          foodArray={c.refeicoes}
+          setIsOpen={setIsOpen}
+          timeOnChange={handleHorario}
+          setTipoDeRefeicao={setTipoDeRefeicao}
+          tipoDeRefeicao={c.periodo}
+          title={c.periodo}
+        />
+      ))}
       <Modal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        title='Adicionar alimento'
+        title='🍕 Adicionar alimento'
       >
-        <Combobox
-          defaultValue={selectedTacoFood}
-          onChange={setSelectedTacoFood}
-        >
-          <Combobox.Input
-            onChange={event => setQuery(event.target.value)}
-            className='mt-4 rounded-md border p-1'
-            placeholder='Alimento TACO'
-            displayValue={food => (food as unknown as AlimentoTACOComMacros)?.description ?? ''}
-          />
-          <Combobox.Options>
-            {filteredTacoFoods.map(food => (
-              <Combobox.Option
-                key={food.id}
-                value={food}
-                className={({ active }) =>
-                  `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                    active ? 'bg-gray-600 text-white' : 'text-gray-900'
-                  }`
-                }
-              >
-                {food.description}
-              </Combobox.Option>
-            ))}
-          </Combobox.Options>
-        </Combobox>
-        <Combobox
-          defaultValue={selectedPinheiroFood}
-          onChange={setSelectedPinheiroFood}
-        >
-          <Combobox.Input
-            onChange={event => setQuery(event.target.value)}
-            className='mt-4 rounded-md border p-1'
-            placeholder='Alimento Pinheiro'
-            displayValue={food =>
-              (food as unknown as AlimentoPinheiroComMedidas)?.description ?? ''
-            }
-          />
-          <Combobox.Options>
-            {filteredPinheiroFoods.map(food => (
-              <Combobox.Option
-                key={food.id}
-                value={food}
-                className={({ active }) =>
-                  `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                    active ? 'bg-gray-600 text-white' : 'text-gray-900'
-                  }`
-                }
-              >
-                {food.description}
-              </Combobox.Option>
-            ))}
-          </Combobox.Options>
-        </Combobox>
-        {selectedPinheiroFood && (
-          <>
-            <select
-              className='rounded-md border p-1'
-              onChange={handleMeasure}
-            >
-              {selectedPinheiroFood?.measures.map(measure => (
-                <option
-                  key={measure.id}
-                  value={measure.qty}
-                >
-                  {measure.label}
-                </option>
-              ))}
-            </select>
-            <input
-              type='number'
-              className='rounded-md border p-1'
-              onChange={handleQty}
-              value={pinheiroQty}
-            />
-          </>
-        )}
-        {selectedPinheiroFood && selectedTacoFood && pinheiroMeasureValue && (
+        <div className='mt-8 grid grid-cols-2 gap-2'>
           <div>
-            <div>
-              Calorias: {selectedTacoFood?.id ? convertKcal(selectedTacoFood) + ' kcal' : ''}
-            </div>
-            <div>
-              Proteínas:{' '}
-              {selectedTacoFood?.id
-                ? convertProtein(selectedTacoFood) + selectedTacoFood?.protein[0].unit
-                : ''}
-            </div>
-            <div>
-              Carboidratos:{' '}
-              {selectedTacoFood?.id
-                ? convertCarb(selectedTacoFood) + selectedTacoFood?.carbohydrate[0].unit
-                : ''}
-            </div>
-            <div>
-              Gorduras:{' '}
-              {selectedTacoFood?.id
-                ? convertLipid(selectedTacoFood) + selectedTacoFood?.lipid[0].unit
-                : ''}
-            </div>
+            <label className='text-sm font-medium text-gray-900'>Alimento TACO</label>
+            <Combobox
+              defaultValue={selectedTacoFood}
+              onChange={setSelectedTacoFood}
+            >
+              <Combobox.Input
+                onChange={event => setQuery(event.target.value)}
+                className='w-full rounded-md border p-1'
+                placeholder='Alimento TACO'
+                displayValue={food => (food as unknown as AlimentoTACOComMacros)?.description ?? ''}
+              />
+              <Combobox.Options>
+                {filteredTacoFoods.map(food => (
+                  <Combobox.Option
+                    key={food.id}
+                    value={food}
+                    className={({ active }) =>
+                      `relative mt-1 cursor-default select-none rounded-md py-2 pl-10 pr-4 ${
+                        active ? 'bg-sky-600 text-white' : 'text-gray-900'
+                      }`
+                    }
+                  >
+                    {food.description}
+                  </Combobox.Option>
+                ))}
+              </Combobox.Options>
+            </Combobox>
           </div>
-        )}
+          <div>
+            <label className='text-sm font-medium text-gray-900'>Alimento Pinheiro</label>
+            <Combobox
+              defaultValue={selectedPinheiroFood}
+              onChange={setSelectedPinheiroFood}
+            >
+              <Combobox.Input
+                onChange={event => setQuery(event.target.value)}
+                className='w-full rounded-md border p-1'
+                placeholder='Alimento Pinheiro'
+                displayValue={food =>
+                  (food as unknown as AlimentoPinheiroComMedidas)?.description ?? ''
+                }
+              />
+              <Combobox.Options>
+                {filteredPinheiroFoods.map(food => (
+                  <Combobox.Option
+                    key={food.id}
+                    value={food}
+                    className={({ active }) =>
+                      `relative mt-1 cursor-default select-none rounded-md py-2 pl-10 pr-4 ${
+                        active ? 'bg-sky-600 text-white' : 'text-gray-900'
+                      }`
+                    }
+                  >
+                    {food.description}
+                  </Combobox.Option>
+                ))}
+              </Combobox.Options>
+            </Combobox>
+          </div>
+          {selectedPinheiroFood && (
+            <>
+              <select
+                className='rounded-md border p-1'
+                onChange={handleMeasure}
+              >
+                {selectedPinheiroFood?.measures.map(measure => (
+                  <option
+                    key={measure.id}
+                    value={measure.qty}
+                  >
+                    {measure.label}
+                  </option>
+                ))}
+              </select>
+              <input
+                type='number'
+                className='rounded-md border p-1'
+                onChange={handleQty}
+                value={pinheiroQty}
+              />
+            </>
+          )}
+          {selectedPinheiroFood && selectedTacoFood && pinheiroMeasureValue && (
+            <div>
+              <div>
+                Calorias: {selectedTacoFood?.id ? convertKcal(selectedTacoFood) + ' kcal' : ''}
+              </div>
+              <div>
+                Proteínas:{' '}
+                {selectedTacoFood?.id
+                  ? convertProtein(selectedTacoFood) + selectedTacoFood?.protein[0].unit
+                  : ''}
+              </div>
+              <div>
+                Carboidratos:{' '}
+                {selectedTacoFood?.id
+                  ? convertCarb(selectedTacoFood) + selectedTacoFood?.carbohydrate[0].unit
+                  : ''}
+              </div>
+              <div>
+                Gorduras:{' '}
+                {selectedTacoFood?.id
+                  ? convertLipid(selectedTacoFood) + selectedTacoFood?.lipid[0].unit
+                  : ''}
+              </div>
+            </div>
+          )}
+        </div>
         <button
           onClick={() => {
-            addRefeicao(consumo24h.periodoSelecionado, {
+            addRefeicao(periodo, {
               alimentoTACOId: selectedTacoFood.id,
               alimentoPinheiroId: selectedPinheiroFood.id,
               alimentoTACO: selectedTacoFood,
               alimentoPinheiro: selectedPinheiroFood,
               medida: pinheiroMeasureLabel,
               quantidade: pinheiroQty,
-              tipoDeRefeicaoId: 1,
+              tipoDeRefeicaoId: 1, // TODO: colocar de acordo com período
             });
             setIsOpen(false);
           }}
-          className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
+          className='float-right rounded-md bg-sky-600 py-2 px-4 text-lg font-semibold text-white hover:bg-sky-700'
         >
           Adicionar refeição
         </button>
@@ -342,7 +310,7 @@ const ConsumoAlimentar24h = () => {
       <button
         className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
         onClick={() => {
-          toast.promise(addConsumo24h(consumo24h.colacao, paciente), {
+          toast.promise(addConsumo24h(consumo, paciente), {
             error: 'Não foi possível salvar',
             pending: 'Salvando...',
             success: 'Adicionado com sucesso!',
