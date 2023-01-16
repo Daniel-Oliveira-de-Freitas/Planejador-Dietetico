@@ -4,6 +4,7 @@ import { getPaciente } from '../utils/paciente/getPaciente';
 import { addConsumoHabitual } from '../utils/addConsumoHabitual';
 import { Paciente } from '@prisma/client';
 import { useLocation } from 'react-router';
+import { Button } from './Button';
 
 const ConsumoAlimentarHabitual = () => {
   const [paciente, setPaciente] = useState<Paciente>();
@@ -271,12 +272,7 @@ const ConsumoAlimentarHabitual = () => {
           </div>
         </div>
       </div>
-      <button
-        type='submit'
-        className='rounded-md bg-sky-600 py-2 px-4 text-lg font-semibold text-white hover:bg-sky-700'
-      >
-        Salvar
-      </button>
+      <Button type='submit'>Salvar</Button>
     </form>
   );
 };

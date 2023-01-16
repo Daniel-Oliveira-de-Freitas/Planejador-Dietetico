@@ -21,6 +21,7 @@ import ConsumoAlimentarHabitual from '../components/ConsumoAlimentarHabitual';
 import ConsumoAlimentar24h from '../components/ConsumoAlimentar24h';
 import { Refeicao } from '../types/types';
 import { useLocation } from 'react-router-dom';
+import { Button } from '../components/Button';
 
 Modal.setAppElement('#root');
 
@@ -150,14 +151,13 @@ const DietaPaciente = () => {
     }
   };
 
-  type ITipoDeRefeicao = "Colação" | "Desjejum" | "Almoço" | "Lanche" | "Jantar" | "Ceia";
+  type ITipoDeRefeicao = 'Colação' | 'Desjejum' | 'Almoço' | 'Lanche' | 'Jantar' | 'Ceia';
 
   const handleSelected = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTipoDeRefeicao(prev => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
-
 
   const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
     return setPinheiroMeasureValue(Number(e.target.value));
@@ -932,8 +932,7 @@ const DietaPaciente = () => {
             </tbody>
           </table>
         </details>
-        <button
-          className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
+        <Button
           onClick={() => {
             toast.promise(addDietaPaciente(dietaPaciente.colacao, paciente), {
               error: 'Não foi possível salvar',
@@ -943,7 +942,7 @@ const DietaPaciente = () => {
           }}
         >
           Salvar Plano Dietético
-        </button>
+        </Button>
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo Habitual</summary>

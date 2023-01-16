@@ -17,6 +17,7 @@ import { getPaciente } from '../utils/paciente/getPaciente';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getConsumo24h } from '../utils/getConsumo24h';
+import { Button } from './Button';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
@@ -290,7 +291,7 @@ const ConsumoAlimentar24h = () => {
           </div>
         </div>
         <div className='mt-4 flex h-full w-full items-end justify-center'>
-          <button
+          <Button
             onClick={() => {
               addRefeicao(periodo, {
                 alimentoTACOId: selectedTacoFood.id,
@@ -303,15 +304,13 @@ const ConsumoAlimentar24h = () => {
               });
               setIsOpen(false);
             }}
-            className='rounded-md bg-sky-600 py-2 px-4 text-lg font-semibold text-white hover:bg-sky-700'
           >
             Adicionar refeição
-          </button>
+          </Button>
         </div>
       </Modal>
       <div className='mt-4 flex w-full justify-end'>
-        <button
-          className='rounded-md bg-sky-600 py-2 px-4 text-lg font-semibold text-white hover:bg-sky-700'
+        <Button
           onClick={() => {
             toast.promise(addConsumo24h(consumo, paciente), {
               error: 'Não foi possível salvar',
@@ -321,7 +320,7 @@ const ConsumoAlimentar24h = () => {
           }}
         >
           Salvar consumo 24h
-        </button>
+        </Button>
       </div>
     </>
   );
