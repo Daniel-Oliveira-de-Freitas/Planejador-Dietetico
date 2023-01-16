@@ -28,3 +28,10 @@ export interface Refeicao {
   medida: string;
   quantidade: number;
 }
+
+export type Periodo = 'Colação' | 'Desjejum' | 'Almoço' | 'Lanche' | 'Jantar' | 'Ceia';
+
+export type Consumo = {
+  periodo: Periodo;
+  refeicoes: Refeicao[];
+};
