@@ -21,6 +21,7 @@ const createWindow = (): void => {
       nodeIntegration: true, // remover se não funcionar
       contextIsolation: false, // remover se não funcionar
     },
+    autoHideMenuBar: true,
   });
 
   // and load the index.html of the app.
