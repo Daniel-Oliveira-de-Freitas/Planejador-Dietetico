@@ -240,85 +240,89 @@ const ConsumoAlimentar24h = () => {
               </Combobox.Options>
             </Combobox>
           </div>
-          {selectedPinheiroFood && (
-            <>
-              <select
-                className='rounded-md border p-1'
-                onChange={handleMeasure}
+          <select
+            className={`rounded-md border p-1 disabled:pointer-events-none disabled:bg-gray-300 hover:disabled:cursor-not-allowed`}
+            onChange={handleMeasure}
+            disabled={!selectedPinheiroFood}
+          >
+            {selectedPinheiroFood?.measures.map(measure => (
+              <option
+                key={measure.id}
+                value={measure.qty}
               >
-                {selectedPinheiroFood?.measures.map(measure => (
-                  <option
-                    key={measure.id}
-                    value={measure.qty}
-                  >
-                    {measure.label}
-                  </option>
-                ))}
-              </select>
-              <input
-                type='number'
-                className='rounded-md border p-1'
-                onChange={handleQty}
-                value={pinheiroQty}
-              />
-            </>
-          )}
-          {selectedPinheiroFood && selectedTacoFood && pinheiroMeasureValue && (
+                {measure.label}
+              </option>
+            ))}
+          </select>
+          <input
+            type='number'
+            className='rounded-md border p-1'
+            onChange={handleQty}
+            value={pinheiroQty}
+          />
+          <div className='col-start-1'>
             <div>
-              <div>
-                Calorias: {selectedTacoFood?.id ? convertKcal(selectedTacoFood) + ' kcal' : ''}
-              </div>
-              <div>
-                Proteínas:{' '}
-                {selectedTacoFood?.id
-                  ? convertProtein(selectedTacoFood) + selectedTacoFood?.protein[0].unit
-                  : ''}
-              </div>
-              <div>
-                Carboidratos:{' '}
-                {selectedTacoFood?.id
-                  ? convertCarb(selectedTacoFood) + selectedTacoFood?.carbohydrate[0].unit
-                  : ''}
-              </div>
-              <div>
-                Gorduras:{' '}
-                {selectedTacoFood?.id
-                  ? convertLipid(selectedTacoFood) + selectedTacoFood?.lipid[0].unit
-                  : ''}
-              </div>
+              <div className='font-bold'>Calorias:</div>{' '}
+              {selectedTacoFood?.id && selectedPinheiroFood?.id
+                ? convertKcal(selectedTacoFood) + ' kcal'
+                : ''}
             </div>
-          )}
+            <div>
+              <div className='font-bold'>Proteínas:</div>
+              {selectedTacoFood?.id && selectedPinheiroFood?.id
+                ? convertProtein(selectedTacoFood) + selectedTacoFood?.protein[0].unit
+                : ''}
+            </div>
+          </div>
+          <div className='col-start-2'>
+            <div>
+              <div className='font-bold'>Carboidratos:</div>{' '}
+              {selectedTacoFood?.id && selectedPinheiroFood?.id
+                ? convertCarb(selectedTacoFood) + selectedTacoFood?.carbohydrate[0].unit
+                : ''}
+            </div>
+            <div>
+              <div className='font-bold'>Gorduras:</div>{' '}
+              {selectedTacoFood?.id && selectedPinheiroFood?.id
+                ? convertLipid(selectedTacoFood) + selectedTacoFood?.lipid[0].unit
+                : ''}
+            </div>
+          </div>
         </div>
-        <button
-          onClick={() => {
-            addRefeicao(periodo, {
-              alimentoTACOId: selectedTacoFood.id,
-              alimentoPinheiroId: selectedPinheiroFood.id,
-              alimentoTACO: selectedTacoFood,
-              alimentoPinheiro: selectedPinheiroFood,
-              medida: pinheiroMeasureLabel,
-              quantidade: pinheiroQty,
-              tipoDeRefeicaoId: 1, // TODO: colocar de acordo com período
-            });
-            setIsOpen(false);
-          }}
-          className='float-right rounded-md bg-sky-600 py-2 px-4 text-lg font-semibold text-white hover:bg-sky-700'
-        >
-          Adicionar refeição
-        </button>
+        <div className='mt-4 flex h-full w-full items-end justify-center'>
+          <button
+            onClick={() => {
+              addRefeicao(periodo, {
+                alimentoTACOId: selectedTacoFood.id,
+                alimentoPinheiroId: selectedPinheiroFood.id,
+                alimentoTACO: selectedTacoFood,
+                alimentoPinheiro: selectedPinheiroFood,
+                medida: pinheiroMeasureLabel,
+                quantidade: pinheiroQty,
+                tipoDeRefeicaoId: 1, // TODO: colocar de acordo com período
+              });
+              setIsOpen(false);
+            }}
+            className='rounded-md bg-sky-600 py-2 px-4 text-lg font-semibold text-white hover:bg-sky-700'
+          >
+            Adicionar refeição
+          </button>
+        </div>
       </Modal>
-      <button
-        className='mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
-        onClick={() => {
-          toast.promise(addConsumo24h(consumo, paciente), {
-            error: 'Não foi possível salvar',
-            pending: 'Salvando...',
-            success: 'Adicionado com sucesso!',
-          });
-        }}
-      >
-        Salvar consumo 24h
-      </button>
+      <div className='mt-4 flex w-full justify-end'>
+        <button
+          className='rounded-md bg-sky-600 py-2 px-4 text-lg font-semibold text-white hover:bg-sky-700'
+          onClick={() => {
+            toast.promise(addConsumo24h(consumo, paciente), {
+              error: 'Não foi possível salvar',
+              pending: 'Salvando...',
+              success: 'Adicionado com sucesso!',
+            });
+          }}
+        >
+          Salvar consumo 24h
+        </button>
+      </div>
     </>
   );
 };
