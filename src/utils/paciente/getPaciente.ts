@@ -3,6 +3,15 @@ export const getPaciente = async (id: number) => {
     where: {
       id,
     },
+    include: {
+      Consumo24h: {
+        include: {
+          refeicoes: true,
+        },
+      },
+      consumoHabitual: true,
+      Dieta: true,
+    },
   });
 
   return paciente;
