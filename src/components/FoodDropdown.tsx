@@ -14,8 +14,8 @@ interface FoodDropdownProps {
 const FoodDropdown = (props: FoodDropdownProps) => {
   return (
     <details>
-      <summary className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
-        <div>{props.title}</div>
+      <summary className='group mt-2 flex items-center justify-between rounded-xl border border-gray-200 py-2 px-4 text-left font-medium text-gray-500 hover:cursor-pointer hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 group-first:mt-4'>
+        <div className='group-hover:text-white'>{props.title}</div>
         <button
           onClick={() => {
             props.setTipoDeRefeicao(props.tipoDeRefeicao);
@@ -26,7 +26,7 @@ const FoodDropdown = (props: FoodDropdownProps) => {
           +
         </button>
       </summary>
-      <table className='w-full text-left text-sm text-gray-500'>
+      <table className='w-full rounded-b-lg text-left text-sm text-gray-500'>
         {props.foodArray.length > 0 && (
           <thead className='bg-gray-50 text-xs uppercase text-gray-700'>
             <tr>
@@ -41,12 +41,19 @@ const FoodDropdown = (props: FoodDropdownProps) => {
         )}
         <tbody>
           {props.foodArray.map(alimento => (
-            <tr key={alimento.alimentoPinheiro.id} className='border-b bg-white'>
-              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>{alimento.alimentoTACO.description}</td>
+            <tr
+              key={alimento.alimentoPinheiro.id}
+              className='border-b bg-white'
+            >
+              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                {alimento.alimentoTACO.description}
+              </td>
               <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                 {alimento.quantidade} {alimento.alimentoPinheiro.measures[0].label}
               </td>
-              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>{Math.ceil(alimento.alimentoTACO.energy[0].kcal)}</td>
+              <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                {Math.ceil(alimento.alimentoTACO.energy[0].kcal)}
+              </td>
               <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
                 {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) +
                   alimento.alimentoTACO.carbohydrate[0].unit}
