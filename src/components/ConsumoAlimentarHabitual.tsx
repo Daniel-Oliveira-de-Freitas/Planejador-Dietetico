@@ -273,7 +273,7 @@ const ConsumoAlimentarHabitual = () => {
       </div>
       <button
         type='submit'
-        className='float-right mt-2 mr-4 rounded-md bg-neutral-500 py-1 px-2 text-lg font-semibold text-white hover:bg-neutral-400'
+        className='rounded-md bg-sky-600 py-2 px-4 text-lg font-semibold text-white hover:bg-sky-700'
       >
         Salvar
       </button>
