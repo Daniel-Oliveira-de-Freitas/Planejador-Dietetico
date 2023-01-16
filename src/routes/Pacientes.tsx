@@ -43,11 +43,11 @@ const Pacientes = () => {
   }
 
   const [paciente, setPaciente] = useState({
-    nome: null,
-    idade: null,
-    sexo: null,
-    peso: null,
-    altura: null,
+    nome: '',
+    idade: 0,
+    sexo: 'Feminino',
+    peso: 0,
+    altura: 0,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -181,7 +181,7 @@ const Pacientes = () => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
-        className='block rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 sm:mr-auto sm:ml-auto lg:mt-16 lg:mr-60 lg:ml-60'
+        className='mx-auto block w-[450px] rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 lg:mt-16'
       >
         <form onSubmit={handleSubmit}>
           <h1 className='text-center text-3xl uppercase'>Cadastro de Pacientes</h1>
@@ -214,10 +214,9 @@ const Pacientes = () => {
                 onChange={handleSelected}
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
               >
-                <option value=''></option>
                 <option value='Feminino'>Feminino</option>
                 <option value='Masculino'>Masculino</option>
-                <option value='NaoBinario'>Não Binario</option>
+                <option value='NaoBinario'>Não-binário</option>
               </select>
             </div>
             <div className='content-center'>
