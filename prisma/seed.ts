@@ -7,7 +7,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  for (let food of pinheiro) {
+  for (const food of pinheiro) {
     await prisma.alimentoPinheiro.create({
       data: {
         description: food.description,
@@ -33,7 +33,7 @@ async function main() {
     }
   }
 
-  for (let list of tacoList) {
+  for (const list of tacoList) {
     await prisma.categoriaTACO.create({
       data: {
         label: list.category,
@@ -45,7 +45,7 @@ async function main() {
   // "NA" = -1
   // "*" = -2
   // "Tr" = -3
-  for (let food of tacoFood) {
+  for (const food of tacoFood) {
     await prisma.alimentoTACO.create({
       data: {
         description: food.description,
@@ -200,16 +200,9 @@ async function main() {
     });
   }
 
-  const tiposDeRefeicao = [
-    'Desjejum',
-    'Colação',
-    'Almoço',
-    'Lanche',
-    'Jantar',
-    'Ceia',
-  ];
+  const tiposDeRefeicao = ['Desjejum', 'Colação', 'Almoço', 'Lanche', 'Jantar', 'Ceia'];
 
-  for (let nome of tiposDeRefeicao) {
+  for (const nome of tiposDeRefeicao) {
     await prisma.tipoDeRefeicao.create({
       data: {
         nome,

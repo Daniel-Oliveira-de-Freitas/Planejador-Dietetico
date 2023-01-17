@@ -272,7 +272,10 @@ const ConsumoAlimentarHabitual = () => {
           </div>
         </div>
       </div>
-      <Button type='submit'>Salvar</Button>
+      <br />
+      <div className='mt-4 flex w-full justify-end'>
+      <Button type='submit' >Salvar Consumo Habitual</Button>
+      </div>
     </form>
   );
 };

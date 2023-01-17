@@ -17,8 +17,8 @@ const Layout = (props: NavbarProps) => {
   ];
 
   return (
-    <div className='sticky flex h-screen'>
-      <aside className='w-64 border-r-2 bg-sky-600'>
+    <div className='flex'>
+      <aside className='fixed h-screen w-64 border-r-2 bg-sky-600'>
         <h2 className='mt-8 mb-8 pl-2 text-2xl font-bold text-white'>{APP_NAME}</h2>
         <ul>
           {NAV_ITEMS.map((item, index) => (
@@ -30,7 +30,7 @@ const Layout = (props: NavbarProps) => {
           ))}
         </ul>
       </aside>
-      <main className='w-full p-8'>{props.children}</main>
+      <main className='ml-64 w-full p-8'>{props.children}</main>
     </div>
   );
 };

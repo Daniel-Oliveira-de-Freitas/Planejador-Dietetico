@@ -11,32 +11,18 @@ datasource db {
 }
 
 model Paciente {
-  id                Int              @id @default(autoincrement())
-  nome              String
-  idade             Int
-  sexo              String
-  peso              Float
-  altura            Float
-  consumoHabitual   ConsumoHabitual? @relation(fields: [consumoHabitualId], references: [id])
-  consumoHabitualId Int?
-  HabitosDeVida     HabitosDeVida?   @relation(fields: [habitosDeVidaId], references: [id])
-  habitosDeVidaId   Int?
-  Consumo24h        Consumo24h?      @relation(fields: [consumo24hId], references: [id])
-  consumo24hId      Int?
-  Dieta             Dieta?           @relation(fields: [dietaId], references: [id])
-  dietaId           Int?
-}
-
-model Consumo24h {
-  id        Int                  @id @default(autoincrement())
-  refeicoes RefeicaoConsumo24h[]
-  Paciente  Paciente[]
-}
-
-model Dieta {
-  id        Int             @id @default(autoincrement())
-  refeicoes RefeicaoDieta[]
-  Paciente  Paciente[]
+  id                 Int                  @id @default(autoincrement())
+  nome               String
+  idade              Int
+  sexo               String
+  peso               Float
+  altura             Float
+  consumoHabitual    ConsumoHabitual?     @relation(fields: [consumoHabitualId], references: [id])
+  consumoHabitualId  Int?
+  HabitosDeVida      HabitosDeVida?       @relation(fields: [habitosDeVidaId], references: [id])
+  habitosDeVidaId    Int?
+  RefeicaoConsumo24h RefeicaoConsumo24h[]
+  RefeicaoDieta      RefeicaoDieta[]
 }
 
 model RefeicaoDieta {
@@ -49,8 +35,8 @@ model RefeicaoDieta {
   tipoDeRefeicaoId   Int
   medida             String
   quantidade         Int
-  dieta              Dieta?           @relation(fields: [dietaId], references: [id])
-  dietaId            Int?
+  Paciente           Paciente         @relation(fields: [pacienteId], references: [id])
+  pacienteId         Int
 }
 
 model TipoDeRefeicao {
@@ -70,8 +56,8 @@ model RefeicaoConsumo24h {
   tipoDeRefeicaoId   Int
   medida             String
   quantidade         Int
-  Consumo24h         Consumo24h?      @relation(fields: [consumo24hId], references: [id])
-  consumo24hId       Int?
+  Paciente           Paciente         @relation(fields: [pacienteId], references: [id])
+  pacienteId         Int
 }
 
 model ConsumoHabitual {
