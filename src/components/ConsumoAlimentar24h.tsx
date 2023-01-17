@@ -3,21 +3,16 @@ import { Combobox } from '@headlessui/react';
 import Modal from './Modal';
 import { getAllTacoFoods } from '../utils/taco/getAllTacoFoods';
 import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
-import {
-  AlimentoPinheiroComMedidas,
-  AlimentoTACOComMacros,
-  Consumo,
-  Periodo,
-  Refeicao,
-} from '../types/types';
+import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from '../types/types';
 import FoodDropdown from './FoodDropdown';
 import { addConsumo24h } from '../utils/addConsumo24h';
-import { Paciente } from '@prisma/client';
+import { Paciente, TipoDeRefeicao } from '@prisma/client';
 import { getPaciente } from '../utils/paciente/getPaciente';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getConsumo24h } from '../utils/getConsumo24h';
 import { Button } from './Button';
+import { getTiposDeRefeicao } from '../utils/getTiposDeRefeicao';
+import { getRefeicoes24hById } from '../utils/getRefeicoes24hById';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
@@ -26,28 +21,23 @@ const ConsumoAlimentar24h = () => {
   const [paciente, setPaciente] = useState<Paciente>();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
-  const [horario, setHorario] = useState<Date>();
-  const [periodo, setPeriodo] = useState<Periodo>('Colação');
-  const [consumo, setConsumo] = useState<Consumo[]>([
-    { periodo: 'Colação' as Periodo, refeicoes: [] as Refeicao[] },
-    { periodo: 'Desjejum' as Periodo, refeicoes: [] as Refeicao[] },
-    { periodo: 'Almoço' as Periodo, refeicoes: [] as Refeicao[] },
-    { periodo: 'Lanche' as Periodo, refeicoes: [] as Refeicao[] },
-    { periodo: 'Jantar' as Periodo, refeicoes: [] as Refeicao[] },
-    { periodo: 'Ceia' as Periodo, refeicoes: [] as Refeicao[] },
-  ]);
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
   const [pinheiroFoods, setPinheiroFoods] = useState<AlimentoPinheiroComMedidas[]>([]);
   const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(pinheiroFoods[0]);
-  const [pinheiroMeasureValue, setPinheiroMeasureValue] = useState(0); // TODO: colocar valor padrão
+  const [pinheiroMeasureValue, setPinheiroMeasureValue] = useState(0);
   const [pinheiroMeasureLabel, setPinheiroMeasureLabel] = useState('');
   const [pinheiroQty, setPinheiroQty] = useState(1);
+  const [consumo, setConsumo] = useState<Refeicao[]>([]);
+  const [tiposDeRefeicao, setTiposDeRefeicao] = useState<TipoDeRefeicao[]>();
+  const [tipoDeRefeicao, setTipoDeRefeicao] = useState<TipoDeRefeicao>();
 
   useEffect(() => {
     getAllTacoFoods().then(setTacoFoods);
     getAllPinheiroFoods().then(setPinheiroFoods);
+    getTiposDeRefeicao().then(setTiposDeRefeicao);
     getPaciente(idPaciente).then(setPaciente);
+    getRefeicoes24hById(idPaciente).then(setConsumo);
   }, []);
 
   useEffect(() => {
@@ -73,43 +63,23 @@ const ConsumoAlimentar24h = () => {
           })
           .slice(0, MAX_RESULTS);
 
-  const setTipoDeRefeicao = (
-    periodo: 'Colação' | 'Desjejum' | 'Almoço' | 'Lanche' | 'Jantar' | 'Ceia'
-  ) => {
-    // setConsumo24h(prev => {
-    //   return { ...prev, periodoSelecionado: periodo };
-    // });
-    return setPeriodo(periodo);
-  };
-
   const addRefeicao = (
-    periodo: 'Colação' | 'Desjejum' | 'Almoço' | 'Lanche' | 'Jantar' | 'Ceia',
-    refeicao: Refeicao
+    tacoFood: AlimentoTACOComMacros,
+    pinheiroFood: AlimentoPinheiroComMedidas,
+    medida: string,
+    quantidade: number,
+    tipoDeRefeicao: TipoDeRefeicao
   ) => {
-    switch (periodo) {
-      case 'Colação':
-        consumo[0].refeicoes.push(refeicao);
-        break;
-      case 'Desjejum':
-        consumo[1].refeicoes.push(refeicao);
-        break;
-      case 'Almoço':
-        consumo[2].refeicoes.push(refeicao);
-        break;
-      case 'Lanche':
-        consumo[3].refeicoes.push(refeicao);
-        break;
-      case 'Jantar':
-        consumo[4].refeicoes.push(refeicao);
-        break;
-      case 'Ceia':
-        consumo[5].refeicoes.push(refeicao);
-        break;
-    }
-  };
-
-  const handleHorario = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setHorario(e.target.valueAsDate);
+    const refeicao = {
+      alimentoTACO: tacoFood,
+      alimentoTACOId: tacoFood.id,
+      alimentoPinheiro: pinheiroFood,
+      alimentoPinheiroId: pinheiroFood.id,
+      tipoDeRefeicaoId: tipoDeRefeicao.id,
+      quantidade,
+      medida,
+    };
+    consumo.push(refeicao);
   };
 
   const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -164,17 +134,14 @@ const ConsumoAlimentar24h = () => {
 
   return (
     <>
-      {consumo.map(c => (
+      {tiposDeRefeicao && consumo && (
         <FoodDropdown
-          key={c.periodo}
-          foodArray={c.refeicoes}
+          foodArray={consumo}
           setIsOpen={setIsOpen}
-          timeOnChange={handleHorario}
+          tiposDeRefeicao={tiposDeRefeicao}
           setTipoDeRefeicao={setTipoDeRefeicao}
-          tipoDeRefeicao={c.periodo}
-          title={c.periodo}
         />
-      ))}
+      )}
       <Modal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
@@ -290,18 +257,16 @@ const ConsumoAlimentar24h = () => {
             </div>
           </div>
         </div>
-        <div className='mt-4 flex h-full w-full items-end justify-center'>
+        <div className='mt-4 flex h-full w-full justify-center'>
           <Button
             onClick={() => {
-              addRefeicao(periodo, {
-                alimentoTACOId: selectedTacoFood.id,
-                alimentoPinheiroId: selectedPinheiroFood.id,
-                alimentoTACO: selectedTacoFood,
-                alimentoPinheiro: selectedPinheiroFood,
-                medida: pinheiroMeasureLabel,
-                quantidade: pinheiroQty,
-                tipoDeRefeicaoId: 1, // TODO: colocar de acordo com período
-              });
+              addRefeicao(
+                selectedTacoFood,
+                selectedPinheiroFood,
+                pinheiroMeasureLabel,
+                pinheiroQty,
+                tipoDeRefeicao
+              );
               setIsOpen(false);
             }}
           >
