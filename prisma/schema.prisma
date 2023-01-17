@@ -21,15 +21,8 @@ model Paciente {
   consumoHabitualId  Int?
   HabitosDeVida      HabitosDeVida?       @relation(fields: [habitosDeVidaId], references: [id])
   habitosDeVidaId    Int?
-  Dieta              Dieta?               @relation(fields: [dietaId], references: [id])
-  dietaId            Int?
   RefeicaoConsumo24h RefeicaoConsumo24h[]
-}
-
-model Dieta {
-  id        Int             @id @default(autoincrement())
-  refeicoes RefeicaoDieta[]
-  Paciente  Paciente[]
+  RefeicaoDieta      RefeicaoDieta[]
 }
 
 model RefeicaoDieta {
@@ -42,8 +35,8 @@ model RefeicaoDieta {
   tipoDeRefeicaoId   Int
   medida             String
   quantidade         Int
-  dieta              Dieta?           @relation(fields: [dietaId], references: [id])
-  dietaId            Int?
+  Paciente           Paciente         @relation(fields: [pacienteId], references: [id])
+  pacienteId         Int
 }
 
 model TipoDeRefeicao {

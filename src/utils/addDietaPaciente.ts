@@ -1,58 +1,38 @@
 import { Paciente } from '@prisma/client';
 import { Refeicao } from '../types/types';
-interface Dieta {
-  alimentoTacoId: number;
-  alimentoPinheiroId: number;
-  tipoRefeicao: string;
-  horario: string;
-}
 
-export const addDietaPaciente = async (refeicoes: Refeicao[], paciente: Paciente) => {
-  const refeicoesDTO = refeicoes.map(({ alimentoTACO, alimentoPinheiro, ...rest }) => rest);
+export const addDietaPaciente = async (dietas: Refeicao[], paciente: Paciente) => {
+  const transactions: any[] = [];
 
-  const refeicoesIds: any[] = [];
-
-  for (let i = 0; i < refeicoes.length; i++) {
-    const createRefeicao = await window.prisma.refeicaoDieta.create({
+  dietas.map(dieta => {
+    const createRefeicao = window.prisma.refeicaoDieta.create({
       data: {
-        medida: refeicoes[i].medida,
-        quantidade: refeicoes[i].quantidade,
+        medida: dieta.medida,
+        quantidade: dieta.quantidade,
         alimentoPinheiro: {
           connect: {
-            id: refeicoes[i].alimentoPinheiro.id,
+            id: dieta.alimentoPinheiro.id,
           },
         },
         alimentoTACO: {
           connect: {
-            id: refeicoes[i].alimentoTACO.id,
+            id: dieta.alimentoTACO.id,
           },
         },
         tipoDeRefeicao: {
           connect: {
-            id: refeicoes[i].tipoDeRefeicaoId,
+            id: dieta.tipoDeRefeicaoId,
+          },
+        },
+        Paciente: {
+          connect: {
+            id: paciente.id,
           },
         },
       },
     });
-
-    refeicoesIds.push(createRefeicao.id);
-
-    console.log('refeicoesIds', refeicoesIds);
-    console.log('createRefeicao', createRefeicao);
-  }
-
-  const createConsumo = await window.prisma.dieta.create({
-    data: {
-      refeicoes: {
-        connect: refeicoesIds.map(id => ({ id })),
-      },
-      Paciente: {
-        connect: {
-          id: paciente.id,
-        },
-      },
-    },
+    transactions.push(createRefeicao);
   });
 
-  console.log('createConsumo', createConsumo);
+  const refeicoes = await window.prisma.$transaction(transactions);
 };

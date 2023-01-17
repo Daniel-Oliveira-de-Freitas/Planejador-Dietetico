@@ -5,7 +5,6 @@ export const getPaciente = async (id: number) => {
     },
     include: {
       consumoHabitual: true,
-      Dieta: true,
     },
   });
 
