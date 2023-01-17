@@ -179,7 +179,7 @@ const DietaPaciente = () => {
 
   const convertKcal = (tacoFood: AlimentoTACOComMacros) => {
     const calcKcal =
-      ((pinheiroQty + pinheiroMeasureValue) * tacoFood.energy[0].kcal) / tacoFood.base_qty;
+      (pinheiroQty * tacoFood.energy[0].kcal )  / tacoFood.base_qty;
 
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcKcal);
@@ -190,7 +190,7 @@ const DietaPaciente = () => {
 
   const convertCarb = (tacoFood: AlimentoTACOComMacros) => {
     const calcCarb =
-      (pinheiroMeasureValue * pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
+      (pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcCarb);
     }
