@@ -175,7 +175,7 @@ const DietaPaciente = () => {
 
   const convertProtein = (tacoFood: AlimentoTACOComMacros) => {
     const calcProtein =
-      (pinheiroMeasureValue * pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
+      (pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
 
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcProtein);
@@ -186,7 +186,7 @@ const DietaPaciente = () => {
 
   const convertLipid = (tacoFood: AlimentoTACOComMacros) => {
     const calcLipid =
-      (pinheiroMeasureValue * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
+      (pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcLipid);
     }
