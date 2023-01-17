@@ -9,6 +9,7 @@ import { deletePaciente } from '../utils/paciente/deletePaciente';
 import { editPaciente } from '../utils/paciente/editPaciente';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { Button } from '../components/Button';
 
 Modal.setAppElement('#root');
 
@@ -168,13 +169,13 @@ const Pacientes = () => {
           </div>
         </div>
         <div className='float-right'>
-          <button
+          <Button
             type='button'
-            className=' mr-2 mb-2 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300'
+            //className=' mr-2 mb-2 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300'
             onClick={handleOpenModal}
           >
             + Adicionar Paciente
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -255,7 +256,7 @@ const Pacientes = () => {
               <button
                 data-modal-toggle='defaultModal'
                 type='submit'
-                className='rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
+                className='rounded-lg bg-sky-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
               >
                 Adicionar
               </button>
@@ -347,7 +348,7 @@ const Pacientes = () => {
               <button
                 data-modal-toggle='defaultModal'
                 type='submit'
-                className='rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
+                className='rounded-lg bg-sky-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 '
               >
                 Adicionar
               </button>
