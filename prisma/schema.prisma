@@ -35,7 +35,7 @@ model RefeicaoDieta {
   tipoDeRefeicaoId   Int
   medida             String
   quantidade         Int
-  Paciente           Paciente         @relation(fields: [pacienteId], references: [id])
+  Paciente           Paciente         @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
   pacienteId         Int
 }
 
@@ -56,7 +56,7 @@ model RefeicaoConsumo24h {
   tipoDeRefeicaoId   Int
   medida             String
   quantidade         Int
-  Paciente           Paciente         @relation(fields: [pacienteId], references: [id])
+  Paciente           Paciente         @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
   pacienteId         Int
 }
 
