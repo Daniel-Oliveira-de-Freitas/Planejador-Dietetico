@@ -90,46 +90,29 @@ const ConsumoAlimentar24h = () => {
     return setPinheiroQty(e.target.valueAsNumber);
   };
 
-  const convertKcal = (tacoFood: AlimentoTACOComMacros) => {
-    const calcKcal =
-      (pinheiroMeasureValue * pinheiroQty * tacoFood.energy[0].kcal) / tacoFood.base_qty;
-
+  const convertMacros = (tacoFood: AlimentoTACOComMacros) => {
     if (pinheiroQty > 0 && tacoFood) {
-      return Math.ceil(calcKcal);
+      const calcKcal =
+        (pinheiroMeasureValue * pinheiroQty * tacoFood.energy[0].kcal) / tacoFood.base_qty;
+      const calcCarb =
+        (pinheiroMeasureValue * pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
+      const calcProtein =
+        (pinheiroMeasureValue * pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
+      const calcLipid =
+        (pinheiroMeasureValue * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
+      return {
+        kcal: Math.ceil(calcKcal),
+        carb: Math.ceil(calcCarb),
+        protein: Math.ceil(calcProtein),
+        lipid: Math.ceil(calcLipid),
+      };
     }
-
-    return 0;
-  };
-
-  const convertCarb = (tacoFood: AlimentoTACOComMacros) => {
-    const calcCarb =
-      (pinheiroMeasureValue * pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
-    if (pinheiroQty > 0 && tacoFood) {
-      return Math.ceil(calcCarb);
-    }
-
-    return 0;
-  };
-
-  const convertProtein = (tacoFood: AlimentoTACOComMacros) => {
-    const calcProtein =
-      (pinheiroMeasureValue * pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
-
-    if (pinheiroQty > 0 && tacoFood) {
-      return Math.ceil(calcProtein);
-    }
-
-    return 0;
-  };
-
-  const convertLipid = (tacoFood: AlimentoTACOComMacros) => {
-    const calcLipid =
-      (pinheiroMeasureValue * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
-    if (pinheiroQty > 0 && tacoFood) {
-      return Math.ceil(calcLipid);
-    }
-
-    return 0;
+    return {
+      kcal: 0,
+      carb: 0,
+      protein: 0,
+      lipid: 0,
+    };
   };
 
   return (
@@ -232,13 +215,13 @@ const ConsumoAlimentar24h = () => {
             <div>
               <div className='font-bold'>Calorias:</div>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertKcal(selectedTacoFood) + ' kcal'
+                ? convertMacros(selectedTacoFood).kcal + ' kcal'
                 : ''}
             </div>
             <div>
               <div className='font-bold'>Proteínas:</div>
               {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertProtein(selectedTacoFood) + selectedTacoFood?.protein[0].unit
+                ? convertMacros(selectedTacoFood).protein + selectedTacoFood?.protein[0].unit
                 : ''}
             </div>
           </div>
@@ -246,13 +229,13 @@ const ConsumoAlimentar24h = () => {
             <div>
               <div className='font-bold'>Carboidratos:</div>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertCarb(selectedTacoFood) + selectedTacoFood?.carbohydrate[0].unit
+                ? convertMacros(selectedTacoFood).carb + selectedTacoFood?.carbohydrate[0].unit
                 : ''}
             </div>
             <div>
               <div className='font-bold'>Gorduras:</div>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertLipid(selectedTacoFood) + selectedTacoFood?.lipid[0].unit
+                ? convertMacros(selectedTacoFood).lipid + selectedTacoFood?.lipid[0].unit
                 : ''}
             </div>
           </div>
