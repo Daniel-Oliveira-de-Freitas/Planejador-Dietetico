@@ -14,17 +14,23 @@ import { Button } from '../components/Button';
 Modal.setAppElement('#root');
 
 const Pacientes = () => {
+  const MAX_RESULTS = 15;
   const [editarPaciente, setEditarPaciente] = useState<Paciente>();
   const [query, setQuery] = useState('');
-  const [pacientes, setPacientes] = useState<Paciente[]>([]);
+  const [pacientes, setPacientes] = useState<Paciente[]>();
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalEditIsOpen, setIsEditOpen] = useState(false);
+  const [paciente, setPaciente] = useState({
+    nome: '',
+    idade: 0,
+    sexo: 'Feminino',
+    peso: 0,
+    altura: 0,
+  });
 
   useEffect(() => {
     getAllPacientes().then(setPacientes);
   }, []);
-
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  const [modalEditIsOpen, setIsEditOpen] = useState(false);
 
   function handleOpenModal() {
     setIsOpen(true);
@@ -42,14 +48,6 @@ const Pacientes = () => {
   function handleCloseEditModal() {
     setIsEditOpen(false);
   }
-
-  const [paciente, setPaciente] = useState({
-    nome: '',
-    idade: 0,
-    sexo: 'Feminino',
-    peso: 0,
-    altura: 0,
-  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPaciente(prev => {
@@ -72,11 +70,18 @@ const Pacientes = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.promise(addPaciente(paciente), {
-      error: 'Não foi possível salvar',
-      pending: 'Salvando...',
-      success: 'Dados salvos com sucesso!',
-    });
+    toast.promise(
+      addPaciente(paciente).then(pct => {
+        setPacientes(prev => {
+          return [...prev, pct];
+        });
+      }),
+      {
+        error: 'Não foi possível salvar',
+        pending: 'Salvando...',
+        success: 'Dados salvos com sucesso!',
+      }
+    );
     handleCloseModal();
   };
 
@@ -121,19 +126,23 @@ const Pacientes = () => {
       cancelButtonText: 'Cancelar',
     }).then(result => {
       if (result.isConfirmed) {
+        const arraySemPacienteDeletado = pacientes.filter(arr => arr.id !== pacienteId);
+
         Swal.fire('Deletado!', 'Operação realizada com sucesso.', 'success');
         deletePaciente(pacienteId);
+        setPacientes(arraySemPacienteDeletado);
       }
     });
   };
 
-  const searchPacientes = pacientes.filter(paciente => {
-    if (query === '') {
-      return paciente;
-    } else if (paciente.nome.toLowerCase().includes(query.toLowerCase())) {
-      return paciente;
-    }
-  });
+  const searchPacientes =
+    query === ''
+      ? pacientes
+      : pacientes
+          .filter(pct => {
+            return pct.nome.toLowerCase().includes(query.toLowerCase());
+          })
+          .slice(0, MAX_RESULTS);
 
   return (
     <Layout>
@@ -171,7 +180,6 @@ const Pacientes = () => {
         <div className='float-right'>
           <Button
             type='button'
-            //className=' mr-2 mb-2 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300'
             onClick={handleOpenModal}
           >
             + Adicionar Paciente
@@ -399,81 +407,82 @@ const Pacientes = () => {
           </tr>
         </thead>
         <tbody>
-          {searchPacientes.map(paciente => (
-            <tr
-              key={paciente.id}
-              className='border-b bg-white'
-            >
-              <td className='py-4 px-6'>{paciente.nome}</td>
-              <td className='py-4 px-6'>{paciente.idade}</td>
-              <td className='py-4 px-6'>{paciente.sexo}</td>
-              <td className='py-4 px-6'>{paciente.peso}</td>
-              <td className='py-4 px-6'>{paciente.altura}</td>
-              <td className='px-6t-medium py-4'>
-                <Link
-                  to='/dietaPaciente'
-                  state={{ idPaciente: paciente.id }}
-                  title='Visualizar plano dietético'
-                  type='button'
-                  className='rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-sky-600 hover:text-white'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='16'
-                    height='16'
-                    fill='currentColor'
-                    className='bi bi-eye'
-                    viewBox='0 0 16 16'
+          {searchPacientes?.length > 0 &&
+            searchPacientes?.map(paciente => (
+              <tr
+                key={paciente.id}
+                className='border-b bg-white'
+              >
+                <td className='py-4 px-6'>{paciente.nome}</td>
+                <td className='py-4 px-6'>{paciente.idade}</td>
+                <td className='py-4 px-6'>{paciente.sexo}</td>
+                <td className='py-4 px-6'>{paciente.peso}</td>
+                <td className='py-4 px-6'>{paciente.altura}</td>
+                <td className='px-6t-medium py-4'>
+                  <Link
+                    to='/dietaPaciente'
+                    state={{ idPaciente: paciente.id }}
+                    title='Visualizar plano dietético'
+                    type='button'
+                    className='rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:bg-sky-600 hover:text-white'
                   >
-                    <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z' />
-                    <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z' />
-                  </svg>
-                </Link>
-                <a
-                  type='button'
-                  title='Editar paciente'
-                  className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:cursor-pointer hover:bg-sky-600 hover:text-white'
-                  onClick={() => handleOpenEditModal(paciente)}
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='16'
-                    height='16'
-                    fill='currentColor'
-                    className='bi bi-pencil-square'
-                    viewBox='0 0 16 16'
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      fill='currentColor'
+                      className='bi bi-eye'
+                      viewBox='0 0 16 16'
+                    >
+                      <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z' />
+                      <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z' />
+                    </svg>
+                  </Link>
+                  <a
+                    type='button'
+                    title='Editar paciente'
+                    className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:cursor-pointer hover:bg-sky-600 hover:text-white'
+                    onClick={() => handleOpenEditModal(paciente)}
                   >
-                    <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z' />
-                    <path
-                      fillRule='evenodd'
-                      d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'
-                    />
-                  </svg>
-                </a>
-                <a
-                  onClick={() => deletarPaciente(paciente.id)}
-                  type='button'
-                  title='Deletar paciente'
-                  className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:cursor-pointer hover:bg-red-600 hover:text-white'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='16'
-                    height='16'
-                    fill='currentColor'
-                    className='bi bi-trash'
-                    viewBox='0 0 16 16'
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      fill='currentColor'
+                      className='bi bi-pencil-square'
+                      viewBox='0 0 16 16'
+                    >
+                      <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z' />
+                      <path
+                        fillRule='evenodd'
+                        d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    onClick={() => deletarPaciente(paciente.id)}
+                    type='button'
+                    title='Deletar paciente'
+                    className='ml-1 rounded-full border border-gray-400 bg-white py-2 px-4 font-semibold text-gray-800 shadow hover:cursor-pointer hover:bg-red-600 hover:text-white'
                   >
-                    <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z' />
-                    <path
-                      fillRule='evenodd'
-                      d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'
-                    />
-                  </svg>
-                </a>
-              </td>
-            </tr>
-          ))}
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      fill='currentColor'
+                      className='bi bi-trash'
+                      viewBox='0 0 16 16'
+                    >
+                      <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z' />
+                      <path
+                        fillRule='evenodd'
+                        d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'
+                      />
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </Layout>
