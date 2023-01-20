@@ -7,7 +7,9 @@ interface Paciente {
 }
 
 export const addPaciente = async (data: Paciente) => {
-  await window.prisma.paciente.create({
+  const paciente = await window.prisma.paciente.create({
     data,
   });
+
+  return paciente;
 };
