@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import Layout from '../components/Layout';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { addPaciente } from '../utils/paciente/addPaciente';
 import { toast } from 'react-toastify';
 import { getAllPacientes } from '../utils/paciente/getAllPacientes';
@@ -70,7 +70,7 @@ const Pacientes = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.promise(
+    void toast.promise(
       addPaciente(paciente).then(pct => {
         setPacientes(prev => {
           return [...prev, pct];
@@ -106,7 +106,7 @@ const Pacientes = () => {
 
   const handleEditSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.promise(editPaciente(editarPaciente.id, editarPaciente), {
+    void toast.promise(editPaciente(editarPaciente.id, editarPaciente), {
       error: 'Não foi possível salvar',
       pending: 'Salvando...',
       success: 'Dados salvos com sucesso!',
@@ -124,12 +124,12 @@ const Pacientes = () => {
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Deletar',
       cancelButtonText: 'Cancelar',
-    }).then(result => {
+    }).then((result: { isConfirmed: any }) => {
       if (result.isConfirmed) {
         const arraySemPacienteDeletado = pacientes.filter(arr => arr.id !== pacienteId);
 
-        Swal.fire('Deletado!', 'Operação realizada com sucesso.', 'success');
-        deletePaciente(pacienteId);
+        void Swal.fire('Deletado!', 'Operação realizada com sucesso.', 'success');
+        void deletePaciente(pacienteId);
         setPacientes(arraySemPacienteDeletado);
       }
     });
@@ -155,7 +155,7 @@ const Pacientes = () => {
             <input
               placeholder='Digite o nome de algum paciente'
               type='text'
-              className='mr-2 mb-2 block w-96 rounded-full border border-gray-300 bg-gray-50 p-4 px-5 py-2.5 pl-10 text-sm font-medium focus:outline-none focus:ring-4 focus:ring-blue-300'
+              className='mr-2 mb-2 block w-96 rounded-lg border border-gray-300 bg-gray-50 p-4 px-5 py-2.5 pl-10 text-sm font-medium focus:outline-none focus:ring-4 focus:ring-blue-300'
               onChange={event => setQuery(event.target.value)}
             />
             <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
@@ -182,7 +182,7 @@ const Pacientes = () => {
             type='button'
             onClick={handleOpenModal}
           >
-            + Adicionar Paciente
+            + Adicionar paciente
           </Button>
         </div>
       </div>
