@@ -88,8 +88,6 @@ typings/
 # Electron-Forge
 out/
 
-# Env
-.env
-
-# VS Code
-.vscode/
+# IDE
+/.idea/
+/.vscode/
