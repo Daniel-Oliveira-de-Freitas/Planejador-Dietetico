@@ -73,7 +73,7 @@ const ConsumoAlimentarHabitual = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.promise(addConsumoHabitual(paciente.id, consumoHabitual), {
+    void toast.promise(addConsumoHabitual(paciente.id, consumoHabitual), {
       error: 'Não foi possível salvar',
       pending: 'Salvando...',
       success: 'Dados salvos com sucesso!',
@@ -274,7 +274,7 @@ const ConsumoAlimentarHabitual = () => {
       </div>
       <br />
       <div className='mt-4 flex w-full justify-end'>
-      <Button type='submit' >Salvar Consumo Habitual</Button>
+        <Button type='submit'>Salvar Consumo Habitual</Button>
       </div>
     </form>
   );
