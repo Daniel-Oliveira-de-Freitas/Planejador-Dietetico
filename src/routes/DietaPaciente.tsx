@@ -44,7 +44,6 @@ const DietaPaciente = () => {
   const { idPaciente } = location.state;
   const MAX_RESULTS = 5;
   const [query, setQuery] = useState('');
-  const [horario, setHorario] = useState<Date>();
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
   const [selectedTacoFood, setSelectedTacoFood] = useState(tacoFoods[0]);
   const [pinheiroFoods, setPinheiroFoods] = useState<AlimentoPinheiroComMedidas[]>([]);
@@ -105,10 +104,6 @@ const DietaPaciente = () => {
           })
           .slice(0, MAX_RESULTS);
 
-  const handleHorario = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setHorario(e.target.valueAsDate);
-  };
-
   const addRefeicao = (
     tacoFood: AlimentoTACOComMacros,
     pinheiroFood: AlimentoPinheiroComMedidas,
@@ -153,8 +148,7 @@ const DietaPaciente = () => {
   };
 
   const convertKcal = (tacoFood: AlimentoTACOComMacros) => {
-    const calcKcal =
-      (pinheiroQty * tacoFood.energy[0].kcal) / tacoFood.base_qty;
+    const calcKcal = (pinheiroQty * tacoFood.energy[0].kcal) / tacoFood.base_qty;
 
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcKcal);
@@ -164,8 +158,7 @@ const DietaPaciente = () => {
   };
 
   const convertCarb = (tacoFood: AlimentoTACOComMacros) => {
-    const calcCarb =
-      (pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
+    const calcCarb = (pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcCarb);
     }
@@ -174,8 +167,7 @@ const DietaPaciente = () => {
   };
 
   const convertProtein = (tacoFood: AlimentoTACOComMacros) => {
-    const calcProtein =
-      (pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
+    const calcProtein = (pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
 
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcProtein);
@@ -185,8 +177,7 @@ const DietaPaciente = () => {
   };
 
   const convertLipid = (tacoFood: AlimentoTACOComMacros) => {
-    const calcLipid =
-      (pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
+    const calcLipid = (pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
     if (pinheiroQty > 0 && tacoFood) {
       return Math.ceil(calcLipid);
     }
@@ -216,35 +207,6 @@ const DietaPaciente = () => {
               className='space-y-4'
               action='#'
             >
-              <div className='flow-root'>
-                <div className='float-left '>
-                  <label className='mb-2 block text-sm font-medium text-gray-900'>Refeição:</label>
-                  <select
-                    name='refeicao'
-                    id='refeicao'
-                    className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                    onChange={handleSelected}
-                  >
-                    <option value='Desjejum'>Desjejum</option>
-                    <option value='Colacao'>Colacao</option>
-                    <option value='Almoco'>Almoço</option>
-                    <option value='Lanche'>Lanche</option>
-                    <option value='Jantar'>Jantar</option>
-                    <option value='Ceia'>Ceia</option>
-                  </select>
-                </div>
-                <div className='float-right '>
-                  <label className='mb-2 block text-sm font-medium text-gray-900 '>
-                    Horário da Refeição
-                  </label>
-                  <input
-                    type='time'
-                    defaultValue={'00:00'}
-                    className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                    onChange={handleHorario}
-                  />
-                </div>
-              </div>
               <div className='flow-root'>
                 <div className='float-left '>
                   <label className='mb-2 block text-sm font-medium text-gray-900'>
@@ -358,7 +320,7 @@ const DietaPaciente = () => {
                         id='quantidadeCaseiras'
                         readOnly
                         placeholder='5 colheres'
-                        className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                        className='block w-96 cursor-default rounded-lg border border-gray-300 bg-gray-200 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                         value={selectedTacoFood?.id ? convertMedida(selectedTacoFood) : ''}
                       />
                     </div>
@@ -391,7 +353,7 @@ const DietaPaciente = () => {
                   </label>
                 </div>
               )}
-              <div className=''>
+              <div className='grid content-center items-center justify-items-center'>
                 <div className='mr-2 border-separate space-x-4 rounded-b border-gray-200 p-5 dark:border-gray-600'>
                   <button
                     data-modal-toggle='defaultModal'
