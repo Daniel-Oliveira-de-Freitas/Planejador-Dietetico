@@ -17,12 +17,11 @@ model Paciente {
   sexo               String
   peso               Float
   altura             Float
-  consumoHabitual    ConsumoHabitual?     @relation(fields: [consumoHabitualId], references: [id])
-  consumoHabitualId  Int?
   HabitosDeVida      HabitosDeVida?       @relation(fields: [habitosDeVidaId], references: [id])
   habitosDeVidaId    Int?
   RefeicaoConsumo24h RefeicaoConsumo24h[]
   RefeicaoDieta      RefeicaoDieta[]
+  ConsumoHabitual    ConsumoHabitual?
 }
 
 model RefeicaoDieta {
@@ -61,24 +60,25 @@ model RefeicaoConsumo24h {
 }
 
 model ConsumoHabitual {
-  id                  Int        @id @default(autoincrement())
-  acucar              Boolean?
-  acucarFreq          Int?
-  adocante            Boolean?
-  adocanteFreq        Int?
-  frituras            Boolean?
-  friturasFreq        Int?
-  carneComGordura     Boolean?
-  carneComGorduraFreq Int?
-  frangoComPele       Boolean?
-  frangoComPeleFreq   Int?
-  coposDeAgua         Int?
-  latasDeOleo         Int?
-  numeroDePessoas     Int?
-  localDoAlmoco       String?
-  localDaJanta        String?
-  quemPrepara         String?
-  Paciente            Paciente[]
+  id                  Int      @id @default(autoincrement())
+  acucar              Boolean? @default(false)
+  acucarFreq          Int?     @default(0)
+  adocante            Boolean? @default(false)
+  adocanteFreq        Int?     @default(0)
+  frituras            Boolean? @default(false)
+  friturasFreq        Int?     @default(0)
+  carneComGordura     Boolean? @default(false)
+  carneComGorduraFreq Int?     @default(0)
+  frangoComPele       Boolean? @default(false)
+  frangoComPeleFreq   Int?     @default(0)
+  coposDeAgua         Int?     @default(0)
+  latasDeOleo         Int?     @default(0)
+  numeroDePessoas     Int?     @default(1)
+  localDoAlmoco       String?  @default("")
+  localDaJanta        String?  @default("")
+  quemPrepara         String?  @default("")
+  paciente            Paciente @relation(fields: [pacienteId], references: [id])
+  pacienteId          Int      @unique
 }
 
 model HabitosDeVida {
