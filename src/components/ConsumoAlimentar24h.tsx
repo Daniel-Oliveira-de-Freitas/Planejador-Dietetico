@@ -14,6 +14,7 @@ import { Button } from './Button';
 import { getTiposDeRefeicao } from '../utils/getTiposDeRefeicao';
 import { getRefeicoes24hById } from '../utils/getRefeicoes24hById';
 import FoodInformationTotal from './FoodInformationTotal';
+import { convertMacros } from '../utils/convertMacros';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
@@ -92,31 +93,6 @@ const ConsumoAlimentar24h = () => {
       return setPinheiroQty(0);
     }
     return setPinheiroQty(Number(e.target.valueAsNumber)); // OBS.: castando para remover o 0 da esquerda
-  };
-
-  const convertMacros = (tacoFood: AlimentoTACOComMacros) => {
-    if (pinheiroQty > 0 && tacoFood) {
-      const calcKcal =
-        (pinheiroMeasureValue * pinheiroQty * tacoFood.energy[0].kcal) / tacoFood.base_qty;
-      const calcCarb =
-        (pinheiroMeasureValue * pinheiroQty * tacoFood.carbohydrate[0].qty) / tacoFood.base_qty;
-      const calcProtein =
-        (pinheiroMeasureValue * pinheiroQty * tacoFood.protein[0].qty) / tacoFood.base_qty;
-      const calcLipid =
-        (pinheiroMeasureValue * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
-      return {
-        kcal: Math.ceil(calcKcal),
-        carb: Math.ceil(calcCarb),
-        protein: Math.ceil(calcProtein),
-        lipid: Math.ceil(calcLipid),
-      };
-    }
-    return {
-      kcal: 0,
-      carb: 0,
-      protein: 0,
-      lipid: 0,
-    };
   };
 
   return (
@@ -221,18 +197,20 @@ const ConsumoAlimentar24h = () => {
             className='rounded-md border p-1'
             onChange={handleQty}
             value={pinheiroQty}
+            min={0}
           />
           <div className='col-start-1'>
             <div>
               <div className='font-bold'>Calorias:</div>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertMacros(selectedTacoFood).kcal + ' kcal'
+                ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).kcal + ' kcal'
                 : ''}
             </div>
             <div>
               <div className='font-bold'>Proteínas:</div>
               {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertMacros(selectedTacoFood).protein + selectedTacoFood?.protein[0].unit
+                ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).protein +
+                  selectedTacoFood?.protein[0].unit
                 : ''}
             </div>
           </div>
@@ -240,13 +218,15 @@ const ConsumoAlimentar24h = () => {
             <div>
               <div className='font-bold'>Carboidratos:</div>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertMacros(selectedTacoFood).carb + selectedTacoFood?.carbohydrate[0].unit
+                ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).carb +
+                  selectedTacoFood?.carbohydrate[0].unit
                 : ''}
             </div>
             <div>
               <div className='font-bold'>Gorduras:</div>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertMacros(selectedTacoFood).lipid + selectedTacoFood?.lipid[0].unit
+                ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).lipid +
+                  selectedTacoFood?.lipid[0].unit
                 : ''}
             </div>
           </div>
@@ -271,7 +251,7 @@ const ConsumoAlimentar24h = () => {
       <div className='mt-4 flex w-full justify-end'>
         <Button
           onClick={() => {
-            toast.promise(addConsumo24h(consumo, paciente), {
+            void toast.promise(addConsumo24h(consumo, paciente), {
               error: 'Não foi possível salvar',
               pending: 'Salvando...',
               success: 'Adicionado com sucesso!',
