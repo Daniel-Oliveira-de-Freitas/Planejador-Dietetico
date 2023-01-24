@@ -74,19 +74,19 @@ const FoodInformationTotal = (props: FoodInformationTotal) => {
           </thead>
           <tbody>
             <tr>
-              <td>Kcal </td>
+              <td>Kcal</td>
               <td>{sumKcal()}</td>
             </tr>
             <tr>
-              <td>Proteinas </td>
+              <td>Proteínas</td>
               <td>{sumProteinas()}</td>
             </tr>
             <tr>
-              <td>Carboidratos </td>
+              <td>Carboidratos</td>
               <td>{sumCarboidratos()}</td>
             </tr>
             <tr>
-              <td>Lipidios </td>
+              <td>Lipídios</td>
               <td>{sumLipidos()}</td>
             </tr>
           </tbody>
