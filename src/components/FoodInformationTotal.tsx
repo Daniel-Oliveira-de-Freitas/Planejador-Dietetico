@@ -9,59 +9,22 @@ interface FoodInformationTotal {
 }
 
 const FoodInformationTotal = (props: FoodInformationTotal) => {
-  const sumKcal = () => {
-    let sum: number = 0;
-    props.tiposDeRefeicao.map(
-      tipoDeRefeicao =>
-        props.foodArray.length > 0 &&
-        props.foodArray.map(alimento => {
-          if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
-            sum += Math.ceil(alimento.alimentoTACO.energy[0].kcal) * alimento.quantidade;
-          }
-        })
-    );
-    return sum;
-  };
+  const kcal = props.foodArray.reduce((total, refeicao) => {
+    return total + refeicao.alimentoTACO.energy[0].kcal;
+  }, 0);
 
-  const sumProteinas = () => {
-    let sum: number = 0;
-    props.tiposDeRefeicao.map(
-      tipoDeRefeicao =>
-        props.foodArray.length > 0 &&
-        props.foodArray.map(alimento => {
-          if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
-            sum += Math.ceil(alimento.alimentoTACO.protein[0].qty) * alimento.quantidade;
-          }
-        })
-    );
-    return sum;
-  };
-  const sumCarboidratos = () => {
-    let sum: number = 0;
-    props.tiposDeRefeicao.map(
-      tipoDeRefeicao =>
-        props.foodArray.length > 0 &&
-        props.foodArray.map(alimento => {
-          if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
-            sum += Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) * alimento.quantidade;
-          }
-        })
-    );
-    return sum;
-  };
-  const sumLipidos = () => {
-    let sum: number = 0;
-    props.tiposDeRefeicao.map(
-      tipoDeRefeicao =>
-        props.foodArray.length > 0 &&
-        props.foodArray.map(alimento => {
-          if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
-            sum += Math.ceil(alimento.alimentoTACO.lipid[0].qty) * alimento.quantidade;
-          }
-        })
-    );
-    return sum;
-  };
+  const prot = props.foodArray.reduce((total, refeicao) => {
+    return total + refeicao.alimentoTACO.protein[0].qty;
+  }, 0);
+
+  const lipid = props.foodArray.reduce((total, refeicao) => {
+    return total + refeicao.alimentoTACO.lipid[0].qty;
+  }, 0);
+
+  const carb = props.foodArray.reduce((total, refeicao) => {
+    return total + refeicao.alimentoTACO.carbohydrate[0].qty;
+  }, 0);
+
   return (
     <>
       <div>
@@ -77,19 +40,19 @@ const FoodInformationTotal = (props: FoodInformationTotal) => {
           <tbody>
             <tr>
               <td>Kcal</td>
-              <td>{sumKcal()}</td>
+              <td>{Math.ceil(kcal)}</td>
             </tr>
             <tr>
               <td>Proteínas</td>
-              <td>{sumProteinas()}</td>
+              <td>{Math.ceil(prot)}</td>
             </tr>
             <tr>
               <td>Carboidratos</td>
-              <td>{sumCarboidratos()}</td>
+              <td>{Math.ceil(carb)}</td>
             </tr>
             <tr>
               <td>Lipídios</td>
-              <td>{sumLipidos()}</td>
+              <td>{Math.ceil(lipid)}</td>
             </tr>
           </tbody>
         </table>
