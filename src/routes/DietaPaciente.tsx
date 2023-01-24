@@ -396,9 +396,6 @@ const DietaPaciente = () => {
           </div>
         )}
 
-        <div className='mt-4 flex w-full justify-end'>
-          <Button>Somar Nutrientes Dieta Paciente</Button>
-        </div>
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo Habitual</summary>

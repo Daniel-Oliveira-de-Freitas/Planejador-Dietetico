@@ -27,36 +27,41 @@ const FoodInformationTotal = (props: FoodInformationTotal) => {
 
   return (
     <>
-      <div>
-        <hr />
-        <b>Total de Nutrientes</b>
-        <table className='table-fixed'>
+      <br />
+        <hr className='border-1 border-slate-400 border-solid' />
+      <br />
+        <div className='grid grid-cols-3 divide-x text-center content-center items-center'>
+          <div></div>
+        <table className='border-2 border-slate-500 border-solid '>
           <thead>
             <tr>
-              <th>Nutrientes</th>
-              <th>Total</th>
+              <th className="border-2 border-slate-500"> Nutrientes Alimentares </th>
+              <th className="border-2 border-slate-500"> Total </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Kcal</td>
-              <td>{Math.ceil(kcal)}</td>
+              <td className="border-2 border-slate-500">Kcal   </td>
+              <td className="border-2 border-slate-500">{Math.ceil(kcal)}</td>
             </tr>
             <tr>
-              <td>Proteínas</td>
-              <td>{Math.ceil(prot)}</td>
+              <td className="border-2 border-slate-500">Proteínas   </td>
+              <td className="border-2 border-slate-500">{Math.ceil(prot)}</td>
             </tr>
             <tr>
-              <td>Carboidratos</td>
-              <td>{Math.ceil(carb)}</td>
+              <td className="border-2 border-slate-500">Carboidratos   </td>
+              <td className="border-2 border-slate-500">{Math.ceil(carb)}</td>
             </tr>
             <tr>
-              <td>Lipídios</td>
-              <td>{Math.ceil(lipid)}</td>
+              <td className="border-2 border-slate-500">Lipídios   </td>
+              <td className="border-2 border-slate-500">{Math.ceil(lipid)}</td>
             </tr>
           </tbody>
         </table>
+        <div></div>
       </div>
+      
+
     </>
   );
 };
