@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 import { Button } from './Button';
 import { getTiposDeRefeicao } from '../utils/getTiposDeRefeicao';
 import { getRefeicoes24hById } from '../utils/getRefeicoes24hById';
+import FoodInformationTotal from './FoodInformationTotal';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
@@ -118,12 +119,19 @@ const ConsumoAlimentar24h = () => {
   return (
     <>
       {tiposDeRefeicao && consumo && (
-        <FoodDropdown
-          foodArray={consumo}
-          setIsOpen={setIsOpen}
-          tiposDeRefeicao={tiposDeRefeicao}
-          setTipoDeRefeicao={setTipoDeRefeicao}
-        />
+        <div>
+          <FoodDropdown
+            foodArray={consumo}
+            setIsOpen={setIsOpen}
+            tiposDeRefeicao={tiposDeRefeicao}
+            setTipoDeRefeicao={setTipoDeRefeicao}
+          />
+          <FoodInformationTotal
+            foodArray={consumo}
+            tiposDeRefeicao={tiposDeRefeicao}
+            setTipoDeRefeicao={setTipoDeRefeicao}
+          />
+        </div>
       )}
       <Modal
         isOpen={isOpen}
