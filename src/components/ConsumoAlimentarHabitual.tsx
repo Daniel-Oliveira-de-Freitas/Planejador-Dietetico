@@ -2,60 +2,40 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { getPaciente } from '../utils/paciente/getPaciente';
 import { addConsumoHabitual } from '../utils/addConsumoHabitual';
-import { Paciente } from '@prisma/client';
+import { ConsumoHabitual, Paciente } from '@prisma/client';
 import { useLocation } from 'react-router';
 import { Button } from './Button';
+import { getConsumoHabitual } from '../utils/getConsumoHabitual';
 
 const ConsumoAlimentarHabitual = () => {
   const [paciente, setPaciente] = useState<Paciente>();
   const location = useLocation();
   const { idPaciente } = location.state;
+  const [consumoHabitual, setConsumoHabitual] = useState<ConsumoHabitual>();
+  //   acucar: false,
+  //   acucarFreq: 0,
+  //   adocante: false,
+  //   adocanteFreq: 0,
+  //   frituras: false,
+  //   friturasFreq: 0,
+  //   carneComGordura: false,
+  //   carneComGorduraFreq: 0,
+  //   frangoComPele: false,
+  //   frangoComPeleFreq: 0,
+  //   coposDeAgua: 0,
+  //   latasDeOleo: 0,
+  //   numeroDePessoas: 1,
+  //   localDoAlmoco: '',
+  //   localDaJanta: '',
+  //   quemPrepara: '', // achar um nome melhor
+  // });
 
   useEffect(() => {
     getPaciente(idPaciente).then(setPaciente);
+    getConsumoHabitual(idPaciente).then(setConsumoHabitual);
   }, []);
 
-  const [consumoHabitual, setConsumoHabitual] = useState({
-    acucar: false,
-    acucarFreq: 0,
-    adocante: false,
-    adocanteFreq: 0,
-    frituras: false,
-    friturasFreq: 0,
-    carneComGordura: false,
-    carneComGorduraFreq: 0,
-    frangoComPele: false,
-    frangoComPeleFreq: 0,
-    coposDeAgua: 0,
-    latasDeOleo: 0,
-    numeroDePessoas: 1,
-    localDoAlmoco: '',
-    localDaJanta: '',
-    quemPrepara: '', // achar um nome melhor
-  });
-
-  const tabelaConsumo = [
-    {
-      label: 'açúcar/doces',
-      inputName: 'acucar',
-    },
-    {
-      label: 'adoçante',
-      inputName: 'adocante',
-    },
-    {
-      label: 'frituras',
-      inputName: 'frituras',
-    },
-    {
-      label: 'carne com gordura aparente',
-      inputName: 'carneComGordura',
-    },
-    {
-      label: 'frango com pele',
-      inputName: 'frangoComPele',
-    },
-  ];
+  console.log(consumoHabitual);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConsumoHabitual(prev => {
@@ -85,6 +65,7 @@ const ConsumoAlimentarHabitual = () => {
       onSubmit={handleSubmit}
       className='w-full'
     >
+      {/*{consumoHabitual && (*/}
       <table className='mt-4 w-full divide-y divide-neutral-200'>
         <thead>
           <tr>
@@ -98,40 +79,154 @@ const ConsumoAlimentarHabitual = () => {
           </tr>
         </thead>
         <tbody className='divide-y divide-neutral-200'>
-          {tabelaConsumo.map(item => (
-            <tr
-              className='hover:bg-neutral-200'
-              key={item.inputName}
-            >
-              <td className='py-2 pl-1'>
-                <input
-                  type='checkbox'
-                  name={item.inputName}
-                  id={item.inputName}
-                  onChange={handleChange}
-                  className='hover:cursor-pointer'
-                />
-              </td>
-              <td className='px-4'>
-                <label
-                  className='hover:cursor-pointer'
-                  htmlFor={item.inputName}
-                >
-                  {item.label}
-                </label>
-              </td>
-              <td className='px-4'>
-                <input
-                  type='number'
-                  name={`${item.inputName}Freq`}
-                  onChange={handleChange}
-                  className='float-right rounded-md border p-1 text-center'
-                />
-              </td>
-            </tr>
-          ))}
+          <tr className='hover:bg-neutral-200'>
+            <td className='py-2 pl-1'>
+              <input
+                type='checkbox'
+                name={'acucar'}
+                id={'acucar'}
+                onChange={handleChange}
+                className='hover:cursor-pointer'
+                checked={consumoHabitual?.acucar || false}
+              />
+            </td>
+            <td className='px-4'>
+              <label
+                className='hover:cursor-pointer'
+                htmlFor={'acucar'}
+              >
+                açúcar/doces
+              </label>
+            </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`acucarFreq`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.acucarFreq || 0}
+              />
+            </td>
+          </tr>
+          <tr className='hover:bg-neutral-200'>
+            <td className='py-2 pl-1'>
+              <input
+                type='checkbox'
+                name={'adocante'}
+                id={'adocante'}
+                onChange={handleChange}
+                className='hover:cursor-pointer'
+                checked={consumoHabitual?.adocante || false}
+              />
+            </td>
+            <td className='px-4'>
+              <label
+                className='hover:cursor-pointer'
+                htmlFor={'adocante'}
+              >
+                adoçante
+              </label>
+            </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`adocanteFreq`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.adocanteFreq || 0}
+              />
+            </td>
+          </tr>
+          <tr className='hover:bg-neutral-200'>
+            <td className='py-2 pl-1'>
+              <input
+                type='checkbox'
+                name={'frituras'}
+                id={'frituras'}
+                onChange={handleChange}
+                className='hover:cursor-pointer'
+                checked={consumoHabitual?.frituras || false}
+              />
+            </td>
+            <td className='px-4'>
+              <label
+                className='hover:cursor-pointer'
+                htmlFor={'frituras'}
+              >
+                frituras
+              </label>
+            </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`friturasFreq`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.friturasFreq || 0}
+              />
+            </td>
+          </tr>
+          <tr className='hover:bg-neutral-200'>
+            <td className='py-2 pl-1'>
+              <input
+                type='checkbox'
+                name={'carneComGordura'}
+                id={'carneComGordura'}
+                onChange={handleChange}
+                className='hover:cursor-pointer'
+                checked={consumoHabitual?.carneComGordura || false}
+              />
+            </td>
+            <td className='px-4'>
+              <label
+                className='hover:cursor-pointer'
+                htmlFor={'acucar'}
+              >
+                carne com gordura aparente
+              </label>
+            </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`carneComGorduraFreq`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.carneComGorduraFreq || 0}
+              />
+            </td>
+          </tr>
+          <tr className='hover:bg-neutral-200'>
+            <td className='py-2 pl-1'>
+              <input
+                type='checkbox'
+                name={'frangoComPele'}
+                id={'frangoComPele'}
+                onChange={handleChange}
+                className='hover:cursor-pointer'
+                checked={consumoHabitual?.frangoComPele || false}
+              />
+            </td>
+            <td className='px-4'>
+              <label
+                className='hover:cursor-pointer'
+                htmlFor={'frangoComPele'}
+              >
+                frango com pele
+              </label>
+            </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`frangoComPeleFreq`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.frangoComPeleFreq || 0}
+              />
+            </td>
+          </tr>
         </tbody>
       </table>
+      {/*)}*/}
       <div className='mt-4 grid max-w-lg grid-cols-2 gap-4'>
         <div className='flex flex-col'>
           <span className='text-sm font-semibold uppercase tracking-wider'>
@@ -142,6 +237,7 @@ const ConsumoAlimentarHabitual = () => {
             name='latasDeOleo'
             onChange={handleChange}
             className='max-w-sm rounded-md border p-1 text-center'
+            value={consumoHabitual?.latasDeOleo || 0}
           />
         </div>
         <div className='flex flex-col'>
@@ -153,6 +249,7 @@ const ConsumoAlimentarHabitual = () => {
             name='coposDeAgua'
             onChange={handleChange}
             className='max-w-sm rounded-md border p-1 text-center'
+            value={consumoHabitual?.coposDeAgua || 0}
           />
         </div>
         <div className='flex flex-col'>
@@ -164,6 +261,7 @@ const ConsumoAlimentarHabitual = () => {
             name='quemPrepara'
             onChange={handleChange}
             className='max-w-sm rounded-md border p-1 text-center'
+            value={consumoHabitual?.quemPrepara || ''}
           />
         </div>
         <div className='flex flex-col'>
@@ -175,6 +273,7 @@ const ConsumoAlimentarHabitual = () => {
             name='numeroDePessoas'
             onChange={handleChange}
             className='max-w-sm rounded-md border p-1 text-center'
+            value={consumoHabitual?.numeroDePessoas || 1}
           />
         </div>
         <div className='flex flex-col'>
@@ -187,6 +286,7 @@ const ConsumoAlimentarHabitual = () => {
               id='almocoCasa'
               onChange={handleChange}
               value='casa'
+              checked={consumoHabitual?.localDoAlmoco === 'casa'}
             />
             <label
               htmlFor='almocoCasa'
@@ -201,6 +301,7 @@ const ConsumoAlimentarHabitual = () => {
               id='almocoRestaurante'
               onChange={handleChange}
               value='restaurante'
+              checked={consumoHabitual?.localDoAlmoco === 'restaurante'}
             />
             <label
               htmlFor='almocoRestaurante'
@@ -215,6 +316,7 @@ const ConsumoAlimentarHabitual = () => {
               id='almocoOutro'
               onChange={handleChange}
               value='outro'
+              checked={consumoHabitual?.localDoAlmoco === 'outro'}
             />
             <label
               htmlFor='almocoOutro'
@@ -234,6 +336,7 @@ const ConsumoAlimentarHabitual = () => {
               id='jantaCasa'
               onChange={handleChange}
               value='casa'
+              checked={consumoHabitual?.localDaJanta === 'casa'}
             />
             <label
               htmlFor='jantaCasa'
@@ -248,6 +351,7 @@ const ConsumoAlimentarHabitual = () => {
               id='jantaRestaurante'
               onChange={handleChange}
               value='restaurante'
+              checked={consumoHabitual?.localDaJanta === 'restaurante'}
             />
             <label
               htmlFor='jantaRestaurante'
@@ -262,6 +366,7 @@ const ConsumoAlimentarHabitual = () => {
               id='jantaOutro'
               onChange={handleChange}
               value='outro'
+              checked={consumoHabitual?.localDaJanta === 'outro'}
             />
             <label
               htmlFor='jantaOutro'
