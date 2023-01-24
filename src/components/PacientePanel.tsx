@@ -61,10 +61,10 @@ function getIMC(paciente: Paciente) {
 }
 
 function classifyIMC(paciente: Paciente) {
-  if (getIMC(paciente) < 18.5) return 'Magreza';
-  if (getIMC(paciente) < 25) return 'Saudável';
-  if (getIMC(paciente) < 30) return 'Sobrepeso';
-  return 'Obesidade';
+  if (getIMC(paciente) < 18.5) return 'magreza';
+  if (getIMC(paciente) < 25) return 'saudável';
+  if (getIMC(paciente) < 30) return 'sobrepeso';
+  return 'obesidade';
 }
 
 type ContainerProps = {
