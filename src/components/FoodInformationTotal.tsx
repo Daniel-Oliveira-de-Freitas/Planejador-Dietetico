@@ -69,8 +69,10 @@ const FoodInformationTotal = (props: FoodInformationTotal) => {
         <b>Total de Nutrientes</b>
         <table className='table-fixed'>
           <thead>
-            <th>Nutrientes</th>
-            <th>Total</th>
+            <tr>
+              <th>Nutrientes</th>
+              <th>Total</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
