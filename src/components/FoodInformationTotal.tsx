@@ -10,19 +10,19 @@ interface FoodInformationTotal {
 
 const FoodInformationTotal = (props: FoodInformationTotal) => {
   const kcal = props.foodArray.reduce((total, refeicao) => {
-    return total + refeicao.alimentoTACO.energy[0].kcal;
+    return total + refeicao.alimentoTACO.energy[0].kcal * refeicao.quantidade;
   }, 0);
 
   const prot = props.foodArray.reduce((total, refeicao) => {
-    return total + refeicao.alimentoTACO.protein[0].qty;
+    return total + refeicao.alimentoTACO.protein[0].qty * refeicao.quantidade;
   }, 0);
 
   const lipid = props.foodArray.reduce((total, refeicao) => {
-    return total + refeicao.alimentoTACO.lipid[0].qty;
+    return total + refeicao.alimentoTACO.lipid[0].qty * refeicao.quantidade;
   }, 0);
 
   const carb = props.foodArray.reduce((total, refeicao) => {
-    return total + refeicao.alimentoTACO.carbohydrate[0].qty;
+    return total + refeicao.alimentoTACO.carbohydrate[0].qty * refeicao.quantidade;
   }, 0);
 
   return (
