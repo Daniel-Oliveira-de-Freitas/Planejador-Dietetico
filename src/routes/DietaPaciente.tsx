@@ -25,6 +25,7 @@ import { Button } from '../components/Button';
 import { getTiposDeRefeicao } from '../utils/getTiposDeRefeicao';
 import FoodDropdown from '../components/FoodDropdown';
 import { getRefeicaoDietasById } from '../utils/getRefeicaosDieta';
+import FoodInformationTotal from '../components/FoodInformationTotal';
 
 Modal.setAppElement('#root');
 
@@ -55,6 +56,7 @@ const DietaPaciente = () => {
   const [dietaPaciente, setdietaPaciente] = useState<Refeicao[]>([]);
   const [tiposDeRefeicao, setTiposDeRefeicao] = useState<TipoDeRefeicao[]>();
   const [tipoDeRefeicao, setTipoDeRefeicao] = useState<TipoDeRefeicao>();
+  const [paciente, setPaciente] = useState<Paciente>();
 
   function handleOpenModal() {
     setIsOpen(true);
@@ -63,8 +65,6 @@ const DietaPaciente = () => {
   function handleCloseModal() {
     setIsOpen(false);
   }
-
-  const [paciente, setPaciente] = useState<Paciente>();
 
   useEffect(() => {
     getAllTacoFoods().then(setTacoFoods);
@@ -78,13 +78,6 @@ const DietaPaciente = () => {
     setPinheiroMeasureValue(selectedPinheiroFood?.measures[0].qty);
     setPinheiroMeasureLabel(selectedPinheiroFood?.measures[0].label);
   }, [selectedPinheiroFood]);
-
-  const [dieta, setDieta] = useState({
-    alimentoTacoId: 1,
-    alimentoPinheiroId: 1,
-    tipoRefeicao: '',
-    horario: 'dd',
-  });
 
   const filteredTacoFoods =
     query === ''
@@ -121,12 +114,6 @@ const DietaPaciente = () => {
       medida,
     };
     dietaPaciente.push(refeicao);
-  };
-
-  const handleSelected = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTipoDeRefeicao(prev => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
   };
 
   const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -183,6 +170,14 @@ const DietaPaciente = () => {
     }
 
     return 0;
+  };
+
+  const handleSubmit = () => {
+    void toast.promise(addDietaPaciente(dietaPaciente, paciente), {
+      error: 'Não foi possível salvar',
+      pending: 'Salvando...',
+      success: 'Adicionado com sucesso!',
+    });
   };
 
   return (
@@ -375,6 +370,7 @@ const DietaPaciente = () => {
                         pinheiroQty,
                         tipoDeRefeicao
                       );
+                      handleSubmit();
                       setIsOpen(false);
                     }}
                   >
@@ -385,27 +381,24 @@ const DietaPaciente = () => {
             </form>
           </div>
         </Modal>
-
         {tiposDeRefeicao && dietaPaciente && (
-          <FoodDropdown
-            foodArray={dietaPaciente}
-            setIsOpen={setIsOpen}
-            tiposDeRefeicao={tiposDeRefeicao}
-            setTipoDeRefeicao={setTipoDeRefeicao}
-          />
+          <div>
+            <FoodDropdown
+              foodArray={dietaPaciente}
+              setIsOpen={setIsOpen}
+              tiposDeRefeicao={tiposDeRefeicao}
+              setTipoDeRefeicao={setTipoDeRefeicao}
+            />
+            <FoodInformationTotal
+              foodArray={dietaPaciente}
+              tiposDeRefeicao={tiposDeRefeicao}
+              setTipoDeRefeicao={setTipoDeRefeicao}
+            />
+          </div>
         )}
+
         <div className='mt-4 flex w-full justify-end'>
-          <Button
-            onClick={() => {
-              toast.promise(addDietaPaciente(dietaPaciente, paciente), {
-                error: 'Não foi possível salvar',
-                pending: 'Salvando...',
-                success: 'Adicionado com sucesso!',
-              });
-            }}
-          >
-            Salvar dieta paciente
-          </Button>
+          <Button>Somar Nutrientes Dieta Paciente</Button>
         </div>
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
