@@ -35,8 +35,6 @@ const ConsumoAlimentarHabitual = () => {
     getConsumoHabitual(idPaciente).then(setConsumoHabitual);
   }, []);
 
-  console.log(consumoHabitual);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConsumoHabitual(prev => {
       if (e.target.type === 'checkbox') {
