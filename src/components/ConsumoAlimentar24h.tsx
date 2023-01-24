@@ -72,16 +72,18 @@ const ConsumoAlimentar24h = () => {
     quantidade: number,
     tipoDeRefeicao: TipoDeRefeicao
   ) => {
-    const refeicao = {
-      alimentoTACO: tacoFood,
-      alimentoTACOId: tacoFood.id,
-      alimentoPinheiro: pinheiroFood,
-      alimentoPinheiroId: pinheiroFood.id,
-      tipoDeRefeicaoId: tipoDeRefeicao.id,
-      quantidade,
-      medida,
-    };
-    consumo.push(refeicao);
+    setConsumo(prev => [
+      ...prev,
+      {
+        alimentoTACO: tacoFood,
+        alimentoTACOId: tacoFood.id,
+        alimentoPinheiro: pinheiroFood,
+        alimentoPinheiroId: pinheiroFood.id,
+        tipoDeRefeicaoId: tipoDeRefeicao.id,
+        quantidade,
+        medida,
+      },
+    ]);
   };
 
   const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -104,6 +106,7 @@ const ConsumoAlimentar24h = () => {
             setIsOpen={setIsOpen}
             tiposDeRefeicao={tiposDeRefeicao}
             setTipoDeRefeicao={setTipoDeRefeicao}
+            setConsumo={setConsumo}
           />
           <FoodInformationTotal
             foodArray={consumo}
