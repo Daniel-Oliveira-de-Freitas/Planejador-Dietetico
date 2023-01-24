@@ -11,7 +11,7 @@ export default function PacientePanel({ paciente }: PacientePanelProps) {
       <div className={'flex items-stretch justify-items-stretch gap-4'}>
         {paciente.sexo === 'Masculino' && <SexSymbol>♂</SexSymbol>}
         {paciente.sexo === 'Feminino' && <SexSymbol>♀</SexSymbol>}
-        {paciente.sexo === 'NaoBinario' && <SexSymbol>NB</SexSymbol>}
+        {paciente.sexo === 'NaoBinario' && <SexSymbol>?</SexSymbol>}
         <div className={'text-4xl text-sky-800'}>
           <span className={'font-bold'}>{paciente.nome}</span>
           <span className={'font-thin'}>, {getAge(paciente.dataDeNascimento)} anos</span>
