@@ -28,40 +28,38 @@ const FoodInformationTotal = (props: FoodInformationTotal) => {
   return (
     <>
       <br />
-        <hr className='border-1 border-slate-400 border-solid' />
+      <hr className='border-1 border-solid border-slate-400' />
       <br />
-        <div className='grid grid-cols-3 divide-x text-center content-center items-center'>
-          <div></div>
-        <table className='border-2 border-slate-500 border-solid '>
+      <div className='grid grid-cols-3 content-center items-center divide-x text-center'>
+        <div></div>
+        <table className='border-2 border-solid border-slate-500 '>
           <thead>
             <tr>
-              <th className="border-2 border-slate-500"> Nutrientes Alimentares </th>
-              <th className="border-2 border-slate-500"> Total </th>
+              <th className='border-2 border-slate-500'> Nutrientes Alimentares </th>
+              <th className='border-2 border-slate-500'> Total </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td className="border-2 border-slate-500">Kcal   </td>
-              <td className="border-2 border-slate-500">{Math.ceil(kcal)}</td>
+              <td className='border-2 border-slate-500'>Kcal </td>
+              <td className='border-2 border-slate-500'>{kcal.toFixed(0)}</td>
             </tr>
             <tr>
-              <td className="border-2 border-slate-500">Proteínas   </td>
-              <td className="border-2 border-slate-500">{Math.ceil(prot)}</td>
+              <td className='border-2 border-slate-500'>Proteínas </td>
+              <td className='border-2 border-slate-500'>{prot.toFixed(0)}</td>
             </tr>
             <tr>
-              <td className="border-2 border-slate-500">Carboidratos   </td>
-              <td className="border-2 border-slate-500">{Math.ceil(carb)}</td>
+              <td className='border-2 border-slate-500'>Carboidratos </td>
+              <td className='border-2 border-slate-500'>{carb.toFixed(0)}</td>
             </tr>
             <tr>
-              <td className="border-2 border-slate-500">Lipídios   </td>
-              <td className="border-2 border-slate-500">{Math.ceil(lipid)}</td>
+              <td className='border-2 border-slate-500'>Lipídios </td>
+              <td className='border-2 border-slate-500'>{lipid.toFixed(0)}</td>
             </tr>
           </tbody>
         </table>
         <div></div>
       </div>
-      
-
     </>
   );
 };

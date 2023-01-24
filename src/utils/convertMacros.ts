@@ -15,10 +15,10 @@ export const convertMacros = (
     const calcLipid =
       (pinheiroMeasureValue * pinheiroQty * tacoFood.lipid[0].qty) / tacoFood.base_qty;
     return {
-      kcal: Math.ceil(calcKcal),
-      carb: Math.ceil(calcCarb),
-      protein: Math.ceil(calcProtein),
-      lipid: Math.ceil(calcLipid),
+      kcal: (calcKcal).toFixed(0),
+      carb: (calcCarb).toFixed(0),
+      protein: (calcProtein).toFixed(0),
+      lipid: (calcLipid).toFixed(0),
     };
   }
   return {

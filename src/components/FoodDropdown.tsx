@@ -64,20 +64,22 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                           {alimento.quantidade} {alimento.alimentoPinheiro.measures[0].label}
                         </td>
                         <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
-                          {Math.ceil(alimento.alimentoTACO.energy[0].kcal) * alimento.quantidade}
+                          {(alimento.alimentoTACO.energy[0].kcal * alimento.quantidade).toFixed(0)}
                         </td>
                         <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
-                          {Math.ceil(alimento.alimentoTACO.carbohydrate[0].qty) *
-                            alimento.quantidade +
-                            alimento.alimentoTACO.carbohydrate[0].unit}
+                          {(
+                            alimento.alimentoTACO.carbohydrate[0].qty * alimento.quantidade
+                          ).toFixed(0) + alimento.alimentoTACO.carbohydrate[0].unit}
                         </td>
                         <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
-                          {Math.ceil(alimento.alimentoTACO.protein[0].qty) * alimento.quantidade +
-                            alimento.alimentoTACO.protein[0].unit}{' '}
+                          {Math.ceil(
+                            alimento.alimentoTACO.protein[0].qty * alimento.quantidade
+                          ).toFixed(0) + alimento.alimentoTACO.protein[0].unit}{' '}
                         </td>
                         <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
-                          {Math.ceil(alimento.alimentoTACO.lipid[0].qty) * alimento.quantidade +
-                            alimento.alimentoTACO.lipid[0].unit}{' '}
+                          {Math.ceil(
+                            alimento.alimentoTACO.lipid[0].qty * alimento.quantidade
+                          ).toFixed(0) + alimento.alimentoTACO.lipid[0].unit}{' '}
                         </td>
                         {props.setConsumo && (
                           <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
