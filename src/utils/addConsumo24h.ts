@@ -34,5 +34,14 @@ export const addConsumo24h = async (consumos: Refeicao[], paciente: Paciente) =>
     transactions.push(createRefeicao);
   });
 
-  const refeicoes = await window.prisma.$transaction(transactions);
+  const refeicoes: Refeicao[] = await window.prisma.$transaction(transactions);
+  const refeicoesIds = refeicoes.map(arr => arr.id);
+
+  await window.prisma.refeicaoConsumo24h.deleteMany({
+    where: {
+      id: {
+        notIn: refeicoesIds,
+      },
+    },
+  });
 };

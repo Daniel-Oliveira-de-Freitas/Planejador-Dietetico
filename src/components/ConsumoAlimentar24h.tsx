@@ -257,7 +257,7 @@ const ConsumoAlimentar24h = () => {
             void toast.promise(addConsumo24h(consumo, paciente), {
               error: 'Não foi possível salvar',
               pending: 'Salvando...',
-              success: 'Adicionado com sucesso!',
+              success: 'Salvo com sucesso!',
             });
           }}
         >

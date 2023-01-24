@@ -8,9 +8,13 @@ interface FoodDropdownProps {
   setTipoDeRefeicao: (value: React.SetStateAction<TipoDeRefeicao>) => void;
   foodArray: Refeicao[];
   tiposDeRefeicao: TipoDeRefeicao[];
+  setConsumo?: (value: React.SetStateAction<Refeicao[]>) => void;
 }
 
 const FoodDropdown = (props: FoodDropdownProps) => {
+  const removeItem = (id: number, foodArray: Refeicao[]) => {
+    return props.setConsumo(foodArray.filter(food => food.id !== id));
+  };
   return (
     <>
       {props.tiposDeRefeicao.map(tipoDeRefeicao => (
@@ -35,6 +39,9 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                 <th className='text-sm font-thin uppercase tracking-wider'>carb.</th>
                 <th className='text-sm font-thin uppercase tracking-wider'>prot.</th>
                 <th className='text-sm font-thin uppercase tracking-wider'>gord.</th>
+                {props.setConsumo && (
+                  <th className='text-sm font-thin uppercase tracking-wider'>excluir</th>
+                )}
               </tr>
             </thead>
             <tbody>
@@ -72,6 +79,16 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                           {Math.ceil(alimento.alimentoTACO.lipid[0].qty) * alimento.quantidade +
                             alimento.alimentoTACO.lipid[0].unit}{' '}
                         </td>
+                        {props.setConsumo && (
+                          <td className='whitespace-nowrap py-4 px-6 font-medium text-gray-900'>
+                            <button
+                              className={'bg-rose-600 text-white hover:bg-rose-700'}
+                              onClick={() => removeItem(alimento.id, props.foodArray)}
+                            >
+                              x
+                            </button>
+                          </td>
+                        )}
                       </tr>
                     );
                   }
