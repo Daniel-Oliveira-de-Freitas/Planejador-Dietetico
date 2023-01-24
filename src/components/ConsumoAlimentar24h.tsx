@@ -88,7 +88,10 @@ const ConsumoAlimentar24h = () => {
   };
 
   const handleQty = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setPinheiroQty(e.target.valueAsNumber);
+    if (isNaN(e.target.valueAsNumber)) {
+      return setPinheiroQty(0);
+    }
+    return setPinheiroQty(Number(e.target.valueAsNumber)); // OBS.: castando para remover o 0 da esquerda
   };
 
   const convertMacros = (tacoFood: AlimentoTACOComMacros) => {
