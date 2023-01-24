@@ -112,6 +112,10 @@ const Pacientes = () => {
       success: 'Dados salvos com sucesso!',
     });
     handleCloseEditModal();
+    setPacientes((prev) => {
+      const arr = prev.filter(pct => pct.id !== editarPaciente.id)
+      return [...arr, editarPaciente]
+    })
   };
 
   const deletarPaciente = (pacienteId: number) => {
