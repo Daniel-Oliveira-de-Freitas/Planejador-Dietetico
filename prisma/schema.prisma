@@ -17,6 +17,7 @@ model Paciente {
   sexo               String
   peso               Float
   altura             Float
+  dataDeNascimento   DateTime?
   HabitosDeVida      HabitosDeVida?       @relation(fields: [habitosDeVidaId], references: [id])
   habitosDeVidaId    Int?
   RefeicaoConsumo24h RefeicaoConsumo24h[]

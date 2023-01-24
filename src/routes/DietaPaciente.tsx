@@ -26,6 +26,7 @@ import { getTiposDeRefeicao } from '../utils/getTiposDeRefeicao';
 import FoodDropdown from '../components/FoodDropdown';
 import { getRefeicaoDietasById } from '../utils/getRefeicaosDieta';
 import FoodInformationTotal from '../components/FoodInformationTotal';
+import { getAge } from '../utils/getAge';
 
 Modal.setAppElement('#root');
 
@@ -183,7 +184,8 @@ const DietaPaciente = () => {
   return (
     <Layout>
       <h2 className='text-2xl'>
-        Nome do paciente: {typeof paciente !== 'undefined' ? paciente.nome : ''}
+        Nome do paciente: {typeof paciente !== 'undefined' ? paciente.nome : ''},{' '}
+        {paciente?.dataDeNascimento && getAge(paciente.dataDeNascimento)} anos
       </h2>
       <br />
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>

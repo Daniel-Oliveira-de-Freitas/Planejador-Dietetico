@@ -10,6 +10,7 @@ import { editPaciente } from '../utils/paciente/editPaciente';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
+import { getAge } from '../utils/getAge';
 
 Modal.setAppElement('#root');
 
@@ -52,10 +53,11 @@ const Pacientes = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPaciente(prev => {
       if (e.target.type === 'number') {
-        if (e.target.name == 'idade') {
-          return { ...prev, [e.target.name]: parseInt(e.target.value) };
-        }
         return { ...prev, [e.target.name]: parseFloat(e.target.value) };
+      }
+
+      if (e.target.type === 'date') {
+        return { ...prev, [e.target.name]: e.target.valueAsDate };
       }
 
       return { ...prev, [e.target.name]: e.target.value };
@@ -112,10 +114,10 @@ const Pacientes = () => {
       success: 'Dados salvos com sucesso!',
     });
     handleCloseEditModal();
-    setPacientes((prev) => {
-      const arr = prev.filter(pct => pct.id !== editarPaciente.id)
-      return [...arr, editarPaciente]
-    })
+    setPacientes(prev => {
+      const arr = prev.filter(pct => pct.id !== editarPaciente.id);
+      return [...arr, editarPaciente];
+    });
   };
 
   const deletarPaciente = (pacienteId: number) => {
@@ -210,16 +212,6 @@ const Pacientes = () => {
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
               />
             </div>
-            <div className=''>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>Idade</label>
-              <input
-                type='number'
-                name='idade'
-                onChange={handleChange}
-                className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-              />
-            </div>
-
             <div className='content-center'>
               <label className='mt-2 block text-sm font-medium text-gray-900 '>Sexo</label>
               <select
@@ -238,6 +230,17 @@ const Pacientes = () => {
                 type='number'
                 name='peso'
                 step='0.01'
+                onChange={handleChange}
+                className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+              />
+            </div>
+            <div className='content-center'>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>
+                Data de nascimento
+              </label>
+              <input
+                type='date'
+                name='dataDeNascimento'
                 onChange={handleChange}
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
               />
@@ -418,7 +421,7 @@ const Pacientes = () => {
                 className='border-b bg-white'
               >
                 <td className='py-4 px-6'>{paciente.nome}</td>
-                <td className='py-4 px-6'>{paciente.idade}</td>
+                <td className='py-4 px-6'>{getAge(paciente.dataDeNascimento)}</td>
                 <td className='py-4 px-6'>{paciente.sexo}</td>
                 <td className='py-4 px-6'>{paciente.peso}</td>
                 <td className='py-4 px-6'>{paciente.altura}</td>
