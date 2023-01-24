@@ -77,7 +77,7 @@ model ConsumoHabitual {
   localDoAlmoco       String?  @default("")
   localDaJanta        String?  @default("")
   quemPrepara         String?  @default("")
-  paciente            Paciente @relation(fields: [pacienteId], references: [id])
+  paciente            Paciente @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
   pacienteId          Int      @unique
 }
 
