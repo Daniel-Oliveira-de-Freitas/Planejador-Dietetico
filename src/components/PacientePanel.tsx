@@ -21,11 +21,11 @@ export default function PacientePanel({ paciente }: PacientePanelProps) {
         <LeftPanel>
           <div className={'text-sky-900'}>
             <span className={'font-semibold'}>Altura: </span>
-            {paciente.altura} cm
+            {paciente.altura}m
           </div>
           <div className={'text-sky-900'}>
             <span className={'font-semibold'}>Peso: </span>
-            {paciente.peso} kg
+            {paciente.peso}kg
           </div>
         </LeftPanel>
         <MiddlePanel>
@@ -56,8 +56,7 @@ function LeftPanel({ children }: { children: React.ReactNode }) {
 }
 
 function getIMC(paciente: Paciente) {
-  const alturaEmMetros = paciente.altura / 100;
-  return paciente.peso / (alturaEmMetros ^ 2);
+  return paciente.peso / (paciente.altura ^ 2);
 }
 
 function classifyIMC(paciente: Paciente) {
