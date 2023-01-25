@@ -194,8 +194,7 @@ const DietaPaciente = () => {
           className='mt-6 mr-12 ml-12  block rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
         >
           <div className='px-6 py-6 lg:px-8'>
-            <h1 className='text-center text-3xl uppercase'>Cadastrar Plano Dietético</h1>
-            <hr />
+            <h1 className='text-center text-3xl uppercase'>🍝 Cadastrar plano dietético</h1>
             <br />
             <form
               className='space-y-4'
@@ -395,7 +394,6 @@ const DietaPaciente = () => {
             />
           </div>
         )}
-
       </details>
       <details className='flex w-full items-center justify-between rounded-t-xl border border-b-0 border-gray-200 p-5 text-left font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200'>
         <summary className='text-2xl uppercase'>Consumo Habitual</summary>
