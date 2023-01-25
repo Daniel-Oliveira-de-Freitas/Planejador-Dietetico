@@ -90,9 +90,6 @@ const Pacientes = () => {
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditarPaciente(prev => {
       if (e.target.type === 'number') {
-        if (e.target.name == 'idade') {
-          return { ...prev, [e.target.name]: parseInt(e.target.value) };
-        }
         return { ...prev, [e.target.name]: parseFloat(e.target.value) };
       }
 
@@ -346,8 +343,7 @@ const Pacientes = () => {
               <label className='mt-2 block text-sm font-medium text-gray-900 '>Altura (m)</label>
               <input
                 type='number'
-                name='alturaEdit'
-                step='0.01'
+                name='altura'
                 className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                 value={editarPaciente ? editarPaciente.altura : ''}
                 onChange={handleEditChange}
