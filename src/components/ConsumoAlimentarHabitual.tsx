@@ -12,23 +12,6 @@ const ConsumoAlimentarHabitual = () => {
   const location = useLocation();
   const { idPaciente } = location.state;
   const [consumoHabitual, setConsumoHabitual] = useState<ConsumoHabitual>();
-  //   acucar: false,
-  //   acucarFreq: 0,
-  //   adocante: false,
-  //   adocanteFreq: 0,
-  //   frituras: false,
-  //   friturasFreq: 0,
-  //   carneComGordura: false,
-  //   carneComGorduraFreq: 0,
-  //   frangoComPele: false,
-  //   frangoComPeleFreq: 0,
-  //   coposDeAgua: 0,
-  //   latasDeOleo: 0,
-  //   numeroDePessoas: 1,
-  //   localDoAlmoco: '',
-  //   localDaJanta: '',
-  //   quemPrepara: '', // achar um nome melhor
-  // });
 
   useEffect(() => {
     getPaciente(idPaciente).then(setPaciente);
@@ -63,7 +46,6 @@ const ConsumoAlimentarHabitual = () => {
       onSubmit={handleSubmit}
       className='w-full'
     >
-      {/*{consumoHabitual && (*/}
       <table className='mt-4 w-full divide-y divide-neutral-200'>
         <thead>
           <tr>
@@ -377,7 +359,7 @@ const ConsumoAlimentarHabitual = () => {
       </div>
       <br />
       <div className='mt-4 flex w-full justify-end'>
-        <Button type='submit'>Salvar Consumo Habitual</Button>
+        <Button type='submit'>Salvar</Button>
       </div>
     </form>
   );
