@@ -71,7 +71,7 @@ type ContainerProps = {
 };
 
 function Container(props: ContainerProps) {
-  return <div className={'rounded-lg bg-sky-200 py-4 px-8'}>{props.children}</div>;
+  return <div className={'max-w-5xl rounded-lg bg-sky-200 py-4 px-8'}>{props.children}</div>;
 }
 
 function SexSymbol({ children }: { children: React.ReactNode }) {
