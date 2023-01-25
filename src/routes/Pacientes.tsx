@@ -300,16 +300,22 @@ const Pacientes = () => {
                 onChange={handleEditChange}
               />
             </div>
-            <div className=''>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>Idade</label>
-              <input
-                type='number'
-                name='idade'
-                className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                value={editarPaciente ? editarPaciente.idade : ''}
-                onChange={handleEditChange}
-              />
-            </div>
+            {editarPaciente?.dataDeNascimento && (
+              <div className=''>
+                <label className='mt-2 block text-sm font-medium text-gray-900 '>
+                  Data de nascimento
+                </label>
+                <input
+                  type='date'
+                  name='dataDeNascimento'
+                  className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+                  defaultValue={
+                    new Date(editarPaciente?.dataDeNascimento).toISOString().split('T')[0]
+                  }
+                  onChange={handleEditChange}
+                />
+              </div>
+            )}
 
             <div className='content-center'>
               <label className='mt-2 block text-sm font-medium text-gray-900 '>Sexo</label>
