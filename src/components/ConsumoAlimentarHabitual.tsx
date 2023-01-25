@@ -241,6 +241,7 @@ const ConsumoAlimentarHabitual = () => {
             name='quemPrepara'
             onChange={handleChange}
             className='max-w-sm rounded-md border p-1 text-center'
+            placeholder={'Insira um nome'}
             value={consumoHabitual?.quemPrepara || ''}
           />
         </div>
