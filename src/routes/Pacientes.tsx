@@ -285,7 +285,6 @@ const Pacientes = () => {
         <form onSubmit={handleEditSubmit}>
           <h1 className='text-center text-3xl uppercase'>😊 Editar paciente</h1>
           <hr />
-          <br />
           <div className='grid-row-2 grid content-center items-center justify-items-center'>
             <div className='content-center'>
               <label className='mt-2 block text-sm font-medium text-gray-900 '>Nome</label>
@@ -299,7 +298,7 @@ const Pacientes = () => {
             </div>
             {editarPaciente?.dataDeNascimento && (
               <div className=''>
-                <label className='mt-2 block text-sm font-medium text-gray-900 '>
+                <label className='mt-2 block text-sm font-medium text-gray-900'>
                   Data de nascimento
                 </label>
                 <input
@@ -310,6 +309,7 @@ const Pacientes = () => {
                     new Date(editarPaciente?.dataDeNascimento).toISOString().split('T')[0]
                   }
                   onChange={handleEditChange}
+                  onKeyDown={e => e.preventDefault()}
                 />
               </div>
             )}
@@ -322,7 +322,6 @@ const Pacientes = () => {
                 value={editarPaciente ? editarPaciente.sexo : ''}
                 onChange={handleEditSelected}
               >
-                <option value=''></option>
                 <option value='Feminino'>Feminino</option>
                 <option value='Masculino'>Masculino</option>
                 <option value='NaoBinario'>Não Binario</option>
