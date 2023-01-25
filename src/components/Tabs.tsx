@@ -50,7 +50,7 @@ export default function Tabs() {
           {Object.values(categories).map((items, idx) => (
             <Tab.Panel
               key={idx}
-              className={classNames('rounded-xl bg-white p-3', 'focus:outline-none')}
+              className={classNames('rounded-xl bg-white py-3', 'focus:outline-none')}
             >
               {items.map(item => (
                 <div key={item.id}>{item.component}</div>
