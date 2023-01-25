@@ -246,7 +246,7 @@ const Pacientes = () => {
               />
             </div>
             <div>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>Altura</label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Altura (m)</label>
               <input
                 type='number'
                 name='altura'
@@ -286,7 +286,7 @@ const Pacientes = () => {
         className='block rounded-lg border border-gray-300 bg-gray-50 p-6 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 sm:mr-auto sm:ml-auto lg:mt-16 lg:mr-60 lg:ml-60'
       >
         <form onSubmit={handleEditSubmit}>
-          <h1 className='text-center text-3xl uppercase'>Editar de Paciente</h1>
+          <h1 className='text-center text-3xl uppercase'>😊 Editar paciente</h1>
           <hr />
           <br />
           <div className='grid-row-2 grid content-center items-center justify-items-center'>
@@ -337,7 +337,7 @@ const Pacientes = () => {
               />
             </div>
             <div>
-              <label className='mt-2 block text-sm font-medium text-gray-900 '>Altura</label>
+              <label className='mt-2 block text-sm font-medium text-gray-900 '>Altura (m)</label>
               <input
                 type='number'
                 name='alturaEdit'
@@ -403,7 +403,7 @@ const Pacientes = () => {
               scope='col'
               className='py-3 px-6'
             >
-              Altura
+              Altura (m)
             </th>
             <th
               scope='col'
