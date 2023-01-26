@@ -48,6 +48,7 @@ const NavItem = (props: NavItemProps) => {
     <>
       <Link to={props.href}>
         <button
+          type={'button'}
           className={`w-full py-4 pl-2 text-left text-lg font-semibold uppercase text-white transition-all hover:bg-sky-700 ${
             location.pathname === props.href && 'bg-sky-700'
           }`}
