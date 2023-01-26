@@ -28,7 +28,7 @@ export default function PacientePanel({ paciente }: PacientePanelProps) {
             {paciente.peso}kg
           </div>
         </LeftPanel>
-        <MiddlePanel>
+        <RightPanel>
           <div className={'text-sky-900'}>
             <span className={'font-semibold'}>IMC: </span>
             {getIMC(paciente).toFixed(1)}
@@ -37,17 +37,17 @@ export default function PacientePanel({ paciente }: PacientePanelProps) {
             <span className={'font-semibold'}>Classificação: </span>
             {classifyIMC(paciente)}
           </div>
-        </MiddlePanel>
+        </RightPanel>
       </PanelGrid>
     </Container>
   );
 }
 
 function PanelGrid({ children }: { children: React.ReactNode }) {
-  return <div className={'mt-6 grid grid-cols-3'}>{children}</div>;
+  return <div className={'mt-6 grid max-w-lg grid-cols-2'}>{children}</div>;
 }
 
-function MiddlePanel({ children }: { children: React.ReactNode }) {
+function RightPanel({ children }: { children: React.ReactNode }) {
   return <div>{children}</div>;
 }
 
