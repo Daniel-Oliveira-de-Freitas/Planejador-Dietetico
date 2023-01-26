@@ -34,7 +34,7 @@ export default function Tabs() {
               key={category}
               className={({ selected }) =>
                 classNames(
-                  'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-sky-900',
+                  'w-full rounded-lg py-2.5 font-medium leading-5 text-sky-900',
                   'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none',
                   selected
                     ? 'bg-white shadow'
