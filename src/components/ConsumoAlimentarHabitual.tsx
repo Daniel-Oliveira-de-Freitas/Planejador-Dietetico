@@ -59,14 +59,14 @@ const ConsumoAlimentarHabitual = () => {
           </tr>
         </thead>
         <tbody className='divide-y divide-neutral-200'>
-          <tr className='hover:bg-neutral-200'>
+          <tr className='hover:bg-sky-200'>
             <td className='py-2 pl-1'>
               <input
                 type='checkbox'
                 name={'acucar'}
                 id={'acucar'}
                 onChange={handleChange}
-                className='hover:cursor-pointer'
+                className='accent-sky-600 hover:cursor-pointer'
                 checked={consumoHabitual?.acucar || false}
               />
             </td>
@@ -88,14 +88,14 @@ const ConsumoAlimentarHabitual = () => {
               />
             </td>
           </tr>
-          <tr className='hover:bg-neutral-200'>
+          <tr className='hover:bg-sky-200'>
             <td className='py-2 pl-1'>
               <input
                 type='checkbox'
                 name={'adocante'}
                 id={'adocante'}
                 onChange={handleChange}
-                className='hover:cursor-pointer'
+                className='accent-sky-600 hover:cursor-pointer'
                 checked={consumoHabitual?.adocante || false}
               />
             </td>
@@ -117,14 +117,14 @@ const ConsumoAlimentarHabitual = () => {
               />
             </td>
           </tr>
-          <tr className='hover:bg-neutral-200'>
+          <tr className='hover:bg-sky-200'>
             <td className='py-2 pl-1'>
               <input
                 type='checkbox'
                 name={'frituras'}
                 id={'frituras'}
                 onChange={handleChange}
-                className='hover:cursor-pointer'
+                className='accent-sky-600 hover:cursor-pointer'
                 checked={consumoHabitual?.frituras || false}
               />
             </td>
@@ -146,14 +146,14 @@ const ConsumoAlimentarHabitual = () => {
               />
             </td>
           </tr>
-          <tr className='hover:bg-neutral-200'>
+          <tr className='hover:bg-sky-200'>
             <td className='py-2 pl-1'>
               <input
                 type='checkbox'
                 name={'carneComGordura'}
                 id={'carneComGordura'}
                 onChange={handleChange}
-                className='hover:cursor-pointer'
+                className='accent-sky-600 hover:cursor-pointer'
                 checked={consumoHabitual?.carneComGordura || false}
               />
             </td>
@@ -175,14 +175,14 @@ const ConsumoAlimentarHabitual = () => {
               />
             </td>
           </tr>
-          <tr className='hover:bg-neutral-200'>
+          <tr className='hover:bg-sky-200'>
             <td className='py-2 pl-1'>
               <input
                 type='checkbox'
                 name={'frangoComPele'}
                 id={'frangoComPele'}
                 onChange={handleChange}
-                className='hover:cursor-pointer'
+                className='accent-sky-600 hover:cursor-pointer'
                 checked={consumoHabitual?.frangoComPele || false}
               />
             </td>
@@ -206,7 +206,6 @@ const ConsumoAlimentarHabitual = () => {
           </tr>
         </tbody>
       </table>
-      {/*)}*/}
       <div className='mt-4 grid max-w-lg grid-cols-2 gap-4'>
         <div className='flex flex-col'>
           <span className='text-sm font-semibold uppercase tracking-wider'>
@@ -263,7 +262,7 @@ const ConsumoAlimentarHabitual = () => {
             <input
               type='radio'
               name='localDoAlmoco'
-              className='mr-1 hover:cursor-pointer'
+              className='mr-1 accent-sky-600 hover:cursor-pointer'
               id='almocoCasa'
               onChange={handleChange}
               value='casa'
@@ -278,7 +277,7 @@ const ConsumoAlimentarHabitual = () => {
             <input
               type='radio'
               name='localDoAlmoco'
-              className='mx-1 hover:cursor-pointer'
+              className='mx-1 accent-sky-600 hover:cursor-pointer'
               id='almocoRestaurante'
               onChange={handleChange}
               value='restaurante'
@@ -293,7 +292,7 @@ const ConsumoAlimentarHabitual = () => {
             <input
               type='radio'
               name='localDoAlmoco'
-              className='mx-1 hover:cursor-pointer'
+              className='mx-1 accent-sky-600 hover:cursor-pointer'
               id='almocoOutro'
               onChange={handleChange}
               value='outro'
@@ -313,7 +312,7 @@ const ConsumoAlimentarHabitual = () => {
             <input
               type='radio'
               name='localDaJanta'
-              className='mr-1 hover:cursor-pointer'
+              className='mr-1 accent-sky-600 hover:cursor-pointer'
               id='jantaCasa'
               onChange={handleChange}
               value='casa'
@@ -328,7 +327,7 @@ const ConsumoAlimentarHabitual = () => {
             <input
               type='radio'
               name='localDaJanta'
-              className='mx-1 hover:cursor-pointer'
+              className='mx-1 accent-sky-600 hover:cursor-pointer'
               id='jantaRestaurante'
               onChange={handleChange}
               value='restaurante'
@@ -343,7 +342,7 @@ const ConsumoAlimentarHabitual = () => {
             <input
               type='radio'
               name='localDaJanta'
-              className='mx-1 hover:cursor-pointer'
+              className='mx-1 accent-sky-600 hover:cursor-pointer'
               id='jantaOutro'
               onChange={handleChange}
               value='outro'
