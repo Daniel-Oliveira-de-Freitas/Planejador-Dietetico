@@ -370,14 +370,10 @@ export default function PlanoDietetico() {
       </Modal>
       {tiposDeRefeicao && dietaPaciente && (
         <div>
+          <FoodInformationTotal foodArray={dietaPaciente} />
           <FoodDropdown
             foodArray={dietaPaciente}
             setIsOpen={setIsOpen}
-            tiposDeRefeicao={tiposDeRefeicao}
-            setTipoDeRefeicao={setTipoDeRefeicao}
-          />
-          <FoodInformationTotal
-            foodArray={dietaPaciente}
             tiposDeRefeicao={tiposDeRefeicao}
             setTipoDeRefeicao={setTipoDeRefeicao}
           />
