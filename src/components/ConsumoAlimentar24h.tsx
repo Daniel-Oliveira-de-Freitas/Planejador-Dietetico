@@ -98,21 +98,47 @@ const ConsumoAlimentar24h = () => {
     return setPinheiroQty(Number(e.target.valueAsNumber)); // OBS.: castando para remover o 0 da esquerda
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    addRefeicao(
+      selectedTacoFood,
+      selectedPinheiroFood,
+      pinheiroMeasureLabel,
+      pinheiroQty,
+      tipoDeRefeicao
+    );
+    setIsOpen(false);
+    void toast.promise(
+      addConsumo24h(
+        {
+          alimentoTACO: selectedTacoFood,
+          alimentoPinheiro: selectedPinheiroFood,
+          tipoDeRefeicaoId: tipoDeRefeicao.id,
+          quantidade: pinheiroQty,
+          medida: pinheiroMeasureLabel,
+        },
+        paciente
+      ),
+      {
+        error: 'Não foi possível salvar',
+        pending: 'Salvando...',
+        success: 'Salvo com sucesso!',
+      }
+    );
+  };
+
   return (
     <>
       {tiposDeRefeicao && consumo && (
         <div>
+          <FoodInformationTotal foodArray={consumo} />
           <FoodDropdown
             foodArray={consumo}
             setIsOpen={setIsOpen}
             tiposDeRefeicao={tiposDeRefeicao}
             setTipoDeRefeicao={setTipoDeRefeicao}
             setConsumo={setConsumo}
-          />
-          <FoodInformationTotal
-            foodArray={consumo}
-            tiposDeRefeicao={tiposDeRefeicao}
-            setTipoDeRefeicao={setTipoDeRefeicao}
+            removeFn={removeConsumo24h}
           />
         </div>
       )}
@@ -121,7 +147,10 @@ const ConsumoAlimentar24h = () => {
         setIsOpen={setIsOpen}
         title='🍕 Adicionar alimento'
       >
-        <div className='mt-8 grid grid-cols-2 gap-2'>
+        <form
+          className='mt-8 grid grid-cols-2 gap-2'
+          onSubmit={handleSubmit}
+        >
           <div>
             <label className='text-sm font-medium text-gray-900'>Alimento TACO</label>
             <Combobox
@@ -234,37 +263,11 @@ const ConsumoAlimentar24h = () => {
                 : ''}
             </div>
           </div>
-        </div>
-        <div className='mt-4 flex h-full w-full justify-center'>
-          <Button
-            onClick={() => {
-              addRefeicao(
-                selectedTacoFood,
-                selectedPinheiroFood,
-                pinheiroMeasureLabel,
-                pinheiroQty,
-                tipoDeRefeicao
-              );
-              setIsOpen(false);
-            }}
-          >
-            Adicionar refeição
-          </Button>
-        </div>
+          <div className='mt-4 flex h-full w-full justify-center'>
+            <Button type={'submit'}>Adicionar refeição</Button>
+          </div>
+        </form>
       </Modal>
-      <div className='mt-4 flex w-full justify-end'>
-        <Button
-          onClick={() => {
-            void toast.promise(addConsumo24h(consumo, paciente), {
-              error: 'Não foi possível salvar',
-              pending: 'Salvando...',
-              success: 'Salvo com sucesso!',
-            });
-          }}
-        >
-          Salvar consumo 24h
-        </Button>
-      </div>
     </>
   );
 };
