@@ -13,6 +13,7 @@ interface FoodDropdownProps {
 }
 
 const FoodDropdown = (props: FoodDropdownProps) => {
+  const tiposPreenchidos = new Set(props.foodArray.map(food => food.tipoDeRefeicaoId));
   const removeItem = (id: number, foodArray: Refeicao[]) => {
     return props.setConsumo(foodArray.filter(food => food.id !== id));
   };
@@ -41,94 +42,97 @@ const FoodDropdown = (props: FoodDropdownProps) => {
             </button>
           </div>
           <div className={'mt-4 ml-4 rounded-lg border'}>
-            <table className='mt-2 w-full divide-y text-left text-sky-900'>
-              <thead className='h-8 text-sm font-semibold uppercase tracking-wider'>
-                <tr className={''}>
-                  <th className='pl-4'>nome</th>
-                  <th className=''>qtd</th>
-                  <th className=''>kcal</th>
-                  <th className=''>carb.</th>
-                  <th className=''>prot.</th>
-                  <th className=''>gord.</th>
-                  {props.setConsumo && <th>excluir</th>}
-                </tr>
-              </thead>
-              <tbody className={''}>
-                {props.foodArray.length > 0 &&
-                  props.foodArray.map(alimento => {
-                    if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
-                      return (
-                        <tr
-                          key={
-                            alimento.alimentoPinheiro.id +
-                            tipoDeRefeicao.id +
-                            alimento.alimentoTACO.id
-                          }
-                          className='even:bg-sky-50 hover:bg-sky-100'
-                        >
-                          <td className='whitespace-nowrap py-4 pl-4 text-sky-900'>
-                            {alimento.alimentoTACO.description}
-                          </td>
-                          <td className='whitespace-nowrap py-4 text-sky-900'>
-                            {alimento.quantidade} {alimento.alimentoPinheiro.measures[0].label}
-                          </td>
-                          <td className='whitespace-nowrap py-4 text-sky-900'>
-                            {(alimento.alimentoTACO.energy[0].kcal * alimento.quantidade).toFixed(
-                              0
-                            )}
-                          </td>
-                          <td className='whitespace-nowrap py-4 text-sky-900'>
-                            {(
-                              alimento.alimentoTACO.carbohydrate[0].qty * alimento.quantidade
-                            ).toFixed(0) + alimento.alimentoTACO.carbohydrate[0].unit}
-                          </td>
-                          <td className='whitespace-nowrap py-4 text-sky-900'>
-                            {(alimento.alimentoTACO.protein[0].qty * alimento.quantidade).toFixed(
-                              0
-                            ) + alimento.alimentoTACO.protein[0].unit}{' '}
-                          </td>
-                          <td className='whitespace-nowrap py-4 text-sky-900'>
-                            {(alimento.alimentoTACO.lipid[0].qty * alimento.quantidade).toFixed(0) +
-                              alimento.alimentoTACO.lipid[0].unit}{' '}
-                          </td>
-                          {props.setConsumo && props.removeFn && (
-                            <td className='whitespace-nowrap py-4 text-sky-900'>
-                              <button
-                                className={
-                                  'rounded-full border-rose-500 p-2 text-rose-500 hover:border-0 hover:bg-rose-500 hover:text-white'
-                                }
-                                onClick={() => {
-                                  void toast.promise(props.removeFn(alimento.id), {
-                                    pending: 'Excluíndo...',
-                                    error: 'Não foi possível excluir!',
-                                    success: 'Excluído com sucesso!',
-                                  });
-                                  removeItem(alimento.id, props.foodArray);
-                                }}
-                              >
-                                <svg
-                                  xmlns='http://www.w3.org/2000/svg'
-                                  width='16'
-                                  height='16'
-                                  fill='currentColor'
-                                  className='bi bi-trash'
-                                  viewBox='0 0 16 16'
-                                >
-                                  <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z' />
-                                  <path
-                                    fillRule='evenodd'
-                                    d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'
-                                  />
-                                </svg>
-                              </button>
+            {tiposPreenchidos.has(tipoDeRefeicao.id) && (
+              <table className='mt-2 w-full divide-y text-left text-sky-900'>
+                <thead className='h-8 text-sm font-semibold uppercase tracking-wider'>
+                  <tr className={''}>
+                    <th className='pl-4'>nome</th>
+                    <th className=''>qtd</th>
+                    <th className=''>kcal</th>
+                    <th className=''>carb.</th>
+                    <th className=''>prot.</th>
+                    <th className=''>gord.</th>
+                    {props.setConsumo && <th>excluir</th>}
+                  </tr>
+                </thead>
+                <tbody className={''}>
+                  {props.foodArray.length > 0 &&
+                    props.foodArray.map(alimento => {
+                      if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
+                        return (
+                          <tr
+                            key={
+                              alimento.alimentoPinheiro.id +
+                              tipoDeRefeicao.id +
+                              alimento.alimentoTACO.id
+                            }
+                            className='even:bg-sky-50 hover:bg-sky-100'
+                          >
+                            <td className='whitespace-nowrap py-4 pl-4 text-sky-900'>
+                              {alimento.alimentoTACO.description}
                             </td>
-                          )}
-                        </tr>
-                      );
-                    }
-                  })}
-              </tbody>
-            </table>
+                            <td className='whitespace-nowrap py-4 text-sky-900'>
+                              {alimento.quantidade} {alimento.alimentoPinheiro.measures[0].label}
+                            </td>
+                            <td className='whitespace-nowrap py-4 text-sky-900'>
+                              {(alimento.alimentoTACO.energy[0].kcal * alimento.quantidade).toFixed(
+                                0
+                              )}
+                            </td>
+                            <td className='whitespace-nowrap py-4 text-sky-900'>
+                              {(
+                                alimento.alimentoTACO.carbohydrate[0].qty * alimento.quantidade
+                              ).toFixed(0) + alimento.alimentoTACO.carbohydrate[0].unit}
+                            </td>
+                            <td className='whitespace-nowrap py-4 text-sky-900'>
+                              {(alimento.alimentoTACO.protein[0].qty * alimento.quantidade).toFixed(
+                                0
+                              ) + alimento.alimentoTACO.protein[0].unit}{' '}
+                            </td>
+                            <td className='whitespace-nowrap py-4 text-sky-900'>
+                              {(alimento.alimentoTACO.lipid[0].qty * alimento.quantidade).toFixed(
+                                0
+                              ) + alimento.alimentoTACO.lipid[0].unit}{' '}
+                            </td>
+                            {props.setConsumo && props.removeFn && (
+                              <td className='whitespace-nowrap py-4 text-sky-900'>
+                                <button
+                                  className={
+                                    'rounded-full border-rose-500 p-2 text-rose-500 hover:border-0 hover:bg-rose-500 hover:text-white'
+                                  }
+                                  onClick={() => {
+                                    void toast.promise(props.removeFn(alimento.id), {
+                                      pending: 'Excluíndo...',
+                                      error: 'Não foi possível excluir!',
+                                      success: 'Excluído com sucesso!',
+                                    });
+                                    removeItem(alimento.id, props.foodArray);
+                                  }}
+                                >
+                                  <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    width='16'
+                                    height='16'
+                                    fill='currentColor'
+                                    className='bi bi-trash'
+                                    viewBox='0 0 16 16'
+                                  >
+                                    <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z' />
+                                    <path
+                                      fillRule='evenodd'
+                                      d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'
+                                    />
+                                  </svg>
+                                </button>
+                              </td>
+                            )}
+                          </tr>
+                        );
+                      }
+                    })}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       ))}
