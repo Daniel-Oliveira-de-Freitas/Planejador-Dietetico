@@ -2,7 +2,7 @@ import { Paciente } from '@prisma/client';
 import { Refeicao } from '../types/types';
 
 export const addConsumo24h = async (consumo: Refeicao, paciente: Paciente) => {
-  await window.prisma.refeicaoConsumo24h.create({
+  return window.prisma.refeicaoConsumo24h.create({
     data: {
       medida: consumo.medida,
       quantidade: consumo.quantidade,
@@ -24,6 +24,21 @@ export const addConsumo24h = async (consumo: Refeicao, paciente: Paciente) => {
       Paciente: {
         connect: {
           id: paciente.id,
+        },
+      },
+    },
+    include: {
+      alimentoPinheiro: {
+        include: {
+          measures: true,
+        },
+      },
+      alimentoTACO: {
+        include: {
+          energy: true,
+          carbohydrate: true,
+          protein: true,
+          lipid: true,
         },
       },
     },
