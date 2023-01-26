@@ -6,6 +6,8 @@ import {
   Lipid,
   AlimentoPinheiro,
   MeasurePinheiro,
+  RefeicaoConsumo24h,
+  Prisma,
 } from '@prisma/client';
 
 export interface AlimentoTACOComMacros extends AlimentoTACO {
@@ -34,3 +36,40 @@ export type Consumo = {
   periodo: Periodo;
   refeicoes: Refeicao[];
 };
+
+export interface RefeicaoConsumo24hComAlimentos extends RefeicaoConsumo24h {
+  id: number;
+  alimentoTACOId: number;
+  alimentoPinheiroId: number;
+  tipoDeRefeicaoId: number;
+  medida: string;
+  quantidade: number;
+  pacienteId: number;
+  alimentoTACO: AlimentoTACOComMacros;
+  alimentoPinheiro: AlimentoPinheiroComMedidas;
+}
+
+const pctComMacros = Prisma.validator<Prisma.PacienteArgs>()({
+  include: {
+    RefeicaoConsumo24h: {
+      include: {
+        alimentoTACO: {
+          include: {
+            energy: true,
+            protein: true,
+            carbohydrate: true,
+            lipid: true,
+          },
+        },
+        alimentoPinheiro: {
+          include: {
+            measures: true,
+          },
+        },
+      },
+    },
+    RefeicaoDieta: true,
+  },
+});
+
+export type PacienteComMacros = Prisma.PacienteGetPayload<typeof pctComMacros>;
