@@ -1,15 +1,27 @@
-import { Refeicao } from '../types/types';
+import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from '../types/types';
 import React from 'react';
-import { TipoDeRefeicao } from '@prisma/client';
+import { RefeicaoConsumo24h, TipoDeRefeicao } from '@prisma/client';
 import { toast } from 'react-toastify';
 
 interface FoodDropdownProps {
   setIsOpen: (value: React.SetStateAction<boolean>) => void;
   setTipoDeRefeicao: (value: React.SetStateAction<TipoDeRefeicao>) => void;
-  foodArray: Refeicao[];
+  foodArray: Refeicao[] | RefeicaoComAlimentos[];
   tiposDeRefeicao: TipoDeRefeicao[];
   setConsumo?: (value: React.SetStateAction<Refeicao[]>) => void;
   removeFn?: (id: number) => Promise<void>;
+}
+
+interface RefeicaoComAlimentos extends RefeicaoConsumo24h {
+  id: number;
+  alimentoTACOId: number;
+  alimentoPinheiroId: number;
+  tipoDeRefeicaoId: number;
+  medida: string;
+  quantidade: number;
+  pacienteId: number;
+  alimentoTACO: AlimentoTACOComMacros;
+  alimentoPinheiro: AlimentoPinheiroComMedidas;
 }
 
 const FoodDropdown = (props: FoodDropdownProps) => {
@@ -61,11 +73,7 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                       if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
                         return (
                           <tr
-                            key={
-                              alimento.alimentoPinheiro.id +
-                              tipoDeRefeicao.id +
-                              alimento.alimentoTACO.id
-                            }
+                            key={alimento.id}
                             className='even:bg-sky-50 hover:bg-sky-100'
                           >
                             <td className='whitespace-nowrap py-4 pl-4 text-sky-900'>
