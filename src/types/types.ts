@@ -23,8 +23,6 @@ export interface Refeicao {
   id?: number;
   alimentoTACO: AlimentoTACOComMacros;
   alimentoPinheiro: AlimentoPinheiroComMedidas;
-  alimentoTACOId: number;
-  alimentoPinheiroId: number;
   tipoDeRefeicaoId: number;
   medida: string;
   quantidade: number;
