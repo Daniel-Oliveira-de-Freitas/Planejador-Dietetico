@@ -2,6 +2,7 @@ import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from '../
 import React from 'react';
 import { RefeicaoConsumo24h, TipoDeRefeicao } from '@prisma/client';
 import { toast } from 'react-toastify';
+import { convertMacros } from '../utils/convertMacros';
 
 interface FoodDropdownProps {
   setIsOpen: (value: React.SetStateAction<boolean>) => void;
@@ -29,6 +30,8 @@ const FoodDropdown = (props: FoodDropdownProps) => {
   const removeItem = (id: number, foodArray: Refeicao[] | RefeicaoComAlimentos[]) => {
     return props.setConsumo(foodArray.filter(food => food.id !== id));
   };
+
+  console.log(props.foodArray);
 
   return (
     <>
@@ -80,27 +83,35 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                               {alimento.alimentoTACO.description}
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
-                              {alimento.quantidade} {alimento.alimentoPinheiro.measures[0].label}
+                              {alimento.quantidade + alimento.alimentoPinheiro.measures[0].label}
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
-                              {(alimento.alimentoTACO.energy[0].kcal * alimento.quantidade).toFixed(
-                                0
-                              )}
+                              {convertMacros(
+                                alimento.alimentoTACO,
+                                alimento.alimentoPinheiro.measures[0].qty,
+                                alimento.quantidade
+                              ).kcal + 'kcal'}
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
-                              {(
-                                alimento.alimentoTACO.carbohydrate[0].qty * alimento.quantidade
-                              ).toFixed(0) + alimento.alimentoTACO.carbohydrate[0].unit}
+                              {convertMacros(
+                                alimento.alimentoTACO,
+                                alimento.alimentoPinheiro.measures[0].qty,
+                                alimento.quantidade
+                              ).carb + alimento.alimentoTACO.carbohydrate[0].unit}
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
-                              {(alimento.alimentoTACO.protein[0].qty * alimento.quantidade).toFixed(
-                                0
-                              ) + alimento.alimentoTACO.protein[0].unit}{' '}
+                              {convertMacros(
+                                alimento.alimentoTACO,
+                                alimento.alimentoPinheiro.measures[0].qty,
+                                alimento.quantidade
+                              ).protein + alimento.alimentoTACO.protein[0].unit}
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
-                              {(alimento.alimentoTACO.lipid[0].qty * alimento.quantidade).toFixed(
-                                0
-                              ) + alimento.alimentoTACO.lipid[0].unit}{' '}
+                              {convertMacros(
+                                alimento.alimentoTACO,
+                                alimento.alimentoPinheiro.measures[0].qty,
+                                alimento.quantidade
+                              ).lipid + alimento.alimentoTACO.lipid[0].unit}
                             </td>
                             {props.setConsumo && props.removeFn && (
                               <td className='whitespace-nowrap py-4 text-sky-900'>
