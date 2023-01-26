@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DietaPaciente from './routes/DietaPaciente';
 import Pacientes from './routes/Pacientes';
-import Home from './routes/Home/home';
-import ConsumoAlimentar24h from './components/ConsumoAlimentar24h';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PacienteContextProvider } from './context/PacienteContext';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -22,25 +21,23 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       pauseOnHover
       theme='light'
     />
-    <MemoryRouter>
-      <Routes>
-        <Route
-          path='/'
-          element={<Pacientes />}
-        />
-        <Route
-          path='/pacientes'
-          element={<Pacientes />}
-        />
-        <Route
-          path='/consumo24h'
-          element={<ConsumoAlimentar24h />}
-        />
-        <Route
-          path='/dietaPaciente'
-          element={<DietaPaciente />}
-        />
-      </Routes>
-    </MemoryRouter>
+    <PacienteContextProvider>
+      <MemoryRouter>
+        <Routes>
+          <Route
+            path='/'
+            element={<Pacientes />}
+          />
+          <Route
+            path='/pacientes'
+            element={<Pacientes />}
+          />
+          <Route
+            path='/dietaPaciente'
+            element={<DietaPaciente />}
+          />
+        </Routes>
+      </MemoryRouter>
+    </PacienteContextProvider>
   </React.StrictMode>
 );
