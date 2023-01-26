@@ -8,7 +8,7 @@ interface FoodDropdownProps {
   setTipoDeRefeicao: (value: React.SetStateAction<TipoDeRefeicao>) => void;
   foodArray: Refeicao[] | RefeicaoComAlimentos[];
   tiposDeRefeicao: TipoDeRefeicao[];
-  setConsumo?: (value: React.SetStateAction<Refeicao[]>) => void;
+  setConsumo?: (value: React.SetStateAction<Refeicao[] | RefeicaoComAlimentos[]>) => void;
   removeFn?: (id: number) => Promise<void>;
 }
 
@@ -26,7 +26,7 @@ interface RefeicaoComAlimentos extends RefeicaoConsumo24h {
 
 const FoodDropdown = (props: FoodDropdownProps) => {
   const tiposPreenchidos = new Set(props.foodArray.map(food => food.tipoDeRefeicaoId));
-  const removeItem = (id: number, foodArray: Refeicao[]) => {
+  const removeItem = (id: number, foodArray: Refeicao[] | RefeicaoComAlimentos[]) => {
     return props.setConsumo(foodArray.filter(food => food.id !== id));
   };
 

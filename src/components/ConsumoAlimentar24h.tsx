@@ -155,7 +155,7 @@ const ConsumoAlimentar24h = () => {
             setIsOpen={setIsOpen}
             tiposDeRefeicao={tiposDeRefeicao}
             setTipoDeRefeicao={setTipoDeRefeicao}
-            setConsumo={setConsumo}
+            setConsumo={setConsumoData}
             removeFn={removeConsumo24h}
           />
         </div>
