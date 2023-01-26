@@ -15,6 +15,7 @@ import { getTiposDeRefeicao } from '../utils/getTiposDeRefeicao';
 import { getRefeicoes24hById } from '../utils/getRefeicoes24hById';
 import FoodInformationTotal from './FoodInformationTotal';
 import { convertMacros } from '../utils/convertMacros';
+import { removeConsumo24h } from '../utils/removeConsumo24h';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
