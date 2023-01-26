@@ -31,8 +31,6 @@ const FoodDropdown = (props: FoodDropdownProps) => {
     return props.setConsumo(foodArray.filter(food => food.id !== id));
   };
 
-  console.log(props.foodArray);
-
   return (
     <>
       {props.tiposDeRefeicao.map(tipoDeRefeicao => (
