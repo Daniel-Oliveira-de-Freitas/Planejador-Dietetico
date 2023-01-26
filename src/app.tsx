@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Routes>
         <Route
           path='/'
-          element={<Home />}
+          element={<Pacientes />}
         />
         <Route
           path='/pacientes'
