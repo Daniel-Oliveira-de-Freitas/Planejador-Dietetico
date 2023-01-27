@@ -1,8 +1,10 @@
 import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from '../types/types';
-import React from 'react';
+import React, { useContext } from 'react';
 import { RefeicaoConsumo24h, TipoDeRefeicao } from '@prisma/client';
 import { toast } from 'react-toastify';
 import { convertMacros } from '../utils/convertMacros';
+import { getPaciente } from '../utils/paciente/getPaciente';
+import { PacienteContext } from '../context/PacienteContext';
 
 interface FoodDropdownProps {
   setIsOpen: (value: React.SetStateAction<boolean>) => void;
@@ -26,6 +28,7 @@ interface RefeicaoComAlimentos extends RefeicaoConsumo24h {
 }
 
 const FoodDropdown = (props: FoodDropdownProps) => {
+  const { paciente, setPaciente } = useContext(PacienteContext);
   const tiposPreenchidos = new Set(props.foodArray.map(food => food.tipoDeRefeicaoId));
   const removeItem = (id: number, foodArray: Refeicao[] | RefeicaoComAlimentos[]) => {
     return props.setConsumo(foodArray.filter(food => food.id !== id));
@@ -123,6 +126,7 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                                       error: 'Não foi possível excluir!',
                                       success: 'Excluído com sucesso!',
                                     });
+                                    getPaciente(paciente.id).then(setPaciente);
                                     removeItem(alimento.id, props.foodArray);
                                   }}
                                 >
