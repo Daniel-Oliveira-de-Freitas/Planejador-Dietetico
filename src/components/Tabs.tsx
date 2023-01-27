@@ -1,10 +1,12 @@
 import { Tab } from '@headlessui/react';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ConsumoAlimentar24h from './ConsumoAlimentar24h';
 import ConsumoAlimentarHabitual from './ConsumoAlimentarHabitual';
 import PlanoDietetico from './PlanoDietetico';
+import { PacienteContext } from '../context/PacienteContext';
 
 export default function Tabs() {
+  const { setTab } = useContext(PacienteContext);
   let [categories] = useState({
     'Plano dietético': [
       {
@@ -27,7 +29,7 @@ export default function Tabs() {
   });
   return (
     <div className='mx-auto w-full max-w-5xl p-2 sm:px-0'>
-      <Tab.Group>
+      <Tab.Group onChange={setTab}>
         <Tab.List className='flex space-x-1 rounded-xl bg-sky-600 p-1'>
           {Object.keys(categories).map(category => (
             <Tab
