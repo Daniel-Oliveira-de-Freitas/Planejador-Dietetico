@@ -21,7 +21,6 @@ import { useLocation } from 'react-router-dom';
 import { getTiposDeRefeicao } from '../utils/getTiposDeRefeicao';
 import FoodDropdown from '../components/FoodDropdown';
 import { getRefeicaoDietasById } from '../utils/getRefeicaosDieta';
-import FoodInformationTotal from '../components/FoodInformationTotal';
 
 Modal.setAppElement('#root');
 
@@ -174,6 +173,7 @@ export default function PlanoDietetico() {
       pending: 'Salvando...',
       success: 'Adicionado com sucesso!',
     });
+    getPaciente(paciente.id).then(setPaciente);
   };
   return (
     <>
@@ -370,7 +370,6 @@ export default function PlanoDietetico() {
       </Modal>
       {tiposDeRefeicao && dietaPaciente && (
         <div>
-          <FoodInformationTotal foodArray={dietaPaciente} />
           <FoodDropdown
             foodArray={dietaPaciente}
             setIsOpen={setIsOpen}
