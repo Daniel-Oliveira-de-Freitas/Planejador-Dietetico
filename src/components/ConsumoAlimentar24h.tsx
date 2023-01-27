@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Combobox } from '@headlessui/react';
 import Modal from './Modal';
 import { getAllTacoFoods } from '../utils/taco/getAllTacoFoods';
 import { getAllPinheiroFoods } from '../utils/pinheiro/getAllPinheiroFoods';
-import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from '../types/types';
+import {
+  AlimentoPinheiroComMedidas,
+  AlimentoTACOComMacros,
+  Refeicao,
+  RefeicaoConsumo24hComAlimentos,
+} from '../types/types';
 import FoodDropdown from './FoodDropdown';
 import { addConsumo24h } from '../utils/addConsumo24h';
-import { Paciente, RefeicaoConsumo24h, TipoDeRefeicao } from '@prisma/client';
+import { TipoDeRefeicao } from '@prisma/client';
 import { getPaciente } from '../utils/paciente/getPaciente';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -17,24 +22,13 @@ import FoodInformationTotal from './FoodInformationTotal';
 import { convertMacros } from '../utils/convertMacros';
 import { removeConsumo24h } from '../utils/removeConsumo24h';
 import { getAllConsumo24h } from '../utils/getAllConsumo24h';
-
-interface RefeicaoConsumo24hComAlimentos extends RefeicaoConsumo24h {
-  id: number;
-  alimentoTACOId: number;
-  alimentoPinheiroId: number;
-  tipoDeRefeicaoId: number;
-  medida: string;
-  quantidade: number;
-  pacienteId: number;
-  alimentoTACO: AlimentoTACOComMacros;
-  alimentoPinheiro: AlimentoPinheiroComMedidas;
-}
+import { PacienteContext } from '../context/PacienteContext';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
   const location = useLocation();
   const { idPaciente } = location.state;
-  const [paciente, setPaciente] = useState<Paciente>();
+  const { paciente, setPaciente } = useContext(PacienteContext);
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [tacoFoods, setTacoFoods] = useState<AlimentoTACOComMacros[]>([]);
@@ -136,7 +130,10 @@ const ConsumoAlimentar24h = () => {
           medida: pinheiroMeasureLabel,
         },
         paciente
-      ).then(res => setConsumoData(prev => [...prev, res])),
+      ).then(res => {
+        setConsumoData(prev => [...prev, res]);
+        getPaciente(paciente.id).then(setPaciente);
+      }),
       {
         error: 'Não foi possível salvar',
         pending: 'Salvando...',
@@ -149,7 +146,7 @@ const ConsumoAlimentar24h = () => {
     <>
       {tiposDeRefeicao && consumo && (
         <div>
-          <FoodInformationTotal foodArray={consumo} />
+          {/*<FoodInformationTotal foodArray={consumo} />*/}
           <FoodDropdown
             foodArray={consumoData}
             setIsOpen={setIsOpen}
