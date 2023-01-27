@@ -160,7 +160,7 @@ const ConsumoAlimentarHabitual = () => {
             <td className='px-4'>
               <label
                 className='hover:cursor-pointer'
-                htmlFor={'acucar'}
+                htmlFor={'carneComGordura'}
               >
                 carne com gordura aparente
               </label>
