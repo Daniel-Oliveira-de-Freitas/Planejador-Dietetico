@@ -1,4 +1,5 @@
 import { Dialog } from '@headlessui/react';
+import React from 'react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,7 +10,7 @@ interface ModalProps {
 }
 
 const Modal = (props: ModalProps) => {
-  const defaultStyle = 'mx-auto min-h-[50vh] max-w-md rounded bg-white p-4';
+  const defaultStyle = 'mx-auto min-h-[50vh] max-w-md rounded-xl bg-white p-8';
 
   return (
     <Dialog
@@ -25,7 +26,9 @@ const Modal = (props: ModalProps) => {
       <div className='fixed inset-0 flex items-center justify-center'>
         <Dialog.Panel className={defaultStyle}>
           {props.title && (
-            <Dialog.Title className='text-2xl font-semibold'>{props.title}</Dialog.Title>
+            <Dialog.Title className='text-3xl font-semibold tracking-wider text-sky-800'>
+              {props.title}
+            </Dialog.Title>
           )}
           {props.description ?? <Dialog.Description>{props.description}</Dialog.Description>}
           {props.children}
