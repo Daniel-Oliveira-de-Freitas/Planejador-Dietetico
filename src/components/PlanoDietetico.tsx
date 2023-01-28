@@ -123,7 +123,7 @@ export default function PlanoDietetico() {
     const calcMedida = pinheiroQty / pinheiroMeasureValue;
 
     if (pinheiroQty > 0 && tacoFood) {
-      return Math.ceil(calcMedida);
+      return calcMedida.toFixed(1);
     }
 
     return 0;
