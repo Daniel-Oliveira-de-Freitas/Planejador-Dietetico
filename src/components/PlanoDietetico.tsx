@@ -174,6 +174,8 @@ export default function PlanoDietetico() {
       success: 'Adicionado com sucesso!',
     });
     getPaciente(paciente.id).then(setPaciente);
+    setSelectedPinheiroFood(null);
+    setSelectedTacoFood(null);
   };
   return (
     <>
@@ -269,6 +271,7 @@ export default function PlanoDietetico() {
                   placeholder='Ex: 250 gramas'
                   className='block w-96 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
                   onChange={handleQty}
+                  defaultValue={0}
                 />
               </div>
 
@@ -303,7 +306,7 @@ export default function PlanoDietetico() {
                       readOnly
                       placeholder='5 colheres'
                       className='block w-96 cursor-default rounded-lg border border-gray-300 bg-gray-200 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-                      value={selectedTacoFood?.id ? convertMedida(selectedTacoFood) : ''}
+                      value={selectedTacoFood?.id ? convertMedida(selectedTacoFood) : 0}
                     />
                   </div>
                 </div>
