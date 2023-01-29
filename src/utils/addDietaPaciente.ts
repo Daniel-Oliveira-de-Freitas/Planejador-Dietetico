@@ -1,38 +1,46 @@
 import { Paciente } from '@prisma/client';
 import { Refeicao } from '../types/types';
 
-export const addDietaPaciente = async (dietas: Refeicao[], paciente: Paciente) => {
-  const transactions: any[] = [];
-
-  dietas.map(dieta => {
-    const createRefeicao = window.prisma.refeicaoDieta.create({
-      data: {
-        medida: dieta.medida,
-        quantidade: dieta.quantidade,
-        alimentoPinheiro: {
-          connect: {
-            id: dieta.alimentoPinheiro.id,
-          },
-        },
-        alimentoTACO: {
-          connect: {
-            id: dieta.alimentoTACO.id,
-          },
-        },
-        tipoDeRefeicao: {
-          connect: {
-            id: dieta.tipoDeRefeicaoId,
-          },
-        },
-        Paciente: {
-          connect: {
-            id: paciente.id,
-          },
+export const addDietaPaciente = async (consumo: Refeicao, paciente: Paciente) => {
+  return window.prisma.refeicaoDieta.create({
+    data: {
+      medida: consumo.medida,
+      quantidade: consumo.quantidade,
+      alimentoPinheiro: {
+        connect: {
+          id: consumo.alimentoPinheiro.id,
         },
       },
-    });
-    transactions.push(createRefeicao);
+      alimentoTACO: {
+        connect: {
+          id: consumo.alimentoTACO.id,
+        },
+      },
+      tipoDeRefeicao: {
+        connect: {
+          id: consumo.tipoDeRefeicaoId,
+        },
+      },
+      Paciente: {
+        connect: {
+          id: paciente.id,
+        },
+      },
+    },
+    include: {
+      alimentoPinheiro: {
+        include: {
+          measures: true,
+        },
+      },
+      alimentoTACO: {
+        include: {
+          energy: true,
+          carbohydrate: true,
+          protein: true,
+          lipid: true,
+        },
+      },
+    },
   });
-
-  const refeicoes = await window.prisma.$transaction(transactions);
 };
