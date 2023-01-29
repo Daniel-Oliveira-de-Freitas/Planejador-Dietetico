@@ -1,4 +1,4 @@
-export const getRefeicaoDietasById = async (id: number) => {
+export const getRefeicaoDietaById = async (id: number) => {
   return window.prisma.refeicaoDieta.findMany({
     where: {
       pacienteId: id,
