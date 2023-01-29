@@ -133,7 +133,7 @@ const Pacientes = () => {
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Deletar',
       cancelButtonText: 'Cancelar',
-    }).then((result: { isConfirmed: any }) => {
+    }).then(result => {
       if (result.isConfirmed) {
         const arraySemPacienteDeletado = pacientes.filter(arr => arr.id !== pacienteId);
 

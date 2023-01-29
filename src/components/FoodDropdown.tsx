@@ -1,8 +1,4 @@
-import {
-  Refeicao,
-  RefeicaoConsumo24hComAlimentos,
-  RefeicaoDietaComAlimentos,
-} from '../types/types';
+import { RefeicaoConsumo24hComAlimentos, RefeicaoDietaComAlimentos } from '../types/types';
 import React, { useContext } from 'react';
 import { TipoDeRefeicao } from '@prisma/client';
 import { toast } from 'react-toastify';
