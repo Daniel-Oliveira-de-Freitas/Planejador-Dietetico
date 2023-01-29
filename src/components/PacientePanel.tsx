@@ -1,7 +1,7 @@
 import { Paciente } from '@prisma/client';
 import React, { useContext } from 'react';
 import { getAge } from '../utils/getAge';
-import { RefeicaoConsumo24hComAlimentos } from '../types/types';
+import { RefeicaoConsumo24hComAlimentos, RefeicaoDietaComAlimentos } from '../types/types';
 import { PacienteContext } from '../context/PacienteContext';
 
 export default function PacientePanel() {
@@ -13,7 +13,6 @@ export default function PacientePanel() {
         <div className={'flex items-stretch justify-items-stretch gap-4'}>
           {paciente.sexo === 'Masculino' && <SexSymbol>♂</SexSymbol>}
           {paciente.sexo === 'Feminino' && <SexSymbol>♀</SexSymbol>}
-          {paciente.sexo === 'NaoBinario' && <SexSymbol>?</SexSymbol>}
           <div className={'text-4xl text-sky-800'}>
             <span className={'font-bold'}>{paciente.nome}</span>
             <span className={'font-thin'}>, {getAge(paciente.dataDeNascimento)} anos</span>
@@ -62,13 +61,13 @@ export default function PacientePanel() {
           <div className={'mb-2 text-2xl text-sky-800'}>Macronutrientes</div>
           <div className={'grid grid-cols-2 gap-x-4 text-sm text-sky-800'}>
             <div className={'font-semibold'}>Kcal:</div>
-            <div>{sumMacros(paciente.RefeicaoDieta).kcal.toFixed(0)}</div>
+            <div>{sumMacrosDieta(paciente.RefeicaoDieta).kcal.toFixed(1)}</div>
             <div className={'font-semibold'}>Carboidratos:</div>
-            <div>{sumMacros(paciente.RefeicaoDieta).carb.toFixed(0)}</div>
+            <div>{sumMacrosDieta(paciente.RefeicaoDieta).carb.toFixed(1)}</div>
             <div className={'font-semibold'}>Proteínas:</div>
-            <div>{sumMacros(paciente.RefeicaoDieta).prot.toFixed(0)}</div>
+            <div>{sumMacrosDieta(paciente.RefeicaoDieta).prot.toFixed(1)}</div>
             <div className={'font-semibold'}>Gorduras:</div>
-            <div>{sumMacros(paciente.RefeicaoDieta).lipid.toFixed(0)}</div>
+            <div>{sumMacrosDieta(paciente.RefeicaoDieta).lipid.toFixed(1)}</div>
           </div>
         </div>
       )}
@@ -123,7 +122,7 @@ function SexSymbol({ children }: { children: React.ReactNode }) {
   );
 }
 
-function sumMacros(foodArray: RefeicaoConsumo24hComAlimentos[]) {
+function sumMacros(foodArray: RefeicaoConsumo24hComAlimentos[] | RefeicaoDietaComAlimentos[]) {
   const kcal = foodArray.reduce((total, refeicao) => {
     return total + refeicao.quantidade * refeicao.alimentoTACO.energy[0].kcal;
   }, 0);
@@ -135,6 +134,36 @@ function sumMacros(foodArray: RefeicaoConsumo24hComAlimentos[]) {
   }, 0);
   const lipid = foodArray.reduce((total, refeicao) => {
     return total + refeicao.quantidade * refeicao.alimentoTACO.lipid[0].qty;
+  }, 0);
+
+  return { kcal, carb, prot, lipid };
+}
+
+function sumMacrosDieta(foodArray: RefeicaoConsumo24hComAlimentos[] | RefeicaoDietaComAlimentos[]) {
+  const kcal = foodArray.reduce((total, refeicao) => {
+    return (
+      total +
+      (refeicao.quantidade / refeicao.alimentoTACO.base_qty) * refeicao.alimentoTACO.energy[0].kcal
+    );
+  }, 0);
+  const carb = foodArray.reduce((total, refeicao) => {
+    return (
+      total +
+      (refeicao.quantidade / refeicao.alimentoTACO.base_qty) *
+        refeicao.alimentoTACO.carbohydrate[0].qty
+    );
+  }, 0);
+  const prot = foodArray.reduce((total, refeicao) => {
+    return (
+      total +
+      (refeicao.quantidade / refeicao.alimentoTACO.base_qty) * refeicao.alimentoTACO.protein[0].qty
+    );
+  }, 0);
+  const lipid = foodArray.reduce((total, refeicao) => {
+    return (
+      total +
+      (refeicao.quantidade / refeicao.alimentoTACO.base_qty) * refeicao.alimentoTACO.lipid[0].qty
+    );
   }, 0);
 
   return { kcal, carb, prot, lipid };
