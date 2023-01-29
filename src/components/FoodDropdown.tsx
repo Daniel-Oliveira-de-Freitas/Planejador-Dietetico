@@ -1,6 +1,10 @@
-import { AlimentoPinheiroComMedidas, AlimentoTACOComMacros, Refeicao } from '../types/types';
+import {
+  Refeicao,
+  RefeicaoConsumo24hComAlimentos,
+  RefeicaoDietaComAlimentos,
+} from '../types/types';
 import React, { useContext } from 'react';
-import { RefeicaoConsumo24h, TipoDeRefeicao } from '@prisma/client';
+import { TipoDeRefeicao } from '@prisma/client';
 import { toast } from 'react-toastify';
 import { convertMacros } from '../utils/convertMacros';
 import { getPaciente } from '../utils/paciente/getPaciente';
@@ -9,28 +13,21 @@ import { PacienteContext } from '../context/PacienteContext';
 interface FoodDropdownProps {
   setIsOpen: (value: React.SetStateAction<boolean>) => void;
   setTipoDeRefeicao: (value: React.SetStateAction<TipoDeRefeicao>) => void;
-  foodArray: Refeicao[] | RefeicaoComAlimentos[];
+  foodArray: RefeicaoDietaComAlimentos[] | RefeicaoConsumo24hComAlimentos[];
   tiposDeRefeicao: TipoDeRefeicao[];
-  setConsumo?: (value: React.SetStateAction<Refeicao[] | RefeicaoComAlimentos[]>) => void;
+  setConsumo?: (
+    value: React.SetStateAction<RefeicaoDietaComAlimentos[] | RefeicaoConsumo24hComAlimentos[]>
+  ) => void;
   removeFn?: (id: number) => Promise<void>;
-}
-
-interface RefeicaoComAlimentos extends RefeicaoConsumo24h {
-  id: number;
-  alimentoTACOId: number;
-  alimentoPinheiroId: number;
-  tipoDeRefeicaoId: number;
-  medida: string;
-  quantidade: number;
-  pacienteId: number;
-  alimentoTACO: AlimentoTACOComMacros;
-  alimentoPinheiro: AlimentoPinheiroComMedidas;
 }
 
 const FoodDropdown = (props: FoodDropdownProps) => {
   const { paciente, setPaciente } = useContext(PacienteContext);
   const tiposPreenchidos = new Set(props.foodArray.map(food => food.tipoDeRefeicaoId));
-  const removeItem = (id: number, foodArray: Refeicao[] | RefeicaoComAlimentos[]) => {
+  const removeItem = (
+    id: number,
+    foodArray: RefeicaoDietaComAlimentos[] | RefeicaoConsumo24hComAlimentos[]
+  ) => {
     return props.setConsumo(foodArray.filter(food => food.id !== id));
   };
 
@@ -63,15 +60,15 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                 <thead className='h-8 text-sm font-semibold uppercase tracking-wider'>
                   <tr className={''}>
                     <th className='pl-4'>nome</th>
-                    <th className=''>qtd</th>
-                    <th className=''>kcal</th>
-                    <th className=''>carb.</th>
-                    <th className=''>prot.</th>
-                    <th className=''>gord.</th>
-                    {props.setConsumo && <th>excluir</th>}
+                    <th>qtd</th>
+                    <th>kcal</th>
+                    <th>carb.</th>
+                    <th>prot.</th>
+                    <th>gord.</th>
+                    {props.setConsumo && <th>ação</th>}
                   </tr>
                 </thead>
-                <tbody className={''}>
+                <tbody>
                   {props.foodArray.length > 0 &&
                     props.foodArray.map(alimento => {
                       if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
@@ -126,8 +123,8 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                                       error: 'Não foi possível excluir!',
                                       success: 'Excluído com sucesso!',
                                     });
-                                    getPaciente(paciente.id).then(setPaciente);
                                     removeItem(alimento.id, props.foodArray);
+                                    getPaciente(paciente.id).then(setPaciente);
                                   }}
                                 >
                                   <svg
