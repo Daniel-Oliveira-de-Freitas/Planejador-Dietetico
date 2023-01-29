@@ -2,8 +2,8 @@ import { Tab } from '@headlessui/react';
 import React, { useContext, useState } from 'react';
 import ConsumoAlimentar24h from './ConsumoAlimentar24h';
 import ConsumoAlimentarHabitual from './ConsumoAlimentarHabitual';
-import PlanoDietetico from './PlanoDietetico';
 import { PacienteContext } from '../context/PacienteContext';
+import PlanoDietetico2 from './PlanoDietetico2';
 
 export default function Tabs() {
   const { setTab } = useContext(PacienteContext);
@@ -11,7 +11,7 @@ export default function Tabs() {
     'Plano dietético': [
       {
         id: 1,
-        component: <PlanoDietetico />,
+        component: <PlanoDietetico2 />,
       },
     ],
     'Consumo alimentar habitual': [
