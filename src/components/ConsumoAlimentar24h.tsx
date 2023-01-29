@@ -18,7 +18,6 @@ import { toast } from 'react-toastify';
 import { Button } from './Button';
 import { getTiposDeRefeicao } from '../utils/getTiposDeRefeicao';
 import { getRefeicoes24hById } from '../utils/getRefeicoes24hById';
-import FoodInformationTotal from './FoodInformationTotal';
 import { convertMacros } from '../utils/convertMacros';
 import { removeConsumo24h } from '../utils/removeConsumo24h';
 import { getAllConsumo24h } from '../utils/getAllConsumo24h';
@@ -132,6 +131,8 @@ const ConsumoAlimentar24h = () => {
         paciente
       ).then(res => {
         setConsumoData(prev => [...prev, res]);
+        setSelectedPinheiroFood(null);
+        setSelectedTacoFood(null);
         getPaciente(paciente.id).then(setPaciente);
       }),
       {
@@ -146,7 +147,6 @@ const ConsumoAlimentar24h = () => {
     <>
       {tiposDeRefeicao && consumo && (
         <div>
-          {/*<FoodInformationTotal foodArray={consumo} />*/}
           <FoodDropdown
             foodArray={consumoData}
             setIsOpen={setIsOpen}
@@ -163,124 +163,180 @@ const ConsumoAlimentar24h = () => {
         title='🍕 Adicionar alimento'
       >
         <form
-          className='mt-8 grid grid-cols-2 gap-2'
+          className='mt-8 grid grid-cols-2 gap-2 text-sky-900'
           onSubmit={handleSubmit}
         >
           <div>
-            <label className='text-sm font-medium text-gray-900'>Alimento TACO</label>
-            <Combobox
-              defaultValue={selectedTacoFood}
-              onChange={setSelectedTacoFood}
-            >
-              <Combobox.Input
-                onChange={event => setQuery(event.target.value)}
-                className='w-full rounded-md border p-1'
-                placeholder='Alimento TACO'
-                displayValue={food => (food as unknown as AlimentoTACOComMacros)?.description ?? ''}
-              />
-              <Combobox.Options>
-                {filteredTacoFoods.map(food => (
-                  <Combobox.Option
-                    key={food.id}
-                    value={food}
-                    className={({ active }) =>
-                      `relative mt-1 cursor-default select-none rounded-md py-2 pl-10 pr-4 ${
-                        active ? 'bg-sky-600 text-white' : 'text-gray-900'
-                      }`
-                    }
-                  >
-                    {food.description}
-                  </Combobox.Option>
-                ))}
-              </Combobox.Options>
-            </Combobox>
+            <label className='font-light'>Alimento TACO</label>
+            <div className={'relative inline-flex'}>
+              <Combobox
+                defaultValue={selectedTacoFood}
+                onChange={setSelectedTacoFood}
+              >
+                <div className='relative mt-1'>
+                  <div className={'relative rounded-lg bg-white'}>
+                    <Combobox.Input
+                      onChange={event => setQuery(event.target.value)}
+                      className='w-full rounded-md border p-1'
+                      displayValue={food =>
+                        (food as unknown as AlimentoTACOComMacros)?.description ?? ''
+                      }
+                    />
+                    <Combobox.Options
+                      className={'absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white'}
+                    >
+                      {filteredTacoFoods.map(food => (
+                        <Combobox.Option
+                          key={food.id}
+                          value={food}
+                          className={({ active }) =>
+                            `relative mt-1 cursor-default select-none rounded-md py-2 pl-10 pr-4 ${
+                              active ? 'bg-sky-600 text-white' : 'text-gray-900'
+                            }`
+                          }
+                        >
+                          {({ selected, active }) => (
+                            <>
+                              <span
+                                className={`block truncate ${
+                                  selected ? 'font-medium' : 'font-normal'
+                                }`}
+                              >
+                                {food.description}
+                              </span>
+                              {selected ? (
+                                <span
+                                  className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                                    active ? 'text-white' : 'text-teal-600'
+                                  }`}
+                                ></span>
+                              ) : null}
+                            </>
+                          )}
+                        </Combobox.Option>
+                      ))}
+                    </Combobox.Options>
+                  </div>
+                </div>
+              </Combobox>
+            </div>
           </div>
           <div>
-            <label className='text-sm font-medium text-gray-900'>Alimento Pinheiro</label>
-            <Combobox
-              defaultValue={selectedPinheiroFood}
-              onChange={setSelectedPinheiroFood}
-            >
-              <Combobox.Input
-                onChange={event => setQuery(event.target.value)}
-                className='w-full rounded-md border p-1'
-                placeholder='Alimento Pinheiro'
-                displayValue={food =>
-                  (food as unknown as AlimentoPinheiroComMedidas)?.description ?? ''
-                }
-              />
-              <Combobox.Options>
-                {filteredPinheiroFoods.map(food => (
-                  <Combobox.Option
-                    key={food.id}
-                    value={food}
-                    className={({ active }) =>
-                      `relative mt-1 cursor-default select-none rounded-md py-2 pl-10 pr-4 ${
-                        active ? 'bg-sky-600 text-white' : 'text-gray-900'
-                      }`
-                    }
-                  >
-                    {food.description}
-                  </Combobox.Option>
-                ))}
-              </Combobox.Options>
-            </Combobox>
-          </div>
-          <select
-            className={`rounded-md border p-1 disabled:pointer-events-none disabled:bg-gray-300 hover:disabled:cursor-not-allowed`}
-            onChange={handleMeasure}
-            disabled={!selectedPinheiroFood}
-          >
-            {selectedPinheiroFood?.measures.map(measure => (
-              <option
-                key={measure.id}
-                value={measure.qty}
+            <label className='font-light'>Alimento Pinheiro</label>
+            <div className={'fixed'}>
+              <Combobox
+                defaultValue={selectedPinheiroFood}
+                onChange={setSelectedPinheiroFood}
               >
-                {measure.label}
-              </option>
-            ))}
-          </select>
-          <input
-            type='number'
-            className='rounded-md border p-1'
-            onChange={handleQty}
-            value={pinheiroQty}
-            min={0}
-          />
-          <div className='col-start-1'>
-            <div>
-              <div className='font-bold'>Calorias:</div>{' '}
+                <div className='relative mt-1'>
+                  <div className={'relative rounded-lg bg-white'}>
+                    <Combobox.Input
+                      onChange={event => setQuery(event.target.value)}
+                      className='w-full rounded-md border p-1'
+                      displayValue={food =>
+                        (food as unknown as AlimentoPinheiroComMedidas)?.description ?? ''
+                      }
+                    />
+                    <Combobox.Options
+                      className={'absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white'}
+                    >
+                      {filteredPinheiroFoods.map(food => (
+                        <Combobox.Option
+                          key={food.id}
+                          value={food}
+                          className={({ active }) =>
+                            `relative mt-1 cursor-default select-none rounded-md py-2 pl-10 pr-4 ${
+                              active ? 'bg-sky-600 text-white' : 'text-gray-900'
+                            }`
+                          }
+                        >
+                          {({ selected, active }) => (
+                            <>
+                              <span
+                                className={`block truncate ${
+                                  selected ? 'font-medium' : 'font-normal'
+                                }`}
+                              >
+                                {food.description}
+                              </span>
+                              {selected ? (
+                                <span
+                                  className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                                    active ? 'text-white' : 'text-teal-600'
+                                  }`}
+                                ></span>
+                              ) : null}
+                            </>
+                          )}
+                        </Combobox.Option>
+                      ))}
+                    </Combobox.Options>
+                  </div>
+                </div>
+              </Combobox>
+            </div>
+          </div>
+          <div className={'flex flex-col'}>
+            <label className={'font-light'}>Medida</label>
+            <select
+              className={`z-1 rounded-md border p-1 disabled:bg-gray-300 hover:disabled:cursor-not-allowed`}
+              onChange={handleMeasure}
+            >
+              {selectedPinheiroFood?.measures.map(measure => (
+                <option
+                  key={measure.id}
+                  value={measure.qty}
+                >
+                  {measure.label} - {measure.qty}g
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={''}>
+            <label className={'font-light'}>Quantidade</label>
+            <input
+              type='number'
+              className='rounded-md border p-1'
+              onChange={handleQty}
+              value={pinheiroQty}
+              min={0}
+            />
+          </div>
+          <div className='col-span-2 mt-5'>
+            <div className='text-sm'>
+              <span className={'font-semibold'}>Calorias:</span>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
                 ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).kcal + ' kcal'
                 : ''}
             </div>
-            <div>
-              <div className='font-bold'>Proteínas:</div>
-              {selectedTacoFood?.id && selectedPinheiroFood?.id
-                ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).protein +
-                  selectedTacoFood?.protein[0].unit
-                : ''}
-            </div>
-          </div>
-          <div className='col-start-2'>
-            <div>
-              <div className='font-bold'>Carboidratos:</div>{' '}
+            <div className='text-sm'>
+              <span className={'font-semibold'}>Carboidratos:</span>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
                 ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).carb +
                   selectedTacoFood?.carbohydrate[0].unit
                 : ''}
             </div>
-            <div>
-              <div className='font-bold'>Gorduras:</div>{' '}
+            <div className='text-sm'>
+              <span className={'font-semibold'}>Proteínas:</span>{' '}
+              {selectedTacoFood?.id && selectedPinheiroFood?.id
+                ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).protein +
+                  selectedTacoFood?.protein[0].unit
+                : ''}
+            </div>
+            <div className='text-sm'>
+              <span className={'font-semibold'}>Gorduras:</span>{' '}
               {selectedTacoFood?.id && selectedPinheiroFood?.id
                 ? convertMacros(selectedTacoFood, pinheiroQty, pinheiroMeasureValue).lipid +
                   selectedTacoFood?.lipid[0].unit
                 : ''}
             </div>
           </div>
-          <div className='mt-4 flex h-full w-full justify-center'>
-            <Button type={'submit'}>Adicionar refeição</Button>
-          </div>
+          <Button
+            className={'col-start-2'}
+            type={'submit'}
+          >
+            Adicionar
+          </Button>
         </form>
       </Modal>
     </>
