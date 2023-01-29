@@ -1,5 +1,5 @@
 export const getRefeicoes24hById = async (id: number) => {
-  const refeicoes = await window.prisma.refeicaoConsumo24h.findMany({
+  return window.prisma.refeicaoConsumo24h.findMany({
     where: {
       pacienteId: id,
     },
@@ -19,6 +19,4 @@ export const getRefeicoes24hById = async (id: number) => {
       },
     },
   });
-
-  return refeicoes;
 };
