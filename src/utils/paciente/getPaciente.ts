@@ -21,7 +21,23 @@ export const getPaciente = async (id: number) => {
           },
         },
       },
-      RefeicaoDieta: true,
+      RefeicaoDieta: {
+        include: {
+          alimentoTACO: {
+            include: {
+              energy: true,
+              protein: true,
+              carbohydrate: true,
+              lipid: true,
+            },
+          },
+          alimentoPinheiro: {
+            include: {
+              measures: true,
+            },
+          },
+        },
+      },
     },
   });
 };
