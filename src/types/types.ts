@@ -6,7 +6,6 @@ import {
   Lipid,
   AlimentoPinheiro,
   MeasurePinheiro,
-  RefeicaoConsumo24h,
   Prisma,
 } from '@prisma/client';
 
@@ -37,18 +36,6 @@ export type Consumo = {
   refeicoes: Refeicao[];
 };
 
-export interface RefeicaoConsumo24hComAlimentos extends RefeicaoConsumo24h {
-  id: number;
-  alimentoTACOId: number;
-  alimentoPinheiroId: number;
-  tipoDeRefeicaoId: number;
-  medida: string;
-  quantidade: number;
-  pacienteId: number;
-  alimentoTACO: AlimentoTACOComMacros;
-  alimentoPinheiro: AlimentoPinheiroComMedidas;
-}
-
 const pctComMacros = Prisma.validator<Prisma.PacienteArgs>()({
   include: {
     RefeicaoConsumo24h: {
@@ -68,8 +55,66 @@ const pctComMacros = Prisma.validator<Prisma.PacienteArgs>()({
         },
       },
     },
-    RefeicaoDieta: true,
+    RefeicaoDieta: {
+      include: {
+        alimentoTACO: {
+          include: {
+            energy: true,
+            protein: true,
+            carbohydrate: true,
+            lipid: true,
+          },
+        },
+        alimentoPinheiro: {
+          include: {
+            measures: true,
+          },
+        },
+      },
+    },
+  },
+});
+
+const refeicaoDietaComAlimentos = Prisma.validator<Prisma.RefeicaoDietaArgs>()({
+  include: {
+    alimentoPinheiro: {
+      include: {
+        measures: true,
+      },
+    },
+    alimentoTACO: {
+      include: {
+        energy: true,
+        carbohydrate: true,
+        protein: true,
+        lipid: true,
+      },
+    },
+  },
+});
+
+const refeicaoConsumo24hComAlimentos = Prisma.validator<Prisma.RefeicaoConsumo24hArgs>()({
+  include: {
+    alimentoPinheiro: {
+      include: {
+        measures: true,
+      },
+    },
+    alimentoTACO: {
+      include: {
+        energy: true,
+        carbohydrate: true,
+        protein: true,
+        lipid: true,
+      },
+    },
   },
 });
 
 export type PacienteComMacros = Prisma.PacienteGetPayload<typeof pctComMacros>;
+export type RefeicaoConsumo24hComAlimentos = Prisma.RefeicaoConsumo24hGetPayload<
+  typeof refeicaoConsumo24hComAlimentos
+>;
+export type RefeicaoDietaComAlimentos = Prisma.RefeicaoDietaGetPayload<
+  typeof refeicaoDietaComAlimentos
+>;
