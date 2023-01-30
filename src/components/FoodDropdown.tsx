@@ -1,10 +1,11 @@
 import { RefeicaoConsumo24hComAlimentos, RefeicaoDietaComAlimentos } from '../types/types';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { TipoDeRefeicao } from '@prisma/client';
 import { toast } from 'react-toastify';
 import { convertMacros } from '../utils/convertMacros';
 import { getPaciente } from '../utils/paciente/getPaciente';
 import { PacienteContext } from '../context/PacienteContext';
+import { getAllRefeicaoDieta } from '../utils/getAllRefeicaoDieta';
 
 interface FoodDropdownProps {
   setIsOpen: (value: React.SetStateAction<boolean>) => void;
@@ -19,13 +20,16 @@ interface FoodDropdownProps {
 
 const FoodDropdown = (props: FoodDropdownProps) => {
   const { paciente, setPaciente } = useContext(PacienteContext);
-  const tiposPreenchidos = new Set(props.foodArray.map(food => food.tipoDeRefeicaoId));
-  const removeItem = (
-    id: number,
-    foodArray: RefeicaoDietaComAlimentos[] | RefeicaoConsumo24hComAlimentos[]
-  ) => {
+  const removeItem = (id: number, foodArray: RefeicaoConsumo24hComAlimentos[]) => {
     return props.setConsumo(foodArray.filter(food => food.id !== id));
   };
+  const [dieta, setDieta] = useState<RefeicaoConsumo24hComAlimentos[]>();
+
+  useEffect(() => {
+    getAllRefeicaoDieta(paciente?.id).then(setDieta);
+  }, [paciente]);
+
+  const tiposPreenchidos = new Set(dieta?.map(food => food.tipoDeRefeicaoId));
 
   return (
     <>
