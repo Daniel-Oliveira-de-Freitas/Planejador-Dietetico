@@ -99,6 +99,10 @@ const Pacientes = () => {
         return { ...prev, [e.target.name]: parseFloat(e.target.value) };
       }
 
+      if (e.target.type === 'date') {
+        return { ...prev, [e.target.name]: e.target.valueAsDate };
+      }
+
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
