@@ -13,34 +13,27 @@ const MeasuresInformation = () => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         title='🥗 Dicionario das Medidas Caseiras'
+        
       >
         <div className='table-wrp block max-h-96'>
           <table className='w-full'>
-            <thead className='flex w-full bg-black text-white'>
+            <thead className='w-full bg-sky-600 text-white'>
               <tr className={''}>
-                <th className='w-1/4 p-4'>Sigla</th>
-                <th className='w-1/4 p-4'>Descrição</th>
+                <th className='w-1/4 p-4 border border-black'>Sigla</th>
+                <th className='w-1/4 p-4 border border-black'>Descrição</th>
               </tr>
             </thead>
             <tbody>
-              {myData.slice(0, 3).map(a => {
+              {myData.slice(0, 30).map(a => {
                 return (
                   <tr key={a.Siglas}>
-                    <td className='w-1/4 p-4'>{a.Siglas}</td>
-                    <td className='w-1/4 p-4'>{a.Descrição}</td>
+                    <td className='w-1/4 p-4 border border-black'>{a.Siglas}</td>
+                    <td className='w-1/4 p-4 border border-black'>{a.Descrição}</td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
-        </div>
-        <div>
-          <Button
-            className={''}
-            type={'button'}
-          >
-            Voltar
-          </Button>
         </div>
       </Modal>
     </section>
