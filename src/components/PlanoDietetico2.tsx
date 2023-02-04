@@ -22,6 +22,7 @@ import FoodDropdownDieta from './FoodDropdownDieta';
 import { getRefeicaoDietaById } from '../utils/getRefeicaoDietaById';
 import { getAllRefeicaoDieta } from '../utils/getAllRefeicaoDieta';
 import { removeRefeicaoDieta } from '../utils/removeRefeicaoDieta';
+import MeasuresInformation from './MeasuresInformation';
 
 const PlanoDietetico2 = () => {
   const MAX_RESULTS = 5;
@@ -162,6 +163,7 @@ const PlanoDietetico2 = () => {
         setIsOpen={setIsOpen}
         title='🥗 Adicionar alimento'
       >
+        <MeasuresInformation />
         <form
           className='mt-8 grid grid-cols-2 gap-2 text-sky-900'
           onSubmit={handleSubmit}

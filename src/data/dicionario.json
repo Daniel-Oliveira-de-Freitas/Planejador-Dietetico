@@ -1,0 +1,126 @@
+[
+  {
+    "Siglas": "C/AÇ",
+    "Descrição": "Com açúcar"
+  },
+  {
+    "Siglas": "CO",
+    "Descrição": "Concha"
+  },
+  {
+    "Siglas": "COL A",
+    "Descrição": "Colher de arroz"
+  },
+  {
+    "Siglas": "COL CAFÉ",
+    "Descrição": "Colher de café"
+  },
+  {
+    "Siglas": "COL CHÁ",
+    "Descrição": "Colher de chá"
+  },
+  {
+    "Siglas": "COL S",
+    "Descrição": "Colher de sopa"
+  },
+  {
+    "Siglas": "COL SOB",
+    "Descrição": "Colher de sobremesa"
+  },
+  {
+    "Siglas": "ESC",
+    "Descrição": "Escumadeira"
+  },
+  {
+    "Siglas": "FT",
+    "Descrição": "Fatia"
+  },
+  {
+    "Siglas": "INDUSTR",
+    "Descrição": "Industrial"
+  },
+  {
+    "Siglas": "PED",
+    "Descrição": "Pedaço"
+  },
+  {
+    "Siglas": "PT F",
+    "Descrição": "Prato fundo"
+  },
+  {
+    "Siglas": "PT R",
+    "Descrição": "Prato raso"
+  },
+  {
+    "Siglas": "PT SOB",
+    "Descrição": "Prato de sobremesa"
+  },
+  {
+    "Siglas": "UND",
+    "Descrição": "Unidade"
+  },
+  {
+    "Siglas": "X",
+    "Descrição": "Xícara"
+  },
+  {
+    "Siglas": "D",
+    "Descrição": "Duplo"
+  },
+  {
+    "Siglas": "G",
+    "Descrição": "Grande"
+  },
+  {
+    "Siglas": "GG",
+    "Descrição": "Muito grande"
+  },
+  {
+    "Siglas": "M",
+    "Descrição": "Médio"
+  },
+  {
+    "Siglas": "P",
+    "Descrição": "Pequeno"
+  },
+  {
+    "Siglas": "CH",
+    "Descrição": "Cheio"
+  },
+  {
+    "Siglas": "N",
+    "Descrição": "Nivelado"
+  },
+  {
+    "Siglas": "R",
+    "Descrição": "Raso"
+  },
+  {
+    "Siglas": "GQ",
+    "Descrição": "Grande quantidade"
+  },
+  {
+    "Siglas": "MQ",
+    "Descrição": "Média quantidade"
+  },
+  {
+    "Siglas": "PQ",
+    "Descrição": "Pequena quantidade"
+  },
+  {
+    "Siglas": "g",
+    "Descrição": "Grama"
+  },
+  {
+    "Siglas": "mg",
+    "Descrição": "Miligrama"
+  },
+  {
+    "Siglas": "mL",
+    "Descrição": "Mililitros"
+  },
+  {
+    "Siglas": "µg",
+    "Descrição": "Micrograma"
+  }
+]
