@@ -32,7 +32,7 @@ export default function PacientePanel() {
           <RightPanel>
             <div className={'text-sky-900'}>
               <span className={'font-semibold'}>IMC: </span>
-              {getIMC(paciente).toFixed(1)}
+              {getIMC(paciente).toFixed(1)} kg/m²
             </div>
             <div className={'text-sky-900'}>
               <span className={'font-semibold'}>Classificação: </span>

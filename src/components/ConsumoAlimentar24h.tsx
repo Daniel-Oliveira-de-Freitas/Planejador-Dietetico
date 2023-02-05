@@ -22,6 +22,7 @@ import { convertMacros } from '../utils/convertMacros';
 import { removeConsumo24h } from '../utils/removeConsumo24h';
 import { getAllConsumo24h } from '../utils/getAllConsumo24h';
 import { PacienteContext } from '../context/PacienteContext';
+import MeasuresInformation from './MeasuresInformation';
 
 const ConsumoAlimentar24h = () => {
   const MAX_RESULTS = 5;
@@ -162,6 +163,9 @@ const ConsumoAlimentar24h = () => {
         setIsOpen={setIsOpen}
         title='🍕 Adicionar alimento'
       >
+        <div className='mt-2 grid grid-cols-2 content-end gap-2'>
+          <MeasuresInformation />
+        </div>
         <form
           className='mt-8 grid grid-cols-2 gap-2 text-sky-900'
           onSubmit={handleSubmit}
