@@ -81,7 +81,8 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                               {alimento.alimentoTACO.description}
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
-                              {alimento.quantidade + alimento.alimentoPinheiro.measures[0].label}
+                              {alimento.quantidade + alimento.alimentoPinheiro.measures[0].label} -
+                              {alimento.alimentoPinheiro.measures[0].qty * alimento.quantidade}g
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
                               {convertMacros(
