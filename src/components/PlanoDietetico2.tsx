@@ -37,6 +37,7 @@ const PlanoDietetico2 = () => {
   const [selectedPinheiroFood, setSelectedPinheiroFood] = useState(pinheiroFoods[0]);
   const [pinheiroMeasureValue, setPinheiroMeasureValue] = useState(0);
   const [pinheiroMeasureLabel, setPinheiroMeasureLabel] = useState('');
+  const [pinheiroMeasureId, setPinheiroMeasureId] = useState(0);
   const [pinheiroQty, setPinheiroQty] = useState(1);
   const [refeicao, setRefeicao] = useState<Refeicao[]>([]);
   const [refeicaoData, setRefeicaoData] = useState<RefeicaoDietaComAlimentos[]>();
@@ -56,8 +57,8 @@ const PlanoDietetico2 = () => {
   }, []);
 
   useEffect(() => {
-    setPinheiroMeasureValue(selectedPinheiroFood?.measures[0].qty);
-    setPinheiroMeasureLabel(selectedPinheiroFood?.measures[0].label);
+    setPinheiroMeasureValue(selectedPinheiroFood?.measures[pinheiroMeasureId].qty);
+    setPinheiroMeasureLabel(selectedPinheiroFood?.measures[pinheiroMeasureId].label);
   }, [selectedPinheiroFood]);
 
   const filteredTacoFoods =
@@ -100,6 +101,9 @@ const PlanoDietetico2 = () => {
   };
 
   const handleMeasure = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPinheiroMeasureId(e.target.selectedIndex);
+    setPinheiroMeasureLabel(selectedPinheiroFood?.measures[e.target.selectedIndex].label);
+    setPinheiroMeasureValue(selectedPinheiroFood?.measures[e.target.selectedIndex].qty);
     return setPinheiroMeasureValue(Number(e.target.value));
   };
 
