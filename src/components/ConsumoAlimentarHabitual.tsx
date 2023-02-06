@@ -56,6 +56,9 @@ const ConsumoAlimentarHabitual = () => {
             <th className='px-4 text-right text-sm font-thin uppercase tracking-wider'>
               frequência semanal
             </th>
+            <th className='px-4 text-right text-sm font-thin uppercase tracking-wider'>
+              frequência mensal
+            </th>
           </tr>
         </thead>
         <tbody className='divide-y divide-neutral-200'>
@@ -87,6 +90,15 @@ const ConsumoAlimentarHabitual = () => {
                 value={consumoHabitual?.acucarFreq || 0}
               />
             </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`acucarFreqMensal`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.acucarFreqMensal || 0}
+              />
+            </td>
           </tr>
           <tr className='hover:bg-sky-200'>
             <td className='py-2 pl-1'>
@@ -114,6 +126,15 @@ const ConsumoAlimentarHabitual = () => {
                 onChange={handleChange}
                 className='float-right rounded-md border p-1 text-center'
                 value={consumoHabitual?.adocanteFreq || 0}
+              />
+            </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`adocanteFreqMensal`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.adocanteFreqMensal || 0}
               />
             </td>
           </tr>
@@ -145,6 +166,15 @@ const ConsumoAlimentarHabitual = () => {
                 value={consumoHabitual?.friturasFreq || 0}
               />
             </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`friturasFreqMensal`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.friturasFreqMensal || 0}
+              />
+            </td>
           </tr>
           <tr className='hover:bg-sky-200'>
             <td className='py-2 pl-1'>
@@ -174,6 +204,15 @@ const ConsumoAlimentarHabitual = () => {
                 value={consumoHabitual?.carneComGorduraFreq || 0}
               />
             </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`carneComGorduraFreqMensal`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.carneComGorduraFreqMensal || 0}
+              />
+            </td>
           </tr>
           <tr className='hover:bg-sky-200'>
             <td className='py-2 pl-1'>
@@ -201,6 +240,15 @@ const ConsumoAlimentarHabitual = () => {
                 onChange={handleChange}
                 className='float-right rounded-md border p-1 text-center'
                 value={consumoHabitual?.frangoComPeleFreq || 0}
+              />
+            </td>
+            <td className='px-4'>
+              <input
+                type='number'
+                name={`frangoComPeleFreqMensal`}
+                onChange={handleChange}
+                className='float-right rounded-md border p-1 text-center'
+                value={consumoHabitual?.frangoComPeleFreqMensal || 0}
               />
             </td>
           </tr>
