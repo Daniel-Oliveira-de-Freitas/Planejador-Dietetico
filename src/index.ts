@@ -20,6 +20,7 @@ const createWindow = (): void => {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
       nodeIntegration: true, // remover se não funcionar
       contextIsolation: false, // remover se não funcionar
+      devTools: false,
     },
     autoHideMenuBar: true,
   });
