@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { convertMacros } from '../utils/convertMacros';
 import { getPaciente } from '../utils/paciente/getPaciente';
 import { PacienteContext } from '../context/PacienteContext';
-import { getAllRefeicaoDieta } from '../utils/getAllRefeicaoDieta';
+import { getAllConsumo24h } from '../utils/getAllConsumo24h';
 
 interface FoodDropdownProps {
   setIsOpen: (value: React.SetStateAction<boolean>) => void;
@@ -26,11 +26,10 @@ const FoodDropdown = (props: FoodDropdownProps) => {
   const [dieta, setDieta] = useState<RefeicaoConsumo24hComAlimentos[]>();
 
   useEffect(() => {
-    getAllRefeicaoDieta(paciente?.id).then(setDieta);
+    getAllConsumo24h(paciente?.id).then(setDieta);
   }, [paciente]);
 
   const tiposPreenchidos = new Set(dieta?.map(food => food.tipoDeRefeicaoId));
-
   return (
     <>
       {props.tiposDeRefeicao.map(tipoDeRefeicao => (
@@ -69,9 +68,10 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {props.foodArray.length > 0 &&
-                    props.foodArray.map(alimento => {
+                  {dieta?.length > 0 &&
+                    dieta?.map(alimento => {
                       if (alimento.tipoDeRefeicaoId === tipoDeRefeicao.id) {
+                        console.log(alimento.medida);
                         return (
                           <tr
                             key={alimento.id}
@@ -81,7 +81,7 @@ const FoodDropdown = (props: FoodDropdownProps) => {
                               {alimento.alimentoTACO.description}
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
-                              {alimento.quantidade + alimento.alimentoPinheiro.measures[0].label} -
+                              {alimento.quantidade + alimento.medida} -
                               {alimento.alimentoPinheiro.measures[0].qty * alimento.quantidade}g
                             </td>
                             <td className='whitespace-nowrap py-4 text-sky-900'>
