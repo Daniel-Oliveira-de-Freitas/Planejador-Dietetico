@@ -88,7 +88,7 @@ function LeftPanel({ children }: { children: React.ReactNode }) {
 }
 
 function getIMC(paciente: Paciente) {
-  return paciente.peso / (paciente.altura ^ 2);
+  return paciente.peso / (paciente.altura * paciente.altura);
 }
 
 function classifyIMC(paciente: Paciente) {
