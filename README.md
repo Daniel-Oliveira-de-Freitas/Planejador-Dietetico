@@ -2,7 +2,7 @@
 Projeto criado durante o 6º semestre de Engenharia de Software na Universidade Federal do Pampa.
 
 # Como executar o projeto
-1. Clone o repositório `git clone https://github.com/willraoli/planejador-dietetico.git`
+1. Clone o repositório `https://github.com/Daniel-Oliveira-de-Freitas/Planejador-Dietetico.git`
 2. Instale as dependências `npm i`
 3. Inicie a aplicação `npm run start`
 
